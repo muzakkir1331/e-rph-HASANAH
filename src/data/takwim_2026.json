@@ -1,0 +1,472 @@
+[
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 1,
+    "label_minggu": "Minggu 1",
+    "tarikh_mula": "2026-01-12",
+    "tarikh_tamat": "2026-01-16",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 2,
+    "label_minggu": "Minggu 2",
+    "tarikh_mula": "2026-01-19",
+    "tarikh_tamat": "2026-01-23",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 3,
+    "label_minggu": "Minggu 3",
+    "tarikh_mula": "2026-01-26",
+    "tarikh_tamat": "2026-01-30",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 4,
+    "label_minggu": "Minggu 4",
+    "tarikh_mula": "2026-02-02",
+    "tarikh_tamat": "2026-02-06",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 5,
+    "label_minggu": "Minggu 5",
+    "tarikh_mula": "2026-02-09",
+    "tarikh_tamat": "2026-02-13",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 6,
+    "label_minggu": "Minggu 6",
+    "tarikh_mula": "2026-02-14",
+    "tarikh_tamat": "2026-02-22",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 7,
+    "label_minggu": "Minggu 7",
+    "tarikh_mula": "2026-02-23",
+    "tarikh_tamat": "2026-02-27",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 8,
+    "label_minggu": "Minggu 8",
+    "tarikh_mula": "2026-03-02",
+    "tarikh_tamat": "2026-03-06",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 9,
+    "label_minggu": "Minggu 9",
+    "tarikh_mula": "2026-03-09",
+    "tarikh_tamat": "2026-03-13",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 10,
+    "label_minggu": "Minggu 10",
+    "tarikh_mula": "2026-03-16",
+    "tarikh_tamat": "2026-03-18",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": null,
+    "label_minggu": "CUTI PERSEKOLAHAN",
+    "tarikh_mula": "2026-03-19",
+    "tarikh_tamat": "2026-03-29",
+    "adalah_cuti": true,
+    "catatan_cuti": "Cuti Persekolahan KPM"
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 11,
+    "label_minggu": "Minggu 11",
+    "tarikh_mula": "2026-03-30",
+    "tarikh_tamat": "2026-04-03",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 12,
+    "label_minggu": "Minggu 12",
+    "tarikh_mula": "2026-04-06",
+    "tarikh_tamat": "2026-04-10",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 13,
+    "label_minggu": "Minggu 13",
+    "tarikh_mula": "2026-04-13",
+    "tarikh_tamat": "2026-04-17",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 14,
+    "label_minggu": "Minggu 14",
+    "tarikh_mula": "2026-04-20",
+    "tarikh_tamat": "2026-04-24",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 15,
+    "label_minggu": "Minggu 15",
+    "tarikh_mula": "2026-04-27",
+    "tarikh_tamat": "2026-05-01",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 16,
+    "label_minggu": "Minggu 16",
+    "tarikh_mula": "2026-05-04",
+    "tarikh_tamat": "2026-05-08",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 17,
+    "label_minggu": "Minggu 17",
+    "tarikh_mula": "2026-05-11",
+    "tarikh_tamat": "2026-05-15",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 18,
+    "label_minggu": "Minggu 18",
+    "tarikh_mula": "2026-05-18",
+    "tarikh_tamat": "2026-05-22",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": null,
+    "label_minggu": "CUTI PERSEKOLAHAN",
+    "tarikh_mula": "2026-05-23",
+    "tarikh_tamat": "2026-06-07",
+    "adalah_cuti": true,
+    "catatan_cuti": "Cuti Persekolahan KPM"
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 19,
+    "label_minggu": "Minggu 19",
+    "tarikh_mula": "2026-06-08",
+    "tarikh_tamat": "2026-06-12",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 20,
+    "label_minggu": "Minggu 20",
+    "tarikh_mula": "2026-06-15",
+    "tarikh_tamat": "2026-06-19",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 21,
+    "label_minggu": "Minggu 21",
+    "tarikh_mula": "2026-06-22",
+    "tarikh_tamat": "2026-06-26",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 22,
+    "label_minggu": "Minggu 22",
+    "tarikh_mula": "2026-06-29",
+    "tarikh_tamat": "2026-07-03",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 23,
+    "label_minggu": "Minggu 23",
+    "tarikh_mula": "2026-07-06",
+    "tarikh_tamat": "2026-07-10",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 24,
+    "label_minggu": "Minggu 24",
+    "tarikh_mula": "2026-07-13",
+    "tarikh_tamat": "2026-07-17",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 25,
+    "label_minggu": "Minggu 25",
+    "tarikh_mula": "2026-07-20",
+    "tarikh_tamat": "2026-07-24",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 26,
+    "label_minggu": "Minggu 26",
+    "tarikh_mula": "2026-07-27",
+    "tarikh_tamat": "2026-07-31",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 27,
+    "label_minggu": "Minggu 27",
+    "tarikh_mula": "2026-08-03",
+    "tarikh_tamat": "2026-08-07",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 28,
+    "label_minggu": "Minggu 28",
+    "tarikh_mula": "2026-08-10",
+    "tarikh_tamat": "2026-08-14",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 29,
+    "label_minggu": "Minggu 29",
+    "tarikh_mula": "2026-08-17",
+    "tarikh_tamat": "2026-08-21",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 30,
+    "label_minggu": "Minggu 30",
+    "tarikh_mula": "2026-08-24",
+    "tarikh_tamat": "2026-08-28",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": null,
+    "label_minggu": "CUTI PERSEKOLAHAN",
+    "tarikh_mula": "2026-08-29",
+    "tarikh_tamat": "2026-09-06",
+    "adalah_cuti": true,
+    "catatan_cuti": "Cuti Persekolahan KPM"
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 31,
+    "label_minggu": "Minggu 31",
+    "tarikh_mula": "2026-09-07",
+    "tarikh_tamat": "2026-09-11",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 32,
+    "label_minggu": "Minggu 32",
+    "tarikh_mula": "2026-09-14",
+    "tarikh_tamat": "2026-09-18",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 33,
+    "label_minggu": "Minggu 33",
+    "tarikh_mula": "2026-09-21",
+    "tarikh_tamat": "2026-09-25",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 34,
+    "label_minggu": "Minggu 34",
+    "tarikh_mula": "2026-09-28",
+    "tarikh_tamat": "2026-10-02",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 35,
+    "label_minggu": "Minggu 35",
+    "tarikh_mula": "2026-10-05",
+    "tarikh_tamat": "2026-10-09",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 36,
+    "label_minggu": "Minggu 36",
+    "tarikh_mula": "2026-10-12",
+    "tarikh_tamat": "2026-10-16",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 37,
+    "label_minggu": "Minggu 37",
+    "tarikh_mula": "2026-10-19",
+    "tarikh_tamat": "2026-10-23",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 38,
+    "label_minggu": "Minggu 38",
+    "tarikh_mula": "2026-10-26",
+    "tarikh_tamat": "2026-10-30",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 39,
+    "label_minggu": "Minggu 39",
+    "tarikh_mula": "2026-11-02",
+    "tarikh_tamat": "2026-11-06",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 40,
+    "label_minggu": "Minggu 40",
+    "tarikh_mula": "2026-11-09",
+    "tarikh_tamat": "2026-11-13",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 41,
+    "label_minggu": "Minggu 41",
+    "tarikh_mula": "2026-11-16",
+    "tarikh_tamat": "2026-11-20",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 42,
+    "label_minggu": "Minggu 42",
+    "tarikh_mula": "2026-11-23",
+    "tarikh_tamat": "2026-11-27",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": 43,
+    "label_minggu": "Minggu 43",
+    "tarikh_mula": "2026-11-30",
+    "tarikh_tamat": "2026-12-04",
+    "adalah_cuti": false,
+    "catatan_cuti": null
+  },
+  {
+    "tahun_akademik": 2026,
+    "kumpulan": "B",
+    "minggu_ke": null,
+    "label_minggu": "CUTI PERSEKOLAHAN",
+    "tarikh_mula": "2026-12-05",
+    "tarikh_tamat": "2026-12-31",
+    "adalah_cuti": true,
+    "catatan_cuti": "Cuti Persekolahan KPM"
+  }
+]
