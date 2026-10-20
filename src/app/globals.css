@@ -91,50 +91,73 @@ body {
 @media print {
   @page {
     size: A4 portrait;
-    margin: 5mm 8mm;
+    margin: 6mm 8mm;
   }
   html, body {
     background: white !important;
     color: black !important;
     margin: 0 !important;
     padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-  .no-print {
+
+  /* Sembunyikan semua elemen UI sistem, borang input, navbar, dialog modal */
+  header, nav, footer, aside, .no-print, [role="dialog"], .erph-form-editor {
     display: none !important;
   }
+
+  /* Hanya paparkan dokumen e-RPH sahaja */
   .print-only {
     display: block !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
   }
+
   .a4-portrait-page {
     width: 100% !important;
     max-width: 194mm !important;
     height: 275mm !important;
     max-height: 275mm !important;
     margin: 0 auto !important;
-    padding: 5mm 8mm !important;
+    padding: 6mm 8mm !important;
     border: none !important;
     box-shadow: none !important;
     page-break-after: always !important;
     page-break-inside: avoid !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
-    font-size: 10.5px !important;
-    line-height: 1.35 !important;
+    font-size: 10px !important;
+    line-height: 1.32 !important;
   }
+
+  .a4-page-card {
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+  }
+
   .print-page {
     page-break-after: always;
     page-break-inside: avoid;
     box-shadow: none !important;
   }
+
   .rph-master-table {
     border: 1.5px solid #000000 !important;
   }
+
   .rph-master-table th,
   .rph-master-table td {
     border: 1px solid #334155 !important;
   }
+
   .rph-master-table th.rph-header-label {
     background-color: #f1f5f9 !important;
     -webkit-print-color-adjust: exact !important;

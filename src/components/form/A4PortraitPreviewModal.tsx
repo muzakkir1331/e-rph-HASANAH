@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { X, Printer, Download, Eye, FileText, CheckCircle2, ChevronLeft, ChevronRight, FileDown } from 'lucide-react';
 import { RPHRecord } from '@/types/erph';
 import { generateSingleRPHCardHtml, formatRPHFileName } from '@/lib/google-drive';
+import { printOrSaveRPH } from '@/lib/print-rph';
 
 interface A4PortraitPreviewModalProps {
   isOpen: boolean;
@@ -12,7 +13,7 @@ interface A4PortraitPreviewModalProps {
   teacherName: string;
   teacherEmail: string;
   weekNo: number | string;
-  onPrint: () => void;
+  onPrint?: () => void;
   onDownloadHtml: () => void;
   onSavePdf?: () => void;
 }
@@ -37,23 +38,29 @@ export default function A4PortraitPreviewModal({
   const totalPages = weeklyRphList.length;
 
   const handleSavePdf = () => {
-    const originalTitle = typeof document !== 'undefined' ? document.title : '';
-    const formattedTitle = formatRPHFileName(teacherName, weekNo);
-    if (typeof document !== 'undefined') {
-      document.title = formattedTitle;
-    }
-
     if (onSavePdf) {
       onSavePdf();
     } else {
-      window.print();
+      printOrSaveRPH({
+        rphList: viewMode === 'single' ? [currentRPH] : weeklyRphList,
+        teacherName,
+        teacherEmail,
+        weekNo
+      });
     }
+  };
 
-    setTimeout(() => {
-      if (typeof document !== 'undefined') {
-        document.title = originalTitle;
-      }
-    }, 1500);
+  const handlePrint = () => {
+    if (onPrint) {
+      onPrint();
+    } else {
+      printOrSaveRPH({
+        rphList: viewMode === 'single' ? [currentRPH] : weeklyRphList,
+        teacherName,
+        teacherEmail,
+        weekNo
+      });
+    }
   };
 
   return (
@@ -112,7 +119,7 @@ export default function A4PortraitPreviewModal({
 
             <button
               type="button"
-              onClick={onPrint}
+              onClick={handlePrint}
               className="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow-sm"
             >
               <Printer className="w-4 h-4" />

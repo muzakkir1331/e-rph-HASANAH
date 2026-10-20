@@ -5,6 +5,7 @@ import { RPHRecord } from '@/types/erph';
 import { LOGO_AL_HASANAH_BASE64 } from '@/data/logo_base64';
 import { Printer, Download, CheckCircle2, AlertTriangle, FileText, Share2, Copy, Edit3, FileDown } from 'lucide-react';
 import { formatRPHFileName } from '@/lib/google-drive';
+import { printOrSaveRPH } from '@/lib/print-rph';
 
 interface RPHGeneratedTableViewProps {
   rph: Partial<RPHRecord>;
@@ -37,23 +38,27 @@ export default function RPHGeneratedTableView({
   const isPdPExecuted = rph.refleksi?.pdp_dijalankan !== false;
 
   const handleSavePdf = () => {
-    const originalTitle = typeof document !== 'undefined' ? document.title : '';
-    const formattedTitle = formatRPHFileName(teacherName, rph.minggu_ke || 1);
-    if (typeof document !== 'undefined') {
-      document.title = formattedTitle;
-    }
+    printOrSaveRPH({
+      rphList: [rph],
+      teacherName,
+      teacherEmail,
+      weekNo: rph.minggu_ke || 1,
+      schoolName
+    });
+  };
 
+  const handlePrint = () => {
     if (onPrint) {
       onPrint();
     } else {
-      window.print();
+      printOrSaveRPH({
+        rphList: [rph],
+        teacherName,
+        teacherEmail,
+        weekNo: rph.minggu_ke || 1,
+        schoolName
+      });
     }
-
-    setTimeout(() => {
-      if (typeof document !== 'undefined') {
-        document.title = originalTitle;
-      }
-    }, 1500);
   };
 
   return (
@@ -97,16 +102,14 @@ export default function RPHGeneratedTableView({
             <span>Simpan PDF</span>
           </button>
 
-          {onPrint && (
-            <button
-              type="button"
-              onClick={onPrint}
-              className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-colors shadow-sm"
-            >
-              <Printer className="w-3.5 h-3.5" />
-              <span>Cetak A4</span>
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={handlePrint}
+            className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-colors shadow-sm"
+          >
+            <Printer className="w-3.5 h-3.5" />
+            <span>Cetak A4</span>
+          </button>
 
           {onDownloadHtml && (
             <button

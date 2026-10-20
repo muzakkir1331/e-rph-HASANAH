@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useSubjectLocale } from '@/hooks/useSubjectLocale';
 import RPTConnectorBanner from '@/components/form/RPTConnectorBanner';
 import DSKPSelector from '@/components/form/DSKPSelector';
@@ -47,7 +47,8 @@ import {
   Clipboard,
   Share2,
   Eye,
-  FileText
+  FileText,
+  FileDown
 } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
@@ -58,6 +59,7 @@ import {
   generateWeeklyRPHHtml,
   generateSingleRPHCardHtml
 } from '@/lib/google-drive';
+import { calculateWeekDatesFromMonday, printOrSaveRPH } from '@/lib/print-rph';
 import { getSubjectLocale } from '@/lib/dictionary';
 
 export default function RPHFormDynamic() {
@@ -119,6 +121,12 @@ export default function RPHFormDynamic() {
   const [startTime, setStartTime] = useState<string>(currentSlot.masa_mula || dropdownOptions.waktu[0].formatted);
   const [endTime, setEndTime] = useState<string>(currentSlot.masa_tamat || dropdownOptions.waktu[2].formatted);
   const [date, setDate] = useState<string>(currentWeekInfo ? currentWeekInfo.tarikh_mula : '2027-01-04');
+
+  // Tarikh Isnin bagi minggu aktif & Automasi Tarikh Hari Persekolahan Seterusnya (Selasa - Jumaat)
+  const [mondayDate, setMondayDate] = useState<string>(
+    currentWeekInfo ? currentWeekInfo.tarikh_mula : '2027-01-04'
+  );
+  const weekDates = useMemo(() => calculateWeekDatesFromMonday(mondayDate), [mondayDate]);
 
   // State Kurikulum & Aktiviti
   const [tema, setTema] = useState<string>('');
@@ -284,6 +292,8 @@ export default function RPHFormDynamic() {
   // Fungsi bina snapshot lengkap rekod e-RPH semasa
   const getCurrentSnapshot = (): RPHRecord => {
     const activeDay = activeTab === 'jadual' ? currentSlot.hari : customDay;
+    const dayUpper = (activeDay || '').toUpperCase();
+    const effectiveDate = (activeTab === 'jadual' && weekDates[dayUpper]) ? weekDates[dayUpper] : date;
     const recordId = activeTab === 'jadual'
       ? `week_${currentWeek}_slot_${selectedSlotIndex}`
       : `week_${currentWeek}_custom_${subject}_${className}_${activeDay}`;
@@ -293,7 +303,7 @@ export default function RPHFormDynamic() {
       jadual_id: activeTab === 'jadual' ? currentSlot.id || `slot_${selectedSlotIndex}` : undefined,
       tahun_akademik: 2027,
       minggu_ke: currentWeek,
-      tarikh: date,
+      tarikh: effectiveDate,
       hari: activeDay,
       masa_mula: startTime,
       masa_tamat: endTime,
@@ -431,6 +441,7 @@ export default function RPHFormDynamic() {
     setCurrentWeek(newWeek);
     const wInfo = synchronizedWeeks.find(w => w.minggu_ke === newWeek);
     if (wInfo) {
+      setMondayDate(wInfo.tarikh_mula);
       setDate(wInfo.tarikh_mula);
     }
 
@@ -480,6 +491,9 @@ export default function RPHFormDynamic() {
     const targetSlot = timetable[newIndex];
     if (!targetSlot) return;
 
+    const targetDay = (targetSlot.hari || '').toUpperCase();
+    const autoDayDate = weekDates[targetDay] || mondayDate || date;
+
     const targetSlotKey = `week_${currentWeek}_slot_${newIndex}`;
     const savedForTarget = savedRecordsMap[targetSlotKey];
 
@@ -490,7 +504,11 @@ export default function RPHFormDynamic() {
     if (savedForTarget) {
       // JIKA SLOT INI PERNAH DISIMPAN GURU:
       // Muatkan rekod tepat miliknya - MENGELAKKAN PERTINDIHAN
-      applyRecordToForm(savedForTarget);
+      applyRecordToForm({
+        ...savedForTarget,
+        tarikh: autoDayDate
+      });
+      setDate(autoDayDate);
       setIsCarryForwardActive(!!savedForTarget.adalah_carry_forward);
       setClipboardToast(`Memuatkan draf tersimpan: ${savedForTarget.subjek} (${savedForTarget.kelas})`);
       setTimeout(() => setClipboardToast(null), 3000);
@@ -503,6 +521,7 @@ export default function RPHFormDynamic() {
       setClassName(targetSlot.kelas);
       setStartTime(targetSlot.masa_mula);
       setEndTime(targetSlot.masa_tamat);
+      setDate(autoDayDate);
       setIsCarryForwardActive(false);
 
       const rptRec = findRPTRecord(targetSlot.subjek, targetSlot.tingkatan, currentWeek);
@@ -711,8 +730,67 @@ export default function RPHFormDynamic() {
     setTimeout(() => setSaveSuccess(false), 4500);
   };
 
+  // ---------------------------------------------------------------------------
+  // FUNGSI PENGUBAHSUAIAN TARIKH DENGAN AUTOMASI HARI BERIKUTNYA DARI ISNIN
+  // ---------------------------------------------------------------------------
+  const handleDateChange = (newDate: string) => {
+    setDate(newDate);
+
+    const activeDay = (activeTab === 'kustom' ? customDay : (currentSlot?.hari || '')).toUpperCase();
+
+    if (activeDay === 'ISNIN') {
+      // Guru mengubah tarikh pada hari Isnin -> Automate tarikh hari-hari berikutnya (Selasa - Jumaat)
+      setMondayDate(newDate);
+      const newWeekDates = calculateWeekDatesFromMonday(newDate);
+
+      // Kemas kini semua rekod slot tersimpan dalam savedRecordsMap yang mempunyai hari Selasa-Jumaat
+      setSavedRecordsMap(prevMap => {
+        const updated = { ...prevMap };
+
+        Object.keys(updated).forEach(key => {
+          const rec = updated[key];
+          if (rec && rec.hari) {
+            const dayUpper = rec.hari.toUpperCase();
+            if (newWeekDates[dayUpper] && rec.tarikh !== newWeekDates[dayUpper]) {
+              updated[key] = {
+                ...rec,
+                tarikh: newWeekDates[dayUpper]
+              };
+            }
+          }
+        });
+
+        try {
+          const storageKey = `erph_saved_records_${user?.uid || teacherEmail || 'alhasanah'}`;
+          localStorage.setItem(storageKey, JSON.stringify(updated));
+        } catch (e) {}
+
+        return updated;
+      });
+
+      setClipboardToast(`Tarikh Isnin (${newDate}) disimpan. Tarikh Selasa hingga Jumaat diselaraskan secara automatik!`);
+      setTimeout(() => setClipboardToast(null), 4500);
+    }
+  };
+
   const handlePrint = () => {
-    window.print();
+    printOrSaveRPH({
+      rphList: getWeeklyRPHList(),
+      teacherName: teacherName || 'GURU',
+      teacherEmail: teacherEmail || '',
+      weekNo: currentWeek,
+      schoolName: 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+    });
+  };
+
+  const handleSavePdf = () => {
+    printOrSaveRPH({
+      rphList: getWeeklyRPHList(),
+      teacherName: teacherName || 'GURU',
+      teacherEmail: teacherEmail || '',
+      weekNo: currentWeek,
+      schoolName: 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+    });
   };
 
   // ---------------------------------------------------------------------------
@@ -801,17 +879,27 @@ export default function RPHFormDynamic() {
     const effectiveSlots = scheduledSlots.length > 0 ? scheduledSlots : [currentSlot];
 
     return effectiveSlots.map((slot, idx) => {
+      const slotDay = (slot.hari || '').toUpperCase();
+      const slotDate = weekDates[slotDay] || mondayDate || date;
+
       const isCurrentlyActiveSlot = (activeTab === 'jadual' && selectedSlotIndex === idx) ||
         (slot.hari === currentActiveDay && slot.subjek === subject && slot.kelas === className);
 
       if (isCurrentlyActiveSlot) {
-        return getCurrentSnapshot();
+        const snap = getCurrentSnapshot();
+        return {
+          ...snap,
+          tarikh: slotDate
+        };
       }
 
       // Semak jika terdapat rekod tersimpan bagi slot ini
       const slotKey = `week_${currentWeek}_slot_${idx}`;
       if (savedRecordsMap[slotKey]) {
-        return savedRecordsMap[slotKey];
+        return {
+          ...savedRecordsMap[slotKey],
+          tarikh: slotDate
+        };
       }
 
       const rptRec = findRPTRecord(slot.subjek, slot.tingkatan, currentWeek);
@@ -823,7 +911,7 @@ export default function RPHFormDynamic() {
         id: slotKey,
         tahun_akademik: 2027,
         minggu_ke: currentWeek,
-        tarikh: date,
+        tarikh: slotDate,
         hari: slot.hari,
         masa_mula: slot.masa_mula,
         masa_tamat: slot.masa_tamat,
@@ -917,6 +1005,7 @@ export default function RPHFormDynamic() {
 
   return (
     <div className="max-w-5xl mx-auto space-y-6">
+      <div className="no-print erph-form-editor space-y-6">
       
       {/* =========================================================================
           TAB PILIHAN MOD: E-RPH BERJADUAL VS E-RPH KUSTOM (TAB BERASINGAN)
@@ -1506,6 +1595,16 @@ export default function RPHFormDynamic() {
 
           <button
             type="button"
+            onClick={handleSavePdf}
+            className="px-3.5 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow-md shadow-rose-600/20 transition-all hover:scale-105"
+            title="Simpan e-RPH sebagai fail PDF berkualiti tinggi"
+          >
+            <FileDown className="w-4 h-4" />
+            <span>Simpan PDF</span>
+          </button>
+
+          <button
+            type="button"
             onClick={handlePrint}
             className="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow-sm transition-colors"
             title="Cetak A4 Portrait 1 Muka Surat Setiap Subjek"
@@ -1540,7 +1639,7 @@ export default function RPHFormDynamic() {
       ) : (
         <div
           dir={direction}
-          className={`bg-white rounded-3xl border border-slate-200 shadow-md p-6 sm:p-8 space-y-8 print-page ${fontClass}`}
+          className={`bg-white rounded-3xl border border-slate-200 shadow-md p-6 sm:p-8 space-y-8 ${fontClass}`}
         >
         
         {/* Header Rasmi Borang e-RPH */}
@@ -1567,15 +1666,26 @@ export default function RPHFormDynamic() {
         {/* Bahagian 1: Maklumat Am (Tarikh, Hari, Minggu, Kelas, Masa, Subjek) */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-xs">
           
-          {/* TARIKH */}
+          {/* TARIKH DENGAN AUTOMASI ISNIN */}
           <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200 focus-within:border-emerald-500 transition-colors">
-            <span className="font-bold text-slate-500 block uppercase text-[10px]">
-              {getLabel('TARIKH', 'TARIKH')}
-            </span>
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-slate-500 block uppercase text-[10px]">
+                {getLabel('TARIKH', 'TARIKH')}
+              </span>
+              {(activeTab === 'kustom' ? customDay : (currentSlot?.hari || '')).toUpperCase() === 'ISNIN' ? (
+                <span className="text-[9px] font-extrabold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">
+                  Isnin (Induk)
+                </span>
+              ) : (
+                <span className="text-[9px] font-bold text-slate-500 bg-slate-200 px-1 py-0.2 rounded">
+                  Auto
+                </span>
+              )}
+            </div>
             <input
               type="date"
               value={date}
-              onChange={(e) => setDate(e.target.value)}
+              onChange={(e) => handleDateChange(e.target.value)}
               className="w-full bg-transparent font-bold text-slate-900 focus:outline-none mt-0.5 cursor-pointer"
             />
           </div>
@@ -1821,6 +1931,7 @@ export default function RPHFormDynamic() {
         weekNo={currentWeek}
         onPrint={handlePrint}
         onDownloadHtml={handleDownloadHtmlFile}
+        onSavePdf={handleSavePdf}
       />
 
       {/* Modal Co-Pilot AI */}
@@ -1940,6 +2051,7 @@ export default function RPHFormDynamic() {
           </div>
         </div>
       )}
+      </div>
 
       {/* =========================================================================
           SUSUN ATUR CETAKAN A4 PORTRAIT SATU MUKA SURAT SETIAP SUBJEK (PRINT-ONLY)
