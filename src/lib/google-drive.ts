@@ -34,8 +34,8 @@ export function generateSingleRPHCardHtml(
   return `
   <div class="a4-page-card" dir="${isRTL ? 'rtl' : 'ltr'}" style="${isRTL ? 'font-family: Arial, Amiri, Tahoma, sans-serif;' : 'font-family: Arial, sans-serif;'}">
     
-    <!-- Header Rasmi Kementerian & Sekolah -->
-    <div class="header-box">
+    <!-- Header Rasmi Kementerian & Sekolah (Kekal Simetri LTR: Logo Kiri, Tajuk Tengah, Slot Kanan) -->
+    <div class="header-box" dir="ltr">
       <table style="width: 100%; border: none; border-collapse: collapse; margin: 0 auto; background: transparent;">
         <tr>
           <td style="width: 55px; text-align: center; vertical-align: middle; border: none; background: transparent; padding: 0;">
@@ -253,8 +253,6 @@ export function generateWeeklyRPHHtml({
     .a4-page-card {
       width: 100%;
       max-width: 285mm;
-      height: 198mm;
-      max-height: 198mm;
       margin: 0 auto 16px auto;
       background: #ffffff;
       padding: 5mm 7mm;
@@ -262,11 +260,8 @@ export function generateWeeklyRPHHtml({
       border-radius: 4px;
       page-break-after: always;
       page-break-inside: avoid;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       box-sizing: border-box;
+      display: block;
     }
     @media print {
       @page {
@@ -275,6 +270,8 @@ export function generateWeeklyRPHHtml({
       }
       body {
         background: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
       .a4-page-card {
         margin: 0 !important;
@@ -283,30 +280,29 @@ export function generateWeeklyRPHHtml({
         box-shadow: none !important;
         page-break-after: always !important;
         page-break-inside: avoid !important;
-        width: 285mm !important;
+        width: 100% !important;
         max-width: 285mm !important;
-        height: 198mm !important;
-        max-height: 198mm !important;
-        padding: 4mm 6mm !important;
-        overflow: hidden !important;
+        padding: 3mm 5mm !important;
+        box-sizing: border-box !important;
+        display: block !important;
       }
     }
     .header-box {
       border-bottom: 2px solid #059669;
-      padding-bottom: 3px;
-      margin-bottom: 3px;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
     }
     .rph-master-table {
       width: 100%;
       border-collapse: collapse;
       border: 1.5px solid #1e293b;
-      margin-top: 1px;
+      margin-top: 0;
       font-size: 9.5px;
-      line-height: 1.28;
+      line-height: 1.3;
     }
     .rph-master-table th, .rph-master-table td {
       border: 1px solid #475569;
-      padding: 2.5px 5px;
+      padding: 3px 6px;
       vertical-align: top;
     }
     .rph-header-label {

@@ -121,31 +121,27 @@ body {
   .a4-portrait-page {
     width: 100% !important;
     max-width: 285mm !important;
-    height: 198mm !important;
-    max-height: 198mm !important;
     margin: 0 auto !important;
     padding: 5mm 7mm !important;
     border: none !important;
     box-shadow: none !important;
     page-break-after: always !important;
     page-break-inside: avoid !important;
-    overflow: hidden !important;
     box-sizing: border-box !important;
     font-size: 9.5px !important;
-    line-height: 1.28 !important;
+    line-height: 1.3 !important;
+    display: block !important;
   }
 
   .a4-page-card {
     border: none !important;
     box-shadow: none !important;
     margin: 0 !important;
-    padding: 4mm 6mm !important;
+    padding: 3mm 5mm !important;
     width: 100% !important;
     max-width: 285mm !important;
-    height: 198mm !important;
-    max-height: 198mm !important;
     box-sizing: border-box !important;
-    overflow: hidden !important;
+    display: block !important;
   }
 
   .print-page {

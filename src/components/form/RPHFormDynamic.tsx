@@ -59,7 +59,7 @@ import {
   generateWeeklyRPHHtml,
   generateSingleRPHCardHtml
 } from '@/lib/google-drive';
-import { calculateWeekDatesFromMonday, printOrSaveRPH } from '@/lib/print-rph';
+import { calculateWeekDatesFromMonday, printOrSaveRPH, downloadRPHPdf } from '@/lib/print-rph';
 import { getSubjectLocale } from '@/lib/dictionary';
 
 export default function RPHFormDynamic() {
@@ -783,8 +783,8 @@ export default function RPHFormDynamic() {
     });
   };
 
-  const handleSavePdf = () => {
-    printOrSaveRPH({
+  const handleSavePdf = async () => {
+    await downloadRPHPdf({
       rphList: getWeeklyRPHList(),
       teacherName: teacherName || 'GURU',
       teacherEmail: teacherEmail || '',

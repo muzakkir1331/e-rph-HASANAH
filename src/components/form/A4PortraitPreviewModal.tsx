@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { X, Printer, Download, Eye, FileText, CheckCircle2, ChevronLeft, ChevronRight, FileDown } from 'lucide-react';
 import { RPHRecord } from '@/types/erph';
 import { generateSingleRPHCardHtml, formatRPHFileName } from '@/lib/google-drive';
-import { printOrSaveRPH } from '@/lib/print-rph';
+import { printOrSaveRPH, downloadRPHPdf } from '@/lib/print-rph';
 
 interface A4PortraitPreviewModalProps {
   isOpen: boolean;
@@ -37,11 +37,11 @@ export default function A4PortraitPreviewModal({
   const currentRPH = weeklyRphList[currentPageIndex] || weeklyRphList[0] || {};
   const totalPages = weeklyRphList.length;
 
-  const handleSavePdf = () => {
+  const handleSavePdf = async () => {
     if (onSavePdf) {
       onSavePdf();
     } else {
-      printOrSaveRPH({
+      await downloadRPHPdf({
         rphList: viewMode === 'single' ? [currentRPH] : weeklyRphList,
         teacherName,
         teacherEmail,

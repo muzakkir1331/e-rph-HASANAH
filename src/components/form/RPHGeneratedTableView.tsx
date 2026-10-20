@@ -5,7 +5,7 @@ import { RPHRecord } from '@/types/erph';
 import { LOGO_AL_HASANAH_BASE64 } from '@/data/logo_base64';
 import { Printer, Download, CheckCircle2, AlertTriangle, FileText, Share2, Copy, Edit3, FileDown } from 'lucide-react';
 import { formatRPHFileName } from '@/lib/google-drive';
-import { printOrSaveRPH } from '@/lib/print-rph';
+import { printOrSaveRPH, downloadRPHPdf } from '@/lib/print-rph';
 
 interface RPHGeneratedTableViewProps {
   rph: Partial<RPHRecord>;
@@ -37,8 +37,8 @@ export default function RPHGeneratedTableView({
   const isRTL = rph.arah_teks === 'rtl' || rph.kod_bahasa === 'ar';
   const isPdPExecuted = rph.refleksi?.pdp_dijalankan !== false;
 
-  const handleSavePdf = () => {
-    printOrSaveRPH({
+  const handleSavePdf = async () => {
+    await downloadRPHPdf({
       rphList: [rph],
       teacherName,
       teacherEmail,
@@ -132,8 +132,8 @@ export default function RPHGeneratedTableView({
           fontFamily: isRTL ? 'Amiri, Arial, Tahoma, sans-serif' : 'Inter, Arial, sans-serif'
         }}
       >
-        {/* Header Rasmi Kementerian & Sekolah */}
-        <div className="border-b-2 border-slate-800 pb-3 mb-3">
+        {/* Header Rasmi Kementerian & Sekolah (Kekal Simetri LTR: Logo Kiri, Tajuk Tengah, Slot Kanan) */}
+        <div className="border-b-2 border-slate-800 pb-3 mb-3" dir="ltr">
           <table className="w-full border-none border-collapse">
             <tbody>
               <tr>

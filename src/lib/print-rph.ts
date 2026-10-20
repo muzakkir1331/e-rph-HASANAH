@@ -56,6 +56,76 @@ export function calculateWeekDatesFromMonday(mondayIsoDate: string): Record<stri
 }
 
 /**
+ * Memuat turun e-RPH sebagai fail PDF secara TERUS (Direct Download)
+ * Menggunakan enjin penukaran Chromium backend tanpa membuka paparan print (print dialog)
+ */
+export async function downloadRPHPdf({
+  rphList,
+  teacherName,
+  teacherEmail,
+  weekNo,
+  schoolName = 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+}: {
+  rphList: Partial<RPHRecord>[];
+  teacherName: string;
+  teacherEmail: string;
+  weekNo: number | string;
+  schoolName?: string;
+}): Promise<boolean> {
+  if (typeof window === 'undefined') return false;
+
+  const fileName = `${formatRPHFileName(teacherName, weekNo)}.pdf`;
+
+  const fullHtml = generateWeeklyRPHHtml({
+    rphList,
+    teacherName,
+    teacherEmail,
+    weekNo,
+    schoolName
+  });
+
+  try {
+    const res = await fetch('/api/pdf/download', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        html: fullHtml,
+        fileName
+      })
+    });
+
+    if (res.ok) {
+      const blob = await res.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(() => {
+        window.URL.revokeObjectURL(blobUrl);
+      }, 1000);
+      return true;
+    }
+  } catch (err) {
+    console.warn('Janaan PDF terus via API tidak berjaya, beralih ke mod cetakan:', err);
+  }
+
+  // Fallback sekiranya enjin API belum bersedia
+  printOrSaveRPH({
+    rphList,
+    teacherName,
+    teacherEmail,
+    weekNo,
+    schoolName
+  });
+  return false;
+}
+
+/**
  * Mencetak atau Menyimpan e-RPH sebagai PDF berkualiti tinggi standard A4 Landscape
  * Mengasingkan paparan secara mutlak supaya HANYA halaman RPH sahaja yang dicetak,
  * tanpa 5 muka surat borang/input/navbar yang tidak berkaitan.
@@ -129,3 +199,4 @@ export function printOrSaveRPH({
     }, 2000);
   }, 350);
 }
+
