@@ -78,6 +78,36 @@ export function getSubjectLocale(subjectName?: string): SubjectLocaleInfo {
     }
   }
 
+  // Explicit mapping from Malay/English subject names to canonical Arabic keys
+  const explicitArabicKeys: Record<string, string> = {
+    'BAHASA ARAB': 'اللغة العربية',
+    'ARAB': 'اللغة العربية',
+    'AL LUGHAH AL ARABIAH AL MUASIRAH': 'اللغة العربية المعاصرة',
+    'LAM': 'اللغة العربية المعاصرة',
+    'RPT_LAM': 'اللغة العربية المعاصرة',
+    'USULUDDIN': 'أصول الدين',
+    'RPT_USULALDIN': 'أصول الدين',
+    'SYARIAH': 'الشريعة اسلامية',
+    'RPT_SYARIAH': 'الشريعة اسلامية',
+    'ADAB WA AL BALAGHAH': 'الأدب و البلاغة',
+    'RPT_ADAB': 'الأدب و البلاغة',
+    'MANAHIJ AL-ULUM AL-ISLAMIYYAH': 'مناهج العلوم الإسلامية',
+    'MANAHIJ AL ULUM AL ISLAMIAH': 'مناهج العلوم الإسلامية',
+    'RPT_MANAHIJ': 'مناهج العلوم الإسلامية',
+    'AL-QURAN': 'القرءان',
+    'HIFZ AL-QURAN': 'حفظ القرأن',
+    'MAHARAT AL-QURAN': 'مهارات القرءان',
+    'KKQ': 'كماهيرن ممباچ دان مڠحفظ القرءان(KKQ)',
+    'TASMI': 'تسميع'
+  };
+
+  if (explicitArabicKeys[normalized] && kamusData[explicitArabicKeys[normalized]]) {
+    return {
+      ...kamusData[explicitArabicKeys[normalized]],
+      subjek_nama: subjectName
+    };
+  }
+
   // Check language hints
   const hasArabicChars = /[\u0600-\u06FF]/.test(subjectName);
   if (hasArabicChars || normalized.includes('ARAB') || normalized.includes('QURAN') || normalized.includes('SYARIAH')) {

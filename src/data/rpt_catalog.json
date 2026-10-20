@@ -1,0 +1,240 @@
+{
+  "Adab Wa Al Balaghah": {
+    "subjek": "Adab Wa Al Balaghah",
+    "tingkatan_list": [
+      "4",
+      "5"
+    ],
+    "total_weeks": 0
+  },
+  "Bahasa Inggeris": {
+    "subjek": "Bahasa Inggeris",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 0
+  },
+  "Bahasa Melayu": {
+    "subjek": "Bahasa Melayu",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 0
+  },
+  "Geografi": {
+    "subjek": "Geografi",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3"
+    ],
+    "total_weeks": 0
+  },
+  "Al Lughah Al Arabiah Al Muasirah": {
+    "subjek": "Al Lughah Al Arabiah Al Muasirah",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 0
+  },
+  "Manahij Al Ulum Al Islamiah": {
+    "subjek": "Manahij Al Ulum Al Islamiah",
+    "tingkatan_list": [
+      "4",
+      "5"
+    ],
+    "total_weeks": 0
+  },
+  "Matematik": {
+    "subjek": "Matematik",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 0
+  },
+  "Perniagaan": {
+    "subjek": "Perniagaan",
+    "tingkatan_list": [
+      "4",
+      "5"
+    ],
+    "total_weeks": 0
+  },
+  "PJPK": {
+    "subjek": "PJPK",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 0
+  },
+  "Pendidikan Seni Visual": {
+    "subjek": "Pendidikan Seni Visual",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3"
+    ],
+    "total_weeks": 0
+  },
+  "Sains": {
+    "subjek": "Sains",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 0
+  },
+  "Syariah": {
+    "subjek": "Syariah",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 0
+  },
+  "Usuluddin": {
+    "subjek": "Usuluddin",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 0
+  },
+  "أصول الدين": {
+    "subjek": "أصول الدين",
+    "fail_rpt": "rpt_usulaldin.csv",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 48
+  },
+  "rpt_usulaldin": {
+    "subjek": "أصول الدين",
+    "fail_rpt": "rpt_usulaldin.csv",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 48
+  },
+  "اللغة العربية المعاصرة": {
+    "subjek": "اللغة العربية المعاصرة",
+    "fail_rpt": "rpt_lam.csv",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 48
+  },
+  "rpt_lam": {
+    "subjek": "اللغة العربية المعاصرة",
+    "fail_rpt": "rpt_lam.csv",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 48
+  },
+  "الشريعة اسلامية": {
+    "subjek": "الشريعة اسلامية",
+    "fail_rpt": "rpt_syariah.csv",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 48
+  },
+  "rpt_syariah": {
+    "subjek": "الشريعة اسلامية",
+    "fail_rpt": "rpt_syariah.csv",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 48
+  },
+  "الأدب والبلاغة": {
+    "subjek": "الأدب والبلاغة",
+    "fail_rpt": "rpt_adab.csv",
+    "tingkatan_list": [
+      "4",
+      "5"
+    ],
+    "total_weeks": 48
+  },
+  "rpt_adab": {
+    "subjek": "الأدب والبلاغة",
+    "fail_rpt": "rpt_adab.csv",
+    "tingkatan_list": [
+      "4",
+      "5"
+    ],
+    "total_weeks": 48
+  },
+  "مناهج العلوم إسلامية": {
+    "subjek": "مناهج العلوم إسلامية",
+    "fail_rpt": "rpt_manahij.csv",
+    "tingkatan_list": [
+      "4",
+      "5"
+    ],
+    "total_weeks": 48
+  },
+  "rpt_manahij": {
+    "subjek": "مناهج العلوم إسلامية",
+    "fail_rpt": "rpt_manahij.csv",
+    "tingkatan_list": [
+      "4",
+      "5"
+    ],
+    "total_weeks": 48
+  }
+}

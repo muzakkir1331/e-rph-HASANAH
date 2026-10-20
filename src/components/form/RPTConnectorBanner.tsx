@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Sheet, RefreshCw, AlertCircle, ArrowRightCircle, CheckCircle2, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Sheet, RefreshCw, AlertCircle, ArrowRightCircle, CheckCircle2, FileText, Database, Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
 import { RPTItem } from '@/types/erph';
+import { findRPTRecord, convertToRPTItem, RPTDatabaseRecord } from '@/lib/rpt-helper';
 
 interface RPTConnectorBannerProps {
   currentWeek: number;
@@ -19,41 +20,73 @@ export default function RPTConnectorBanner({
   onApplyRPTItem,
   isCarryForwardActive
 }: RPTConnectorBannerProps) {
+  const [sourceMode, setSourceMode] = useState<'local' | 'sheets'>('local');
   const [sheetUrl, setSheetUrl] = useState('https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit');
   const [loading, setLoading] = useState(false);
-  const [syncedItem, setSyncedItem] = useState<RPTItem | null>({
-    minggu: currentWeek,
-    sk: '1.1 Kemahiran Mendengar dan Bertutur (Bahasa Arab / Sains)',
-    sp: '1.1.1 Menyebut dan membina ayat mudah mengikut tatabahasa yang betul.',
-    cadangan_aktiviti: 'Aktiviti Round Robin dalam kumpulan dan pembentangan peta pemikiran.'
-  });
+  const [expanded, setExpanded] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
 
-  // Contoh data penangguhan minggu lepas (Carry Forward Simulation)
+  // Cari rekod RPT tempatan berdasarkan subjek, tingkatan dan minggu
+  const [localRecord, setLocalRecord] = useState<RPTDatabaseRecord | null>(null);
+  const [syncedItem, setSyncedItem] = useState<RPTItem | null>(null);
+
+  // Kemas kini rekod RPT tempatan setiap kali subjek, tingkatan atau minggu berubah
+  useEffect(() => {
+    const rec = findRPTRecord(subject, form, currentWeek);
+    setLocalRecord(rec);
+    if (rec) {
+      const item = convertToRPTItem(rec);
+      setSyncedItem(item);
+    } else {
+      setSyncedItem(null);
+    }
+  }, [subject, form, currentWeek]);
+
+  // Simulasi penangguhan PdPc daripada minggu lepas menggunakan RPT sebenar
   const [postponedLesson, setPostponedLesson] = useState<{
     minggu: number;
     sebab: string;
     item: RPTItem;
-  } | null>({
-    minggu: Math.max(1, currentWeek - 1),
-    sebab: 'Sukan Tahunan Sekolah & Cuti Peristiwa',
-    item: {
-      minggu: Math.max(1, currentWeek - 1),
-      sk: '1.0 Pengenalan Topik Asas & Perbendaharaan Kata',
-      sp: '1.0.2 Menghubungkaitkan perkataan dengan gambarajah yang bersesuaian.',
-      cadangan_aktiviti: 'Latihan pengukuhan berpasangan menggunakan kad imbasan.'
+  } | null>(null);
+
+  useEffect(() => {
+    if (currentWeek > 1) {
+      const prevWeek = currentWeek - 1;
+      const prevRec = findRPTRecord(subject, form, prevWeek);
+      if (prevRec && !prevRec.adalah_cuti) {
+        setPostponedLesson({
+          minggu: prevWeek,
+          sebab: 'Cuti Peristiwa / Program Rasmi Sekolah',
+          item: convertToRPTItem(prevRec)
+        });
+      } else {
+        setPostponedLesson(null);
+      }
+    } else {
+      setPostponedLesson(null);
     }
-  });
+  }, [subject, form, currentWeek]);
 
-  const [expanded, setExpanded] = useState(false);
+  const handleApplyLocalRPT = () => {
+    if (syncedItem) {
+      onApplyRPTItem(syncedItem, false);
+    }
+  };
 
-  const handleSync = async () => {
+  const handleSyncGoogleSheet = async () => {
     if (!sheetUrl) return;
     setLoading(true);
     try {
       const res = await fetch('/api/rpt/fetch', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: sheetUrl, targetWeek: currentWeek })
+        body: JSON.stringify({
+          url: sheetUrl,
+          targetWeek: currentWeek,
+          subject,
+          form,
+          preferLocal: sourceMode === 'local'
+        })
       });
       const data = await res.json();
       if (data.items && data.items.length > 0) {
@@ -90,20 +123,20 @@ export default function RPTConnectorBanner({
                   Perlu Ganti
                 </span>
               </div>
-              <p className="text-xs text-amber-700 mt-0.5">
-                Sebab: <span className="font-semibold">{postponedLesson.sebab}</span> &bull; SP tertangguh: {postponedLesson.item.sp}
+              <p className="text-xs text-amber-700 mt-0.5 line-clamp-1">
+                Sebab: <span className="font-semibold">{postponedLesson.sebab}</span> &bull; SK/SP: {postponedLesson.item.sk}
               </p>
             </div>
           </div>
           
-          <div className="flex items-center space-x-2 w-full sm:w-auto justify-end">
+          <div className="flex items-center space-x-2 w-full sm:w-auto justify-end shrink-0">
             <button
               type="button"
               onClick={handleExecuteCarryForward}
               className="px-3.5 py-1.5 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-xs font-semibold shadow-sm flex items-center space-x-1.5 transition-all"
             >
               <ArrowRightCircle className="w-4 h-4" />
-              <span>Laksana &lsquo;Carry Forward&rsquo; ke Minggu Ini</span>
+              <span>Carry Forward ke Minggu {currentWeek}</span>
             </button>
             <button
               type="button"
@@ -118,9 +151,9 @@ export default function RPTConnectorBanner({
 
       {/* Carry Forward Active Badge */}
       {isCarryForwardActive && (
-        <div className="bg-emerald-50 border border-emerald-300 p-3 rounded-xl flex items-center justify-between text-xs text-emerald-800">
+        <div className="bg-emerald-50 border border-emerald-300 p-3 rounded-xl flex items-center justify-between text-xs text-emerald-800 shadow-sm">
           <div className="flex items-center space-x-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
             <span className="font-semibold">
               Status PdPc: Mengajar Tajuk Tertangguh daripada Minggu {postponedLesson?.minggu || (currentWeek - 1)} (Carry Forward Aktif)
             </span>
@@ -130,72 +163,145 @@ export default function RPTConnectorBanner({
             onClick={() => {
               if (syncedItem) onApplyRPTItem(syncedItem, false);
             }}
-            className="text-emerald-700 underline font-medium hover:text-emerald-900"
+            className="text-emerald-700 underline font-medium hover:text-emerald-900 shrink-0"
           >
             Reset ke Jadual Asal Minggu {currentWeek}
           </button>
         </div>
       )}
 
-      {/* Main RPT Google Sheets Connection Bar */}
-      <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 shadow-sm">
+      {/* Main Synchronized RPT Bar */}
+      <div className="bg-gradient-to-r from-emerald-50/70 via-teal-50/50 to-slate-50 border border-emerald-200/80 rounded-2xl p-4 shadow-sm">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           
           <div className="flex items-center space-x-3">
-            <div className="w-9 h-9 rounded-lg bg-emerald-600 text-white flex items-center justify-center shadow-sm">
-              <Sheet className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white flex items-center justify-center shadow-md shadow-emerald-600/20 flex-shrink-0">
+              <Database className="w-5 h-5" />
             </div>
             <div>
-              <div className="flex items-center space-x-2">
-                <span className="font-bold text-sm text-slate-800">Penyambung RPT Google Sheets</span>
-                <span className="px-2 py-0.5 text-[11px] font-semibold bg-emerald-100 text-emerald-800 rounded-full flex items-center space-x-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                  <span>Minggu {currentWeek} Disambung</span>
+              <div className="flex items-center space-x-2 flex-wrap gap-y-1">
+                <span className="font-extrabold text-sm text-slate-900">
+                  RPT Panitia Disegerakkan: Minggu {currentWeek}
                 </span>
+                <span className="px-2.5 py-0.5 text-[10px] font-bold bg-emerald-100 text-emerald-800 rounded-full flex items-center space-x-1 border border-emerald-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                  <span>12 Subjek Tersedia</span>
+                </span>
+                {localRecord && (
+                  <span className="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 text-slate-700 rounded-md border border-slate-200 font-mono">
+                    {localRecord.tarikh_teks}
+                  </span>
+                )}
               </div>
-              <p className="text-xs text-slate-500 truncate max-w-md">
-                Subjek: <span className="font-medium text-slate-700">{subject} Tingkatan {form}</span> &bull; {sheetUrl}
+              <p className="text-xs text-slate-600 mt-0.5">
+                Subjek: <strong className="text-slate-800">{subject}</strong> (Tingkatan {form}) &bull;{' '}
+                {localRecord ? (
+                  <span className="text-emerald-700 font-medium">Rekod RPT ditemui &amp; sedia digunakan</span>
+                ) : (
+                  <span className="text-amber-600 font-medium">Tiada rekod khusus ditemui untuk minggu ini</span>
+                )}
               </p>
             </div>
           </div>
 
-          <div className="flex items-center space-x-2 w-full sm:w-auto justify-end">
+          <div className="flex items-center space-x-2 w-full sm:w-auto justify-end shrink-0">
+            {localRecord && (
+              <button
+                type="button"
+                onClick={handleApplyLocalRPT}
+                className="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow-sm shadow-emerald-600/20 transition-all hover:scale-102"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                <span>Suntik RPT Minggu {currentWeek}</span>
+              </button>
+            )}
+
             <button
               type="button"
-              onClick={handleSync}
-              disabled={loading}
-              className="px-3 py-1.5 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 rounded-lg text-xs font-semibold flex items-center space-x-1.5 transition-colors shadow-sm disabled:opacity-50"
+              onClick={() => setShowPreview(!showPreview)}
+              className="px-2.5 py-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-semibold flex items-center space-x-1 transition-colors"
+              title="Lihat Butiran RPT"
             >
-              <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-emerald-600' : ''}`} />
-              <span>{loading ? 'Menyemak...' : 'Sync RPT'}</span>
+              <span>{showPreview ? 'Tutup' : 'Pratonton'}</span>
+              {showPreview ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
             </button>
+
             <button
               type="button"
               onClick={() => setExpanded(!expanded)}
-              className="px-2.5 py-1.5 text-xs text-slate-600 hover:text-slate-900 font-medium"
+              className="px-2.5 py-2 text-xs text-slate-500 hover:text-slate-800 font-medium"
             >
-              {expanded ? 'Tutup Tetapan' : 'Tukar URL'}
+              {expanded ? 'Tutup Pilihan' : 'Pilihan Sheets'}
             </button>
           </div>
 
         </div>
 
-        {/* Collapsible URL Input */}
+        {/* Collapsible RPT Preview Box */}
+        {showPreview && localRecord && (
+          <div className="mt-3 pt-3 border-t border-emerald-200/60 bg-white/90 rounded-xl p-3.5 text-xs space-y-2 border">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <span className="font-bold text-[10px] uppercase text-emerald-800 tracking-wider block">
+                  Tema / Bidang / Tajuk DSKP:
+                </span>
+                <p className="text-slate-700 font-medium mt-0.5 whitespace-pre-line">{localRecord.tema || '-'}</p>
+              </div>
+              <div>
+                <span className="font-bold text-[10px] uppercase text-emerald-800 tracking-wider block">
+                  Standard Prestasi (TP):
+                </span>
+                <p className="text-slate-700 font-medium mt-0.5">{localRecord.standard_prestasi || '-'}</p>
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-slate-100">
+              <span className="font-bold text-[10px] uppercase text-emerald-800 tracking-wider block">
+                Standard Kandungan (SK):
+              </span>
+              <p className="text-slate-800 font-semibold mt-0.5 whitespace-pre-line">{localRecord.sk || '-'}</p>
+            </div>
+
+            <div className="pt-2 border-t border-slate-100">
+              <span className="font-bold text-[10px] uppercase text-emerald-800 tracking-wider block">
+                Standard Pembelajaran (SP):
+              </span>
+              <p className="text-slate-800 font-medium mt-0.5 whitespace-pre-line">{localRecord.sp || '-'}</p>
+            </div>
+
+            {localRecord.catatan && (
+              <div className="pt-2 border-t border-slate-100">
+                <span className="font-bold text-[10px] uppercase text-emerald-800 tracking-wider block">
+                  Cadangan Aktiviti / EMK:
+                </span>
+                <p className="text-slate-600 mt-0.5 whitespace-pre-line">{localRecord.catatan}</p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Collapsible Google Sheets URL Option */}
         {expanded && (
-          <div className="mt-3 pt-3 border-t border-slate-200 flex flex-col sm:flex-row items-center gap-2">
+          <div className="mt-3 pt-3 border-t border-emerald-200/60 flex flex-col sm:flex-row items-center gap-2">
+            <div className="flex items-center space-x-2 text-xs font-semibold text-slate-700 whitespace-nowrap">
+              <Sheet className="w-4 h-4 text-emerald-600" />
+              <span>Google Sheet URL:</span>
+            </div>
             <input
               type="url"
               value={sheetUrl}
               onChange={(e) => setSheetUrl(e.target.value)}
-              placeholder="Masukkan URL Google Sheets RPT (contoh: https://docs.google.com/spreadsheets/d/...)"
+              placeholder="Masukkan URL Google Sheets RPT (jika ingin guna Google Sheet luaran)"
               className="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
             />
             <button
               type="button"
-              onClick={handleSync}
-              className="w-full sm:w-auto whitespace-nowrap px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold"
+              onClick={handleSyncGoogleSheet}
+              disabled={loading}
+              className="w-full sm:w-auto whitespace-nowrap px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold flex items-center justify-center space-x-1 disabled:opacity-50"
             >
-              Simpan &amp; Muat
+              <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
+              <span>{loading ? 'Menyemak...' : 'Sync Sheet'}</span>
             </button>
           </div>
         )}

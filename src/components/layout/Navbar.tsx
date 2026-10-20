@@ -7,17 +7,15 @@ import takwimData from '@/data/takwim_2026.json';
 import { useMemo } from 'react';
 import { useAuth } from '@/context/AuthContext';
 
+import { getCurrentWeekFromDate } from '@/lib/rpt-helper';
+
 export default function Navbar() {
   const pathname = usePathname();
   const { user, teacherName, teacherEmail, isDeLIMA, signOutUser } = useAuth();
 
-  // Kira minggu persekolahan semasa berdasarkan tarikh hari ini
+  // Kira minggu persekolahan semasa berdasarkan tarikh hari ini yang diselaraskan
   const currentWeekInfo = useMemo(() => {
-    const today = new Date().toISOString().split('T')[0];
-    const found = (takwimData as any[]).find(item => {
-      return today >= item.tarikh_mula && today <= item.tarikh_tamat;
-    });
-    return found || takwimData[0];
+    return getCurrentWeekFromDate();
   }, []);
 
   const navLinks = [
@@ -25,7 +23,7 @@ export default function Navbar() {
     { href: '/rph/baharu', label: 'Borang e-RPH Pintar', icon: Sparkles, badge: 'AI' },
     { href: '/jadual', label: 'Jadual Waktu Guru', icon: Clock },
     { href: '/rpt', label: 'Penyambung RPT', icon: Sheet },
-    { href: '/takwim', label: 'Takwim 2026', icon: Calendar },
+    { href: '/takwim', label: 'Takwim 2027', icon: Calendar },
   ];
 
   return (
@@ -51,7 +49,7 @@ export default function Navbar() {
                   </span>
                 </div>
                 <p className="text-xs text-slate-500 font-medium">
-                  SMA Al-Hasanah &bull; Sesi 2026
+                  SMA Al-Hasanah &bull; Sesi 2027
                 </p>
               </div>
             </Link>

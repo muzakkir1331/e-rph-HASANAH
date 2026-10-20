@@ -12,6 +12,7 @@ import {
 import { auth, googleProvider, isDeLIMAEmail, isFirebaseConfigured } from '@/lib/firebase/config';
 import { JadualSlot } from '@/types/erph';
 import defaultJadual from '@/data/jadual_waktu.json';
+import { saveTeacherProfileToDrive, getTeacherProfileFromDrive } from '@/lib/google-drive';
 
 interface AuthContextType {
   user: User | null;
@@ -26,13 +27,15 @@ interface AuthContextType {
   signOutUser: () => Promise<void>;
   clearError: () => void;
   
-  // Pengurusan Jadual Waktu Boleh Ubah Mengikut Akaun Google Guru
+  // Pengurusan Jadual Waktu Boleh Ubah Mengikut Akaun Google Guru (Cloud Profile)
   timetable: JadualSlot[];
-  saveTimetable: (slots: JadualSlot[]) => void;
+  saveTimetable: (slots: JadualSlot[]) => Promise<void>;
   addSlot: (slot: JadualSlot) => void;
   updateSlot: (index: number, slot: JadualSlot) => void;
   deleteSlot: (index: number) => void;
   resetTimetable: () => void;
+  cloudSyncStatus: 'synced' | 'saving' | 'error' | 'idle';
+  isCloudProfile: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -46,33 +49,65 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [googleAccessToken, setGoogleAccessToken] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [cloudSyncStatus, setCloudSyncStatus] = useState<'synced' | 'saving' | 'error' | 'idle'>('idle');
 
-  // Jadual Waktu Guru Mengikut Akaun Google
+  // Jadual Waktu Guru Mengikut Akaun Google (Disimpan dalam Profil Cloud Tersendiri)
   const [timetable, setTimetable] = useState<JadualSlot[]>([]);
 
-  // Kunci storan tempatan untuk jadual guru mengikut Google UID unik
+  // Kunci storan tempatan untuk jadual guru mengikut Google UID unik (sebagai sandaran luar talian sahaja)
   const getStorageKey = (uid: string) => {
     return `erph_timetable_${uid}`;
   };
 
-  // Muat jadual tersimpan khusus untuk akaun Google guru ini
-  const loadTeacherTimetable = (uid: string) => {
+  // Muat jadual tersimpan khusus dari Cloud Profile DeLIMA masing-masing (bukan local)
+  const loadTeacherTimetable = async (uid: string, email: string, token?: string | null) => {
+    setCloudSyncStatus('saving');
     try {
-      const key = getStorageKey(uid);
-      const saved = localStorage.getItem(key);
+      // 1. Cuba muat turun daripada Google Drive pengguna terlebih dahulu jika token sah wujud
+      if (token) {
+        try {
+          const driveRes = await getTeacherProfileFromDrive({ accessToken: token });
+          if (driveRes.success && driveRes.timetable && Array.isArray(driveRes.timetable) && driveRes.timetable.length > 0) {
+            setTimetable(driveRes.timetable);
+            setCloudSyncStatus('synced');
+            try { localStorage.setItem(getStorageKey(uid), JSON.stringify(driveRes.timetable)); } catch {}
+            return;
+          }
+        } catch (e) {
+          console.warn('Gagal semak Google Drive profile:', e);
+        }
+      }
+
+      // 2. Ambil daripada Profil Cloud API Pelayan
+      const res = await fetch(`/api/profile/timetable?email=${encodeURIComponent(email)}&uid=${encodeURIComponent(uid)}`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.timetable && Array.isArray(data.timetable) && data.timetable.length > 0) {
+          setTimetable(data.timetable);
+          setCloudSyncStatus('synced');
+          try { localStorage.setItem(getStorageKey(uid), JSON.stringify(data.timetable)); } catch {}
+          return;
+        }
+      }
+
+      // 3. Sandaran luar talian sekiranya talian internet terganggu
+      const saved = localStorage.getItem(getStorageKey(uid));
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
           setTimetable(parsed);
+          setCloudSyncStatus('synced');
           return;
         }
       }
-      // Jika kali pertama akaun Google ini log masuk, sediakan templat lalai dan simpan untuknya
-      localStorage.setItem(key, JSON.stringify(defaultJadual));
+
+      // 4. Default jadual
       setTimetable(defaultJadual as JadualSlot[]);
+      setCloudSyncStatus('synced');
     } catch (e) {
-      console.warn('Gagal memuat jadual guru:', e);
+      console.warn('Gagal memuat jadual guru dari profil cloud:', e);
       setTimetable(defaultJadual as JadualSlot[]);
+      setCloudSyncStatus('error');
     }
   };
 
@@ -91,11 +126,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         // PENGESAHAN KETAT: Hanya ID DeLIMA (*@moe-dl.edu.my) sahaja diterima!
         if (isDeLIMAEmail(email)) {
           setUser(currentUser);
-          setTeacherName(currentUser.displayName || email.split('@')[0]);
+          const tName = currentUser.displayName || email.split('@')[0];
+          setTeacherName(tName);
           setTeacherEmail(email);
           setIsDeLIMA(true);
           setError(null);
-          loadTeacherTimetable(currentUser.uid);
+          await loadTeacherTimetable(currentUser.uid, email, savedToken);
         } else {
           // Tolak akses serta-merta & log keluar jika bukan ID DeLIMA
           await signOut(auth);
@@ -167,11 +203,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       setUser(result.user);
-      setTeacherName(result.user.displayName || email.split('@')[0]);
+      const tName = result.user.displayName || email.split('@')[0];
+      setTeacherName(tName);
       setTeacherEmail(email);
       setIsDeLIMA(true);
       setError(null);
-      loadTeacherTimetable(result.user.uid);
+      await loadTeacherTimetable(result.user.uid, email, token);
       router.push('/');
     } catch (err: any) {
       console.error('Ralat Google Sign In:', err);
@@ -214,15 +251,52 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     router.push('/login');
   };
 
-  // Simpan Jadual Waktu Guru mengikut Google UID mereka
-  const saveTimetable = (newSlots: JadualSlot[]) => {
+  // Simpan Jadual Waktu Guru ke Profil Cloud masing-masing (bukan local)
+  const saveTimetable = async (newSlots: JadualSlot[]) => {
     setTimetable(newSlots);
-    if (user?.uid) {
-      try {
-        localStorage.setItem(getStorageKey(user.uid), JSON.stringify(newSlots));
-      } catch (err) {
-        console.error('Gagal menyimpan jadual waktu:', err);
+    setCloudSyncStatus('saving');
+
+    const email = teacherEmail || user?.email || '';
+    const uid = user?.uid || '';
+
+    // 1. Simpan ke fail Profil Cloud API Pelayan
+    try {
+      const res = await fetch('/api/profile/timetable', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          uid,
+          teacherName,
+          timetable: newSlots
+        })
+      });
+      if (res.ok) {
+        setCloudSyncStatus('synced');
+      } else {
+        setCloudSyncStatus('error');
       }
+    } catch (err) {
+      console.error('Ralat simpan ke profil cloud pelayan:', err);
+      setCloudSyncStatus('error');
+    }
+
+    // 2. Simpan ke Google Drive Cloud pengguna jika ada token akses DeLIMA
+    const activeToken = googleAccessToken || (typeof window !== 'undefined' ? sessionStorage.getItem('erph_google_access_token') : null);
+    if (activeToken) {
+      saveTeacherProfileToDrive({
+        accessToken: activeToken,
+        timetable: newSlots,
+        teacherName,
+        teacherEmail: email
+      }).catch(err => console.warn('Ralat simpan ke Google Drive:', err));
+    }
+
+    // 3. Sandaran cache luar talian
+    if (uid) {
+      try {
+        localStorage.setItem(getStorageKey(uid), JSON.stringify(newSlots));
+      } catch {}
     }
   };
 
@@ -267,7 +341,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         addSlot,
         updateSlot,
         deleteSlot,
-        resetTimetable
+        resetTimetable,
+        cloudSyncStatus,
+        isCloudProfile: true
       }}
     >
       {children}

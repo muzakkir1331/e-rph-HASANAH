@@ -4,11 +4,14 @@ export interface TakwimMinggu {
   tahun_akademik: number;
   kumpulan: string;
   minggu_ke: number | null;
+  kod_minggu?: string;
   label_minggu: string;
+  tarikh_teks?: string;
   tarikh_mula: string; // YYYY-MM-DD
   tarikh_tamat: string; // YYYY-MM-DD
   adalah_cuti: boolean;
   catatan_cuti?: string | null;
+  penggal?: string;
 }
 
 export interface JadualSlot {
@@ -66,6 +69,9 @@ export interface RPHPedagogy {
 }
 
 export interface RPHReflection {
+  pdp_dijalankan?: boolean; // true = PdP Dijalankan, false = Tidak Dijalankan
+  sebab_tidak_dijalankan?: string; // Jawapan sendiri / sebab PdP tidak dijalankan
+  bawa_ke_kelas_seterusnya?: boolean; // Bawa RPH ke kelas seterusnya
   objektif_disalin: string;
   bilangan_murid_hadir: number;
   bilangan_murid_mencapai: number;
@@ -114,8 +120,10 @@ export interface RPHRecord {
 export interface RPTItem {
   minggu: number;
   tarikh?: string;
+  tema?: string;
   sk: string;
   sp: string;
+  standard_prestasi?: string;
   cadangan_aktiviti: string;
   catatan?: string;
 }

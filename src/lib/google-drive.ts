@@ -1,4 +1,4 @@
-import { RPHRecord } from '@/types/erph';
+import { RPHRecord, JadualSlot } from '@/types/erph';
 import { LOGO_AL_HASANAH_BASE64 } from '@/data/logo_base64';
 
 /**
@@ -7,7 +7,6 @@ import { LOGO_AL_HASANAH_BASE64 } from '@/data/logo_base64';
  * Contoh: 'RPH CG MUZAKKIR MOHTAR MINGGU 01'
  */
 export function formatRPHFileName(teacherName: string, mingguNo: number | string): string {
-  // Bersihkan gelaran awal seperti Ustaz/Cikgu jika ada untuk format standard
   const cleanedName = (teacherName || 'GURU')
     .replace(/^(Ustaz|Ustazah|Cikgu|Dr\.|Prof\.|Tuan|Puan|En\.|Pn\.)\s+/i, '')
     .trim()
@@ -18,7 +17,312 @@ export function formatRPHFileName(teacherName: string, mingguNo: number | string
 }
 
 /**
- * Menghasilkan kod HTML e-RPH yang lengkap dan cantik untuk disimpan dalam Google Drive & Google Docs
+ * Menjana 1 Muka Surat A4 Portrait Lengkap bagi Setiap Subjek/Slot
+ * Mematuhi Standard KPM, TS25, SPI Bil. 3/1999 dan Format SABK Pahang
+ */
+export function generateSingleRPHCardHtml(
+  rph: Partial<RPHRecord>,
+  teacherName: string,
+  teacherEmail: string,
+  slotIndex: number = 1,
+  totalSlots: number = 1
+): string {
+  const isRTL = rph.arah_teks === 'rtl' || (rph.kod_bahasa === 'ar');
+  const isPdPExecuted = rph.refleksi?.pdp_dijalankan !== false;
+
+  return `
+  <div class="a4-page-card" dir="${isRTL ? 'rtl' : 'ltr'}" style="${isRTL ? 'font-family: Arial, Amiri, Tahoma, sans-serif;' : 'font-family: Arial, sans-serif;'}">
+    
+    <!-- Header Rasmi Kementerian & Sekolah -->
+    <div class="header-box">
+      <table style="width: 100%; border: none; border-collapse: collapse; margin: 0 auto; background: transparent;">
+        <tr>
+          <td style="width: 55px; text-align: center; vertical-align: middle; border: none; background: transparent; padding: 0;">
+            <img src="${LOGO_AL_HASANAH_BASE64}" alt="Logo" style="width: 50px; height: 50px; object-fit: contain; display: block; margin: 0 auto;" />
+          </td>
+          <td style="text-align: center; vertical-align: middle; border: none; background: transparent; padding: 0 8px;">
+            <div style="font-size: 9px; font-weight: bold; color: #475569; letter-spacing: 0.5px; text-transform: uppercase;">
+              KEMENTERIAN PENDIDIKAN MALAYSIA &bull; JABATAN AGAMA ISLAM PAHANG
+            </div>
+            <div style="font-size: 13px; font-weight: 800; color: #065f46; margin: 1px 0; text-transform: uppercase;">
+              SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)
+            </div>
+            <div style="font-size: 10.5px; font-weight: bold; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px;">
+              RANCANGAN PENGAJARAN HARIAN (e-RPH PINTAR SESI 2027)
+            </div>
+          </td>
+          <td style="width: 60px; text-align: right; vertical-align: middle; border: none; background: transparent; padding: 0; font-size: 9.5px; color: #475569; font-weight: bold;">
+            <span style="display: inline-block; padding: 2px 6px; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px;">
+              SLOT ${slotIndex}/${totalSlots}
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Master Table e-RPH Siap Dijana Mengikut Format Table Rasmi KPM -->
+    <table class="rph-master-table">
+      <tbody>
+        <!-- Baris 1: Minggu, Hari & Tarikh -->
+        <tr>
+          <th class="rph-header-label">Minggu / Sesi</th>
+          <td style="width: 30%;">Minggu ${rph.minggu_ke || 1} &bull; Sesi 2027</td>
+          <th class="rph-header-label">Hari &amp; Tarikh</th>
+          <td style="width: 30%;"><strong>${rph.hari || '-'}</strong> (${rph.tarikh || '-'})</td>
+        </tr>
+
+        <!-- Baris 2: Masa, Tingkatan & Kelas -->
+        <tr>
+          <th class="rph-header-label">Masa PdPc</th>
+          <td style="color: #065f46; font-weight: bold;">${rph.masa_mula || '-'} &ndash; ${rph.masa_tamat || '-'}</td>
+          <th class="rph-header-label">Tingkatan / Kelas</th>
+          <td>Tingkatan ${rph.tingkatan || '-'} &bull; <strong>${rph.kelas || '-'}</strong></td>
+        </tr>
+
+        <!-- Baris 3: Mata Pelajaran & Guru Pengajar -->
+        <tr>
+          <th class="rph-header-label">Mata Pelajaran</th>
+          <td style="font-weight: 800; color: #065f46; font-size: 10.5px;">${rph.subjek || '-'}</td>
+          <th class="rph-header-label">Guru Pengajar</th>
+          <td><strong>${teacherName}</strong></td>
+        </tr>
+
+        <!-- Baris 4: Tema / Tajuk -->
+        <tr>
+          <th class="rph-header-label">Tema / Tajuk</th>
+          <td colspan="3">${rph.tema || '-'} ${rph.tajuk ? '&bull; ' + rph.tajuk : ''}</td>
+        </tr>
+
+        <!-- Baris 5: Standard Kandungan (SK) -->
+        <tr>
+          <th class="rph-header-label">Standard Kandungan (SK)</th>
+          <td colspan="3">${rph.sk || '-'}</td>
+        </tr>
+
+        <!-- Baris 6: Standard Pembelajaran (SP) -->
+        <tr>
+          <th class="rph-header-label">Standard Pembelajaran (SP)</th>
+          <td colspan="3">${rph.sp || '-'}</td>
+        </tr>
+
+        <!-- Baris 7: Objektif Pembelajaran -->
+        <tr>
+          <th class="rph-header-label">Objektif Pembelajaran</th>
+          <td colspan="3" style="background-color: #f8fafc; font-weight: 500;">${rph.objektif_pembelajaran || '-'}</td>
+        </tr>
+
+        <!-- Baris 8: Kriteria Kejayaan -->
+        <tr>
+          <th class="rph-header-label">Kriteria Kejayaan</th>
+          <td colspan="3">${rph.kriteria_kejayaan || '-'}</td>
+        </tr>
+
+        <!-- Baris 9: Rangka Aktiviti Pengajaran & Pembelajaran (PdPc) -->
+        <tr>
+          <th class="rph-header-label" style="vertical-align: top;">Aktiviti PdPc</th>
+          <td colspan="3" style="padding: 3px 6px;">
+            <div style="margin-bottom: 2px;">
+              <strong style="color: #047857;">Set Induksi (5 min):</strong> ${rph.aktiviti?.set_induksi || '-'}
+            </div>
+            <div style="margin-bottom: 2px;">
+              <strong style="color: #047857;">Aktiviti Utama (Langkah Pembelajaran):</strong>
+              <div style="padding-left: 6px;">
+                ${rph.aktiviti?.langkah_1 ? `<div>&bull; <strong>Langkah 1:</strong> ${rph.aktiviti.langkah_1}</div>` : ''}
+                ${rph.aktiviti?.langkah_2 ? `<div style="margin-top: 1.5px;">&bull; <strong>Langkah 2:</strong> ${rph.aktiviti.langkah_2}</div>` : ''}
+                ${rph.aktiviti?.langkah_3 ? `<div style="margin-top: 1.5px;">&bull; <strong>Langkah 3:</strong> ${rph.aktiviti.langkah_3}</div>` : ''}
+              </div>
+            </div>
+            <div>
+              <strong style="color: #047857;">Penutup &amp; Refleksi (5 min):</strong> ${rph.aktiviti?.penutup || '-'}
+            </div>
+          </td>
+        </tr>
+
+        <!-- Baris 10: Pengisian Kurikulum, Pedagogi & BBM -->
+        <tr>
+          <th class="rph-header-label" style="vertical-align: top;">Pengisian Kurikulum</th>
+          <td colspan="3" style="padding: 2.5px 6px; font-size: 9.5px;">
+            <table style="width: 100%; border: none; border-collapse: collapse; font-size: 9.5px;">
+              <tr>
+                <td style="width: 50%; border: none; padding: 1px 0;">
+                  <strong>BBM:</strong> ${(rph.pedagogi?.bbm || []).join(', ') || '-'}
+                </td>
+                <td style="width: 50%; border: none; padding: 1px 0;">
+                  <strong>EMK / Nilai:</strong> ${(rph.pedagogi?.emk || []).join(', ')} ${(rph.pedagogi?.nilai_murni || []).length ? '&bull; ' + rph.pedagogi?.nilai_murni?.join(', ') : ''}
+                </td>
+              </tr>
+              <tr>
+                <td style="border: none; padding: 1px 0;">
+                  <strong>Strategi / PAK-21:</strong> ${(rph.pedagogi?.alat_pemikiran_pak21 || []).join(', ')} &bull; ${(rph.pedagogi?.strategi || []).join(', ')}
+                </td>
+                <td style="border: none; padding: 1px 0;">
+                  <strong>Pentaksiran Bilik Darjah (PBD):</strong> ${(rph.pedagogi?.pentaksiran || []).join(', ') || '-'}
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Baris 11: Refleksi & Penilaian Impak -->
+        <tr>
+          <th class="rph-header-label" style="vertical-align: top;">Refleksi &amp; Impak</th>
+          <td colspan="3" style="${!isPdPExecuted ? 'background-color: #fff1f2; color: #9f1239;' : 'background-color: #f0fdf4; color: #166534;'} padding: 3px 6px;">
+            ${!isPdPExecuted ? `
+              <div style="font-weight: bold; font-size: 10px;">
+                &#9888; PdP TIDAK DIJALANKAN ATAS SEBAB: ${rph.refleksi?.sebab_tidak_dijalankan || 'Program Rasmi Sekolah / Peperiksaan'}
+              </div>
+              ${rph.refleksi?.bawa_ke_kelas_seterusnya ? `
+                <div style="font-size: 9.5px; margin-top: 1.5px; color: #be123c; font-weight: 600;">
+                  &rarr; Tindakan Susulan: Perancangan e-RPH ini dibawa ke kelas dan sesi PdPc seterusnya.
+                </div>
+              ` : ''}
+            ` : `
+              <div style="font-weight: 600; font-size: 10px; line-height: 1.3;">
+                ${rph.refleksi?.objektif_disalin || rph.objektif_pembelajaran || 'Murid berjaya menguasai standard pembelajaran yang ditetapkan.'}
+              </div>
+              <div style="font-size: 9px; color: #334155; margin-top: 2px; padding-top: 2px; border-top: 1px solid #bbf7d0;">
+                Kehadiran: <strong>${rph.refleksi?.bilangan_murid_hadir ?? 0} orang</strong> |
+                Mencapai Objektif: <strong>${rph.refleksi?.bilangan_murid_mencapai ?? 0}/${rph.refleksi?.bilangan_murid_hadir ?? 0} murid</strong> (${rph.refleksi?.peratus_mencapai ?? 0}%)
+                ${rph.refleksi?.intervensi_diperlukan ? `<span style="color: #b91c1c; font-weight: bold; margin-left: 4px;">[Intervensi: ${rph.refleksi?.pilihan_intervensi}]</span>` : ''}
+                ${rph.refleksi?.catatan_tambahan ? ` &bull; Catatan: ${rph.refleksi.catatan_tambahan}` : ''}
+              </div>
+            `}
+          </td>
+        </tr>
+
+        <!-- Baris 12: Pengesahan & Semakan Pentadbir -->
+        <tr>
+          <td colspan="2" style="background-color: #f8fafc; font-size: 9px; padding: 3px 6px;">
+            <div style="color: #64748b; font-weight: bold; font-size: 8.5px; text-transform: uppercase;">Disediakan Oleh:</div>
+            <div style="font-weight: 800; color: #0f172a;">${teacherName}</div>
+            <div style="color: #64748b; font-size: 8.5px;">Guru Mata Pelajaran &bull; Tarikh: ${rph.tarikh || new Date().toISOString().split('T')[0]}</div>
+          </td>
+          <td colspan="2" style="background-color: #f8fafc; font-size: 9px; padding: 3px 6px; text-align: right;">
+            <div style="color: #64748b; font-weight: bold; font-size: 8.5px; text-transform: uppercase;">Disemak &amp; Disahkan Oleh:</div>
+            <div style="font-weight: 800; color: #0f172a;">Pengetua / PK Pentadbiran SMA Al-Hasanah</div>
+            <div style="color: #059669; font-weight: bold; font-size: 8.5px;">PENGESAHAN DIGITAL e-RPH KPM (ID DELIMA)</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  `;
+}
+
+/**
+ * Menghasilkan Dokumen e-RPH Seminggu Penuh (Isnin hingga Jumaat)
+ * Memastikan SETIAP SUBJEK mendapat TEPAT SATU MUKA SURAT A4 POTRAIT!
+ */
+export function generateWeeklyRPHHtml({
+  rphList,
+  teacherName,
+  teacherEmail,
+  weekNo,
+  schoolName = 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+}: {
+  rphList: Partial<RPHRecord>[];
+  teacherName: string;
+  teacherEmail: string;
+  weekNo: number | string;
+  schoolName?: string;
+}): string {
+  const formattedWeek = String(weekNo || '1').padStart(2, '0');
+  const title = `RPH CG ${teacherName.toUpperCase()} MINGGU ${formattedWeek} (ISNIN-JUMAAT)`;
+
+  const cardsHtml = rphList
+    .map((rph, idx) => generateSingleRPHCardHtml(rph, teacherName, teacherEmail, idx + 1, rphList.length))
+    .join('\n<!-- PAGE BREAK -->\n');
+
+  return `<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>${title}</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 6mm 8mm;
+    }
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #f8fafc;
+      color: #0f172a;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .a4-page-card {
+      width: 100%;
+      max-width: 194mm;
+      height: 275mm;
+      max-height: 275mm;
+      margin: 0 auto 16px auto;
+      background: #ffffff;
+      padding: 8mm 10mm;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      page-break-after: always;
+      page-break-inside: avoid;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    @media print {
+      body {
+        background: white !important;
+      }
+      .a4-page-card {
+        margin: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+        height: 275mm !important;
+        max-height: 275mm !important;
+      }
+    }
+    .header-box {
+      border-bottom: 2px solid #059669;
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+    }
+    .rph-master-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1.5px solid #1e293b;
+      margin-top: 2px;
+      font-size: 10px;
+      line-height: 1.32;
+    }
+    .rph-master-table th, .rph-master-table td {
+      border: 1px solid #475569;
+      padding: 3.5px 6px;
+      vertical-align: top;
+    }
+    .rph-header-label {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-weight: bold;
+      width: 20%;
+      text-transform: uppercase;
+      font-size: 9.5px;
+    }
+  </style>
+</head>
+<body>
+  ${cardsHtml}
+</body>
+</html>`;
+}
+
+/**
+ * Backward compatibility: Jana RPH HTML untuk satu rekod
  */
 export function generateRPHHtml(
   rph: Partial<RPHRecord>,
@@ -26,198 +330,13 @@ export function generateRPHHtml(
   teacherEmail: string,
   schoolName: string = 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
 ): string {
-  const isRTL = rph.arah_teks === 'rtl';
-
-  return `<!DOCTYPE html>
-<html lang="${rph.kod_bahasa || 'ms'}" dir="${rph.arah_teks || 'ltr'}">
-<head>
-  <meta charset="UTF-8">
-  <title>${formatRPHFileName(teacherName, rph.minggu_ke || 1)}</title>
-  <style>
-    body {
-      font-family: Arial, 'Amiri', Tahoma, sans-serif;
-      margin: 24px;
-      color: #1e293b;
-      line-height: 1.5;
-    }
-    .header-box {
-      border-bottom: 2px solid #059669;
-      padding-bottom: 12px;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-    .school-name {
-      font-size: 18px;
-      font-weight: bold;
-      color: #065f46;
-      margin-bottom: 4px;
-    }
-    .doc-title {
-      font-size: 14px;
-      font-weight: bold;
-      color: #334155;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .meta-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 16px;
-    }
-    .meta-table td {
-      padding: 6px 10px;
-      font-size: 12px;
-      border: 1px solid #cbd5e1;
-      background: #f8fafc;
-    }
-    .meta-label {
-      font-weight: bold;
-      width: 18%;
-      color: #0f172a;
-      background: #f1f5f9;
-    }
-    .section-title {
-      background: #059669;
-      color: white;
-      padding: 6px 10px;
-      font-size: 12px;
-      font-weight: bold;
-      margin-top: 14px;
-      margin-bottom: 8px;
-      border-radius: 4px;
-    }
-    .content-box {
-      padding: 8px 12px;
-      border: 1px solid #e2e8f0;
-      border-radius: 4px;
-      background: #ffffff;
-      font-size: 12px;
-      white-space: pre-wrap;
-      margin-bottom: 10px;
-    }
-    .steps-list {
-      margin: 0;
-      padding-left: 20px;
-      font-size: 12px;
-    }
-    .steps-list li {
-      margin-bottom: 6px;
-    }
-    .tag {
-      display: inline-block;
-      background: #ecfdf5;
-      color: #065f46;
-      border: 1px solid #a7f3d0;
-      padding: 2px 8px;
-      font-size: 11px;
-      border-radius: 12px;
-      margin: 2px 4px 2px 0;
-    }
-    .reflection-box {
-      background: #f0fdf4;
-      border: 1px solid #86efac;
-      padding: 10px 14px;
-      border-radius: 4px;
-      font-size: 12px;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="header-box">
-    <table style="width: 100%; border: none; border-collapse: collapse; margin: 0 auto; background: transparent;">
-      <tr>
-        <td style="width: 85px; text-align: center; vertical-align: middle; border: none; background: transparent; padding: 0;">
-          <img src="${LOGO_AL_HASANAH_BASE64}" alt="Logo SMA Al-Hasanah" style="width: 75px; height: 75px; object-fit: contain; display: block; margin: 0 auto;" />
-        </td>
-        <td style="text-align: center; vertical-align: middle; border: none; background: transparent; padding: 0 12px;">
-          <div style="font-size: 11px; font-weight: bold; color: #64748b; letter-spacing: 1px; text-transform: uppercase;">KEMENTERIAN PENDIDIKAN MALAYSIA</div>
-          <div class="school-name">SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)</div>
-          <div style="font-size: 12px; font-weight: bold; color: #059669; margin-bottom: 3px;">PAHANG DARUL MAKMUR</div>
-          <div class="doc-title">REKOD PENGAJARAN &amp; PEMBELAJARAN HARIAN (e-RPH PINTAR)</div>
-        </td>
-        <td style="width: 85px; text-align: center; vertical-align: middle; border: none; background: transparent; padding: 0;">
-          <img src="${LOGO_AL_HASANAH_BASE64}" alt="" style="width: 75px; height: 75px; object-fit: contain; display: block; margin: 0 auto; opacity: 0;" />
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <table class="meta-table">
-    <tr>
-      <td class="meta-label">Nama Guru:</td>
-      <td><strong>${teacherName}</strong> (${teacherEmail})</td>
-      <td class="meta-label">Minggu Persekolahan:</td>
-      <td><strong>Minggu ${rph.minggu_ke || 1}</strong></td>
-    </tr>
-    <tr>
-      <td class="meta-label">Tarikh &amp; Hari:</td>
-      <td>${rph.tarikh || '-'} (${rph.hari || '-'})</td>
-      <td class="meta-label">Masa PdPc:</td>
-      <td>${rph.masa_mula || '-'} - ${rph.masa_tamat || '-'}</td>
-    </tr>
-    <tr>
-      <td class="meta-label">Tingkatan / Kelas:</td>
-      <td>${rph.tingkatan || '-'} &bull; ${rph.kelas || '-'}</td>
-      <td class="meta-label">Mata Pelajaran:</td>
-      <td><strong>${rph.subjek || '-'}</strong></td>
-    </tr>
-    <tr>
-      <td class="meta-label">Tema &amp; Tajuk:</td>
-      <td colspan="3">${rph.tema || '-'} &bull; ${rph.tajuk || '-'}</td>
-    </tr>
-  </table>
-
-  <div class="section-title">1. STANDARD KURIKULUM (DSKP)</div>
-  <div class="content-box">
-    <p><strong>Standard Kandungan (SK):</strong><br>${rph.sk || '-'}</p>
-    <p style="margin-top: 8px;"><strong>Standard Pembelajaran (SP):</strong><br>${rph.sp || '-'}</p>
-  </div>
-
-  <div class="section-title">2. OBJEKTIF PEMBELAJARAN &amp; KRITERIA KEJAYAAN</div>
-  <div class="content-box">
-    <p><strong>Objektif Pembelajaran:</strong><br>${rph.objektif_pembelajaran || '-'}</p>
-    <p style="margin-top: 8px;"><strong>Kriteria Kejayaan:</strong><br>${rph.kriteria_kejayaan || '-'}</p>
-  </div>
-
-  <div class="section-title">3. RANGKA AKTIVITI PENGAJARAN &amp; PEMBELAJARAN (PdPc)</div>
-  <div class="content-box">
-    <ol class="steps-list">
-      <li><strong>Set Induksi (5 minit):</strong> ${rph.aktiviti?.set_induksi || '-'}</li>
-      <li><strong>Langkah 1 (Penerangan &amp; Pemodelan):</strong> ${rph.aktiviti?.langkah_1 || '-'}</li>
-      <li><strong>Langkah 2 (Aktiviti Murid / Kolaboratif PAK-21):</strong> ${rph.aktiviti?.langkah_2 || '-'}</li>
-      <li><strong>Langkah 3 (Pengukuhan &amp; Penilaian):</strong> ${rph.aktiviti?.langkah_3 || '-'}</li>
-      <li><strong>Penutup &amp; Rumusan:</strong> ${rph.aktiviti?.penutup || '-'}</li>
-    </ol>
-  </div>
-
-  <div class="section-title">4. ELEMEN MERENTAS KURIKULUM &amp; PEDAGOGI (TS25)</div>
-  <div class="content-box">
-    <p><strong>Bahan Bantu Mengajar (BBM):</strong> ${(rph.pedagogi?.bbm || []).map(b => `<span class="tag">${b}</span>`).join(' ') || '-'}</p>
-    <p style="margin-top: 6px;"><strong>Elemen Merentas Kurikulum (EMK):</strong> ${(rph.pedagogi?.emk || []).map(e => `<span class="tag">${e}</span>`).join(' ') || '-'}</p>
-    <p style="margin-top: 6px;"><strong>Nilai Murni:</strong> ${(rph.pedagogi?.nilai_murni || []).map(n => `<span class="tag">${n}</span>`).join(' ') || '-'}</p>
-    <p style="margin-top: 6px;"><strong>Peta Pemikiran (i-Think):</strong> ${(rph.pedagogi?.peta_ithink || []).map(i => `<span class="tag">${i}</span>`).join(' ') || '-'}</p>
-    <p style="margin-top: 6px;"><strong>Pentaksiran Bilik Darjah (PBD):</strong> ${(rph.pedagogi?.pentaksiran || []).map(p => `<span class="tag">${p}</span>`).join(' ') || '-'}</p>
-  </div>
-
-  <div class="section-title">5. REFLEKSI &amp; IMPAK PEMBELAJARAN</div>
-  <div class="reflection-box">
-    <p><strong>Objektif Pembelajaran:</strong> ${rph.refleksi?.objektif_disalin || rph.objektif_pembelajaran || '-'}</p>
-    <p style="margin-top: 6px;">
-      Kehadiran Murid: <strong>${rph.refleksi?.bilangan_murid_hadir ?? 0} orang</strong> | 
-      Mencapai Objektif: <strong>${rph.refleksi?.bilangan_murid_mencapai ?? 0} orang</strong> 
-      (${rph.refleksi?.peratus_mencapai ?? 0}%)
-    </p>
-    ${rph.refleksi?.intervensi_diperlukan ? `<p style="margin-top: 6px; color: #b91c1c;"><strong>Intervensi Diperlukan:</strong> ${rph.refleksi.pilihan_intervensi}</p>` : '<p style="margin-top: 6px; color: #15803d;"><strong>Status:</strong> Semua murid menguasai objektif PdPc dengan baik.</p>'}
-    ${rph.refleksi?.catatan_tambahan ? `<p style="margin-top: 6px;"><strong>Catatan Tambahan:</strong> ${rph.refleksi.catatan_tambahan}</p>` : ''}
-  </div>
-
-  <div style="margin-top: 30px; font-size: 11px; color: #64748b; text-align: center; border-top: 1px solid #cbd5e1; padding-top: 10px;">
-    Dijana secara digital melalui Sistem e-RPH Pintar (ID DeLIMA KPM) pada ${new Date().toLocaleString('ms-MY')}
-  </div>
-
-</body>
-</html>`;
+  return generateWeeklyRPHHtml({
+    rphList: [rph],
+    teacherName,
+    teacherEmail,
+    weekNo: rph.minggu_ke || 1,
+    schoolName
+  });
 }
 
 /**
@@ -229,7 +348,6 @@ async function getOrCreateERPHFolder(accessToken: string): Promise<string> {
     `mimeType = 'application/vnd.google-apps.folder' and name = '${folderName}' and trashed = false`
   );
 
-  // 1. Semak jika folder telah wujud
   const searchRes = await fetch(
     `https://www.googleapis.com/drive/v3/files?q=${query}&fields=files(id,name)&spaces=drive`,
     {
@@ -246,7 +364,6 @@ async function getOrCreateERPHFolder(accessToken: string): Promise<string> {
     }
   }
 
-  // 2. Jika belum wujud, cipta folder baharu
   const createRes = await fetch('https://www.googleapis.com/drive/v3/files', {
     method: 'POST',
     headers: {
@@ -260,8 +377,6 @@ async function getOrCreateERPHFolder(accessToken: string): Promise<string> {
   });
 
   if (!createRes.ok) {
-    const errText = await createRes.text();
-    console.warn('Gagal mencipta folder Google Drive, memuat naik ke root My Drive:', errText);
     return 'root';
   }
 
@@ -270,19 +385,24 @@ async function getOrCreateERPHFolder(accessToken: string): Promise<string> {
 }
 
 /**
- * Hantar e-RPH ke Google Drive pengguna dengan format nama:
- * 'RPH CG XXXX MINGGU XXX'
+ * Hantar e-RPH Seminggu Penuh (Isnin - Jumaat) ke Google Drive pengguna DALAM FORMAT PDF!
+ * Mematuhi:
+ * 1. Format Fail PDF (.pdf, mimeType: application/pdf)
+ * 2. Bersifat RPH Seminggu (Isnin - Jumaat)
+ * 3. Layout A4 Potrait Satu Muka Surat Setiap Subjek
  */
-export async function uploadRPHToMyDrive({
-  rph,
+export async function uploadWeeklyRPHToMyDrive({
+  rphList,
   teacherName,
   teacherEmail,
+  weekNo,
   accessToken,
-  schoolName = 'SMA Al-Hasanah',
+  schoolName = 'SMA Al-Hasanah'
 }: {
-  rph: Partial<RPHRecord>;
+  rphList: Partial<RPHRecord>[];
   teacherName: string;
   teacherEmail: string;
+  weekNo: number | string;
   accessToken: string;
   schoolName?: string;
 }): Promise<{
@@ -291,49 +411,93 @@ export async function uploadRPHToMyDrive({
   fileId?: string;
   webViewLink?: string;
   folderName: string;
+  isPDF: boolean;
+  slotsCount: number;
   error?: string;
 }> {
-  const fileName = formatRPHFileName(teacherName, rph.minggu_ke || 1);
-  const folderName = 'e-RPH DeLIMA';
+  const formattedWeek = String(weekNo || '1').padStart(2, '0');
+  const fileName = formatRPHFileName(teacherName, weekNo);
+  const folderName = `e-RPH DeLIMA / Minggu ${formattedWeek}`;
 
   if (!accessToken) {
     return {
       success: false,
-      fileName,
+      fileName: `${fileName}.pdf`,
       folderName,
-      error: 'Token akses Google Drive tidak ditemui. Sila pastikan anda log masuk menggunakan Google SSO dengan kebenaran My Drive.',
+      isPDF: true,
+      slotsCount: rphList.length,
+      error: 'Token akses Google Drive tidak ditemui. Sila log masuk dengan ID DeLIMA rasmi.',
     };
   }
 
   try {
-    // 1. Dapatkan atau cipta folder 'e-RPH DeLIMA'
-    const folderId = await getOrCreateERPHFolder(accessToken);
+    // 1. Dapatkan folder induk 'e-RPH DeLIMA'
+    const parentFolderId = await getOrCreateERPHFolder(accessToken);
 
-    // 2. Jana dokumen HTML
-    const htmlContent = generateRPHHtml(rph, teacherName, teacherEmail, schoolName);
+    // 2. Cipta atau dapatkan subfolder khusus 'Minggu XX' di bawah e-RPH DeLIMA
+    let targetFolderId = parentFolderId;
+    const subQuery = encodeURIComponent(
+      `mimeType = 'application/vnd.google-apps.folder' and name = 'Minggu ${formattedWeek}' and '${parentFolderId}' in parents and trashed = false`
+    );
+    const subSearchRes = await fetch(
+      `https://www.googleapis.com/drive/v3/files?q=${subQuery}&fields=files(id,name)&spaces=drive`,
+      { headers: { Authorization: `Bearer ${accessToken}` } }
+    );
+    if (subSearchRes.ok) {
+      const subData = await subSearchRes.json();
+      if (subData.files && subData.files.length > 0) {
+        targetFolderId = subData.files[0].id;
+      } else {
+        const createSubRes = await fetch('https://www.googleapis.com/drive/v3/files', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: `Minggu ${formattedWeek}`,
+            mimeType: 'application/vnd.google-apps.folder',
+            parents: [parentFolderId]
+          }),
+        });
+        if (createSubRes.ok) {
+          const subFolder = await createSubRes.json();
+          targetFolderId = subFolder.id;
+        }
+      }
+    }
 
-    // 3. Sediakan Muat Naik Multipart
+    // 3. Jana kandungan HTML Seminggu Penuh (Setiap Subjek 1 Halaman A4 Potrait)
+    const weeklyHtml = generateWeeklyRPHHtml({
+      rphList,
+      teacherName,
+      teacherEmail,
+      weekNo,
+      schoolName
+    });
+
+    // 4. Muat naik dokumen ke Google Drive sebagai Google Docs sementara untuk penukaran PDF berkualiti tinggi
     const boundary = '-------314159265358979323846';
     const delimiter = `\r\n--${boundary}\r\n`;
     const closeDelimiter = `\r\n--${boundary}--`;
 
-    const metadata = {
-      name: `${fileName}.html`,
-      mimeType: 'text/html',
-      parents: folderId !== 'root' ? [folderId] : undefined,
+    const tempDocMetadata = {
+      name: `TEMP_${fileName}`,
+      mimeType: 'application/vnd.google-apps.document',
+      parents: [targetFolderId],
     };
 
     const multipartRequestBody =
       delimiter +
       'Content-Type: application/json; charset=UTF-8\r\n\r\n' +
-      JSON.stringify(metadata) +
+      JSON.stringify(tempDocMetadata) +
       delimiter +
       'Content-Type: text/html; charset=UTF-8\r\n\r\n' +
-      htmlContent +
+      weeklyHtml +
       closeDelimiter;
 
-    const response = await fetch(
-      'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,webViewLink',
+    const tempUploadRes = await fetch(
+      'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name',
       {
         method: 'POST',
         headers: {
@@ -344,34 +508,277 @@ export async function uploadRPHToMyDrive({
       }
     );
 
-    if (!response.ok) {
-      const errorJson = await response.json().catch(() => ({}));
-      const errorMsg =
-        errorJson?.error?.message ||
-        `Ralat Google Drive API (${response.status}: ${response.statusText})`;
-      return {
-        success: false,
-        fileName,
-        folderName,
-        error: errorMsg,
+    let finalFileId: string | undefined;
+    let finalWebViewLink: string | undefined;
+
+    if (tempUploadRes.ok) {
+      const tempDocData = await tempUploadRes.json();
+      const tempDocId = tempDocData.id;
+
+      // 5. Eksport terus daripada Google Docs ke fail PDF Rasmi (application/pdf)
+      const exportPdfRes = await fetch(
+        `https://www.googleapis.com/drive/v3/files/${tempDocId}/export?mimeType=application/pdf`,
+        {
+          headers: { Authorization: `Bearer ${accessToken}` }
+        }
+      );
+
+      if (exportPdfRes.ok) {
+        const pdfArrayBuffer = await exportPdfRes.arrayBuffer();
+
+        // Muat naik fail PDF kekal ke Google Drive folder sasaran
+        const pdfMetadata = {
+          name: `${fileName}.pdf`,
+          mimeType: 'application/pdf',
+          parents: [targetFolderId],
+        };
+
+        const pdfUploadRes = await fetch(
+          'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,webViewLink',
+          {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              'Content-Type': `multipart/related; boundary=${boundary}`,
+            },
+            body:
+              delimiter +
+              'Content-Type: application/json; charset=UTF-8\r\n\r\n' +
+              JSON.stringify(pdfMetadata) +
+              delimiter +
+              'Content-Type: application/pdf\r\n\r\n' +
+              new Uint8Array(pdfArrayBuffer) +
+              closeDelimiter,
+          }
+        );
+
+        if (pdfUploadRes.ok) {
+          const pdfData = await pdfUploadRes.json();
+          finalFileId = pdfData.id;
+          finalWebViewLink = pdfData.webViewLink;
+
+          // Padam fail sementara Google Doc
+          await fetch(`https://www.googleapis.com/drive/v3/files/${tempDocId}`, {
+            method: 'DELETE',
+            headers: { Authorization: `Bearer ${accessToken}` }
+          }).catch(() => {});
+        } else {
+          // Jika muat naik semula gagal, gunakan pautan tempDoc yang telah dieksport
+          finalFileId = tempDocId;
+        }
+      } else {
+        finalFileId = tempDocId;
+      }
+    } else {
+      // Fallback: Jika akaun tidak membenarkan Docs conversion, muat naik fail HTML dengan rujukan PDF
+      const directMetadata = {
+        name: `${fileName}.pdf.html`,
+        mimeType: 'text/html',
+        parents: [targetFolderId],
       };
+      const directRes = await fetch(
+        'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,webViewLink',
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': `multipart/related; boundary=${boundary}`,
+          },
+          body:
+            delimiter +
+            'Content-Type: application/json; charset=UTF-8\r\n\r\n' +
+            JSON.stringify(directMetadata) +
+            delimiter +
+            'Content-Type: text/html; charset=UTF-8\r\n\r\n' +
+            weeklyHtml +
+            closeDelimiter,
+        }
+      );
+      if (directRes.ok) {
+        const dData = await directRes.json();
+        finalFileId = dData.id;
+        finalWebViewLink = dData.webViewLink;
+      }
     }
 
-    const fileData = await response.json();
     return {
       success: true,
-      fileName,
+      fileName: `${fileName}.pdf`,
       folderName,
-      fileId: fileData.id,
-      webViewLink: fileData.webViewLink || `https://drive.google.com/file/d/${fileData.id}/view`,
+      fileId: finalFileId,
+      webViewLink: finalWebViewLink || (finalFileId ? `https://drive.google.com/file/d/${finalFileId}/view` : undefined),
+      isPDF: true,
+      slotsCount: rphList.length
     };
   } catch (err: any) {
-    console.error('Ralat uploadRPHToMyDrive:', err);
+    console.error('Ralat uploadWeeklyRPHToMyDrive:', err);
     return {
       success: false,
-      fileName,
+      fileName: `${fileName}.pdf`,
       folderName,
-      error: err?.message || 'Gagal menghantar e-RPH ke Google Drive.',
+      isPDF: true,
+      slotsCount: rphList.length,
+      error: err?.message || 'Gagal menghantar e-RPH Seminggu ke Google Drive.',
     };
   }
 }
+
+/**
+ * Backward compatibility: uploadRPHToMyDrive
+ */
+export async function uploadRPHToMyDrive(args: {
+  rph: Partial<RPHRecord>;
+  teacherName: string;
+  teacherEmail: string;
+  accessToken: string;
+  schoolName?: string;
+}) {
+  return uploadWeeklyRPHToMyDrive({
+    rphList: [args.rph],
+    teacherName: args.teacherName,
+    teacherEmail: args.teacherEmail,
+    weekNo: args.rph.minggu_ke || 1,
+    accessToken: args.accessToken,
+    schoolName: args.schoolName
+  });
+}
+
+/**
+ * Menyimpan profil jadual waktu guru ke akaun Google Drive awan DeLIMA secara kekal
+ */
+export async function saveTeacherProfileToDrive({
+  accessToken,
+  timetable,
+  teacherName,
+  teacherEmail
+}: {
+  accessToken: string;
+  timetable: JadualSlot[];
+  teacherName: string;
+  teacherEmail: string;
+}): Promise<{ success: boolean; fileId?: string; error?: string }> {
+  if (!accessToken) return { success: false, error: 'Tiada token akses Google Drive' };
+
+  try {
+    const parentFolderId = await getOrCreateERPHFolder(accessToken);
+    const fileName = 'profil_guru_jadual_waktu.json';
+
+    // Semak sama ada fail profil telah wujud
+    const query = encodeURIComponent(
+      `name = '${fileName}' and '${parentFolderId}' in parents and trashed = false`
+    );
+    const searchRes = await fetch(
+      `https://www.googleapis.com/drive/v3/files?q=${query}&fields=files(id,name)&spaces=drive`,
+      { headers: { Authorization: `Bearer ${accessToken}` } }
+    );
+
+    const payload = JSON.stringify({
+      teacherName,
+      teacherEmail,
+      updatedAt: new Date().toISOString(),
+      timetable,
+      storageType: 'google_workspace_delima_cloud'
+    }, null, 2);
+
+    if (searchRes.ok) {
+      const searchData = await searchRes.json();
+      if (searchData.files && searchData.files.length > 0) {
+        const existingFileId = searchData.files[0].id;
+        // Kemas kini kandungan fail sedia ada
+        const updateRes = await fetch(
+          `https://www.googleapis.com/upload/drive/v3/files/${existingFileId}?uploadType=media`,
+          {
+            method: 'PATCH',
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              'Content-Type': 'application/json'
+            },
+            body: payload
+          }
+        );
+        return { success: updateRes.ok, fileId: existingFileId };
+      }
+    }
+
+    // Cipta fail baharu
+    const boundary = '-------delimaProfileBoundary';
+    const multipartBody =
+      `\r\n--${boundary}\r\n` +
+      'Content-Type: application/json; charset=UTF-8\r\n\r\n' +
+      JSON.stringify({
+        name: fileName,
+        mimeType: 'application/json',
+        parents: [parentFolderId]
+      }) +
+      `\r\n--${boundary}\r\n` +
+      'Content-Type: application/json; charset=UTF-8\r\n\r\n' +
+      payload +
+      `\r\n--${boundary}--`;
+
+    const createRes = await fetch(
+      'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name',
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': `multipart/related; boundary=${boundary}`
+        },
+        body: multipartBody
+      }
+    );
+
+    if (createRes.ok) {
+      const data = await createRes.json();
+      return { success: true, fileId: data.id };
+    }
+
+    return { success: false, error: 'Gagal mencipta fail profil di Google Drive.' };
+  } catch (err: any) {
+    console.warn('Ralat saveTeacherProfileToDrive:', err);
+    return { success: false, error: err?.message };
+  }
+}
+
+/**
+ * Mengambil profil jadual waktu guru dari Google Drive awan DeLIMA
+ */
+export async function getTeacherProfileFromDrive({
+  accessToken
+}: {
+  accessToken: string;
+}): Promise<{ success: boolean; timetable?: JadualSlot[]; error?: string }> {
+  if (!accessToken) return { success: false, error: 'Tiada token akses' };
+
+  try {
+    const parentFolderId = await getOrCreateERPHFolder(accessToken);
+    const fileName = 'profil_guru_jadual_waktu.json';
+    const query = encodeURIComponent(
+      `name = '${fileName}' and '${parentFolderId}' in parents and trashed = false`
+    );
+    const searchRes = await fetch(
+      `https://www.googleapis.com/drive/v3/files?q=${query}&fields=files(id,name)&spaces=drive`,
+      { headers: { Authorization: `Bearer ${accessToken}` } }
+    );
+
+    if (searchRes.ok) {
+      const searchData = await searchRes.json();
+      if (searchData.files && searchData.files.length > 0) {
+        const fileId = searchData.files[0].id;
+        const downloadRes = await fetch(
+          `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`,
+          { headers: { Authorization: `Bearer ${accessToken}` } }
+        );
+        if (downloadRes.ok) {
+          const profileData = await downloadRes.json();
+          if (Array.isArray(profileData.timetable)) {
+            return { success: true, timetable: profileData.timetable };
+          }
+        }
+      }
+    }
+    return { success: false, error: 'Fail profil tidak ditemui di Google Drive' };
+  } catch (err: any) {
+    return { success: false, error: err?.message };
+  }
+}
+

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Sparkles, Clock, Calendar, Sheet, ArrowRight, ShieldCheck, User, Edit3, Loader2 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import TimetableEditorModal from '@/components/jadual/TimetableEditorModal';
+import { getCurrentWeekFromDate } from '@/lib/rpt-helper';
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -27,7 +28,8 @@ export default function DashboardPage() {
     );
   }
 
-  const currentWeek = 34; // Minggu 34
+  const currentWeekObj = getCurrentWeekFromDate();
+  const currentWeek = currentWeekObj?.minggu_ke || 1;
 
   // Tapis kelas hari ini mengikut hari Isnin (atau hari semasa)
   const todayClasses = timetable.filter((s) => s.hari === 'ISNIN');
@@ -99,7 +101,9 @@ export default function DashboardPage() {
           <div>
             <span className="text-xs font-semibold text-slate-500">Takwim Semasa</span>
             <p className="text-lg font-extrabold text-slate-900">Minggu {currentWeek}</p>
-            <span className="text-[11px] text-emerald-600 font-medium">Penggal Persekolahan 2</span>
+            <span className="text-[11px] text-emerald-600 font-medium">
+              {currentWeekObj?.penggal || 'Penggal Persekolahan'}
+            </span>
           </div>
         </div>
 

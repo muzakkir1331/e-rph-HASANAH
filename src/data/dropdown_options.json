@@ -1,0 +1,125 @@
+{
+  "kelas": [
+    "1 BUKHARI",
+    "1 MUSLIM",
+    "2 BUKHARI",
+    "2 MUSLIM",
+    "3 BUKHARI",
+    "3 MUSLIM",
+    "4 BUKHARI",
+    "4 MUSLIM",
+    "5 BUKHARI",
+    "5 MUSLIM",
+    "6 BUKHARI",
+    "6 MUSLIM"
+  ],
+  "waktu_raw": [
+    "0730",
+    "0800",
+    "0830",
+    "0900",
+    "0930",
+    "1000",
+    "1030",
+    "1100",
+    "1130",
+    "1200",
+    "1230",
+    "1300",
+    "1330",
+    "1400",
+    "1430"
+  ],
+  "waktu": [
+    {
+      "value": "07:30",
+      "raw": "0730",
+      "label": "07:30 (07.30 PAGI)",
+      "formatted": "07.30 PAGI"
+    },
+    {
+      "value": "08:00",
+      "raw": "0800",
+      "label": "08:00 (08.00 PAGI)",
+      "formatted": "08.00 PAGI"
+    },
+    {
+      "value": "08:30",
+      "raw": "0830",
+      "label": "08:30 (08.30 PAGI)",
+      "formatted": "08.30 PAGI"
+    },
+    {
+      "value": "09:00",
+      "raw": "0900",
+      "label": "09:00 (09.00 PAGI)",
+      "formatted": "09.00 PAGI"
+    },
+    {
+      "value": "09:30",
+      "raw": "0930",
+      "label": "09:30 (09.30 PAGI)",
+      "formatted": "09.30 PAGI"
+    },
+    {
+      "value": "10:00",
+      "raw": "1000",
+      "label": "10:00 (10.00 PAGI)",
+      "formatted": "10.00 PAGI"
+    },
+    {
+      "value": "10:30",
+      "raw": "1030",
+      "label": "10:30 (10.30 PAGI)",
+      "formatted": "10.30 PAGI"
+    },
+    {
+      "value": "11:00",
+      "raw": "1100",
+      "label": "11:00 (11.00 PAGI)",
+      "formatted": "11.00 PAGI"
+    },
+    {
+      "value": "11:30",
+      "raw": "1130",
+      "label": "11:30 (11.30 PAGI)",
+      "formatted": "11.30 PAGI"
+    },
+    {
+      "value": "12:00",
+      "raw": "1200",
+      "label": "12:00 (12.00 TGH HARI)",
+      "formatted": "12.00 TGH HARI"
+    },
+    {
+      "value": "12:30",
+      "raw": "1230",
+      "label": "12:30 (12.30 TGH HARI)",
+      "formatted": "12.30 TGH HARI"
+    },
+    {
+      "value": "13:00",
+      "raw": "1300",
+      "label": "13:00 (01.00 PTG)",
+      "formatted": "01.00 PTG"
+    },
+    {
+      "value": "13:30",
+      "raw": "1330",
+      "label": "13:30 (01.30 PTG)",
+      "formatted": "01.30 PTG"
+    },
+    {
+      "value": "14:00",
+      "raw": "1400",
+      "label": "14:00 (02.00 PTG)",
+      "formatted": "02.00 PTG"
+    },
+    {
+      "value": "14:30",
+      "raw": "1430",
+      "label": "14:30 (02.30 PTG)",
+      "formatted": "02.30 PTG"
+    }
+  ]
+}

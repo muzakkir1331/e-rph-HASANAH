@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, Plus, Trash2, Edit3, Check, RotateCcw, Clock, BookOpen, Users, AlertCircle } from 'lucide-react';
+import { X, Plus, Trash2, Edit3, Check, RotateCcw, Clock, BookOpen, Users, AlertCircle, Cloud, CheckCircle2 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { JadualSlot } from '@/types/erph';
 import dskpCatalog from '@/data/dskp_catalog.json';
@@ -13,7 +13,7 @@ interface TimetableEditorModalProps {
 }
 
 export default function TimetableEditorModal({ isOpen, onClose }: TimetableEditorModalProps) {
-  const { timetable, addSlot, updateSlot, deleteSlot, resetTimetable, teacherName } = useAuth();
+  const { timetable, addSlot, updateSlot, deleteSlot, resetTimetable, teacherName, teacherEmail, cloudSyncStatus } = useAuth();
   
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [isAddingNew, setIsAddingNew] = useState<boolean>(false);
@@ -40,7 +40,23 @@ export default function TimetableEditorModal({ isOpen, onClose }: TimetableEdito
     'JUMAAT': 5
   };
 
-  const subjectList = Object.keys(dskpCatalog).sort();
+  const primarySubjects = [
+    'أصول الدين',
+    'اللغة العربية المعاصرة',
+    'الشريعة اسلامية',
+    'الأدب والبلاغة',
+    'مناهج العلوم إسلامية',
+    'Bahasa Arab',
+    'Bahasa Melayu',
+    'Bahasa Inggeris',
+    'Sains',
+    'Matematik',
+    'Perniagaan',
+    'PJPK',
+    'Pendidikan Seni Visual',
+    'Geografi'
+  ];
+  const subjectList = Array.from(new Set([...primarySubjects, ...Object.keys(dskpCatalog)])).sort();
 
   const handleStartEdit = (index: number) => {
     const slot = timetable[index];
@@ -109,9 +125,15 @@ export default function TimetableEditorModal({ isOpen, onClose }: TimetableEdito
               <Clock className="w-5 h-5 text-emerald-300" />
             </div>
             <div>
-              <h3 className="font-extrabold text-base">Ubah Suai Jadual Waktu Mengajar</h3>
+              <div className="flex items-center space-x-2">
+                <h3 className="font-extrabold text-base">Ubah Suai Jadual Waktu Mengajar</h3>
+                <span className="px-2 py-0.5 text-[10px] font-bold bg-white/20 text-emerald-100 rounded-md flex items-center space-x-1" title="Data disimpan dalam profil awan masing-masing">
+                  <Cloud className="w-3 h-3" />
+                  <span>Profil Cloud DeLIMA</span>
+                </span>
+              </div>
               <p className="text-xs text-emerald-100">
-                Sesuaikan waktu mengajar, kelas, dan subjek anda ({teacherName})
+                Disimpan dalam profil cloud peribadi guru: <span className="font-semibold">{teacherEmail || teacherName}</span>
               </p>
             </div>
           </div>

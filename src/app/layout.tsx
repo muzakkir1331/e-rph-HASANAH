@@ -5,7 +5,7 @@ import { AuthProvider } from '@/context/AuthContext';
 
 export const metadata: Metadata = {
   title: 'e-RPH Pintar | Sistem Pengurusan RPH KPM',
-  description: 'Aplikasi web e-RPH Pintar generasi baharu dengan integrasi DSKP, Takwim 2026, Penyambung RPT Google Sheets, dan Co-Pilot Gemini AI.',
+  description: 'Aplikasi web e-RPH Pintar generasi baharu dengan integrasi DSKP, Takwim 2027, Penyambung RPT Google Sheets, dan Co-Pilot Gemini AI.',
 };
 
 export default function RootLayout({
@@ -22,7 +22,7 @@ export default function RootLayout({
             {children}
           </main>
           <footer className="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 no-print">
-            <p>&copy; 2026 e-RPH Pintar &bull; Mematuhi Piawaian SPI Bil. 3/1999 &amp; TS25 KPM &bull; SMA Al-Hasanah</p>
+            <p>&copy; 2027 e-RPH Pintar &bull; Mematuhi Piawaian SPI Bil. 3/1999 &amp; TS25 KPM &bull; SMA Al-Hasanah</p>
           </footer>
         </AuthProvider>
       </body>

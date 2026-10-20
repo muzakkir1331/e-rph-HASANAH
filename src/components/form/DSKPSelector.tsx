@@ -5,6 +5,8 @@ import { Search, BookOpen, Check, Layers } from 'lucide-react';
 import sampleDSKP from '@/data/dskp_sample.json';
 import { DSKPItem } from '@/types/erph';
 
+import { matchDSKPSubject } from '@/lib/rpt-helper';
+
 interface DSKPSelectorProps {
   subject: string;
   form: string;
@@ -27,36 +29,33 @@ export default function DSKPSelector({
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
-  // Tapis data DSKP mengikut subjek dan tingkatan
+  // Tapis data DSKP mengikut subjek dan tingkatan dengan ketat
   const filteredItems: DSKPItem[] = useMemo(() => {
     let items = (sampleDSKP as any[]) || [];
     
-    // Tapis subjek
+    // Tapis subjek - KETAT: Elakkan sama sekali mengambil rekod subjek lain!
     if (subject) {
-      const sLower = subject.trim().toLowerCase();
-      const matched = items.filter(i => i.subjek.trim().toLowerCase() === sLower);
-      if (matched.length > 0) items = matched;
+      items = items.filter(i => matchDSKPSubject(subject, i.subjek));
     }
 
     // Tapis tingkatan
     if (form) {
-      const fLower = form.toString().trim();
-      const matched = items.filter(i => i.tingkatan.toString().trim() === fLower);
-      if (matched.length > 0) items = matched;
+      const fClean = form.toString().replace(/\D/g, '') || form.toString().trim();
+      items = items.filter(i => i.tingkatan.toString().trim() === fClean);
     }
 
     // Carian kata kunci
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       items = items.filter(i => 
-        i.sp.toLowerCase().includes(term) ||
-        i.sk.toLowerCase().includes(term) ||
-        i.tajuk.toLowerCase().includes(term) ||
-        i.tema.toLowerCase().includes(term)
+        (i.sp && i.sp.toLowerCase().includes(term)) ||
+        (i.sk && i.sk.toLowerCase().includes(term)) ||
+        (i.tajuk && i.tajuk.toLowerCase().includes(term)) ||
+        (i.tema && i.tema.toLowerCase().includes(term))
       );
     }
 
-    return items.slice(0, 30);
+    return items.slice(0, 100);
   }, [subject, form, searchTerm]);
 
   return (

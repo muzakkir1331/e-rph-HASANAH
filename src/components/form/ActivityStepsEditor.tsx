@@ -9,13 +9,15 @@ interface ActivityStepsEditorProps {
   onChange: (updated: RPHActivities) => void;
   isRTL: boolean;
   labels: Record<string, string>;
+  rptSuggestion?: string;
 }
 
 export default function ActivityStepsEditor({
   activities,
   onChange,
   isRTL,
-  labels
+  labels,
+  rptSuggestion
 }: ActivityStepsEditorProps) {
   const handleChange = (key: keyof RPHActivities, value: string) => {
     onChange({

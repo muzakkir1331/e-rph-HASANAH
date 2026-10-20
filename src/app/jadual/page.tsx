@@ -2,14 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Clock, Calendar, Edit3, Plus, ArrowRight, ShieldCheck, RotateCcw, Loader2 } from 'lucide-react';
+import { Clock, Calendar, Edit3, Plus, ArrowRight, ShieldCheck, RotateCcw, Loader2, Cloud, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import TimetableEditorModal from '@/components/jadual/TimetableEditorModal';
 
 export default function JadualPage() {
   const router = useRouter();
-  const { user, timetable, teacherName, teacherEmail, isDeLIMA, loading } = useAuth();
+  const { user, timetable, teacherName, teacherEmail, isDeLIMA, loading, cloudSyncStatus } = useAuth();
   const [isEditorOpen, setIsEditorOpen] = useState(false);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function JadualPage() {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-3">
         <Loader2 className="w-8 h-8 text-emerald-600 animate-spin" />
-        <p className="text-xs text-slate-500 font-medium">Memuatkan jadual waktu peribadi guru...</p>
+        <p className="text-xs text-slate-500 font-medium">Memuatkan profil cloud jadual guru...</p>
       </div>
     );
   }
@@ -35,7 +35,7 @@ export default function JadualPage() {
       {/* Header & Butang Ubah Jadual */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
         <div>
-          <div className="flex items-center space-x-2">
+          <div className="flex flex-wrap items-center gap-2">
             <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
               Jadual Waktu Mengajar Guru
             </h1>
@@ -43,9 +43,25 @@ export default function JadualPage() {
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>ID DeLIMA Aktif</span>
             </span>
+            <span className="px-2.5 py-0.5 text-[11px] font-bold bg-blue-100 text-blue-800 rounded-full flex items-center space-x-1" title="Data jadual disimpan dalam profil cloud masing-masing, bukan local">
+              <Cloud className="w-3.5 h-3.5 text-blue-600" />
+              <span>Profil Cloud DeLIMA (Bukan Local)</span>
+            </span>
           </div>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            Pendidik: <span className="font-semibold text-slate-800">{teacherName}</span> &bull; ({teacherEmail})
+          <p className="text-xs sm:text-sm text-slate-500 mt-1 flex flex-wrap items-center gap-2">
+            <span>Pendidik: <strong className="text-slate-800">{teacherName}</strong> &bull; ({teacherEmail})</span>
+            {cloudSyncStatus === 'synced' && (
+              <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">
+                <CheckCircle2 className="w-3 h-3" />
+                Diselaraskan ke Cloud
+              </span>
+            )}
+            {cloudSyncStatus === 'saving' && (
+              <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md animate-pulse">
+                <Loader2 className="w-3 h-3 animate-spin" />
+                Menyimpan ke Cloud...
+              </span>
+            )}
           </p>
         </div>
 

@@ -51,18 +51,94 @@ body {
   background: #94a3b8;
 }
 
-/* Print Friendly Styles for KPM e-RPH Export */
+/* Print Friendly Styles for KPM e-RPH Export - Strictly 1 Page A4 Portrait per Subject */
+.print-only {
+  display: none;
+}
+
+/* Official KPM / SABK e-RPH Master Table Styling */
+.rph-master-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1.5px solid #1e293b;
+  font-size: 10px;
+  line-height: 1.35;
+  background-color: #ffffff;
+}
+
+.rph-master-table th,
+.rph-master-table td {
+  border: 1px solid #475569;
+  padding: 3px 6px;
+  vertical-align: middle;
+}
+
+.rph-master-table th.rph-header-label {
+  background-color: #f1f5f9;
+  color: #0f172a;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 9px;
+  letter-spacing: 0.02em;
+  width: 18%;
+  text-align: left;
+}
+
+[dir="rtl"] .rph-master-table th.rph-header-label {
+  text-align: right;
+}
+
 @media print {
-  body {
+  @page {
+    size: A4 portrait;
+    margin: 5mm 8mm;
+  }
+  html, body {
     background: white !important;
     color: black !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
   .no-print {
     display: none !important;
   }
+  .print-only {
+    display: block !important;
+  }
+  .a4-portrait-page {
+    width: 100% !important;
+    max-width: 194mm !important;
+    height: 275mm !important;
+    max-height: 275mm !important;
+    margin: 0 auto !important;
+    padding: 5mm 8mm !important;
+    border: none !important;
+    box-shadow: none !important;
+    page-break-after: always !important;
+    page-break-inside: avoid !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    font-size: 10.5px !important;
+    line-height: 1.35 !important;
+  }
   .print-page {
     page-break-after: always;
+    page-break-inside: avoid;
     box-shadow: none !important;
-    border: 1px solid #94a3b8 !important;
+  }
+  .rph-master-table {
+    border: 1.5px solid #000000 !important;
+  }
+  .rph-master-table th,
+  .rph-master-table td {
+    border: 1px solid #334155 !important;
+  }
+  .rph-master-table th.rph-header-label {
+    background-color: #f1f5f9 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 }
+

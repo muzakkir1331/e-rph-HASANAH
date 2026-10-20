@@ -11,6 +11,11 @@ os.makedirs('supabase/seed', exist_ok=True)
 # 1. Parse takwim_2026.csv
 # -----------------------------------------------------------------------------
 def parse_takwim():
+    if os.path.exists('scripts/sync_rpt_takwim.py') and os.path.exists('rpt'):
+        from sync_rpt_takwim import sync_takwim_and_rpt
+        sync_takwim_and_rpt()
+        return
+
     takwim_list = []
     with open('data-rujukan/takwim_2026.csv', 'r', encoding='utf-8', errors='ignore') as f:
         reader = csv.reader(f)
