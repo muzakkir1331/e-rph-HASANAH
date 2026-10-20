@@ -1560,10 +1560,10 @@ export default function RPHFormDynamic() {
             type="button"
             onClick={() => setIsPreviewA4ModalOpen(true)}
             className="px-3.5 py-2 bg-indigo-50 border border-indigo-200 hover:bg-indigo-100 text-indigo-700 rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow-sm transition-colors"
-            title="Pratonton Layout A4 Portrait Satu Muka Surat Setiap Subjek"
+            title="Pratonton Layout A4 Landscape Satu Muka Surat Setiap Subjek"
           >
             <Eye className="w-4 h-4 text-indigo-600" />
-            <span>Pratonton A4 (1 Muka Surat)</span>
+            <span>Pratonton A4 Landscape</span>
           </button>
 
           <button
@@ -1607,10 +1607,10 @@ export default function RPHFormDynamic() {
             type="button"
             onClick={handlePrint}
             className="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow-sm transition-colors"
-            title="Cetak A4 Portrait 1 Muka Surat Setiap Subjek"
+            title="Cetak A4 Landscape 1 Muka Surat Setiap Subjek"
           >
             <Printer className="w-4 h-4" />
-            <span>Cetak A4 (1 Muka Surat)</span>
+            <span>Cetak A4 Landscape</span>
           </button>
         </div>
       </div>
@@ -2054,13 +2054,13 @@ export default function RPHFormDynamic() {
       </div>
 
       {/* =========================================================================
-          SUSUN ATUR CETAKAN A4 PORTRAIT SATU MUKA SURAT SETIAP SUBJEK (PRINT-ONLY)
+          SUSUN ATUR CETAKAN A4 LANDSCAPE SATU MUKA SURAT SETIAP SUBJEK (PRINT-ONLY)
          ========================================================================= */}
       <div className="print-only">
         {getWeeklyRPHList().map((rphItem, idx) => (
           <div
             key={`print-a4-slot-${idx}`}
-            className="a4-portrait-page"
+            className="a4-landscape-page"
             dangerouslySetInnerHTML={{
               __html: generateSingleRPHCardHtml(
                 rphItem,

@@ -74,7 +74,7 @@ export default function RPHGeneratedTableView({
               Templat e-RPH Berjadual Rasmi (Format Table KPM)
             </span>
             <span className="text-[10px] text-slate-400">
-              Disusun rapi dalam struktur jadual berkotak &bull; Tepat 1 Muka Surat A4 Potrait
+              Disusun rapi dalam struktur jadual berkotak &bull; Tepat 1 Muka Surat A4 Landscape
             </span>
           </div>
         </div>
@@ -124,9 +124,9 @@ export default function RPHGeneratedTableView({
         </div>
       </div>
 
-      {/* Kad Muka Surat A4 Portrait Dengan Struktur Table Rasmi */}
+      {/* Kad Muka Surat A4 Landscape Dengan Struktur Table Rasmi */}
       <div
-        className="bg-white border-2 border-slate-700 rounded-xl p-4 sm:p-6 shadow-xl mx-auto max-w-4xl text-slate-900 overflow-x-auto"
+        className="bg-white border-2 border-slate-700 rounded-xl p-4 sm:p-6 shadow-xl mx-auto max-w-6xl text-slate-900 overflow-x-auto"
         dir={isRTL ? 'rtl' : 'ltr'}
         style={{
           fontFamily: isRTL ? 'Amiri, Arial, Tahoma, sans-serif' : 'Inter, Arial, sans-serif'
@@ -146,7 +146,7 @@ export default function RPHGeneratedTableView({
                 </td>
                 <td className="text-center align-middle border-none px-3">
                   <div className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">
-                    KEMENTERIAN PENDIDIKAN MALAYSIA &bull; JABATAN AGAMA ISLAM PAHANG
+                    KEMENTERIAN PENDIDIKAN MALAYSIA
                   </div>
                   <div className="text-sm sm:text-base font-extrabold text-emerald-800 uppercase tracking-tight my-0.5">
                     {schoolName}
@@ -165,47 +165,43 @@ export default function RPHGeneratedTableView({
           </table>
         </div>
 
-        {/* Master Table e-RPH Rasmi */}
-        <table className="w-full border-collapse border-2 border-slate-800 text-[11px] leading-relaxed">
+        {/* Master Table e-RPH Rasmi (A4 Landscape) */}
+        <table className="w-full border-collapse border-2 border-slate-800 text-[10.5px] leading-relaxed">
           <tbody>
-            {/* Baris 1: Minggu, Hari & Tarikh */}
+            {/* Baris 1: Minggu Persekolahan, Hari & Tarikh, Masa PdPc */}
             <tr>
-              <th className="w-1/5 bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase">
+              <th className="w-[13%] bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase">
                 Minggu Persekolahan
               </th>
-              <td className="w-[30%] border border-slate-400 p-2 font-semibold">
+              <td className="w-[20%] border border-slate-400 p-2 font-semibold">
                 Minggu {rph.minggu_ke || 1} (Sesi 2027)
               </td>
-              <th className="w-1/5 bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase">
+              <th className="w-[13%] bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase">
                 Hari &amp; Tarikh
               </th>
-              <td className="w-[30%] border border-slate-400 p-2 font-semibold">
+              <td className="w-[21%] border border-slate-400 p-2 font-semibold">
                 <strong>{rph.hari || '-'}</strong> ({rph.tarikh || '-'})
+              </td>
+              <th className="w-[12%] bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase">
+                Masa PdPc
+              </th>
+              <td className="w-[21%] border border-slate-400 p-2 font-semibold text-emerald-900">
+                <strong>{rph.masa_mula || '-'} &ndash; {rph.masa_tamat || '-'}</strong>
               </td>
             </tr>
 
-            {/* Baris 2: Masa, Tingkatan & Kelas */}
+            {/* Baris 2: Tingkatan & Kelas, Mata Pelajaran, Guru Pengajar */}
             <tr>
-              <th className="bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase">
-                Masa PdPc
-              </th>
-              <td className="border border-slate-400 p-2 font-semibold text-emerald-900">
-                <strong>{rph.masa_mula || '-'} &ndash; {rph.masa_tamat || '-'}</strong>
-              </td>
               <th className="bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase">
                 Tingkatan / Kelas
               </th>
               <td className="border border-slate-400 p-2 font-semibold">
                 Tingkatan {rph.tingkatan || '-'} &bull; <strong>{rph.kelas || '-'}</strong>
               </td>
-            </tr>
-
-            {/* Baris 3: Mata Pelajaran & Guru */}
-            <tr>
               <th className="bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase">
                 Mata Pelajaran
               </th>
-              <td className="border border-slate-400 p-2 font-extrabold text-emerald-800 text-xs">
+              <td className="border border-slate-400 p-2 font-extrabold text-emerald-800">
                 {rph.subjek || '-'}
               </td>
               <th className="bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase">
@@ -216,62 +212,62 @@ export default function RPHGeneratedTableView({
               </td>
             </tr>
 
-            {/* Baris 4: Tema / Tajuk */}
+            {/* Baris 3: Tema / Tajuk */}
             <tr>
               <th className="bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase">
                 Tema / Tajuk
               </th>
-              <td colSpan={3} className="border border-slate-400 p-2 font-semibold text-slate-800">
+              <td colSpan={5} className="border border-slate-400 p-2 font-semibold text-slate-800">
                 {rph.tema || '-'} {rph.tajuk ? `• ${rph.tajuk}` : ''}
               </td>
             </tr>
 
-            {/* Baris 5: Standard Kandungan (SK) */}
+            {/* Baris 4: Standard Kandungan (SK) */}
             <tr>
               <th className="bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase">
                 Standard Kandungan (SK)
               </th>
-              <td colSpan={3} className="border border-slate-400 p-2 font-medium text-slate-800">
+              <td colSpan={5} className="border border-slate-400 p-2 font-medium text-slate-800">
                 {rph.sk || '-'}
               </td>
             </tr>
 
-            {/* Baris 6: Standard Pembelajaran (SP) */}
+            {/* Baris 5: Standard Pembelajaran (SP) */}
             <tr>
               <th className="bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase">
                 Standard Pembelajaran (SP)
               </th>
-              <td colSpan={3} className="border border-slate-400 p-2 font-medium text-slate-800 leading-relaxed">
+              <td colSpan={5} className="border border-slate-400 p-2 font-medium text-slate-800 leading-relaxed">
                 {rph.sp || '-'}
               </td>
             </tr>
 
-            {/* Baris 7: Objektif Pembelajaran */}
+            {/* Baris 6: Objektif Pembelajaran */}
             <tr>
               <th className="bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase">
                 Objektif Pembelajaran
               </th>
-              <td colSpan={3} className="border border-slate-400 p-2 font-medium text-slate-900 leading-relaxed bg-emerald-50/20">
+              <td colSpan={5} className="border border-slate-400 p-2 font-medium text-slate-900 leading-relaxed bg-emerald-50/20">
                 {rph.objektif_pembelajaran || '-'}
               </td>
             </tr>
 
-            {/* Baris 8: Kriteria Kejayaan */}
+            {/* Baris 7: Kriteria Kejayaan */}
             <tr>
               <th className="bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase">
                 Kriteria Kejayaan
               </th>
-              <td colSpan={3} className="border border-slate-400 p-2 font-medium text-slate-700 leading-relaxed">
+              <td colSpan={5} className="border border-slate-400 p-2 font-medium text-slate-700 leading-relaxed">
                 {rph.kriteria_kejayaan || '-'}
               </td>
             </tr>
 
-            {/* Baris 9: Aktiviti Pengajaran & Pembelajaran (PdPc) */}
+            {/* Baris 8: Aktiviti Pengajaran & Pembelajaran (PdPc) */}
             <tr>
               <th className="bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase align-top">
                 Aktiviti Pembelajaran &amp; Pemudahcaraan (PdPc)
               </th>
-              <td colSpan={3} className="border border-slate-400 p-2 space-y-2">
+              <td colSpan={5} className="border border-slate-400 p-2 space-y-1.5">
                 <div className="pb-1 border-b border-slate-200">
                   <span className="font-bold text-emerald-800 text-[10.5px]">Set Induksi (5 Minit):</span>
                   <div className="text-slate-800 mt-0.5">{rph.aktiviti?.set_induksi || '-'}</div>
@@ -279,7 +275,7 @@ export default function RPHGeneratedTableView({
 
                 <div className="pb-1 border-b border-slate-200">
                   <span className="font-bold text-emerald-800 text-[10.5px]">Aktiviti Utama (Langkah Pembelajaran):</span>
-                  <div className="space-y-1 mt-0.5 pl-2">
+                  <div className="space-y-0.5 mt-0.5 pl-2">
                     {rph.aktiviti?.langkah_1 && (
                       <div>&bull; <strong>Langkah 1:</strong> {rph.aktiviti.langkah_1}</div>
                     )}
@@ -299,44 +295,44 @@ export default function RPHGeneratedTableView({
               </td>
             </tr>
 
-            {/* Baris 10: Pengisian Kurikulum / Elemen Pedagogi & EMK */}
+            {/* Baris 9: Pengisian Kurikulum / Elemen Pedagogi & EMK (4 Kolum Horizontal Penuh) */}
             <tr>
               <th className="bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase align-top">
                 Pengisian Kurikulum &amp; Pedagogi
               </th>
-              <td colSpan={3} className="border border-slate-400 p-2">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[10px]">
+              <td colSpan={5} className="border border-slate-400 p-2">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-[9.5px]">
                   <div>
-                    <span className="font-bold text-slate-800">Bahan Bantu Mengajar (BBM):</span>
+                    <span className="font-bold text-slate-800 block mb-0.5">Bahan Bantu Mengajar (BBM):</span>
                     <p className="text-slate-600">{(rph.pedagogi?.bbm || []).join(', ') || '-'}</p>
                   </div>
                   <div>
-                    <span className="font-bold text-slate-800">Elemen Merentas Kurikulum (EMK) &amp; Nilai:</span>
+                    <span className="font-bold text-slate-800 block mb-0.5">Elemen Merentas Kurikulum &amp; Nilai:</span>
                     <p className="text-slate-600">
                       {(rph.pedagogi?.emk || []).join(', ')} {(rph.pedagogi?.nilai_murni || []).length ? `• ${rph.pedagogi?.nilai_murni?.join(', ')}` : ''}
                     </p>
                   </div>
                   <div>
-                    <span className="font-bold text-slate-800">Strategi &amp; PAK-21:</span>
+                    <span className="font-bold text-slate-800 block mb-0.5">Strategi &amp; PAK-21:</span>
                     <p className="text-slate-600">
                       {(rph.pedagogi?.alat_pemikiran_pak21 || []).join(', ')} • {(rph.pedagogi?.strategi || []).join(', ')}
                     </p>
                   </div>
                   <div>
-                    <span className="font-bold text-slate-800">Pentaksiran Bilik Darjah (PBD):</span>
+                    <span className="font-bold text-slate-800 block mb-0.5">Pentaksiran Bilik Darjah (PBD):</span>
                     <p className="text-slate-600">{(rph.pedagogi?.pentaksiran || []).join(', ') || '-'}</p>
                   </div>
                 </div>
               </td>
             </tr>
 
-            {/* Baris 11: Refleksi & Impak PdPc */}
+            {/* Baris 10: Refleksi & Impak PdPc */}
             <tr>
               <th className="bg-slate-100 border border-slate-400 p-2 text-left font-bold text-slate-800 uppercase align-top">
                 Refleksi &amp; Penilaian Impak
               </th>
               <td
-                colSpan={3}
+                colSpan={5}
                 className={`border border-slate-400 p-2.5 ${
                   !isPdPExecuted ? 'bg-rose-50 text-rose-900' : 'bg-emerald-50/50 text-emerald-950'
                 }`}
@@ -375,16 +371,16 @@ export default function RPHGeneratedTableView({
               </td>
             </tr>
 
-            {/* Baris 12: Ruang Pengesahan Pentadbir */}
+            {/* Baris 11: Ruang Pengesahan Pentadbir */}
             <tr>
-              <td colSpan={2} className="border border-slate-400 p-2.5 bg-slate-50 text-[10px]">
+              <td colSpan={3} className="border border-slate-400 p-2.5 bg-slate-50 text-[10px]">
                 <div className="text-slate-500 font-bold uppercase text-[9px]">Disediakan Oleh:</div>
                 <div className="font-extrabold text-slate-900 mt-0.5">{teacherName}</div>
                 <div className="text-slate-500 text-[9px] mt-0.5">
                   Guru Mata Pelajaran &bull; Tarikh: {rph.tarikh || new Date().toISOString().split('T')[0]}
                 </div>
               </td>
-              <td colSpan={2} className="border border-slate-400 p-2.5 bg-slate-50 text-[10px] text-right">
+              <td colSpan={3} className="border border-slate-400 p-2.5 bg-slate-50 text-[10px] text-right">
                 <div className="text-slate-500 font-bold uppercase text-[9px]">Disemak &amp; Disahkan Oleh:</div>
                 <div className="font-extrabold text-slate-900 mt-0.5">Pengetua / PK Pentadbiran SMA Al-Hasanah</div>
                 <div className="text-emerald-700 font-bold text-[9px] mt-0.5">

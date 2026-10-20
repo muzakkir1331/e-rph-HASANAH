@@ -25,7 +25,8 @@ export function generateSingleRPHCardHtml(
   teacherName: string,
   teacherEmail: string,
   slotIndex: number = 1,
-  totalSlots: number = 1
+  totalSlots: number = 1,
+  schoolName: string = 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
 ): string {
   const isRTL = rph.arah_teks === 'rtl' || (rph.kod_bahasa === 'ar');
   const isPdPExecuted = rph.refleksi?.pdp_dijalankan !== false;
@@ -38,20 +39,20 @@ export function generateSingleRPHCardHtml(
       <table style="width: 100%; border: none; border-collapse: collapse; margin: 0 auto; background: transparent;">
         <tr>
           <td style="width: 55px; text-align: center; vertical-align: middle; border: none; background: transparent; padding: 0;">
-            <img src="${LOGO_AL_HASANAH_BASE64}" alt="Logo" style="width: 50px; height: 50px; object-fit: contain; display: block; margin: 0 auto;" />
+            <img src="${LOGO_AL_HASANAH_BASE64}" alt="Logo" style="width: 46px; height: 46px; object-fit: contain; display: block; margin: 0 auto;" />
           </td>
           <td style="text-align: center; vertical-align: middle; border: none; background: transparent; padding: 0 8px;">
-            <div style="font-size: 9px; font-weight: bold; color: #475569; letter-spacing: 0.5px; text-transform: uppercase;">
-              KEMENTERIAN PENDIDIKAN MALAYSIA &bull; JABATAN AGAMA ISLAM PAHANG
+            <div style="font-size: 9.5px; font-weight: bold; color: #475569; letter-spacing: 0.5px; text-transform: uppercase;">
+              KEMENTERIAN PENDIDIKAN MALAYSIA
             </div>
             <div style="font-size: 13px; font-weight: 800; color: #065f46; margin: 1px 0; text-transform: uppercase;">
-              SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)
+              ${schoolName}
             </div>
-            <div style="font-size: 10.5px; font-weight: bold; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px;">
-              RANCANGAN PENGAJARAN HARIAN (e-RPH PINTAR SESI 2027)
+            <div style="font-size: 10px; font-weight: bold; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px;">
+              RANCANGAN PENGAJARAN HARIAN (e-RPH SESI 2027)
             </div>
           </td>
-          <td style="width: 60px; text-align: right; vertical-align: middle; border: none; background: transparent; padding: 0; font-size: 9.5px; color: #475569; font-weight: bold;">
+          <td style="width: 65px; text-align: right; vertical-align: middle; border: none; background: transparent; padding: 0; font-size: 9px; color: #475569; font-weight: bold;">
             <span style="display: inline-block; padding: 2px 6px; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px;">
               SLOT ${slotIndex}/${totalSlots}
             </span>
@@ -60,76 +61,72 @@ export function generateSingleRPHCardHtml(
       </table>
     </div>
 
-    <!-- Master Table e-RPH Siap Dijana Mengikut Format Table Rasmi KPM -->
+    <!-- Master Table e-RPH Siap Dijana Mengikut Format Table Rasmi KPM (A4 Landscape) -->
     <table class="rph-master-table">
       <tbody>
-        <!-- Baris 1: Minggu, Hari & Tarikh -->
+        <!-- Baris 1: Minggu Persekolahan, Hari & Tarikh, Masa PdPc -->
         <tr>
-          <th class="rph-header-label">Minggu / Sesi</th>
-          <td style="width: 30%;">Minggu ${rph.minggu_ke || 1} &bull; Sesi 2027</td>
-          <th class="rph-header-label">Hari &amp; Tarikh</th>
-          <td style="width: 30%;"><strong>${rph.hari || '-'}</strong> (${rph.tarikh || '-'})</td>
+          <th class="rph-header-label" style="width: 13%;">Minggu / Sesi</th>
+          <td style="width: 20%;">Minggu ${rph.minggu_ke || 1} &bull; Sesi 2027</td>
+          <th class="rph-header-label" style="width: 13%;">Hari &amp; Tarikh</th>
+          <td style="width: 21%;"><strong>${rph.hari || '-'}</strong> (${rph.tarikh || '-'})</td>
+          <th class="rph-header-label" style="width: 12%;">Masa PdPc</th>
+          <td style="width: 21%; color: #065f46; font-weight: bold;">${rph.masa_mula || '-'} &ndash; ${rph.masa_tamat || '-'}</td>
         </tr>
 
-        <!-- Baris 2: Masa, Tingkatan & Kelas -->
+        <!-- Baris 2: Tingkatan & Kelas, Mata Pelajaran, Guru Pengajar -->
         <tr>
-          <th class="rph-header-label">Masa PdPc</th>
-          <td style="color: #065f46; font-weight: bold;">${rph.masa_mula || '-'} &ndash; ${rph.masa_tamat || '-'}</td>
           <th class="rph-header-label">Tingkatan / Kelas</th>
           <td>Tingkatan ${rph.tingkatan || '-'} &bull; <strong>${rph.kelas || '-'}</strong></td>
-        </tr>
-
-        <!-- Baris 3: Mata Pelajaran & Guru Pengajar -->
-        <tr>
           <th class="rph-header-label">Mata Pelajaran</th>
-          <td style="font-weight: 800; color: #065f46; font-size: 10.5px;">${rph.subjek || '-'}</td>
+          <td style="font-weight: 800; color: #065f46; font-size: 10px;">${rph.subjek || '-'}</td>
           <th class="rph-header-label">Guru Pengajar</th>
           <td><strong>${teacherName}</strong></td>
         </tr>
 
-        <!-- Baris 4: Tema / Tajuk -->
+        <!-- Baris 3: Tema / Tajuk -->
         <tr>
           <th class="rph-header-label">Tema / Tajuk</th>
-          <td colspan="3">${rph.tema || '-'} ${rph.tajuk ? '&bull; ' + rph.tajuk : ''}</td>
+          <td colspan="5">${rph.tema || '-'} ${rph.tajuk ? '&bull; ' + rph.tajuk : ''}</td>
         </tr>
 
-        <!-- Baris 5: Standard Kandungan (SK) -->
+        <!-- Baris 4: Standard Kandungan (SK) -->
         <tr>
           <th class="rph-header-label">Standard Kandungan (SK)</th>
-          <td colspan="3">${rph.sk || '-'}</td>
+          <td colspan="5">${rph.sk || '-'}</td>
         </tr>
 
-        <!-- Baris 6: Standard Pembelajaran (SP) -->
+        <!-- Baris 5: Standard Pembelajaran (SP) -->
         <tr>
           <th class="rph-header-label">Standard Pembelajaran (SP)</th>
-          <td colspan="3">${rph.sp || '-'}</td>
+          <td colspan="5">${rph.sp || '-'}</td>
         </tr>
 
-        <!-- Baris 7: Objektif Pembelajaran -->
+        <!-- Baris 6: Objektif Pembelajaran -->
         <tr>
           <th class="rph-header-label">Objektif Pembelajaran</th>
-          <td colspan="3" style="background-color: #f8fafc; font-weight: 500;">${rph.objektif_pembelajaran || '-'}</td>
+          <td colspan="5" style="background-color: #f8fafc; font-weight: 500;">${rph.objektif_pembelajaran || '-'}</td>
         </tr>
 
-        <!-- Baris 8: Kriteria Kejayaan -->
+        <!-- Baris 7: Kriteria Kejayaan -->
         <tr>
           <th class="rph-header-label">Kriteria Kejayaan</th>
-          <td colspan="3">${rph.kriteria_kejayaan || '-'}</td>
+          <td colspan="5">${rph.kriteria_kejayaan || '-'}</td>
         </tr>
 
-        <!-- Baris 9: Rangka Aktiviti Pengajaran & Pembelajaran (PdPc) -->
+        <!-- Baris 8: Rangka Aktiviti Pengajaran & Pembelajaran (PdPc) -->
         <tr>
           <th class="rph-header-label" style="vertical-align: top;">Aktiviti PdPc</th>
-          <td colspan="3" style="padding: 3px 6px;">
+          <td colspan="5" style="padding: 2.5px 6px;">
             <div style="margin-bottom: 2px;">
               <strong style="color: #047857;">Set Induksi (5 min):</strong> ${rph.aktiviti?.set_induksi || '-'}
             </div>
             <div style="margin-bottom: 2px;">
-              <strong style="color: #047857;">Aktiviti Utama (Langkah Pembelajaran):</strong>
+              <strong style="color: #047857;">Aktiviti Utama:</strong>
               <div style="padding-left: 6px;">
                 ${rph.aktiviti?.langkah_1 ? `<div>&bull; <strong>Langkah 1:</strong> ${rph.aktiviti.langkah_1}</div>` : ''}
-                ${rph.aktiviti?.langkah_2 ? `<div style="margin-top: 1.5px;">&bull; <strong>Langkah 2:</strong> ${rph.aktiviti.langkah_2}</div>` : ''}
-                ${rph.aktiviti?.langkah_3 ? `<div style="margin-top: 1.5px;">&bull; <strong>Langkah 3:</strong> ${rph.aktiviti.langkah_3}</div>` : ''}
+                ${rph.aktiviti?.langkah_2 ? `<div style="margin-top: 1px;">&bull; <strong>Langkah 2:</strong> ${rph.aktiviti.langkah_2}</div>` : ''}
+                ${rph.aktiviti?.langkah_3 ? `<div style="margin-top: 1px;">&bull; <strong>Langkah 3:</strong> ${rph.aktiviti.langkah_3}</div>` : ''}
               </div>
             </div>
             <div>
@@ -138,49 +135,47 @@ export function generateSingleRPHCardHtml(
           </td>
         </tr>
 
-        <!-- Baris 10: Pengisian Kurikulum, Pedagogi & BBM -->
+        <!-- Baris 9: Pengisian Kurikulum, Pedagogi & BBM (Susunan Penuh 4 Kolum Landscape) -->
         <tr>
           <th class="rph-header-label" style="vertical-align: top;">Pengisian Kurikulum</th>
-          <td colspan="3" style="padding: 2.5px 6px; font-size: 9.5px;">
-            <table style="width: 100%; border: none; border-collapse: collapse; font-size: 9.5px;">
+          <td colspan="5" style="padding: 2.5px 6px; font-size: 9px;">
+            <table style="width: 100%; border: none; border-collapse: collapse; font-size: 9px;">
               <tr>
-                <td style="width: 50%; border: none; padding: 1px 0;">
-                  <strong>BBM:</strong> ${(rph.pedagogi?.bbm || []).join(', ') || '-'}
+                <td style="width: 25%; border: none; padding: 1px 4px 1px 0; vertical-align: top;">
+                  <strong style="color: #1e293b;">BBM:</strong> ${(rph.pedagogi?.bbm || []).join(', ') || '-'}
                 </td>
-                <td style="width: 50%; border: none; padding: 1px 0;">
-                  <strong>EMK / Nilai:</strong> ${(rph.pedagogi?.emk || []).join(', ')} ${(rph.pedagogi?.nilai_murni || []).length ? '&bull; ' + rph.pedagogi?.nilai_murni?.join(', ') : ''}
+                <td style="width: 25%; border: none; padding: 1px 4px; vertical-align: top;">
+                  <strong style="color: #1e293b;">EMK &amp; Nilai:</strong> ${(rph.pedagogi?.emk || []).join(', ')} ${(rph.pedagogi?.nilai_murni || []).length ? '&bull; ' + rph.pedagogi?.nilai_murni?.join(', ') : ''}
                 </td>
-              </tr>
-              <tr>
-                <td style="border: none; padding: 1px 0;">
-                  <strong>Strategi / PAK-21:</strong> ${(rph.pedagogi?.alat_pemikiran_pak21 || []).join(', ')} &bull; ${(rph.pedagogi?.strategi || []).join(', ')}
+                <td style="width: 25%; border: none; padding: 1px 4px; vertical-align: top;">
+                  <strong style="color: #1e293b;">Strategi / PAK-21:</strong> ${(rph.pedagogi?.alat_pemikiran_pak21 || []).join(', ')} &bull; ${(rph.pedagogi?.strategi || []).join(', ')}
                 </td>
-                <td style="border: none; padding: 1px 0;">
-                  <strong>Pentaksiran Bilik Darjah (PBD):</strong> ${(rph.pedagogi?.pentaksiran || []).join(', ') || '-'}
+                <td style="width: 25%; border: none; padding: 1px 0 1px 4px; vertical-align: top;">
+                  <strong style="color: #1e293b;">Pentaksiran (PBD):</strong> ${(rph.pedagogi?.pentaksiran || []).join(', ') || '-'}
                 </td>
               </tr>
             </table>
           </td>
         </tr>
 
-        <!-- Baris 11: Refleksi & Penilaian Impak -->
+        <!-- Baris 10: Refleksi & Penilaian Impak -->
         <tr>
           <th class="rph-header-label" style="vertical-align: top;">Refleksi &amp; Impak</th>
-          <td colspan="3" style="${!isPdPExecuted ? 'background-color: #fff1f2; color: #9f1239;' : 'background-color: #f0fdf4; color: #166534;'} padding: 3px 6px;">
+          <td colspan="5" style="${!isPdPExecuted ? 'background-color: #fff1f2; color: #9f1239;' : 'background-color: #f0fdf4; color: #166534;'} padding: 2.5px 6px;">
             ${!isPdPExecuted ? `
-              <div style="font-weight: bold; font-size: 10px;">
+              <div style="font-weight: bold; font-size: 9.5px;">
                 &#9888; PdP TIDAK DIJALANKAN ATAS SEBAB: ${rph.refleksi?.sebab_tidak_dijalankan || 'Program Rasmi Sekolah / Peperiksaan'}
               </div>
               ${rph.refleksi?.bawa_ke_kelas_seterusnya ? `
-                <div style="font-size: 9.5px; margin-top: 1.5px; color: #be123c; font-weight: 600;">
+                <div style="font-size: 9px; margin-top: 1px; color: #be123c; font-weight: 600;">
                   &rarr; Tindakan Susulan: Perancangan e-RPH ini dibawa ke kelas dan sesi PdPc seterusnya.
                 </div>
               ` : ''}
             ` : `
-              <div style="font-weight: 600; font-size: 10px; line-height: 1.3;">
+              <div style="font-weight: 600; font-size: 9.5px; line-height: 1.3;">
                 ${rph.refleksi?.objektif_disalin || rph.objektif_pembelajaran || 'Murid berjaya menguasai standard pembelajaran yang ditetapkan.'}
               </div>
-              <div style="font-size: 9px; color: #334155; margin-top: 2px; padding-top: 2px; border-top: 1px solid #bbf7d0;">
+              <div style="font-size: 8.5px; color: #334155; margin-top: 1.5px; padding-top: 1.5px; border-top: 1px solid #bbf7d0;">
                 Kehadiran: <strong>${rph.refleksi?.bilangan_murid_hadir ?? 0} orang</strong> |
                 Mencapai Objektif: <strong>${rph.refleksi?.bilangan_murid_mencapai ?? 0}/${rph.refleksi?.bilangan_murid_hadir ?? 0} murid</strong> (${rph.refleksi?.peratus_mencapai ?? 0}%)
                 ${rph.refleksi?.intervensi_diperlukan ? `<span style="color: #b91c1c; font-weight: bold; margin-left: 4px;">[Intervensi: ${rph.refleksi?.pilihan_intervensi}]</span>` : ''}
@@ -190,17 +185,17 @@ export function generateSingleRPHCardHtml(
           </td>
         </tr>
 
-        <!-- Baris 12: Pengesahan & Semakan Pentadbir -->
+        <!-- Baris 11: Pengesahan & Semakan Pentadbir -->
         <tr>
-          <td colspan="2" style="background-color: #f8fafc; font-size: 9px; padding: 3px 6px;">
-            <div style="color: #64748b; font-weight: bold; font-size: 8.5px; text-transform: uppercase;">Disediakan Oleh:</div>
+          <td colspan="3" style="background-color: #f8fafc; font-size: 8.5px; padding: 2.5px 6px;">
+            <div style="color: #64748b; font-weight: bold; font-size: 8px; text-transform: uppercase;">Disediakan Oleh:</div>
             <div style="font-weight: 800; color: #0f172a;">${teacherName}</div>
-            <div style="color: #64748b; font-size: 8.5px;">Guru Mata Pelajaran &bull; Tarikh: ${rph.tarikh || new Date().toISOString().split('T')[0]}</div>
+            <div style="color: #64748b; font-size: 8px;">Guru Mata Pelajaran &bull; Tarikh: ${rph.tarikh || new Date().toISOString().split('T')[0]}</div>
           </td>
-          <td colspan="2" style="background-color: #f8fafc; font-size: 9px; padding: 3px 6px; text-align: right;">
-            <div style="color: #64748b; font-weight: bold; font-size: 8.5px; text-transform: uppercase;">Disemak &amp; Disahkan Oleh:</div>
+          <td colspan="3" style="background-color: #f8fafc; font-size: 8.5px; padding: 2.5px 6px; text-align: right;">
+            <div style="color: #64748b; font-weight: bold; font-size: 8px; text-transform: uppercase;">Disemak &amp; Disahkan Oleh:</div>
             <div style="font-weight: 800; color: #0f172a;">Pengetua / PK Pentadbiran SMA Al-Hasanah</div>
-            <div style="color: #059669; font-weight: bold; font-size: 8.5px;">PENGESAHAN DIGITAL e-RPH KPM (ID DELIMA)</div>
+            <div style="color: #059669; font-weight: bold; font-size: 8px;">PENGESAHAN DIGITAL e-RPH KPM (ID DELIMA)</div>
           </td>
         </tr>
       </tbody>
@@ -212,7 +207,7 @@ export function generateSingleRPHCardHtml(
 
 /**
  * Menghasilkan Dokumen e-RPH Seminggu Penuh (Isnin hingga Jumaat)
- * Memastikan SETIAP SUBJEK mendapat TEPAT SATU MUKA SURAT A4 POTRAIT!
+ * Memastikan SETIAP SUBJEK mendapat TEPAT SATU MUKA SURAT A4 LANDSCAPE!
  */
 export function generateWeeklyRPHHtml({
   rphList,
@@ -231,7 +226,7 @@ export function generateWeeklyRPHHtml({
   const title = `RPH CG ${teacherName.toUpperCase()} MINGGU ${formattedWeek} (ISNIN-JUMAAT)`;
 
   const cardsHtml = rphList
-    .map((rph, idx) => generateSingleRPHCardHtml(rph, teacherName, teacherEmail, idx + 1, rphList.length))
+    .map((rph, idx) => generateSingleRPHCardHtml(rph, teacherName, teacherEmail, idx + 1, rphList.length, schoolName))
     .join('\n<!-- PAGE BREAK -->\n');
 
   return `<!DOCTYPE html>
@@ -241,8 +236,8 @@ export function generateWeeklyRPHHtml({
   <title>${title}</title>
   <style>
     @page {
-      size: A4 portrait;
-      margin: 6mm 8mm;
+      size: A4 landscape;
+      margin: 5mm 6mm;
     }
     *, *:before, *:after {
       box-sizing: border-box;
@@ -257,12 +252,12 @@ export function generateWeeklyRPHHtml({
     }
     .a4-page-card {
       width: 100%;
-      max-width: 194mm;
-      height: 275mm;
-      max-height: 275mm;
+      max-width: 285mm;
+      height: 198mm;
+      max-height: 198mm;
       margin: 0 auto 16px auto;
       background: #ffffff;
-      padding: 8mm 10mm;
+      padding: 5mm 7mm;
       border: 1px solid #cbd5e1;
       border-radius: 4px;
       page-break-after: always;
@@ -271,8 +266,13 @@ export function generateWeeklyRPHHtml({
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      box-sizing: border-box;
     }
     @media print {
+      @page {
+        size: A4 landscape;
+        margin: 5mm 6mm;
+      }
       body {
         background: white !important;
       }
@@ -283,35 +283,42 @@ export function generateWeeklyRPHHtml({
         box-shadow: none !important;
         page-break-after: always !important;
         page-break-inside: avoid !important;
-        height: 275mm !important;
-        max-height: 275mm !important;
+        width: 285mm !important;
+        max-width: 285mm !important;
+        height: 198mm !important;
+        max-height: 198mm !important;
+        padding: 4mm 6mm !important;
+        overflow: hidden !important;
       }
     }
     .header-box {
       border-bottom: 2px solid #059669;
-      padding-bottom: 5px;
-      margin-bottom: 5px;
+      padding-bottom: 3px;
+      margin-bottom: 3px;
     }
     .rph-master-table {
       width: 100%;
       border-collapse: collapse;
       border: 1.5px solid #1e293b;
-      margin-top: 2px;
-      font-size: 10px;
-      line-height: 1.32;
+      margin-top: 1px;
+      font-size: 9.5px;
+      line-height: 1.28;
     }
     .rph-master-table th, .rph-master-table td {
       border: 1px solid #475569;
-      padding: 3.5px 6px;
+      padding: 2.5px 5px;
       vertical-align: top;
     }
     .rph-header-label {
       background-color: #f1f5f9;
       color: #0f172a;
       font-weight: bold;
-      width: 20%;
       text-transform: uppercase;
-      font-size: 9.5px;
+      font-size: 9px;
+      text-align: left;
+    }
+    [dir="rtl"] .rph-header-label {
+      text-align: right;
     }
   </style>
 </head>

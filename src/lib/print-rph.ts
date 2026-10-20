@@ -56,7 +56,7 @@ export function calculateWeekDatesFromMonday(mondayIsoDate: string): Record<stri
 }
 
 /**
- * Mencetak atau Menyimpan e-RPH sebagai PDF berkualiti tinggi standard A4 Portrait
+ * Mencetak atau Menyimpan e-RPH sebagai PDF berkualiti tinggi standard A4 Landscape
  * Mengasingkan paparan secara mutlak supaya HANYA halaman RPH sahaja yang dicetak,
  * tanpa 5 muka surat borang/input/navbar yang tidak berkaitan.
  */

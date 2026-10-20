@@ -65,7 +65,7 @@ export default function A4PortraitPreviewModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/80 backdrop-blur-sm animate-fade-in no-print">
-      <div className="bg-slate-100 rounded-3xl max-w-5xl w-full max-h-[95vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
+      <div className="bg-slate-100 rounded-3xl max-w-7xl w-full max-h-[95vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
         
         {/* Modal Header */}
         <div className="px-6 py-4 bg-white border-b border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shrink-0">
@@ -75,10 +75,10 @@ export default function A4PortraitPreviewModal({
             </div>
             <div>
               <h3 className="font-extrabold text-sm sm:text-base text-slate-900">
-                Pratonton Layout RPH A4 Potrait (Satu Muka Surat Setiap Subjek)
+                Pratonton Layout RPH A4 Landscape (Satu Muka Surat Setiap Subjek)
               </h3>
               <p className="text-xs text-slate-500">
-                Mematuhi Piawaian Cetakan A4 Potrait KPM, TS25 &amp; JPN Pahang &bull; Minggu {weekNo}
+                Mematuhi Piawaian Cetakan A4 Landscape KPM &amp; TS25 &bull; Minggu {weekNo}
               </p>
             </div>
           </div>
@@ -123,7 +123,7 @@ export default function A4PortraitPreviewModal({
               className="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow-sm"
             >
               <Printer className="w-4 h-4" />
-              <span>Cetak A4</span>
+              <span>Cetak A4 Landscape</span>
             </button>
 
             <button
@@ -182,7 +182,7 @@ export default function A4PortraitPreviewModal({
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 flex flex-col items-center">
           {viewMode === 'single' ? (
             <div
-              className="w-full max-w-[210mm] bg-white shadow-xl rounded-md p-6 sm:p-8 border border-slate-300"
+              className="w-full max-w-[285mm] bg-white shadow-xl rounded-md p-4 sm:p-6 border border-slate-300 overflow-x-auto"
               dangerouslySetInnerHTML={{
                 __html: generateSingleRPHCardHtml(
                   currentRPH,
@@ -197,10 +197,10 @@ export default function A4PortraitPreviewModal({
             weeklyRphList.map((rph, idx) => (
               <div
                 key={idx}
-                className="w-full max-w-[210mm] bg-white shadow-xl rounded-md p-6 sm:p-8 border border-slate-300 relative"
+                className="w-full max-w-[285mm] bg-white shadow-xl rounded-md p-4 sm:p-6 border border-slate-300 relative overflow-x-auto"
               >
                 <div className="absolute top-2 right-4 text-[10px] font-bold text-slate-400 uppercase">
-                  MUKA SURAT {idx + 1} DARI {totalPages}
+                  MUKA SURAT {idx + 1} DARI {totalPages} (A4 LANDSCAPE)
                 </div>
                 <div
                   dangerouslySetInnerHTML={{

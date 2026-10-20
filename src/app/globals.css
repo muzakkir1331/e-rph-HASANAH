@@ -51,7 +51,7 @@ body {
   background: #94a3b8;
 }
 
-/* Print Friendly Styles for KPM e-RPH Export - Strictly 1 Page A4 Portrait per Subject */
+/* Print Friendly Styles for KPM e-RPH Export - Strictly 1 Page A4 Landscape per Subject */
 .print-only {
   display: none;
 }
@@ -62,14 +62,14 @@ body {
   border-collapse: collapse;
   border: 1.5px solid #1e293b;
   font-size: 10px;
-  line-height: 1.35;
+  line-height: 1.32;
   background-color: #ffffff;
 }
 
 .rph-master-table th,
 .rph-master-table td {
   border: 1px solid #475569;
-  padding: 3px 6px;
+  padding: 2.5px 6px;
   vertical-align: middle;
 }
 
@@ -80,7 +80,6 @@ body {
   text-transform: uppercase;
   font-size: 9px;
   letter-spacing: 0.02em;
-  width: 18%;
   text-align: left;
 }
 
@@ -90,8 +89,8 @@ body {
 
 @media print {
   @page {
-    size: A4 portrait;
-    margin: 6mm 8mm;
+    size: A4 landscape;
+    margin: 5mm 6mm;
   }
   html, body {
     background: white !important;
@@ -118,29 +117,35 @@ body {
     padding: 0 !important;
   }
 
+  .a4-landscape-page,
   .a4-portrait-page {
     width: 100% !important;
-    max-width: 194mm !important;
-    height: 275mm !important;
-    max-height: 275mm !important;
+    max-width: 285mm !important;
+    height: 198mm !important;
+    max-height: 198mm !important;
     margin: 0 auto !important;
-    padding: 6mm 8mm !important;
+    padding: 5mm 7mm !important;
     border: none !important;
     box-shadow: none !important;
     page-break-after: always !important;
     page-break-inside: avoid !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
-    font-size: 10px !important;
-    line-height: 1.32 !important;
+    font-size: 9.5px !important;
+    line-height: 1.28 !important;
   }
 
   .a4-page-card {
     border: none !important;
     box-shadow: none !important;
     margin: 0 !important;
-    padding: 0 !important;
-    height: 100% !important;
+    padding: 4mm 6mm !important;
+    width: 100% !important;
+    max-width: 285mm !important;
+    height: 198mm !important;
+    max-height: 198mm !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
 
   .print-page {

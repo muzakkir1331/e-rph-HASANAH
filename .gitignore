@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# nested git clones / temporary folders
+/E-RPH/
+/HASANAH-E-RPH/
