@@ -184,7 +184,11 @@ export default function DashboardPage() {
                 </button>
               </div>
             ) : (
-              todayClasses.map((item, idx) => (
+              todayClasses.map((item, idx) => {
+              const globalIndex = timetable.findIndex(s => s === item);
+              const targetSlotIdx = globalIndex !== -1 ? globalIndex : idx;
+
+              return (
                 <div
                   key={idx}
                   className="p-4 rounded-2xl border border-slate-200/90 bg-slate-50 hover:bg-emerald-50/50 hover:border-emerald-300 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group"
@@ -207,14 +211,15 @@ export default function DashboardPage() {
                   </div>
 
                   <Link
-                    href="/rph/baharu"
+                    href={`/rph/baharu?slot=${targetSlotIdx}&hari=ISNIN&subjek=${encodeURIComponent(item.subjek)}`}
                     className="px-4 py-2 bg-white border border-slate-300 group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-600 text-slate-700 rounded-xl text-xs font-bold shadow-xs flex items-center justify-center space-x-1.5 transition-all"
                   >
                     <span>Buka e-RPH</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
-              ))
+              );
+            })
             )}
           </div>
         </div>

@@ -129,12 +129,17 @@ export default function JadualPage() {
                 )}
               </div>
 
-              <Link
-                href="/rph/baharu"
-                className="w-full py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-xl text-xs font-bold text-center block transition-colors"
-              >
-                Bina e-RPH {day}
-              </Link>
+              {(() => {
+                const firstSlotIdx = timetable.findIndex(s => s.hari === day);
+                return (
+                  <Link
+                    href={`/rph/baharu?hari=${day}${firstSlotIdx !== -1 ? `&slot=${firstSlotIdx}` : ''}`}
+                    className="w-full py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-xl text-xs font-bold text-center block transition-colors"
+                  >
+                    Bina e-RPH {day}
+                  </Link>
+                );
+              })()}
             </div>
           );
         })}

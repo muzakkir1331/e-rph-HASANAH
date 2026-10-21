@@ -328,6 +328,8 @@ export function convertToRPTItem(record: RPTDatabaseRecord): RPTItem {
   return {
     minggu: record.minggu_ke || 1,
     tarikh: record.tarikh_teks,
+    tema: record.tema,
+    tajuk: record.label_minggu || `Minggu ${record.minggu_ke || 1}`,
     sk: record.sk,
     sp: record.sp,
     cadangan_aktiviti: record.catatan || 'Aktiviti pembelajaran berasaskan standard pembelajaran DSKP dan kemahiran PAK-21.',

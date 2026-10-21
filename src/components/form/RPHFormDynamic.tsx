@@ -83,10 +83,12 @@ export default function RPHFormDynamic() {
   const synchronizedWeeks = getSynchronizedWeeks();
   const teachingWeeks = synchronizedWeeks.filter(w => !w.adalah_cuti && w.minggu_ke !== null);
 
-  // Ambil parameter carian URL jika ada (?minggu=5&subjek=Sains&tingkatan=1)
+  // Ambil parameter carian URL jika ada (?minggu=5&subjek=Sains&tingkatan=1&slot=0&hari=ISNIN)
   const paramWeek = searchParams ? searchParams.get('minggu') : null;
   const paramSubject = searchParams ? searchParams.get('subjek') : null;
   const paramForm = searchParams ? searchParams.get('tingkatan') : null;
+  const paramSlot = searchParams ? searchParams.get('slot') : null;
+  const paramDay = searchParams ? searchParams.get('hari') : null;
 
   // Kira minggu awal
   const initialWeekNum = paramWeek ? parseInt(paramWeek, 10) : 1;
@@ -96,7 +98,10 @@ export default function RPHFormDynamic() {
   const currentWeekInfo = synchronizedWeeks.find(w => w.minggu_ke === currentWeek) || synchronizedWeeks[0];
 
   // Pilihan Jadual Slot (Mod Jadual)
-  const [selectedSlotIndex, setSelectedSlotIndex] = useState<number>(0);
+  const initialSlotNum = paramSlot ? parseInt(paramSlot, 10) : 0;
+  const [selectedSlotIndex, setSelectedSlotIndex] = useState<number>(
+    !isNaN(initialSlotNum) && initialSlotNum >= 0 ? initialSlotNum : 0
+  );
   const currentSlot = timetable[selectedSlotIndex] || timetable[0] || {
     subjek: 'اللغة العربية المعاصرة',
     tingkatan: '3',
@@ -113,6 +118,13 @@ export default function RPHFormDynamic() {
   const [customSessionType, setCustomSessionType] = useState<string>('Kelas Biasa');
   const [customDay, setCustomDay] = useState<string>('ISNIN');
   const [isManualSubjectInput, setIsManualSubjectInput] = useState<boolean>(false);
+
+  // Status Auto-save Real-time & Sinkronisasi Jadual
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
+  const isInitialMount = React.useRef<boolean>(true);
+  const hasInitializedRef = React.useRef<boolean>(false);
+  const prevTimetableSignature = React.useRef<string>('');
+  const saveTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   // State Medan Utama Borang
   const [subject, setSubject] = useState<string>(currentSlot.subjek);
@@ -390,6 +402,7 @@ export default function RPHFormDynamic() {
     const activeLang = explicitLang || kodBahasa;
 
     if (item.tema) setTema(item.tema);
+    if (item.tajuk) setTajuk(item.tajuk);
     if (item.sk) setSK(item.sk);
     if (item.sp) setSP(item.sp);
     if (item.cadangan_aktiviti) setRptSuggestion(item.cadangan_aktiviti);
@@ -469,53 +482,41 @@ export default function RPHFormDynamic() {
     }
   };
 
-  // Apabila slot jadual ditukar (Mod Jadual) - PENGASINGAN KETAT MENGELAKKAN PERTINDIHAN
-  const handleSlotChange = (newIndex: number) => {
-    // 1. Simpan auto-cache keadaan slot lama supaya perubahan guru tidak hilang
-    if (activeTab === 'jadual') {
-      const currentSlotKey = `week_${currentWeek}_slot_${selectedSlotIndex}`;
-      const prevSnapshot = getCurrentSnapshot();
-      const storageKey = `erph_saved_records_${user?.uid || teacherEmail || 'alhasanah'}`;
-      const updatedMap = {
-        ...savedRecordsMap,
-        [currentSlotKey]: prevSnapshot
-      };
-      setSavedRecordsMap(updatedMap);
-      try {
-        localStorage.setItem(storageKey, JSON.stringify(updatedMap));
-      } catch (e) {}
-    }
-
-    // 2. Berpindah ke slot baharu
-    setSelectedSlotIndex(newIndex);
-    const targetSlot = timetable[newIndex];
+  // Fungsi menyelaraskan borang dengan slot jadual (Menjamin subjek sentiasa mengikut penetapan jadual waktu guru)
+  const syncWithSlot = (
+    newIndex: number,
+    tt: typeof timetable,
+    forceReset: boolean = false,
+    customRecordsMap?: Record<string, RPHRecord>
+  ) => {
+    const slots = tt && tt.length > 0 ? tt : timetable;
+    if (!slots || slots.length === 0) return;
+    const targetSlot = slots[newIndex] || slots[0];
     if (!targetSlot) return;
 
     const targetDay = (targetSlot.hari || '').toUpperCase();
     const autoDayDate = weekDates[targetDay] || mondayDate || date;
-
     const targetSlotKey = `week_${currentWeek}_slot_${newIndex}`;
-    const savedForTarget = savedRecordsMap[targetSlotKey];
-
-    // Semak bahasa subjek sasaran
+    const mapToUse = customRecordsMap || savedRecordsMap;
+    const savedForTarget = mapToUse[targetSlotKey];
     const targetLocale = getSubjectLocale(targetSlot.subjek);
     const targetLang = targetLocale.kod_bahasa;
 
-    if (savedForTarget) {
-      // JIKA SLOT INI PERNAH DISIMPAN GURU:
-      // Muatkan rekod tepat miliknya - MENGELAKKAN PERTINDIHAN
+    // Pastikan jika penetapan jadual waktu guru mempunyai subjek baharu, subjek dari jadual diutamakan!
+    if (savedForTarget && savedForTarget.subjek === targetSlot.subjek && !forceReset) {
       applyRecordToForm({
         ...savedForTarget,
+        subjek: targetSlot.subjek,
+        tingkatan: targetSlot.tingkatan,
+        kelas: targetSlot.kelas,
+        masa_mula: targetSlot.masa_mula,
+        masa_tamat: targetSlot.masa_tamat,
         tarikh: autoDayDate
       });
       setDate(autoDayDate);
       setIsCarryForwardActive(!!savedForTarget.adalah_carry_forward);
-      setClipboardToast(`Memuatkan draf tersimpan: ${savedForTarget.subjek} (${savedForTarget.kelas})`);
-      setTimeout(() => setClipboardToast(null), 3000);
     } else {
-      // JIKA SLOT INI BELUM PERNAH DIUBAH:
-      // Berikan data kurikulum bersih berasaskan RPT / DSKP subjek sasaran
-      // Pastikan aktiviti, pedagogi & refleksi DIBERSIHKAN (TIDAK MENYALIN SUBJEK LAMA)
+      // Subjek atau slot bertukar dari penetapan jadual: muatkan kurikulum baharu yang sepadan
       setSubject(targetSlot.subjek);
       setForm(targetSlot.tingkatan);
       setClassName(targetSlot.kelas);
@@ -545,14 +546,36 @@ export default function RPHFormDynamic() {
         }
       }
 
-      // Bersihkan aktiviti mengikut bahasa subjek sasaran (JANGAN TINDIH AKTIVITI LAMA)
       setActivities(getCleanDefaultActivities(targetSlot.subjek, targetLang));
-      // Bersihkan pedagogi
       setPedagogy(getCleanDefaultPedagogy());
-      // Bersihkan refleksi
       setReflection(getCleanDefaultReflection(targetSlot.bilangan_murid, targetLang));
+    }
+  };
 
-      setClipboardToast(`Beralih ke: ${targetSlot.subjek} (${targetSlot.kelas}) • Format bersih disediakan`);
+  // Apabila slot jadual ditukar (Mod Jadual)
+  const handleSlotChange = (newIndex: number) => {
+    // 1. Simpan auto-cache keadaan slot lama supaya perubahan guru tidak hilang
+    if (activeTab === 'jadual') {
+      const currentSlotKey = `week_${currentWeek}_slot_${selectedSlotIndex}`;
+      const prevSnapshot = getCurrentSnapshot();
+      const storageKey = `erph_saved_records_${user?.uid || teacherEmail || 'alhasanah'}`;
+      const updatedMap = {
+        ...savedRecordsMap,
+        [currentSlotKey]: prevSnapshot
+      };
+      setSavedRecordsMap(updatedMap);
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(updatedMap));
+      } catch (e) {}
+    }
+
+    // 2. Berpindah ke slot baharu & selaraskan dengan jadual
+    setSelectedSlotIndex(newIndex);
+    syncWithSlot(newIndex, timetable, false);
+
+    const targetSlot = timetable[newIndex];
+    if (targetSlot) {
+      setClipboardToast(`Beralih ke: ${targetSlot.subjek} (${targetSlot.kelas} • ${targetSlot.hari})`);
       setTimeout(() => setClipboardToast(null), 3000);
     }
   };
@@ -590,7 +613,7 @@ export default function RPHFormDynamic() {
     setPedagogy(getCleanDefaultPedagogy());
     setReflection(getCleanDefaultReflection(30, targetLang));
 
-    setClipboardToast(`Subjek ditukar kepada: ${newSubject} • Data dibersihkan tanpa pertindihan`);
+    setClipboardToast(`Subjek ditukar kepada: ${newSubject} • Data diselaraskan`);
     setTimeout(() => setClipboardToast(null), 3000);
   };
 
@@ -641,64 +664,117 @@ export default function RPHFormDynamic() {
     setIsCarryForwardActive(false);
   };
 
-  // Auto-inisialisasi berdasarkan URL parameter atau slot pertama (Dibersihkan daripada pertindihan)
+  // Dengar perubahan penetapan jadual atau penukaran minggu/parameter untuk memastikan subjek sentiasa terkini dari jadual
   useEffect(() => {
-    const storageKey = `erph_saved_records_${user?.uid || teacherEmail || 'alhasanah'}`;
-    let loadedRecords: Record<string, RPHRecord> = {};
-    try {
-      const saved = localStorage.getItem(storageKey);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed && typeof parsed === 'object') {
-          loadedRecords = parsed;
-          setSavedRecordsMap(parsed);
+    if (activeTab === 'jadual' && timetable && timetable.length > 0) {
+      const currentSignature = JSON.stringify(
+        timetable.map(s => `${s.hari}_${s.slot_ke}_${s.subjek}_${s.kelas}_${s.masa_mula}`)
+      );
+      const isChanged = prevTimetableSignature.current !== '' && prevTimetableSignature.current !== currentSignature;
+      const isFirstLoad = !hasInitializedRef.current;
+
+      if (isChanged || isFirstLoad) {
+        prevTimetableSignature.current = currentSignature;
+        hasInitializedRef.current = true;
+
+        let targetIndex = selectedSlotIndex;
+        if (paramSlot !== null) {
+          const parsed = parseInt(paramSlot, 10);
+          if (!isNaN(parsed) && parsed >= 0 && parsed < timetable.length) {
+            targetIndex = parsed;
+            setSelectedSlotIndex(parsed);
+          }
+        } else if (paramDay !== null) {
+          const idx = timetable.findIndex(s => s.hari?.toUpperCase() === paramDay.toUpperCase());
+          if (idx !== -1) {
+            targetIndex = idx;
+            setSelectedSlotIndex(idx);
+          }
+        } else if (paramSubject !== null) {
+          const idx = timetable.findIndex(s => s.subjek?.toLowerCase().includes(paramSubject.toLowerCase()));
+          if (idx !== -1) {
+            targetIndex = idx;
+            setSelectedSlotIndex(idx);
+          }
         }
-      }
-    } catch {}
 
-    let initialSlotIdx = 0;
-    let initialSubj = currentSlot.subjek;
-    let initialForm = currentSlot.tingkatan;
+        const storageKey = `erph_saved_records_${user?.uid || teacherEmail || 'alhasanah'}`;
+        let loadedRecords: Record<string, RPHRecord> = savedRecordsMap;
+        try {
+          const saved = localStorage.getItem(storageKey);
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            if (parsed && typeof parsed === 'object') {
+              loadedRecords = parsed;
+              setSavedRecordsMap(parsed);
+            }
+          }
+        } catch {}
 
-    if (paramSubject) {
-      const idx = timetable.findIndex(s => s.subjek.toLowerCase().includes(paramSubject.toLowerCase()));
-      if (idx !== -1) {
-        initialSlotIdx = idx;
-        initialSubj = timetable[idx].subjek;
-        initialForm = timetable[idx].tingkatan;
+        syncWithSlot(targetIndex, timetable, isChanged, loadedRecords);
       }
     }
+  }, [timetable, selectedSlotIndex, activeTab, currentWeek, paramSlot, paramDay, paramSubject]);
 
-    const initialSlotKey = `week_${currentWeek}_slot_${initialSlotIdx}`;
-    const savedForInitial = loadedRecords[initialSlotKey];
-    const targetLocale = getSubjectLocale(initialSubj);
-
-    if (savedForInitial) {
-      applyRecordToForm(savedForInitial);
-    } else {
-      setSelectedSlotIndex(initialSlotIdx);
-      const sl = timetable[initialSlotIdx] || currentSlot;
-      setSubject(sl.subjek);
-      setForm(sl.tingkatan);
-      setClassName(sl.kelas);
-      setStartTime(sl.masa_mula);
-      setEndTime(sl.masa_tamat);
-
-      const rptRec = findRPTRecord(sl.subjek, sl.tingkatan, currentWeek);
-      if (rptRec && !rptRec.adalah_cuti) {
-        handleApplyRPTItem(convertToRPTItem(rptRec), false, targetLocale.kod_bahasa);
-      } else {
-        setTema('');
-        setTajuk('');
-        setSK('');
-        setSP('');
-        setRptSuggestion('');
-      }
-      setActivities(getCleanDefaultActivities(sl.subjek, targetLocale.kod_bahasa));
-      setPedagogy(getCleanDefaultPedagogy());
-      setReflection(getCleanDefaultReflection(sl.bilangan_murid, targetLocale.kod_bahasa));
+  // Real-time Auto-save: Maklumat pengisian disimpan secara automatik dalam masa nyata tanpa perlu menekan simpan setiap kali siap
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
     }
-  }, []);
+
+    setSaveStatus('saving');
+    if (saveTimeoutRef.current) {
+      clearTimeout(saveTimeoutRef.current);
+    }
+
+    saveTimeoutRef.current = setTimeout(() => {
+      const snapshot = getCurrentSnapshot();
+      const storageKey = `erph_saved_records_${user?.uid || teacherEmail || 'alhasanah'}`;
+
+      setSavedRecordsMap(prevMap => {
+        const updated = {
+          ...prevMap,
+          [snapshot.id!]: snapshot
+        };
+        try {
+          localStorage.setItem(storageKey, JSON.stringify(updated));
+        } catch (e) {
+          console.warn('Gagal menyimpan real-time:', e);
+        }
+        return updated;
+      });
+
+      const timeStr = new Date().toLocaleTimeString('ms-MY', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      setLastSavedTimestamp(timeStr);
+      setSaveStatus('saved');
+    }, 600);
+
+    return () => {
+      if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+    };
+  }, [
+    subject,
+    form,
+    className,
+    startTime,
+    endTime,
+    date,
+    tema,
+    tajuk,
+    sk,
+    sp,
+    rptSuggestion,
+    learningObjective,
+    successCriteria,
+    activities,
+    pedagogy,
+    reflection,
+    currentWeek,
+    selectedSlotIndex,
+    activeTab,
+    customDay
+  ]);
 
   const handleApplyAIContent = (res: GeminiCoPilotResponse) => {
     setLearningObjective(res.objektif_pembelajaran);
@@ -707,7 +783,7 @@ export default function RPHFormDynamic() {
   };
 
   // ---------------------------------------------------------------------------
-  // FUNGSI SIMPAN e-RPH DENGAN PENYIMPANAN TEMPATAN & PENGASINGAN DATA
+  // FUNGSI SIMPAN e-RPH SEBAGAI DRAF (SECARA MANUAL JIKA DIPERLUKAN)
   // ---------------------------------------------------------------------------
   const handleSaveDraft = () => {
     const snapshot = getCurrentSnapshot();
@@ -725,9 +801,10 @@ export default function RPHFormDynamic() {
 
     const timeStr = new Date().toLocaleTimeString('ms-MY', { hour: '2-digit', minute: '2-digit' });
     setLastSavedTimestamp(timeStr);
+    setSaveStatus('saved');
     setSaveSuccess(true);
-    setSaveSuccessMessage(`RPH bagi ${subject} (${className}) Minggu ${currentWeek} berjaya disimpan pada jam ${timeStr}! Data diasingkan untuk mengelakkan pertindihan.`);
-    setTimeout(() => setSaveSuccess(false), 4500);
+    setSaveSuccessMessage(`RPH bagi ${subject} (${className}) Minggu ${currentWeek} berjaya disimpan pada jam ${timeStr}!`);
+    setTimeout(() => setSaveSuccess(false), 3000);
   };
 
   // ---------------------------------------------------------------------------
@@ -1546,81 +1623,45 @@ export default function RPHFormDynamic() {
           </span>
         </div>
 
-        <div className="flex items-center space-x-2 w-full sm:w-auto justify-end flex-wrap gap-y-2">
+        <div className="flex items-center space-x-2.5 w-full sm:w-auto justify-end flex-wrap gap-y-2">
+          {/* Status Simpanan Real-time (Auto-save) */}
+          <div className="flex items-center space-x-1.5 text-xs font-semibold px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 transition-all shadow-xs">
+            {saveStatus === 'saving' ? (
+              <span className="text-amber-700 flex items-center space-x-1.5 animate-pulse font-bold">
+                <Loader2 className="w-3.5 h-3.5 animate-spin text-amber-600" />
+                <span>Menyimpan real-time...</span>
+              </span>
+            ) : (
+              <span className="text-emerald-800 flex items-center space-x-1.5 font-bold">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Disimpan real-time {lastSavedTimestamp ? `(${lastSavedTimestamp})` : ''}</span>
+              </span>
+            )}
+          </div>
+
+          {/* 1. Butang CO-PILOT AI */}
           <button
             type="button"
             onClick={() => setIsAIModalOpen(true)}
-            className="px-3.5 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs font-bold shadow-md shadow-emerald-600/20 flex items-center space-x-1.5 transition-all"
+            className="px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs font-extrabold shadow-md shadow-emerald-600/20 flex items-center space-x-1.5 transition-all hover:scale-105 active:scale-95"
+            title="Buka Pembantu Pintar Co-Pilot AI"
           >
             <Sparkles className="w-4 h-4 text-amber-300 animate-spin-slow" />
-            <span>Co-Pilot AI</span>
+            <span>CO-PILOT AI</span>
           </button>
 
-          <button
-            type="button"
-            onClick={() => setIsPreviewA4ModalOpen(true)}
-            className="px-3.5 py-2 bg-indigo-50 border border-indigo-200 hover:bg-indigo-100 text-indigo-700 rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow-sm transition-colors"
-            title="Pratonton Layout A4 Landscape Satu Muka Surat Setiap Subjek"
-          >
-            <Eye className="w-4 h-4 text-indigo-600" />
-            <span>Pratonton A4 Landscape</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={handleUploadToGoogleDrive}
-            className="px-3.5 py-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow-md shadow-emerald-600/20 transition-all hover:scale-105"
-            title="Hantar RPH Seminggu ke Google Drive (Format PDF)"
-          >
-            <CloudUpload className="w-4 h-4 text-emerald-100" />
-            <span>Hantar ke Google Drive (PDF)</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={handleSaveDraft}
-            className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow-md shadow-emerald-600/20 transition-all hover:scale-105 active:scale-95"
-            title="Simpan e-RPH ke peranti (mengelakkan kehilangan & pertindihan maklumat)"
-          >
-            <Save className="w-4 h-4 text-emerald-100" />
-            <span>Simpan e-RPH</span>
-          </button>
-
-          {lastSavedTimestamp && (
-            <span className="text-[10px] text-emerald-800 font-extrabold bg-emerald-50 px-2.5 py-1 rounded-xl border border-emerald-200 flex items-center space-x-1">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Tersimpan {lastSavedTimestamp}</span>
-            </span>
-          )}
-
+          {/* 2. Butang SIMPAN PDF */}
           <button
             type="button"
             onClick={handleSavePdf}
-            className="px-3.5 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow-md shadow-rose-600/20 transition-all hover:scale-105"
+            className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-extrabold flex items-center space-x-1.5 shadow-md shadow-rose-600/20 transition-all hover:scale-105 active:scale-95"
             title="Simpan e-RPH sebagai fail PDF berkualiti tinggi"
           >
             <FileDown className="w-4 h-4" />
-            <span>Simpan PDF</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={handlePrint}
-            className="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow-sm transition-colors"
-            title="Cetak A4 Landscape 1 Muka Surat Setiap Subjek"
-          >
-            <Printer className="w-4 h-4" />
-            <span>Cetak A4 Landscape</span>
+            <span>SIMPAN PDF</span>
           </button>
         </div>
       </div>
-
-      {saveSuccess && (
-        <div className="p-4 rounded-xl bg-emerald-600 text-white font-bold text-xs flex items-center space-x-2 shadow-lg animate-in fade-in">
-          <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-          <span>{saveSuccessMessage || `Rekod e-RPH Minggu ${currentWeek} berjaya disimpan!`}</span>
-        </div>
-      )}
 
       {/* =========================================================================
           PILIHAN MOD: TEMPLAT JADUAL SIAP DIJANA (TABLE KPM) VS BORANG DINAMIK
@@ -1791,33 +1832,111 @@ export default function RPHFormDynamic() {
             </div>
           </div>
 
-          {/* SUBJEK */}
+          {/* SUBJEK (Pengisian / Pilihan Manual) */}
           <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200 focus-within:border-emerald-500 transition-colors">
-            <span className="font-bold text-slate-500 block uppercase text-[10px]">
-              {getLabel('SUBJEK', 'SUBJEK')}
-            </span>
-            <span className="font-bold text-slate-900 block mt-0.5 truncate" title={subject}>
-              {subject}
-            </span>
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-slate-500 block uppercase text-[10px]">
+                {getLabel('SUBJEK', 'SUBJEK')}
+              </span>
+              <button
+                type="button"
+                onClick={() => setIsManualSubjectInput(!isManualSubjectInput)}
+                className="text-[9px] text-emerald-700 hover:underline font-bold"
+                title="Tukar atau taip subjek lain secara manual"
+              >
+                {isManualSubjectInput ? 'Pilih' : 'Manual'}
+              </button>
+            </div>
+            {isManualSubjectInput ? (
+              <input
+                type="text"
+                value={subject}
+                onChange={(e) => handleCustomSubjectChange(e.target.value)}
+                className="w-full bg-white border border-slate-300 rounded px-1.5 py-0.5 font-bold text-slate-900 focus:outline-none text-xs mt-0.5"
+                placeholder="Nama subjek..."
+              />
+            ) : (
+              <select
+                value={subject}
+                onChange={(e) => handleCustomSubjectChange(e.target.value)}
+                className="w-full bg-transparent font-bold text-slate-900 focus:outline-none mt-0.5 text-xs cursor-pointer truncate"
+              >
+                <option value={subject}>{subject}</option>
+                {Object.keys(rptCatalog)
+                  .filter((s) => s !== subject)
+                  .map((subj) => (
+                    <option key={subj} value={subj}>
+                      {subj}
+                    </option>
+                  ))}
+              </select>
+            )}
           </div>
 
         </div>
 
-        {/* Paparan Tema RPT jika tersedia */}
-        {tema && (
-          <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-3.5 text-xs">
-            <span className="font-bold text-[10px] uppercase text-emerald-800 tracking-wider block">
-              {getLabel('TEMA / BIDANG / TAJUK DSKP (RPT)', 'TEMA / BIDANG / TAJUK DSKP (RPT)')}:
-            </span>
-            <p className="font-bold text-slate-800 mt-1 whitespace-pre-line leading-relaxed">{tema}</p>
-          </div>
-        )}
-
-        {/* Bahagian 2: Standard Kandungan (SK) & Standard Pembelajaran (SP) DSKP */}
+        {/* Bahagian 2: Ruangan Pengisian Manual Tema & Tajuk Pembelajaran */}
         <div className="space-y-4">
           <div className="flex items-center justify-between border-b border-slate-200 pb-2">
-            <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-wide">
-              {getLabel('STANDARD KANDUNGAN', 'STANDARD KANDUNGAN')} &amp; {getLabel('STANDARD PEMBELAJARAN', 'STANDARD PEMBELAJARAN')}
+            <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-wide flex items-center space-x-2">
+              <BookOpen className="w-4 h-4 text-emerald-600" />
+              <span>{getLabel('TEMA & TAJUK PEMBELAJARAN', 'TEMA & TAJUK PEMBELAJARAN')}</span>
+              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+                Pengisian Manual &amp; RPT
+              </span>
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Ruangan Pengisian Manual Tema */}
+            <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500 transition-all space-y-1.5">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center space-x-1.5">
+                  <span>{getLabel('TEMA / BIDANG', 'TEMA / BIDANG')}</span>
+                </label>
+                <span className="text-[10px] text-emerald-700 bg-emerald-100/70 px-2 py-0.5 rounded font-bold">
+                  Pengisian Manual
+                </span>
+              </div>
+              <textarea
+                rows={2}
+                value={tema}
+                onChange={(e) => setTema(e.target.value)}
+                placeholder={isRTL ? 'اكتب الموضوع / المجال هنا...' : 'Taip atau sunting Tema / Bidang pembelajaran di sini...'}
+                className="w-full text-xs font-semibold text-slate-800 bg-white border border-slate-200 rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 resize-none leading-relaxed"
+              />
+            </div>
+
+            {/* Ruangan Pengisian Manual Tajuk */}
+            <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500 transition-all space-y-1.5">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center space-x-1.5">
+                  <span>{getLabel('TAJUK / UNIT / BAB', 'TAJUK / UNIT / BAB')}</span>
+                </label>
+                <span className="text-[10px] text-emerald-700 bg-emerald-100/70 px-2 py-0.5 rounded font-bold">
+                  Pengisian Manual
+                </span>
+              </div>
+              <textarea
+                rows={2}
+                value={tajuk}
+                onChange={(e) => setTajuk(e.target.value)}
+                placeholder={isRTL ? 'اكتب عنوان الدرس / الوحدة هنا...' : 'Taip atau sunting Tajuk / Unit / Bab PdPc di sini...'}
+                className="w-full text-xs font-semibold text-slate-800 bg-white border border-slate-200 rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 resize-none leading-relaxed"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Bahagian 3: Standard Kandungan (SK) & Standard Pembelajaran (SP) DSKP (Pengisian Manual & Bank DSKP) */}
+        <div className="space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+            <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-wide flex items-center space-x-2">
+              <Layers className="w-4 h-4 text-emerald-600" />
+              <span>{getLabel('STANDARD KANDUNGAN', 'STANDARD KANDUNGAN')} &amp; {getLabel('STANDARD PEMBELAJARAN', 'STANDARD PEMBELAJARAN')}</span>
+              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+                Pengisian Manual &amp; Bank DSKP
+              </span>
             </h3>
           </div>
 
@@ -1826,11 +1945,13 @@ export default function RPHFormDynamic() {
             form={form}
             selectedSK={sk}
             selectedSP={sp}
+            onSKChange={setSK}
+            onSPChange={setSP}
             onSelect={(item) => {
               setSK(item.sk);
               setSP(item.sp);
-              setTema(item.tema);
-              setTajuk(item.tajuk);
+              if (item.tema) setTema(item.tema);
+              if (item.tajuk) setTajuk(item.tajuk);
               if (item.defaultObj && !learningObjective) {
                 setLearningObjective(item.defaultObj);
               }

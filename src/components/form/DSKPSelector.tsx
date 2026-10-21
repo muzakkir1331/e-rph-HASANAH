@@ -15,6 +15,8 @@ interface DSKPSelectorProps {
   onSelect: (item: { tema: string; tajuk: string; sk: string; sp: string; defaultObj?: string }) => void;
   isRTL: boolean;
   labels: Record<string, string>;
+  onSKChange?: (sk: string) => void;
+  onSPChange?: (sp: string) => void;
 }
 
 export default function DSKPSelector({
@@ -24,7 +26,9 @@ export default function DSKPSelector({
   selectedSP,
   onSelect,
   isRTL,
-  labels
+  labels,
+  onSKChange,
+  onSPChange
 }: DSKPSelectorProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -61,43 +65,52 @@ export default function DSKPSelector({
   return (
     <div className="space-y-4">
       
-      {/* Paparan Pilihan Semasa */}
+      {/* Paparan Pilihan Semasa / Ruangan Pengisian Manual */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         
-        {/* Kotak Standard Kandungan (SK) */}
-        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        {/* Kotak Standard Kandungan (SK) - Pengisian Manual & DSKP */}
+        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500 transition-all">
           <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center justify-between">
             <span>{labels['STANDARD KANDUNGAN'] || 'STANDARD KANDUNGAN'}</span>
-            <span className="text-[10px] text-slate-400 font-normal">DSKP KPM</span>
+            <span className="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md font-semibold">
+              Boleh Ditaip / Diedit Manual
+            </span>
           </label>
           <textarea
             value={selectedSK}
-            readOnly
-            rows={2}
-            placeholder={isRTL ? 'اختر معيار المحتوى أدناه...' : 'Pilih Standard Kandungan di bawah...'}
-            className="w-full text-xs font-medium text-slate-800 bg-slate-50 border border-slate-200 rounded-lg p-2.5 focus:outline-none resize-none"
+            onChange={(e) => onSKChange && onSKChange(e.target.value)}
+            readOnly={!onSKChange}
+            rows={3}
+            placeholder={isRTL ? 'اكتب معيار المحتوى هنا أو اختر من DSKP...' : 'Taip Standard Kandungan secara manual atau pilih dari senarai DSKP...'}
+            className="w-full text-xs font-semibold text-slate-800 bg-slate-50 border border-slate-200 rounded-lg p-2.5 focus:outline-none focus:bg-white resize-none leading-relaxed"
           />
         </div>
 
-        {/* Kotak Standard Pembelajaran (SP) */}
-        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        {/* Kotak Standard Pembelajaran (SP) - Pengisian Manual & DSKP */}
+        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500 transition-all">
           <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center justify-between">
             <span>{labels['STANDARD PEMBELAJARAN'] || 'STANDARD PEMBELAJARAN'}</span>
-            <button
-              type="button"
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-xs text-emerald-600 hover:text-emerald-700 font-semibold flex items-center space-x-1"
-            >
-              <Search className="w-3.5 h-3.5" />
-              <span>{isOpen ? 'Tutup Senarai' : 'Cari dalam DSKP'}</span>
-            </button>
+            <div className="flex items-center space-x-2">
+              <span className="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md font-semibold hidden sm:inline">
+                Manual / DSKP
+              </span>
+              <button
+                type="button"
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-xs text-emerald-600 hover:text-emerald-700 font-bold flex items-center space-x-1 bg-emerald-50 hover:bg-emerald-100 px-2.5 py-1 rounded-lg border border-emerald-200 transition-colors"
+              >
+                <Search className="w-3.5 h-3.5" />
+                <span>{isOpen ? 'Tutup Senarai' : 'Cari dalam DSKP'}</span>
+              </button>
+            </div>
           </label>
           <textarea
             value={selectedSP}
-            readOnly
-            rows={2}
-            placeholder={isRTL ? 'اختر معيار التعلم من بنك DSKP...' : 'Pilih Standard Pembelajaran dari DSKP...'}
-            className="w-full text-xs font-medium text-slate-800 bg-slate-50 border border-slate-200 rounded-lg p-2.5 focus:outline-none resize-none"
+            onChange={(e) => onSPChange && onSPChange(e.target.value)}
+            readOnly={!onSPChange}
+            rows={3}
+            placeholder={isRTL ? 'اكتب معيار التعلم هنا أو اختر من بنك DSKP...' : 'Taip Standard Pembelajaran secara manual atau pilih dari bank DSKP...'}
+            className="w-full text-xs font-semibold text-slate-800 bg-slate-50 border border-slate-200 rounded-lg p-2.5 focus:outline-none focus:bg-white resize-none leading-relaxed"
           />
         </div>
 

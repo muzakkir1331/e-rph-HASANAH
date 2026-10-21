@@ -121,6 +121,7 @@ export interface RPTItem {
   minggu: number;
   tarikh?: string;
   tema?: string;
+  tajuk?: string;
   sk: string;
   sp: string;
   standard_prestasi?: string;
