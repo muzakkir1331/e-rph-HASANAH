@@ -6,6 +6,7 @@ import { useAuth } from '@/context/AuthContext';
 import { JadualSlot } from '@/types/erph';
 import dskpCatalog from '@/data/dskp_catalog.json';
 import pedagogiOptions from '@/data/pedagogi_options.json';
+import { dropdownOptions } from '@/lib/rpt-helper';
 
 interface TimetableEditorModalProps {
   isOpen: boolean;
@@ -19,11 +20,18 @@ export default function TimetableEditorModal({ isOpen, onClose }: TimetableEdito
   const [isAddingNew, setIsAddingNew] = useState<boolean>(false);
   const [activeDayFilter, setActiveDayFilter] = useState<string>('SEMUA');
 
+  const timeList = dropdownOptions.waktu.map(w => w.formatted);
+
+  const normalizeTime = (t: string) => {
+    if (!t) return t;
+    return t.replace(/^(\d{1,2}):(\d{2})/, (_, h, m) => `${h.padStart(2, '0')}.${m}`);
+  };
+
   // Form State untuk Tambah / Edit Slot
   const [formDay, setFormDay] = useState<string>('ISNIN');
   const [formSlotNum, setFormSlotNum] = useState<number>(1);
-  const [formStartTime, setFormStartTime] = useState<string>('09:00 PAGI');
-  const [formEndTime, setFormEndTime] = useState<string>('10:00 PAGI');
+  const [formStartTime, setFormStartTime] = useState<string>('08.00 PAGI');
+  const [formEndTime, setFormEndTime] = useState<string>('09.00 PAGI');
   const [formSubject, setFormSubject] = useState<string>('اللغة العربية المعاصرة');
   const [formTingkatan, setFormTingkatan] = useState<string>('3');
   const [formKelas, setFormKelas] = useState<string>('3 MUSLIM');
@@ -58,6 +66,18 @@ export default function TimetableEditorModal({ isOpen, onClose }: TimetableEdito
   ];
   const subjectList = Array.from(new Set([...primarySubjects, ...Object.keys(dskpCatalog)])).sort();
 
+  const handleStartTimeChange = (newStart: string) => {
+    setFormStartTime(newStart);
+    const idx = timeList.indexOf(newStart);
+    if (idx !== -1) {
+      if (idx + 2 < timeList.length) {
+        setFormEndTime(timeList[idx + 2]);
+      } else if (idx + 1 < timeList.length) {
+        setFormEndTime(timeList[idx + 1]);
+      }
+    }
+  };
+
   const handleStartEdit = (index: number) => {
     const slot = timetable[index];
     if (!slot) return;
@@ -65,8 +85,8 @@ export default function TimetableEditorModal({ isOpen, onClose }: TimetableEdito
     setIsAddingNew(false);
     setFormDay(slot.hari);
     setFormSlotNum(slot.slot_ke);
-    setFormStartTime(slot.masa_mula);
-    setFormEndTime(slot.masa_tamat);
+    setFormStartTime(normalizeTime(slot.masa_mula));
+    setFormEndTime(normalizeTime(slot.masa_tamat));
     setFormSubject(slot.subjek);
     setFormTingkatan(slot.tingkatan);
     setFormKelas(slot.kelas);
@@ -78,8 +98,8 @@ export default function TimetableEditorModal({ isOpen, onClose }: TimetableEdito
     setIsAddingNew(true);
     setFormDay(activeDayFilter === 'SEMUA' ? 'ISNIN' : activeDayFilter);
     setFormSlotNum(timetable.filter(s => s.hari === (activeDayFilter === 'SEMUA' ? 'ISNIN' : activeDayFilter)).length + 1);
-    setFormStartTime('08:00 PAGI');
-    setFormEndTime('09:00 PAGI');
+    setFormStartTime('08.00 PAGI');
+    setFormEndTime('09.00 PAGI');
     setFormSubject('اللغة العربية المعاصرة');
     setFormTingkatan('3');
     setFormKelas('3 MUSLIM');
@@ -239,27 +259,41 @@ export default function TimetableEditorModal({ isOpen, onClose }: TimetableEdito
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">Masa Mula</label>
-                  <input
-                    type="text"
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                    Masa Mula (Pilihan Dropdown)
+                  </label>
+                  <select
                     value={formStartTime}
-                    onChange={(e) => setFormStartTime(e.target.value)}
-                    placeholder="Contoh: 08.00 PAGI"
-                    className="w-full p-2 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-semibold"
+                    onChange={(e) => handleStartTimeChange(e.target.value)}
+                    className="w-full p-2 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-semibold cursor-pointer"
                     required
-                  />
+                  >
+                    {!timeList.includes(formStartTime) && formStartTime && (
+                      <option value={formStartTime}>{formStartTime}</option>
+                    )}
+                    {timeList.map(t => (
+                      <option key={`start-${t}`} value={t}>{t}</option>
+                    ))}
+                  </select>
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">Masa Tamat</label>
-                  <input
-                    type="text"
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                    Masa Tamat (Pilihan Dropdown)
+                  </label>
+                  <select
                     value={formEndTime}
                     onChange={(e) => setFormEndTime(e.target.value)}
-                    placeholder="Contoh: 09.30 PAGI"
-                    className="w-full p-2 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-semibold"
+                    className="w-full p-2 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-semibold cursor-pointer"
                     required
-                  />
+                  >
+                    {!timeList.includes(formEndTime) && formEndTime && (
+                      <option value={formEndTime}>{formEndTime}</option>
+                    )}
+                    {timeList.map(t => (
+                      <option key={`end-${t}`} value={t}>{t}</option>
+                    ))}
+                  </select>
                 </div>
 
                 <div className="sm:col-span-2">

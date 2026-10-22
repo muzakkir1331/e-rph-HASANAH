@@ -14,112 +14,105 @@
     "6 MUSLIM"
   ],
   "waktu_raw": [
+    "0700",
+    "0715",
+    "0720",
     "0730",
+    "0735",
+    "0745",
     "0800",
+    "0815",
     "0830",
+    "0845",
     "0900",
+    "0915",
     "0930",
+    "0945",
     "1000",
+    "1015",
     "1030",
+    "1045",
     "1100",
+    "1115",
     "1130",
+    "1145",
     "1200",
+    "1215",
     "1230",
+    "1245",
     "1300",
+    "1315",
     "1330",
+    "1345",
     "1400",
-    "1430"
+    "1415",
+    "1430",
+    "1445",
+    "1500",
+    "1515",
+    "1530",
+    "1545",
+    "1600",
+    "1615",
+    "1630",
+    "1645",
+    "1700",
+    "1715",
+    "1730",
+    "1745",
+    "1800",
+    "1815",
+    "1830"
   ],
   "waktu": [
-    {
-      "value": "07:30",
-      "raw": "0730",
-      "label": "07:30 (07.30 PAGI)",
-      "formatted": "07.30 PAGI"
-    },
-    {
-      "value": "08:00",
-      "raw": "0800",
-      "label": "08:00 (08.00 PAGI)",
-      "formatted": "08.00 PAGI"
-    },
-    {
-      "value": "08:30",
-      "raw": "0830",
-      "label": "08:30 (08.30 PAGI)",
-      "formatted": "08.30 PAGI"
-    },
-    {
-      "value": "09:00",
-      "raw": "0900",
-      "label": "09:00 (09.00 PAGI)",
-      "formatted": "09.00 PAGI"
-    },
-    {
-      "value": "09:30",
-      "raw": "0930",
-      "label": "09:30 (09.30 PAGI)",
-      "formatted": "09.30 PAGI"
-    },
-    {
-      "value": "10:00",
-      "raw": "1000",
-      "label": "10:00 (10.00 PAGI)",
-      "formatted": "10.00 PAGI"
-    },
-    {
-      "value": "10:30",
-      "raw": "1030",
-      "label": "10:30 (10.30 PAGI)",
-      "formatted": "10.30 PAGI"
-    },
-    {
-      "value": "11:00",
-      "raw": "1100",
-      "label": "11:00 (11.00 PAGI)",
-      "formatted": "11.00 PAGI"
-    },
-    {
-      "value": "11:30",
-      "raw": "1130",
-      "label": "11:30 (11.30 PAGI)",
-      "formatted": "11.30 PAGI"
-    },
-    {
-      "value": "12:00",
-      "raw": "1200",
-      "label": "12:00 (12.00 TGH HARI)",
-      "formatted": "12.00 TGH HARI"
-    },
-    {
-      "value": "12:30",
-      "raw": "1230",
-      "label": "12:30 (12.30 TGH HARI)",
-      "formatted": "12.30 TGH HARI"
-    },
-    {
-      "value": "13:00",
-      "raw": "1300",
-      "label": "13:00 (01.00 PTG)",
-      "formatted": "01.00 PTG"
-    },
-    {
-      "value": "13:30",
-      "raw": "1330",
-      "label": "13:30 (01.30 PTG)",
-      "formatted": "01.30 PTG"
-    },
-    {
-      "value": "14:00",
-      "raw": "1400",
-      "label": "14:00 (02.00 PTG)",
-      "formatted": "02.00 PTG"
-    },
-    {
-      "value": "14:30",
-      "raw": "1430",
-      "label": "14:30 (02.30 PTG)",
-      "formatted": "02.30 PTG"
-    }
+    { "value": "07:00", "raw": "0700", "label": "07:00 (07.00 PAGI)", "formatted": "07.00 PAGI" },
+    { "value": "07:15", "raw": "0715", "label": "07:15 (07.15 PAGI)", "formatted": "07.15 PAGI" },
+    { "value": "07:20", "raw": "0720", "label": "07:20 (07.20 PAGI)", "formatted": "07.20 PAGI" },
+    { "value": "07:30", "raw": "0730", "label": "07:30 (07.30 PAGI)", "formatted": "07.30 PAGI" },
+    { "value": "07:35", "raw": "0735", "label": "07:35 (07.35 PAGI)", "formatted": "07.35 PAGI" },
+    { "value": "07:45", "raw": "0745", "label": "07:45 (07.45 PAGI)", "formatted": "07.45 PAGI" },
+    { "value": "08:00", "raw": "0800", "label": "08:00 (08.00 PAGI)", "formatted": "08.00 PAGI" },
+    { "value": "08:15", "raw": "0815", "label": "08:15 (08.15 PAGI)", "formatted": "08.15 PAGI" },
+    { "value": "08:30", "raw": "0830", "label": "08:30 (08.30 PAGI)", "formatted": "08.30 PAGI" },
+    { "value": "08:45", "raw": "0845", "label": "08:45 (08.45 PAGI)", "formatted": "08.45 PAGI" },
+    { "value": "09:00", "raw": "0900", "label": "09:00 (09.00 PAGI)", "formatted": "09.00 PAGI" },
+    { "value": "09:15", "raw": "0915", "label": "09:15 (09.15 PAGI)", "formatted": "09.15 PAGI" },
+    { "value": "09:30", "raw": "0930", "label": "09:30 (09.30 PAGI)", "formatted": "09.30 PAGI" },
+    { "value": "09:45", "raw": "0945", "label": "09:45 (09.45 PAGI)", "formatted": "09.45 PAGI" },
+    { "value": "10:00", "raw": "1000", "label": "10:00 (10.00 PAGI)", "formatted": "10.00 PAGI" },
+    { "value": "10:15", "raw": "1015", "label": "10:15 (10.15 PAGI)", "formatted": "10.15 PAGI" },
+    { "value": "10:30", "raw": "1030", "label": "10:30 (10.30 PAGI)", "formatted": "10.30 PAGI" },
+    { "value": "10:45", "raw": "1045", "label": "10:45 (10.45 PAGI)", "formatted": "10.45 PAGI" },
+    { "value": "11:00", "raw": "1100", "label": "11:00 (11.00 PAGI)", "formatted": "11.00 PAGI" },
+    { "value": "11:15", "raw": "1115", "label": "11:15 (11.15 PAGI)", "formatted": "11.15 PAGI" },
+    { "value": "11:30", "raw": "1130", "label": "11:30 (11.30 PAGI)", "formatted": "11.30 PAGI" },
+    { "value": "11:45", "raw": "1145", "label": "11:45 (11.45 PAGI)", "formatted": "11.45 PAGI" },
+    { "value": "12:00", "raw": "1200", "label": "12:00 (12.00 TGH HARI)", "formatted": "12.00 TGH HARI" },
+    { "value": "12:15", "raw": "1215", "label": "12:15 (12.15 TGH HARI)", "formatted": "12.15 TGH HARI" },
+    { "value": "12:30", "raw": "1230", "label": "12:30 (12.30 TGH HARI)", "formatted": "12.30 TGH HARI" },
+    { "value": "12:45", "raw": "1245", "label": "12:45 (12.45 TGH HARI)", "formatted": "12.45 TGH HARI" },
+    { "value": "13:00", "raw": "1300", "label": "13:00 (01.00 PTG)", "formatted": "01.00 PTG" },
+    { "value": "13:15", "raw": "1315", "label": "13:15 (01.15 PTG)", "formatted": "01.15 PTG" },
+    { "value": "13:30", "raw": "1330", "label": "13:30 (01.30 PTG)", "formatted": "01.30 PTG" },
+    { "value": "13:45", "raw": "1345", "label": "13:45 (01.45 PTG)", "formatted": "01.45 PTG" },
+    { "value": "14:00", "raw": "1400", "label": "14:00 (02.00 PTG)", "formatted": "02.00 PTG" },
+    { "value": "14:15", "raw": "1415", "label": "14:15 (02.15 PTG)", "formatted": "02.15 PTG" },
+    { "value": "14:30", "raw": "1430", "label": "14:30 (02.30 PTG)", "formatted": "02.30 PTG" },
+    { "value": "14:45", "raw": "1445", "label": "14:45 (02.45 PTG)", "formatted": "02.45 PTG" },
+    { "value": "15:00", "raw": "1500", "label": "15:00 (03.00 PTG)", "formatted": "03.00 PTG" },
+    { "value": "15:15", "raw": "1515", "label": "15:15 (03.15 PTG)", "formatted": "03.15 PTG" },
+    { "value": "15:30", "raw": "1530", "label": "15:30 (03.30 PTG)", "formatted": "03.30 PTG" },
+    { "value": "15:45", "raw": "1545", "label": "15:45 (03.45 PTG)", "formatted": "03.45 PTG" },
+    { "value": "16:00", "raw": "1600", "label": "16:00 (04.00 PTG)", "formatted": "04.00 PTG" },
+    { "value": "16:15", "raw": "1615", "label": "16:15 (04.15 PTG)", "formatted": "04.15 PTG" },
+    { "value": "16:30", "raw": "1630", "label": "16:30 (04.30 PTG)", "formatted": "04.30 PTG" },
+    { "value": "16:45", "raw": "1645", "label": "16:45 (04.45 PTG)", "formatted": "04.45 PTG" },
+    { "value": "17:00", "raw": "1700", "label": "17:00 (05.00 PTG)", "formatted": "05.00 PTG" },
+    { "value": "17:15", "raw": "1715", "label": "17:15 (05.15 PTG)", "formatted": "05.15 PTG" },
+    { "value": "17:30", "raw": "1730", "label": "17:30 (05.30 PTG)", "formatted": "05.30 PTG" },
+    { "value": "17:45", "raw": "1745", "label": "17:45 (05.45 PTG)", "formatted": "05.45 PTG" },
+    { "value": "18:00", "raw": "1800", "label": "18:00 (06.00 PTG)", "formatted": "06.00 PTG" },
+    { "value": "18:15", "raw": "1815", "label": "18:15 (06.15 PTG)", "formatted": "06.15 PTG" },
+    { "value": "18:30", "raw": "1830", "label": "18:30 (06.30 PTG)", "formatted": "06.30 PTG" }
   ]
 }

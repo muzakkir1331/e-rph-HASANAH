@@ -20,6 +20,127 @@ export function formatRPHFileName(teacherName: string, mingguNo: number | string
  * Menjana 1 Muka Surat A4 Portrait Lengkap bagi Setiap Subjek/Slot
  * Mematuhi Standard KPM, TS25, SPI Bil. 3/1999 dan Format SABK Pahang
  */
+export function generateKarakterCardHtml(
+  rph: Partial<RPHRecord>,
+  teacherName: string,
+  slotIndex: number = 1,
+  totalSlots: number = 1,
+  schoolName: string = 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+): string {
+  const elemenList = ['Penyayang', 'Berdaya Tahan', 'Berupaya Memimpin', 'Warganegara Aktif'];
+  const selectedElemen = rph.karakter_data?.elemen || (rph.sp ? rph.sp.split(',').map(s => s.trim()) : ['Penyayang']);
+  const catatan = rph.karakter_data?.catatan_aktiviti || rph.kriteria_kejayaan || rph.sk || '';
+
+  return `
+  <div class="a4-page-card" style="font-family: Arial, Helvetica, sans-serif; background: #ffffff; padding: 10mm 15mm; border: 2px solid #cbd5e1; border-radius: 12px; min-height: 185mm; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box;">
+    
+    <!-- Header Rasmi Slide: Logo Kiri & Tajuk Kanan -->
+    <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 6mm;">
+      <tr>
+        <td style="width: 70px; vertical-align: top; border: none;">
+          <div style="width: 55px; height: 55px; background: linear-gradient(135deg, #f59e0b, #d97706); border-radius: 10px; display: flex; align-items: center; justify-content: center; padding: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <img src="${LOGO_AL_HASANAH_BASE64}" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;" />
+          </div>
+        </td>
+        <td style="text-align: right; vertical-align: top; border: none;">
+          <div style="font-size: 11px; font-weight: 800; color: #1e40af; letter-spacing: 1.5px; text-transform: uppercase;">PENATARAN</div>
+          <div style="font-size: 13px; font-weight: 900; color: #1d4ed8; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 1px;">KURIKULUM PERSEKOLAHAN 2027</div>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Tajuk Slaid Utama -->
+    <div style="text-align: center; margin-bottom: 6mm;">
+      <div style="font-size: 18px; font-weight: 900; color: #1d4ed8; letter-spacing: -0.3px;">Pelaksanaan Aktiviti</div>
+      <div style="font-size: 16px; font-weight: 800; color: #2563eb; margin-top: 2px;">Program Pembentukan Karakter (15 minit)</div>
+      <div style="font-size: 15px; font-weight: 800; color: #1e3a8a; margin-top: 2px;">Sekolah Menengah</div>
+    </div>
+
+    <!-- Jadual 5 Baris Tepat Seperti Gambar -->
+    <table style="width: 100%; border-collapse: collapse; border: 2px solid #94a3b8; font-size: 12px; margin-bottom: 6mm;">
+      <!-- Baris 1: Tarikh -->
+      <tr style="border-bottom: 1.5px solid #cbd5e1;">
+        <td style="width: 30%; background-color: #84cc16; color: #0f172a; font-weight: 800; padding: 7px 12px; border-right: 1.5px solid #cbd5e1;">
+          <div style="display: flex; justify-content: space-between;"><span>Tarikh</span><span>:</span></div>
+        </td>
+        <td style="padding: 7px 14px; font-weight: 700; color: #1e293b; background-color: #ffffff;">
+          ${rph.tarikh || '-'} ${rph.hari ? `(${rph.hari})` : ''}
+        </td>
+      </tr>
+
+      <!-- Baris 2: Masa -->
+      <tr style="border-bottom: 1.5px solid #cbd5e1; background-color: #f8fafc;">
+        <td style="padding: 7px 12px; font-weight: 800; color: #334155; border-right: 1.5px solid #cbd5e1;">
+          <div style="display: flex; justify-content: space-between;"><span>Masa</span><span>:</span></div>
+        </td>
+        <td style="padding: 7px 14px; font-weight: 600; color: #1e293b;">
+          ${rph.masa_mula || '7.20 PAGI'} - ${rph.masa_tamat || '7.35 PAGI'} (15 minit)
+        </td>
+      </tr>
+
+      <!-- Baris 3: Tahun -->
+      <tr style="border-bottom: 1.5px solid #cbd5e1; background-color: #ffffff;">
+        <td style="padding: 7px 12px; font-weight: 800; color: #334155; border-right: 1.5px solid #cbd5e1;">
+          <div style="display: flex; justify-content: space-between;"><span>Tahun</span><span>:</span></div>
+        </td>
+        <td style="padding: 7px 14px; font-weight: 600; color: #1e293b;">
+          Tingkatan ${rph.tingkatan || '1'} (${rph.kelas || '-'})
+        </td>
+      </tr>
+
+      <!-- Baris 4: Elemen Teras Karakter -->
+      <tr style="border-bottom: 1.5px solid #cbd5e1; background-color: #f8fafc;">
+        <td style="padding: 9px 12px; font-weight: 800; color: #334155; border-right: 1.5px solid #cbd5e1; vertical-align: top;">
+          <div style="display: flex; justify-content: space-between;"><span>Elemen Teras Karakter</span><span>:</span></div>
+        </td>
+        <td style="padding: 9px 14px; background-color: #ffffff;">
+          <div style="line-height: 1.8;">
+            ${elemenList.map(item => {
+              const isChecked = selectedElemen.includes(item);
+              return `
+                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                  <span style="display: inline-block; width: 14px; height: 14px; border: 1.5px solid ${isChecked ? '#2563eb' : '#64748b'}; background: ${isChecked ? '#2563eb' : '#ffffff'}; color: #ffffff; text-align: center; line-height: 13px; font-size: 10px; font-weight: bold; border-radius: 3px; margin-right: 8px;">
+                    ${isChecked ? '&#10003;' : ''}
+                  </span>
+                  <span style="font-weight: ${isChecked ? '800' : '500'}; color: ${isChecked ? '#0f172a' : '#475569'}; font-size: 12px;">
+                    ${item}
+                  </span>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </td>
+      </tr>
+
+      <!-- Baris 5: Catatan Aktiviti -->
+      <tr style="background-color: #ffffff;">
+        <td style="padding: 9px 12px; font-weight: 800; color: #334155; border-right: 1.5px solid #cbd5e1; vertical-align: top;">
+          <div style="display: flex; justify-content: space-between;"><span>Catatan Aktiviti</span><span>:</span></div>
+        </td>
+        <td style="padding: 9px 14px; font-size: 11.5px; line-height: 1.5; color: #1e293b; vertical-align: top; white-space: pre-wrap;">
+          ${catatan || '-'}
+        </td>
+      </tr>
+    </table>
+
+    <!-- Footer Rasmi Slaid -->
+    <table style="width: 100%; border: none; border-collapse: collapse; margin-top: auto; padding-top: 4mm; border-top: 1px solid #e2e8f0;">
+      <tr>
+        <td style="border: none; font-size: 11px; font-weight: 800; color: #2563eb;">
+          #kurikulumkita
+        </td>
+        <td style="border: none; text-align: center; font-size: 10px; color: #94a3b8; font-family: monospace;">
+          3
+        </td>
+        <td style="border: none; text-align: right; font-size: 9.5px; color: #64748b; font-weight: 600;">
+          Guru: <strong>${teacherName}</strong> &bull; Sesi 2027
+        </td>
+      </tr>
+    </table>
+  </div>
+  `;
+}
+
 export function generateSingleRPHCardHtml(
   rph: Partial<RPHRecord>,
   teacherName: string,
@@ -28,6 +149,11 @@ export function generateSingleRPHCardHtml(
   totalSlots: number = 1,
   schoolName: string = 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
 ): string {
+  // Jika ini adalah RPH Pembentukan Karakter, jana templat slaid khas 15 minit
+  if (rph.jenis_rph === 'karakter' || rph.subjek?.toLowerCase().includes('karakter')) {
+    return generateKarakterCardHtml(rph, teacherName, slotIndex, totalSlots, schoolName);
+  }
+
   const isRTL = rph.arah_teks === 'rtl' || (rph.kod_bahasa === 'ar');
   const isPdPExecuted = rph.refleksi?.pdp_dijalankan !== false;
 

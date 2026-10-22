@@ -113,8 +113,18 @@ export interface RPHRecord {
   asal_rph_id?: string;
   
   status: 'DRAFT' | 'SELESAI' | 'DISEMAK';
+  jenis_rph?: 'akademik' | 'karakter';
+  karakter_data?: {
+    elemen: string[];
+    catatan_aktiviti: string;
+  };
   created_at?: string;
   updated_at?: string;
+}
+
+export interface KarakterData {
+  elemen: string[];
+  catatan_aktiviti: string;
 }
 
 export interface RPTItem {

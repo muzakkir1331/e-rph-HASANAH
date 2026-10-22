@@ -4,6 +4,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useSubjectLocale } from '@/hooks/useSubjectLocale';
 import RPTConnectorBanner from '@/components/form/RPTConnectorBanner';
 import TemaTajukSelector from '@/components/form/TemaTajukSelector';
+import KarakterRPHSection from '@/components/form/KarakterRPHSection';
 import DSKPSelector from '@/components/form/DSKPSelector';
 import ActivityStepsEditor from '@/components/form/ActivityStepsEditor';
 import PedagogyChecklist from '@/components/form/PedagogyChecklist';
@@ -66,7 +67,7 @@ import { getSubjectLocale } from '@/lib/dictionary';
 export default function RPHFormDynamic() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { user, isDeLIMA, loading: authLoading, timetable, teacherName, teacherEmail, googleAccessToken, signInWithGoogle } = useAuth();
+  const { user, isDeLIMA, loading: authLoading, timetable, updateSlot, teacherName, teacherEmail, googleAccessToken, signInWithGoogle } = useAuth();
 
   useEffect(() => {
     if (!authLoading && (!user || !isDeLIMA)) {
@@ -74,10 +75,10 @@ export default function RPHFormDynamic() {
     }
   }, [user, isDeLIMA, authLoading, router]);
 
-  // Tab Utama: 'jadual' (Berdasarkan Jadual & RPT) vs 'kustom' (e-RPH Kustom / Bebas)
+  // Tab Utama: 'jadual' (Berdasarkan Jadual & RPT) vs 'kustom' (e-RPH Kustom) vs 'karakter' (Pembentukan Karakter 15 Minit)
   const paramMode = searchParams ? searchParams.get('mode') : null;
-  const [activeTab, setActiveTab] = useState<'jadual' | 'kustom'>(
-    paramMode === 'kustom' ? 'kustom' : 'jadual'
+  const [activeTab, setActiveTab] = useState<'jadual' | 'kustom' | 'karakter'>(
+    paramMode === 'karakter' ? 'karakter' : (paramMode === 'kustom' ? 'kustom' : 'jadual')
   );
 
   // Senarai minggu takwim yang diselaraskan dengan RPT (44 minggu + 4 cuti)
@@ -385,10 +386,36 @@ export default function RPHFormDynamic() {
     setStartTime(newStart);
     // Beri cadangan waktu tamat 1 jam atau 30 minit kemudian secara pintar
     const currentIndex = dropdownOptions.waktu.findIndex(w => w.formatted === newStart);
+    let calculatedEnd = endTime;
     if (currentIndex !== -1 && currentIndex + 2 < dropdownOptions.waktu.length) {
-      setEndTime(dropdownOptions.waktu[currentIndex + 2].formatted);
+      calculatedEnd = dropdownOptions.waktu[currentIndex + 2].formatted;
+      setEndTime(calculatedEnd);
     } else if (currentIndex !== -1 && currentIndex + 1 < dropdownOptions.waktu.length) {
-      setEndTime(dropdownOptions.waktu[currentIndex + 1].formatted);
+      calculatedEnd = dropdownOptions.waktu[currentIndex + 1].formatted;
+      setEndTime(calculatedEnd);
+    }
+
+    // Jika dalam mod jadual, kemas kini juga slot jadual guru secara langsung agar kekal selaras
+    if (activeTab === 'jadual' && timetable && timetable[selectedSlotIndex] && updateSlot) {
+      const curSlot = timetable[selectedSlotIndex];
+      updateSlot(selectedSlotIndex, {
+        ...curSlot,
+        masa_mula: newStart,
+        masa_tamat: calculatedEnd
+      });
+    }
+  };
+
+  // Fungsi menukar waktu tamat dengan dropdown
+  const handleEndTimeChange = (newEnd: string) => {
+    setEndTime(newEnd);
+    // Jika dalam mod jadual, kemas kini juga slot jadual guru secara langsung
+    if (activeTab === 'jadual' && timetable && timetable[selectedSlotIndex] && updateSlot) {
+      const curSlot = timetable[selectedSlotIndex];
+      updateSlot(selectedSlotIndex, {
+        ...curSlot,
+        masa_tamat: newEnd
+      });
     }
   };
 
@@ -437,12 +464,13 @@ export default function RPHFormDynamic() {
 
   // Fungsi pertukaran minggu persekolahan
   const handleWeekChange = (newWeek: number) => {
+    let updatedMap = savedRecordsMap;
     // 1. Simpan auto-cache keadaan slot lama sebelum bertukar minggu
     if (activeTab === 'jadual') {
       const currentSlotKey = `week_${currentWeek}_slot_${selectedSlotIndex}`;
       const prevSnapshot = getCurrentSnapshot();
       const storageKey = `erph_saved_records_${user?.uid || teacherEmail || 'alhasanah'}`;
-      const updatedMap = {
+      updatedMap = {
         ...savedRecordsMap,
         [currentSlotKey]: prevSnapshot
       };
@@ -461,7 +489,7 @@ export default function RPHFormDynamic() {
 
     if (activeTab === 'jadual') {
       const targetSlotKey = `week_${newWeek}_slot_${selectedSlotIndex}`;
-      const savedForTarget = savedRecordsMap[targetSlotKey];
+      const savedForTarget = updatedMap[targetSlotKey];
       if (savedForTarget) {
         applyRecordToForm(savedForTarget);
       } else {
@@ -510,8 +538,8 @@ export default function RPHFormDynamic() {
         subjek: targetSlot.subjek,
         tingkatan: targetSlot.tingkatan,
         kelas: targetSlot.kelas,
-        masa_mula: targetSlot.masa_mula,
-        masa_tamat: targetSlot.masa_tamat,
+        masa_mula: savedForTarget.masa_mula || targetSlot.masa_mula,
+        masa_tamat: savedForTarget.masa_tamat || targetSlot.masa_tamat,
         tarikh: autoDayDate
       });
       setDate(autoDayDate);
@@ -521,8 +549,8 @@ export default function RPHFormDynamic() {
       setSubject(targetSlot.subjek);
       setForm(targetSlot.tingkatan);
       setClassName(targetSlot.kelas);
-      setStartTime(targetSlot.masa_mula);
-      setEndTime(targetSlot.masa_tamat);
+      setStartTime(savedForTarget?.masa_mula || targetSlot.masa_mula);
+      setEndTime(savedForTarget?.masa_tamat || targetSlot.masa_tamat);
       setDate(autoDayDate);
       setIsCarryForwardActive(false);
 
@@ -555,12 +583,14 @@ export default function RPHFormDynamic() {
 
   // Apabila slot jadual ditukar (Mod Jadual)
   const handleSlotChange = (newIndex: number) => {
+    let updatedMap = savedRecordsMap;
+
     // 1. Simpan auto-cache keadaan slot lama supaya perubahan guru tidak hilang
     if (activeTab === 'jadual') {
       const currentSlotKey = `week_${currentWeek}_slot_${selectedSlotIndex}`;
       const prevSnapshot = getCurrentSnapshot();
       const storageKey = `erph_saved_records_${user?.uid || teacherEmail || 'alhasanah'}`;
-      const updatedMap = {
+      updatedMap = {
         ...savedRecordsMap,
         [currentSlotKey]: prevSnapshot
       };
@@ -568,11 +598,23 @@ export default function RPHFormDynamic() {
       try {
         localStorage.setItem(storageKey, JSON.stringify(updatedMap));
       } catch (e) {}
+
+      // Jika masa slot semasa telah diubah, kemas kini juga slot jadual guru
+      if (timetable && timetable[selectedSlotIndex] && updateSlot) {
+        const curSlot = timetable[selectedSlotIndex];
+        if (curSlot.masa_mula !== prevSnapshot.masa_mula || curSlot.masa_tamat !== prevSnapshot.masa_tamat) {
+          updateSlot(selectedSlotIndex, {
+            ...curSlot,
+            masa_mula: prevSnapshot.masa_mula || curSlot.masa_mula,
+            masa_tamat: prevSnapshot.masa_tamat || curSlot.masa_tamat
+          });
+        }
+      }
     }
 
-    // 2. Berpindah ke slot baharu & selaraskan dengan jadual
+    // 2. Berpindah ke slot baharu & selaraskan dengan jadual (hantar updatedMap agar data snapshot sedia ada tidak hilang)
     setSelectedSlotIndex(newIndex);
-    syncWithSlot(newIndex, timetable, false);
+    syncWithSlot(newIndex, timetable, false, updatedMap);
 
     const targetSlot = timetable[newIndex];
     if (targetSlot) {
@@ -669,7 +711,7 @@ export default function RPHFormDynamic() {
   useEffect(() => {
     if (activeTab === 'jadual' && timetable && timetable.length > 0) {
       const currentSignature = JSON.stringify(
-        timetable.map(s => `${s.hari}_${s.slot_ke}_${s.subjek}_${s.kelas}_${s.masa_mula}`)
+        timetable.map(s => `${s.hari}_${s.slot_ke}_${s.subjek}_${s.kelas}`)
       );
       const isChanged = prevTimetableSignature.current !== '' && prevTimetableSignature.current !== currentSignature;
       const isFirstLoad = !hasInitializedRef.current;
@@ -712,7 +754,7 @@ export default function RPHFormDynamic() {
           }
         } catch {}
 
-        syncWithSlot(targetIndex, timetable, isChanged, loadedRecords);
+        syncWithSlot(targetIndex, timetable, false, loadedRecords);
       }
     }
   }, [timetable, selectedSlotIndex, activeTab, currentWeek, paramSlot, paramDay, paramSubject]);
@@ -1117,6 +1159,22 @@ export default function RPHFormDynamic() {
             Tab Kustom
           </span>
         </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab('karakter')}
+          className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-extrabold transition-all ${
+            activeTab === 'karakter'
+              ? 'bg-blue-600 text-white shadow-sm border border-blue-500'
+              : 'text-slate-600 hover:text-slate-900'
+          }`}
+        >
+          <Sparkles className="w-4 h-4 text-amber-300" />
+          <span>e-RPH Pembentukan Karakter (15 Minit)</span>
+          <span className="px-2 py-0.5 text-[9px] font-extrabold bg-amber-400 text-slate-950 rounded-full">
+            Kurikulum 2027
+          </span>
+        </button>
       </div>
 
       {/* =========================================================================
@@ -1371,6 +1429,7 @@ export default function RPHFormDynamic() {
             <div className="flex flex-wrap gap-2">
               {[
                 'Kelas Biasa',
+                'Pembentukan Karakter (15 minit)',
                 'Kelas Ganti (Relief)',
                 'Kelas Tambahan / Pengukuhan',
                 'Amali Makmal / Bengkel',
@@ -1382,7 +1441,13 @@ export default function RPHFormDynamic() {
                   <button
                     key={type}
                     type="button"
-                    onClick={() => setCustomSessionType(type)}
+                    onClick={() => {
+                      if (type === 'Pembentukan Karakter (15 minit)') {
+                        setActiveTab('karakter');
+                      } else {
+                        setCustomSessionType(type);
+                      }
+                    }}
                     className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                       isSelected
                         ? 'bg-amber-400 text-slate-950 shadow-md shadow-amber-400/20'
@@ -1519,6 +1584,9 @@ export default function RPHFormDynamic() {
                 onChange={(e) => handleStartTimeChange(e.target.value)}
                 className="w-full text-xs px-3 py-2 bg-slate-800/90 border border-emerald-700/80 rounded-xl text-white font-bold focus:outline-none focus:ring-2 focus:ring-emerald-400 cursor-pointer"
               >
+                {!dropdownOptions.waktu.some(t => t.formatted === startTime) && startTime && (
+                  <option value={startTime} className="bg-slate-900 text-white">{startTime}</option>
+                )}
                 {dropdownOptions.waktu.map((t) => (
                   <option key={`cstart-${t.value}`} value={t.formatted} className="bg-slate-900 text-white">
                     {t.formatted}
@@ -1534,9 +1602,12 @@ export default function RPHFormDynamic() {
               </label>
               <select
                 value={endTime}
-                onChange={(e) => setEndTime(e.target.value)}
+                onChange={(e) => handleEndTimeChange(e.target.value)}
                 className="w-full text-xs px-3 py-2 bg-slate-800/90 border border-emerald-700/80 rounded-xl text-white font-bold focus:outline-none focus:ring-2 focus:ring-emerald-400 cursor-pointer"
               >
+                {!dropdownOptions.waktu.some(t => t.formatted === endTime) && endTime && (
+                  <option value={endTime} className="bg-slate-900 text-white">{endTime}</option>
+                )}
                 {dropdownOptions.waktu.map((t) => (
                   <option key={`cend-${t.value}`} value={t.formatted} className="bg-slate-900 text-white">
                     {t.formatted}
@@ -1667,7 +1738,28 @@ export default function RPHFormDynamic() {
       {/* =========================================================================
           PILIHAN MOD: TEMPLAT JADUAL SIAP DIJANA (TABLE KPM) VS BORANG DINAMIK
          ========================================================================= */}
-      {viewMode === 'table' ? (
+      {activeTab === 'karakter' ? (
+        <KarakterRPHSection
+          currentWeek={currentWeek}
+          initialDate={date}
+          initialForm={form}
+          initialClass={className}
+          classList={dropdownOptions.kelas}
+          teacherName={teacherName || 'GURU'}
+          teacherEmail={teacherEmail || ''}
+          savedRecord={getCurrentSnapshot()}
+          onSaveRecord={(record) => {
+            if (record.tarikh) setDate(record.tarikh);
+            if (record.tingkatan) setForm(record.tingkatan);
+            if (record.kelas) setClassName(record.kelas);
+            if (record.masa_mula) setStartTime(record.masa_mula);
+            if (record.masa_tamat) setEndTime(record.masa_tamat);
+            if (record.sp) setSP(record.sp);
+            if (record.kriteria_kejayaan) setSuccessCriteria(record.kriteria_kejayaan);
+            handleSaveDraft();
+          }}
+        />
+      ) : viewMode === 'table' ? (
         <RPHGeneratedTableView
           rph={getCurrentSnapshot()}
           teacherName={teacherName || 'GURU'}
@@ -1811,6 +1903,9 @@ export default function RPHFormDynamic() {
                 className="w-1/2 bg-transparent font-bold text-slate-900 focus:outline-none text-[11px] cursor-pointer"
                 title="Waktu Mula"
               >
+                {!dropdownOptions.waktu.some(t => t.formatted === startTime) && startTime && (
+                  <option value={startTime}>{startTime}</option>
+                )}
                 {dropdownOptions.waktu.map((t) => (
                   <option key={`mula-${t.value}`} value={t.formatted}>
                     {t.formatted}
@@ -1820,10 +1915,13 @@ export default function RPHFormDynamic() {
               <span className="text-slate-400 font-bold text-[10px]">&ndash;</span>
               <select
                 value={endTime}
-                onChange={(e) => setEndTime(e.target.value)}
+                onChange={(e) => handleEndTimeChange(e.target.value)}
                 className="w-1/2 bg-transparent font-bold text-slate-900 focus:outline-none text-[11px] cursor-pointer"
                 title="Waktu Tamat"
               >
+                {!dropdownOptions.waktu.some(t => t.formatted === endTime) && endTime && (
+                  <option value={endTime}>{endTime}</option>
+                )}
                 {dropdownOptions.waktu.map((t) => (
                   <option key={`tamat-${t.value}`} value={t.formatted}>
                     {t.formatted}

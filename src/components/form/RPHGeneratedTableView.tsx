@@ -61,6 +61,183 @@ export default function RPHGeneratedTableView({
     }
   };
 
+  const isKarakter = rph.jenis_rph === 'karakter' || rph.subjek?.toLowerCase().includes('karakter');
+  const elemenList = ['Penyayang', 'Berdaya Tahan', 'Berupaya Memimpin', 'Warganegara Aktif'];
+  const selectedElemen = rph.karakter_data?.elemen || (rph.sp ? rph.sp.split(',').map(s => s.trim()) : ['Penyayang']);
+  const catatan = rph.karakter_data?.catatan_aktiviti || rph.kriteria_kejayaan || rph.sk || '';
+
+  if (isKarakter) {
+    return (
+      <div className="space-y-4">
+        {/* Bar Tindakan */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 bg-slate-900 text-white rounded-2xl shadow-md no-print">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-300 flex items-center justify-center font-bold">
+              <FileText className="w-4 h-4 text-blue-400" />
+            </div>
+            <div>
+              <span className="text-xs font-extrabold text-white block">
+                Templat Slaid Program Pembentukan Karakter (15 Minit)
+              </span>
+              <span className="text-[10px] text-slate-400">
+                Penataran Kurikulum Persekolahan 2027 &bull; Format Slaid Rasmi 1:1
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-2 self-end sm:self-center">
+            {onSwitchToForm && (
+              <button
+                type="button"
+                onClick={onSwitchToForm}
+                className="px-3.5 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-colors border border-white/20"
+              >
+                <Edit3 className="w-3.5 h-3.5 text-blue-300" />
+                <span>Kembali ke Borang Edit</span>
+              </button>
+            )}
+
+            <button
+              type="button"
+              onClick={handleSavePdf}
+              className="px-3.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-colors shadow-sm"
+              title="Simpan sebagai fail PDF"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Simpan PDF</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handlePrint}
+              className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-colors shadow-sm"
+              title="Cetak paparan slaid"
+            >
+              <Printer className="w-3.5 h-3.5" />
+              <span>Cetak</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Kad Paparan Slaid Sebenar Seperti Gambar */}
+        <div className="bg-white border-2 border-slate-300 rounded-2xl p-6 sm:p-10 shadow-xl mx-auto max-w-5xl text-slate-900">
+          {/* Header Slaid */}
+          <div className="flex items-start justify-between border-b-2 border-slate-100 pb-4 mb-4">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center p-1.5 shadow-sm">
+              <img
+                src={LOGO_AL_HASANAH_BASE64}
+                alt="Logo Rasmi"
+                className="w-full h-full object-contain filter drop-shadow"
+              />
+            </div>
+            <div className="text-right">
+              <div className="text-[11px] font-extrabold text-blue-800 tracking-wider uppercase">
+                PENATARAN
+              </div>
+              <div className="text-[12px] font-extrabold text-blue-700 tracking-wide uppercase">
+                KURIKULUM PERSEKOLAHAN 2027
+              </div>
+            </div>
+          </div>
+
+          {/* Tajuk Utama */}
+          <div className="text-center my-4">
+            <h1 className="text-lg sm:text-xl font-extrabold text-blue-700 tracking-tight">
+              Pelaksanaan Aktiviti
+            </h1>
+            <h2 className="text-base sm:text-lg font-extrabold text-blue-600 mt-0.5">
+              Program Pembentukan Karakter (15 minit)
+            </h2>
+            <h3 className="text-sm sm:text-base font-bold text-blue-800 mt-0.5">
+              Sekolah Menengah
+            </h3>
+          </div>
+
+          {/* Jadual 5 Baris */}
+          <div className="mt-6 border-2 border-slate-300 rounded-2xl overflow-hidden shadow-xs">
+            <table className="w-full border-collapse text-xs sm:text-sm">
+              <tbody>
+                <tr className="border-b border-slate-200">
+                  <td className="w-1/3 sm:w-1/4 p-2.5 sm:p-3 font-bold bg-[#84cc16] text-slate-900 border-r border-slate-200 flex items-center justify-between">
+                    <span>Tarikh</span>
+                    <span>:</span>
+                  </td>
+                  <td className="p-2.5 sm:p-3 font-semibold text-slate-800 bg-white">
+                    {rph.tarikh || '-'} {rph.hari ? `(${rph.hari})` : ''}
+                  </td>
+                </tr>
+
+                <tr className="border-b border-slate-200 bg-slate-50/60">
+                  <td className="p-2.5 sm:p-3 font-bold text-slate-700 border-r border-slate-200 flex items-center justify-between">
+                    <span>Masa</span>
+                    <span>:</span>
+                  </td>
+                  <td className="p-2.5 sm:p-3 font-semibold text-slate-800">
+                    {rph.masa_mula || '7.20 PAGI'} - {rph.masa_tamat || '7.35 PAGI'} (15 minit)
+                  </td>
+                </tr>
+
+                <tr className="border-b border-slate-200 bg-white">
+                  <td className="p-2.5 sm:p-3 font-bold text-slate-700 border-r border-slate-200 flex items-center justify-between">
+                    <span>Tahun</span>
+                    <span>:</span>
+                  </td>
+                  <td className="p-2.5 sm:p-3 font-semibold text-slate-800">
+                    Tingkatan {rph.tingkatan || '1'} ({rph.kelas || '-'})
+                  </td>
+                </tr>
+
+                <tr className="border-b border-slate-200 bg-slate-50/40">
+                  <td className="p-2.5 sm:p-3 font-bold text-slate-700 border-r border-slate-200 align-top flex items-center justify-between">
+                    <span>Elemen Teras Karakter</span>
+                    <span>:</span>
+                  </td>
+                  <td className="p-3 sm:p-4 bg-white space-y-2">
+                    {elemenList.map((item) => {
+                      const isChecked = selectedElemen.includes(item);
+                      return (
+                        <div key={item} className="flex items-center space-x-2 text-xs sm:text-sm">
+                          <span className={`inline-flex items-center justify-center w-4 h-4 border-2 rounded ${
+                            isChecked ? 'bg-blue-600 border-blue-600 text-white font-bold' : 'border-slate-400 bg-white'
+                          }`}>
+                            {isChecked ? '✓' : ''}
+                          </span>
+                          <span className={`font-semibold ${isChecked ? 'text-slate-900 font-bold' : 'text-slate-600'}`}>
+                            {item}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </td>
+                </tr>
+
+                <tr className="bg-white">
+                  <td className="p-2.5 sm:p-3 font-bold text-slate-700 border-r border-slate-200 align-top flex items-center justify-between">
+                    <span>Catatan Aktiviti</span>
+                    <span>:</span>
+                  </td>
+                  <td className="p-3 sm:p-4 text-xs sm:text-sm text-slate-800 leading-relaxed font-medium whitespace-pre-wrap">
+                    {catatan || '-'}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Footer Slaid */}
+          <div className="mt-8 pt-4 border-t border-slate-100 flex items-end justify-between">
+            <div className="text-[11px] font-extrabold text-blue-600 tracking-wider">
+              #kurikulumkita
+            </div>
+            <div className="text-[10px] text-slate-400 font-mono">
+              3
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-4">
       {/* Bar Tindakan Templat Jadual */}
