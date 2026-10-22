@@ -10,6 +10,7 @@ import ActivityStepsEditor from '@/components/form/ActivityStepsEditor';
 import PedagogyChecklist from '@/components/form/PedagogyChecklist';
 import ReflectionMirrorBox from '@/components/form/ReflectionMirrorBox';
 import AICoPilotModal from '@/components/form/AICoPilotModal';
+import AIWeeklyGeneratorModal from '@/components/form/AIWeeklyGeneratorModal';
 import CopyRPHModal from '@/components/form/CopyRPHModal';
 import A4PortraitPreviewModal from '@/components/form/A4PortraitPreviewModal';
 import RPHGeneratedTableView from '@/components/form/RPHGeneratedTableView';
@@ -236,6 +237,7 @@ export default function RPHFormDynamic() {
 
   const [isCarryForwardActive, setIsCarryForwardActive] = useState<boolean>(false);
   const [isAIModalOpen, setIsAIModalOpen] = useState<boolean>(false);
+  const [isWeeklyAIModalOpen, setIsWeeklyAIModalOpen] = useState<boolean>(false);
   const [saveSuccess, setSaveSuccess] = useState<boolean>(false);
 
   // Google Drive State & Modal (Format PDF Seminggu)
@@ -1083,6 +1085,31 @@ export default function RPHFormDynamic() {
     });
   };
 
+  // Fungsi menerima penjanaan RPH Seminggu daripada Co-Pilot AI dan menyimpannya secara automatik
+  const handleApplyWeeklyAI = (weeklyRecords: Record<string, RPHRecord>) => {
+    const storageKey = `erph_saved_records_${user?.uid || teacherEmail || 'alhasanah'}`;
+    const updatedMap = {
+      ...savedRecordsMap,
+      ...weeklyRecords
+    };
+    setSavedRecordsMap(updatedMap);
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(updatedMap));
+    } catch (e) {
+      console.warn('Gagal menyimpan rekod seminggu:', e);
+    }
+
+    // Jika slot semasa adalah salah satu daripada rekod yang dijana, kemas kini borang semasa
+    const currentSlotKey = `week_${currentWeek}_slot_${selectedSlotIndex}`;
+    if (weeklyRecords[currentSlotKey]) {
+      applyRecordToForm(weeklyRecords[currentSlotKey]);
+    }
+
+    const count = Object.keys(weeklyRecords).length;
+    setClipboardToast(`🎉 RPH Seminggu (Minggu ${currentWeek}) bagi ${count} slot berjaya dijana dengan AI & disimpan!`);
+    setTimeout(() => setClipboardToast(null), 5000);
+  };
+
   const handleUploadToGoogleDrive = async () => {
     setIsDriveModalOpen(true);
     setIsUploadingDrive(true);
@@ -1275,7 +1302,6 @@ export default function RPHFormDynamic() {
                   Pilih Slot Mengajar: <span className="text-emerald-700 font-extrabold">{teacherName}</span>
                 </span>
               </div>
-<<<<<<< HEAD
               <div className="flex items-center space-x-2 w-full sm:w-auto justify-end flex-wrap gap-y-1">
                 <button
                   type="button"
@@ -1301,19 +1327,9 @@ export default function RPHFormDynamic() {
                   className="text-xs font-bold text-emerald-700 hover:text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-xl border border-emerald-200 flex items-center space-x-1.5 transition-colors"
                 >
                   <Edit3 className="w-3.5 h-3.5" />
-                  <span>Ubah Suai Jadual</span>
+                  <span>Ubah Suai Jadual Mengajar</span>
                 </button>
               </div>
-=======
-              <button
-                type="button"
-                onClick={() => setIsTimetableEditorOpen(true)}
-                className="text-xs font-bold text-emerald-700 hover:text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-xl border border-emerald-200 flex items-center space-x-1.5 transition-colors"
-              >
-                <Edit3 className="w-3.5 h-3.5" />
-                <span>Ubah Suai Jadual Mengajar</span>
-              </button>
->>>>>>> parent of 22f68d3 (gemini,jana rph seminggu)
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
@@ -2184,6 +2200,18 @@ export default function RPHFormDynamic() {
         rptActivitySuggestion={rptSuggestion}
         onApply={handleApplyAIContent}
         isRTL={isRTL}
+      />
+
+      {/* Modal Penjana RPH Seminggu dengan AI */}
+      <AIWeeklyGeneratorModal
+        isOpen={isWeeklyAIModalOpen}
+        onClose={() => setIsWeeklyAIModalOpen(false)}
+        timetable={timetable}
+        currentWeek={currentWeek}
+        weekDates={weekDates}
+        mondayDate={mondayDate}
+        existingRecords={savedRecordsMap}
+        onApplyWeeklyRPH={handleApplyWeeklyAI}
       />
 
       {/* Modal Editor Jadual Waktu Guru */}
