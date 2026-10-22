@@ -25,7 +25,7 @@ export function generateKarakterCardHtml(
   teacherName: string,
   slotIndex: number = 1,
   totalSlots: number = 1,
-  schoolName: string = 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+  schoolName: string = 'SEKOLAH KEBANGSAAN / MENENGAH'
 ): string {
   const elemenList = ['Penyayang', 'Berdaya Tahan', 'Berupaya Memimpin', 'Warganegara Aktif'];
   const selectedElemen = rph.karakter_data?.elemen || (rph.sp ? rph.sp.split(',').map(s => s.trim()) : ['Penyayang']);
@@ -147,25 +147,29 @@ export function generateSingleRPHCardHtml(
   teacherEmail: string,
   slotIndex: number = 1,
   totalSlots: number = 1,
-  schoolName: string = 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+  schoolName: string = 'SEKOLAH SAYA',
+  schoolLogo?: string,
+  planType: 'free' | 'pro' = 'free',
+  teacherSignature?: string
 ): string {
   // Jika ini adalah RPH Pembentukan Karakter, jana templat slaid khas 15 minit
   if (rph.jenis_rph === 'karakter' || rph.subjek?.toLowerCase().includes('karakter')) {
     return generateKarakterCardHtml(rph, teacherName, slotIndex, totalSlots, schoolName);
   }
 
-  const isRTL = rph.arah_teks === 'rtl' || (rph.kod_bahasa === 'ar');
+  const isRTL = rph.arah_teks === 'rtl' || rph.kod_bahasa === 'ar' || /[\u0600-\u06FF]/.test(rph.subjek || '');
   const isPdPExecuted = rph.refleksi?.pdp_dijalankan !== false;
+  const logoSrc = schoolLogo || LOGO_AL_HASANAH_BASE64;
 
   return `
-  <div class="a4-page-card" dir="${isRTL ? 'rtl' : 'ltr'}" style="${isRTL ? 'font-family: Arial, Amiri, Tahoma, sans-serif;' : 'font-family: Arial, sans-serif;'}">
+  <div class="a4-page-card" dir="${isRTL ? 'rtl' : 'ltr'}" style="${isRTL ? 'font-family: Amiri, \"Scheherazade New\", Arial, sans-serif;' : 'font-family: Arial, sans-serif;'}">
     
     <!-- Header Rasmi Kementerian & Sekolah (Kekal Simetri LTR: Logo Kiri, Tajuk Tengah, Slot Kanan) -->
     <div class="header-box" dir="ltr">
       <table style="width: 100%; border: none; border-collapse: collapse; margin: 0 auto; background: transparent;">
         <tr>
           <td style="width: 55px; text-align: center; vertical-align: middle; border: none; background: transparent; padding: 0;">
-            <img src="${LOGO_AL_HASANAH_BASE64}" alt="Logo" style="width: 46px; height: 46px; object-fit: contain; display: block; margin: 0 auto;" />
+            <img src="${logoSrc}" alt="Logo Sekolah" style="width: 46px; height: 46px; object-fit: contain; display: block; margin: 0 auto;" />
           </td>
           <td style="text-align: center; vertical-align: middle; border: none; background: transparent; padding: 0 8px;">
             <div style="font-size: 9.5px; font-weight: bold; color: #475569; letter-spacing: 0.5px; text-transform: uppercase;">
@@ -175,7 +179,7 @@ export function generateSingleRPHCardHtml(
               ${schoolName}
             </div>
             <div style="font-size: 10px; font-weight: bold; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px;">
-              RANCANGAN PENGAJARAN HARIAN (e-RPH SESI 2027)
+              RANCANGAN PENGAJARAN HARIAN (e-RPH SESI 2026/2027)
             </div>
           </td>
           <td style="width: 65px; text-align: right; vertical-align: middle; border: none; background: transparent; padding: 0; font-size: 9px; color: #475569; font-weight: bold;">
@@ -193,7 +197,7 @@ export function generateSingleRPHCardHtml(
         <!-- Baris 1: Minggu Persekolahan, Hari & Tarikh, Masa PdPc -->
         <tr>
           <th class="rph-header-label" style="width: 13%;">Minggu / Sesi</th>
-          <td style="width: 20%;">Minggu ${rph.minggu_ke || 1} &bull; Sesi 2027</td>
+          <td style="width: 20%;">Minggu ${rph.minggu_ke || 1} &bull; Sesi 2026/2027</td>
           <th class="rph-header-label" style="width: 13%;">Hari &amp; Tarikh</th>
           <td style="width: 21%;"><strong>${rph.hari || '-'}</strong> (${rph.tarikh || '-'})</td>
           <th class="rph-header-label" style="width: 12%;">Masa PdPc</th>
@@ -205,7 +209,9 @@ export function generateSingleRPHCardHtml(
           <th class="rph-header-label">Tingkatan / Kelas</th>
           <td>Tingkatan ${rph.tingkatan || '-'} &bull; <strong>${rph.kelas || '-'}</strong></td>
           <th class="rph-header-label">Mata Pelajaran</th>
-          <td style="font-weight: 800; color: #065f46; font-size: 10px;">${rph.subjek || '-'}</td>
+          <td style="font-weight: 800; color: #065f46; font-size: ${isRTL ? '12px' : '10px'}; font-family: ${isRTL ? 'Amiri, serif' : 'inherit'};">
+            ${rph.subjek || '-'}
+          </td>
           <th class="rph-header-label">Guru Pengajar</th>
           <td><strong>${teacherName}</strong></td>
         </tr>
@@ -213,50 +219,62 @@ export function generateSingleRPHCardHtml(
         <!-- Baris 3: Tema / Tajuk -->
         <tr>
           <th class="rph-header-label">Tema / Tajuk</th>
-          <td colspan="5">${rph.tema || '-'} ${rph.tajuk ? '&bull; ' + rph.tajuk : ''}</td>
+          <td colspan="5" dir="${isRTL ? 'rtl' : 'ltr'}" style="${isRTL ? 'direction: rtl; text-align: right; font-family: Amiri, serif; font-size: 11px;' : ''}">
+            ${rph.tema || '-'} ${rph.tajuk ? '&bull; ' + rph.tajuk : ''}
+          </td>
         </tr>
 
         <!-- Baris 4: Standard Kandungan (SK) -->
         <tr>
           <th class="rph-header-label">Standard Kandungan (SK)</th>
-          <td colspan="5">${rph.sk || '-'}</td>
+          <td colspan="5" dir="${isRTL ? 'rtl' : 'ltr'}" style="${isRTL ? 'direction: rtl; text-align: right; font-family: Amiri, serif; font-size: 11px;' : ''}">
+            ${rph.sk || '-'}
+          </td>
         </tr>
 
         <!-- Baris 5: Standard Pembelajaran (SP) -->
         <tr>
           <th class="rph-header-label">Standard Pembelajaran (SP)</th>
-          <td colspan="5">${rph.sp || '-'}</td>
+          <td colspan="5" dir="${isRTL ? 'rtl' : 'ltr'}" style="${isRTL ? 'direction: rtl; text-align: right; font-family: Amiri, serif; font-size: 11px;' : ''}">
+            ${rph.sp || '-'}
+          </td>
         </tr>
 
         <!-- Baris 6: Objektif Pembelajaran -->
         <tr>
           <th class="rph-header-label">Objektif Pembelajaran</th>
-          <td colspan="5" style="background-color: #f8fafc; font-weight: 500;">${rph.objektif_pembelajaran || '-'}</td>
+          <td colspan="5" dir="${isRTL ? 'rtl' : 'ltr'}" style="background-color: #f8fafc; font-weight: 500; ${isRTL ? 'direction: rtl; text-align: right; font-family: Amiri, serif; font-size: 11px; line-height: 1.5;' : ''}">
+            ${rph.objektif_pembelajaran || '-'}
+          </td>
         </tr>
 
         <!-- Baris 7: Kriteria Kejayaan -->
         <tr>
           <th class="rph-header-label">Kriteria Kejayaan</th>
-          <td colspan="5">${rph.kriteria_kejayaan || '-'}</td>
+          <td colspan="5" dir="${isRTL ? 'rtl' : 'ltr'}" style="${isRTL ? 'direction: rtl; text-align: right; font-family: Amiri, serif; font-size: 11px; line-height: 1.5;' : ''}">
+            ${rph.kriteria_kejayaan || '-'}
+          </td>
         </tr>
 
         <!-- Baris 8: Rangka Aktiviti Pengajaran & Pembelajaran (PdPc) -->
         <tr>
           <th class="rph-header-label" style="vertical-align: top;">Aktiviti PdPc</th>
-          <td colspan="5" style="padding: 2.5px 6px;">
+          <td colspan="5" style="padding: 2.5px 6px;" dir="${isRTL ? 'rtl' : 'ltr'}">
             <div style="margin-bottom: 2px;">
-              <strong style="color: #047857;">Set Induksi (5 min):</strong> ${rph.aktiviti?.set_induksi || '-'}
+              <strong style="color: #047857;">Set Induksi (5 min):</strong> 
+              <span style="${isRTL ? 'font-family: Amiri, serif;' : ''}">${rph.aktiviti?.set_induksi || '-'}</span>
             </div>
             <div style="margin-bottom: 2px;">
               <strong style="color: #047857;">Aktiviti Utama:</strong>
-              <div style="padding-left: 6px;">
+              <div style="padding-left: ${isRTL ? '0' : '6px'}; padding-right: ${isRTL ? '6px' : '0'}; ${isRTL ? 'font-family: Amiri, serif;' : ''}">
                 ${rph.aktiviti?.langkah_1 ? `<div>&bull; <strong>Langkah 1:</strong> ${rph.aktiviti.langkah_1}</div>` : ''}
                 ${rph.aktiviti?.langkah_2 ? `<div style="margin-top: 1px;">&bull; <strong>Langkah 2:</strong> ${rph.aktiviti.langkah_2}</div>` : ''}
                 ${rph.aktiviti?.langkah_3 ? `<div style="margin-top: 1px;">&bull; <strong>Langkah 3:</strong> ${rph.aktiviti.langkah_3}</div>` : ''}
               </div>
             </div>
             <div>
-              <strong style="color: #047857;">Penutup &amp; Refleksi (5 min):</strong> ${rph.aktiviti?.penutup || '-'}
+              <strong style="color: #047857;">Penutup &amp; Refleksi (5 min):</strong> 
+              <span style="${isRTL ? 'font-family: Amiri, serif;' : ''}">${rph.aktiviti?.penutup || '-'}</span>
             </div>
           </td>
         </tr>
@@ -317,15 +335,38 @@ export function generateSingleRPHCardHtml(
             <div style="color: #64748b; font-weight: bold; font-size: 8px; text-transform: uppercase;">Disediakan Oleh:</div>
             <div style="font-weight: 800; color: #0f172a;">${teacherName}</div>
             <div style="color: #64748b; font-size: 8px;">Guru Mata Pelajaran &bull; Tarikh: ${rph.tarikh || new Date().toISOString().split('T')[0]}</div>
+            ${rph.guru_tandatangan || teacherSignature ? `
+              <div style="margin-top: 2px;">
+                <img src="${rph.guru_tandatangan || teacherSignature}" alt="Tandatangan Guru" style="max-height: 26px; max-width: 90px; object-fit: contain; display: block;" />
+              </div>
+            ` : ''}
           </td>
           <td colspan="3" style="background-color: #f8fafc; font-size: 8.5px; padding: 2.5px 6px; text-align: right;">
             <div style="color: #64748b; font-weight: bold; font-size: 8px; text-transform: uppercase;">Disemak &amp; Disahkan Oleh:</div>
-            <div style="font-weight: 800; color: #0f172a;">Pengetua / PK Pentadbiran SMA Al-Hasanah</div>
-            <div style="color: #059669; font-weight: bold; font-size: 8px;">PENGESAHAN DIGITAL e-RPH KPM (ID DELIMA)</div>
+            ${rph.penyemak_nama ? `
+              <div style="font-weight: 800; color: #0f172a;">${rph.penyemak_nama}</div>
+              <div style="color: #64748b; font-size: 8px;">${rph.penyemak_jawatan || 'Pengetua / Guru Besar'} &bull; Disahkan: ${rph.penyemak_tarikh_disemak ? new Date(rph.penyemak_tarikh_disemak).toLocaleDateString('ms-MY') : '-'}</div>
+              ${rph.penyemak_tandatangan ? `
+                <div style="margin-top: 1px; text-align: right;">
+                  <img src="${rph.penyemak_tandatangan}" alt="Tandatangan Pengetua" style="max-height: 26px; max-width: 90px; object-fit: contain; display: inline-block;" />
+                </div>
+              ` : ''}
+              <div style="color: #059669; font-weight: bold; font-size: 7.5px;">DISEMAK &amp; DISAHKAN SECARA DIGITAL (PGB)</div>
+            ` : `
+              <div style="font-weight: 800; color: #0f172a;">Pengetua / PK Pentadbiran</div>
+              <div style="color: #059669; font-weight: bold; font-size: 8px;">PENGESAHAN DIGITAL e-RPH KPM</div>
+            `}
           </td>
         </tr>
       </tbody>
     </table>
+
+    <!-- Watermark Pelan Percuma (Jika plan_type === 'free') -->
+    ${planType === 'free' ? `
+      <div class="watermark-footer" style="text-align: center; font-size: 7.5px; color: #94a3b8; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 3px; padding-top: 2px; border-top: 1px dashed #cbd5e1;">
+        Dijana Melalui e-RPH Pintar SaaS (Pelan Percuma) &bull; https://e-rph.my &bull; Naik taraf ke PRO untuk membuang tera air rasmi
+      </div>
+    ` : ''}
 
   </div>
   `;
@@ -340,19 +381,37 @@ export function generateWeeklyRPHHtml({
   teacherName,
   teacherEmail,
   weekNo,
-  schoolName = 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+  schoolName = 'SEKOLAH SAYA',
+  schoolLogo,
+  planType = 'free',
+  teacherSignature
 }: {
   rphList: Partial<RPHRecord>[];
   teacherName: string;
   teacherEmail: string;
   weekNo: number | string;
   schoolName?: string;
+  schoolLogo?: string;
+  planType?: 'free' | 'pro';
+  teacherSignature?: string;
 }): string {
   const formattedWeek = String(weekNo || '1').padStart(2, '0');
   const title = `RPH CG ${teacherName.toUpperCase()} MINGGU ${formattedWeek} (ISNIN-JUMAAT)`;
 
   const cardsHtml = rphList
-    .map((rph, idx) => generateSingleRPHCardHtml(rph, teacherName, teacherEmail, idx + 1, rphList.length, schoolName))
+    .map((rph, idx) =>
+      generateSingleRPHCardHtml(
+        rph,
+        teacherName,
+        teacherEmail,
+        idx + 1,
+        rphList.length,
+        schoolName,
+        schoolLogo,
+        planType,
+        teacherSignature
+      )
+    )
     .join('\n<!-- PAGE BREAK -->\n');
 
   return `<!DOCTYPE html>
@@ -360,7 +419,12 @@ export function generateWeeklyRPHHtml({
 <head>
   <meta charset="UTF-8">
   <title>${title}</title>
+  <!-- Google Fonts: Amiri & Scheherazade New untuk Sokongan Penuh Tulisan Arab & Jawi (RTL) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Scheherazade+New:wght@400;700&display=swap');
     @page {
       size: A4 landscape;
       margin: 5mm 6mm;
@@ -375,6 +439,11 @@ export function generateWeeklyRPHHtml({
       color: #0f172a;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
+    }
+    [dir="rtl"], .rtl-text {
+      direction: rtl !important;
+      unicode-bidi: isolate !important;
+      font-family: 'Amiri', 'Scheherazade New', 'Traditional Arabic', serif !important;
     }
     .a4-page-card {
       width: 100%;
@@ -457,14 +526,20 @@ export function generateRPHHtml(
   rph: Partial<RPHRecord>,
   teacherName: string,
   teacherEmail: string,
-  schoolName: string = 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+  schoolName: string = 'SEKOLAH SAYA',
+  schoolLogo?: string,
+  planType: 'free' | 'pro' = 'free',
+  teacherSignature?: string
 ): string {
   return generateWeeklyRPHHtml({
     rphList: [rph],
     teacherName,
     teacherEmail,
     weekNo: rph.minggu_ke || 1,
-    schoolName
+    schoolName,
+    schoolLogo,
+    planType,
+    teacherSignature
   });
 }
 
@@ -526,7 +601,7 @@ export async function uploadWeeklyRPHToMyDrive({
   teacherEmail,
   weekNo,
   accessToken,
-  schoolName = 'SMA Al-Hasanah'
+  schoolName = 'Sekolah Kebangsaan / Menengah'
 }: {
   rphList: Partial<RPHRecord>[];
   teacherName: string;

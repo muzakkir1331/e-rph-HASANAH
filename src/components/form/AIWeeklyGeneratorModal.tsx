@@ -22,6 +22,7 @@ import {
 import { JadualSlot, RPHRecord, GeminiCoPilotRequest, GeminiCoPilotResponse } from '@/types/erph';
 import { findRPTRecord, takwimData } from '@/lib/rpt-helper';
 import { getSubjectLocale } from '@/lib/dictionary';
+import { useAuth } from '@/context/AuthContext';
 
 interface AIWeeklyGeneratorModalProps {
   isOpen: boolean;
@@ -44,6 +45,7 @@ export default function AIWeeklyGeneratorModal({
   onApplyWeeklyRPH,
   existingRecords
 }: AIWeeklyGeneratorModalProps) {
+  const { planType, aiCreditsRemaining, deductAICredit, setIsUpgradeModalOpen } = useAuth();
   const [selectedWeek, setSelectedWeek] = useState<number>(currentWeek || 1);
   const [selectedSlotIndexes, setSelectedSlotIndexes] = useState<number[]>(() =>
     timetable.map((_, idx) => idx)
@@ -127,6 +129,11 @@ export default function AIWeeklyGeneratorModal({
   const handleStartWeeklyGeneration = async () => {
     if (selectedSlotIndexes.length === 0) return;
 
+    if (planType === 'free' && aiCreditsRemaining <= 0) {
+      setIsUpgradeModalOpen(true);
+      return;
+    }
+
     setIsGenerating(true);
     setProgressCount(0);
     const newStatusMap: Record<number, 'idle' | 'generating' | 'done' | 'error'> = {};
@@ -138,6 +145,14 @@ export default function AIWeeklyGeneratorModal({
     const accumulatedRecords: Record<string, RPHRecord> = { ...generatedRecords };
 
     for (let i = 0; i < selectedSlotIndexes.length; i++) {
+      if (planType === 'free') {
+        const creditRes = await deductAICredit(1);
+        if (!creditRes.success && !creditRes.isPro) {
+          setIsUpgradeModalOpen(true);
+          break;
+        }
+      }
+
       const slotIndex = selectedSlotIndexes[i];
       const slot = timetable[slotIndex];
       if (!slot) continue;

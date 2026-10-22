@@ -11,6 +11,8 @@ import {
   ChevronDown,
   ChevronUp,
   KeyRound,
+  Sparkles,
+  School,
   CheckCircle2
 } from 'lucide-react';
 
@@ -22,18 +24,17 @@ export default function LoginPage() {
     loading,
     error,
     clearError,
-    isDeLIMA,
     isFirebaseConfigured
   } = useAuth();
 
   const [showConfigGuide, setShowConfigGuide] = useState(false);
 
-  // Jika sudah log masuk sebagai DeLIMA, arahkan terus ke laman utama
+  // Jika sudah log masuk, arahkan terus ke papan pemuka
   React.useEffect(() => {
-    if (user && isDeLIMA) {
+    if (user) {
       router.push('/');
     }
-  }, [user, isDeLIMA, router]);
+  }, [user, router]);
 
   const handleGoogleSignIn = async () => {
     clearError();
@@ -44,24 +45,21 @@ export default function LoginPage() {
     <div className="min-h-[85vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-6 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-xl">
         
-        {/* Logo & Header SMA Al-Hasanah & DeLIMA */}
+        {/* Header SaaS B2C */}
         <div className="text-center space-y-3">
-          <div className="mx-auto w-24 h-24 flex items-center justify-center">
-            <img
-              src="/logo-al-hasanah.png"
-              alt="Logo Sekolah Menengah Agama Al-Hasanah"
-              className="w-24 h-24 object-contain drop-shadow-md"
-            />
+          <div className="mx-auto w-20 h-20 rounded-2xl bg-gradient-to-tr from-emerald-700 to-teal-600 flex items-center justify-center shadow-lg p-2">
+            <School className="w-10 h-10 text-white" />
           </div>
           <div>
+            <div className="inline-flex items-center space-x-1.5 px-3 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-extrabold uppercase tracking-wider mb-1">
+              <Sparkles className="w-3 h-3 text-amber-500" />
+              <span>SaaS Pendidik Malaysia</span>
+            </div>
             <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-              SMA Al-Hasanah (SABK)
+              e-RPH Pintar Self-Serve
             </h1>
-            <p className="text-xs text-emerald-800 font-bold uppercase tracking-wider mt-0.5">
-              Sistem e-RPH Pintar &bull; Log Masuk ID DeLIMA
-            </p>
-            <p className="text-[11px] text-slate-500 mt-0.5">
-              Pahang Darul Makmur &bull; Sesi Persekolahan 2026
+            <p className="text-xs text-slate-500 mt-1">
+              Platform persediaan &amp; pengurusan e-RPH berteknologi AI untuk semua guru di Malaysia
             </p>
           </div>
 
@@ -70,7 +68,7 @@ export default function LoginPage() {
             {isFirebaseConfigured ? (
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">
                 <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                Google SSO DeLIMA Sedia Digunakan
+                Google SSO Sedia Digunakan
               </span>
             ) : (
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800 border border-amber-300">
@@ -81,23 +79,23 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* Notis Keselamatan Ketat ID DeLIMA */}
+        {/* Notis B2C: Menyokong ID DeLIMA KPM & Google Peribadi */}
         <div className="bg-emerald-50/70 border border-emerald-200 rounded-2xl p-4 text-xs space-y-2 text-emerald-950">
           <div className="flex items-center space-x-2 font-bold text-emerald-900">
-            <Lock className="w-4 h-4 text-emerald-700 flex-shrink-0" />
-            <span>Dasar Keselamatan Rasmi KPM:</span>
+            <ShieldCheck className="w-4 h-4 text-emerald-700 flex-shrink-0" />
+            <span>Akses Mudah Alih &amp; Mesra Guru:</span>
           </div>
           <p className="leading-relaxed text-emerald-900/90">
-            Sistem ini <strong>HANYA</strong> menerima log masuk Google melalui <strong>ID DeLIMA rasmi (*@moe-dl.edu.my)</strong>. Log masuk menggunakan akaun Gmail peribadi atau luar akan ditolak serta-merta.
+            Log masuk menggunakan <strong>ID DeLIMA KPM (*@moe-dl.edu.my)</strong> atau <strong>akaun Google peribadi</strong> anda. Tetapan sekolah, kelas, dan jadual waktu adalah tersuai mengikut profil anda sendiri.
           </p>
         </div>
 
-        {/* Paparan Mesej Ralat / Penolakan Akses */}
+        {/* Paparan Mesej Ralat */}
         {error && (
           <div className="p-4 rounded-2xl bg-rose-50 border border-rose-300 text-rose-900 text-xs space-y-1 animate-in fade-in">
             <div className="flex items-center space-x-2 font-bold">
               <AlertCircle className="w-4 h-4 text-rose-600 flex-shrink-0" />
-              <span>Akses Tidak Dibenarkan</span>
+              <span>Gagal Log Masuk</span>
             </div>
             <p className="leading-relaxed pl-6">
               {error}
@@ -105,7 +103,7 @@ export default function LoginPage() {
           </div>
         )}
 
-        {/* SATU-SATUNYA BUTANG LOG MASUK: Google SSO */}
+        {/* Butang Log Masuk Google SSO */}
         <div className="space-y-4 pt-2">
           <button
             type="button"
@@ -132,7 +130,7 @@ export default function LoginPage() {
                 d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.26 2.64 1.27 6.59l4.01 3.12c.95-2.83 3.6-4.96 6.72-4.96z"
               />
             </svg>
-            <span>{loading ? 'Menghubungkan ke Google SSO...' : 'Log Masuk dengan Google SSO (ID DeLIMA)'}</span>
+            <span>{loading ? 'Menghubungkan ke Google SSO...' : 'Log Masuk dengan Google SSO (DeLIMA / Gmail)'}</span>
           </button>
 
           {/* Panduan Konfigurasi Firebase (Accordion Kecil) */}
@@ -170,7 +168,7 @@ NEXT_PUBLIC_FIREBASE_PROJECT_ID=projek-anda`}
         {/* Footer Makluman */}
         <div className="pt-4 border-t border-slate-200 text-center">
           <p className="text-[11px] text-slate-400">
-            Kementerian Pendidikan Malaysia &bull; Inisiatif Transformasi Sekolah 2025 (TS25)
+            Mematuhi Garis Panduan SPI Bil. 3/1999 &bull; TS25 &bull; KPM
           </p>
         </div>
 

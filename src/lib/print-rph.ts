@@ -64,13 +64,19 @@ export async function downloadRPHPdf({
   teacherName,
   teacherEmail,
   weekNo,
-  schoolName = 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+  schoolName = 'SEKOLAH SAYA',
+  schoolLogo,
+  planType = 'free',
+  teacherSignature
 }: {
   rphList: Partial<RPHRecord>[];
   teacherName: string;
   teacherEmail: string;
   weekNo: number | string;
   schoolName?: string;
+  schoolLogo?: string;
+  planType?: 'free' | 'pro';
+  teacherSignature?: string;
 }): Promise<boolean> {
   if (typeof window === 'undefined') return false;
 
@@ -81,7 +87,10 @@ export async function downloadRPHPdf({
     teacherName,
     teacherEmail,
     weekNo,
-    schoolName
+    schoolName,
+    schoolLogo,
+    planType,
+    teacherSignature
   });
 
   try {
@@ -120,7 +129,10 @@ export async function downloadRPHPdf({
     teacherName,
     teacherEmail,
     weekNo,
-    schoolName
+    schoolName,
+    schoolLogo,
+    planType,
+    teacherSignature
   });
   return false;
 }
@@ -135,13 +147,19 @@ export function printOrSaveRPH({
   teacherName,
   teacherEmail,
   weekNo,
-  schoolName = 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+  schoolName = 'SEKOLAH SAYA',
+  schoolLogo,
+  planType = 'free',
+  teacherSignature
 }: {
   rphList: Partial<RPHRecord>[];
   teacherName: string;
   teacherEmail: string;
   weekNo: number | string;
   schoolName?: string;
+  schoolLogo?: string;
+  planType?: 'free' | 'pro';
+  teacherSignature?: string;
 }) {
   if (typeof window === 'undefined') return;
 
@@ -151,7 +169,10 @@ export function printOrSaveRPH({
     teacherName,
     teacherEmail,
     weekNo,
-    schoolName
+    schoolName,
+    schoolLogo,
+    planType,
+    teacherSignature
   });
 
   const formattedTitle = formatRPHFileName(teacherName, weekNo);

@@ -56,6 +56,7 @@ import {
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import TimetableEditorModal from '@/components/jadual/TimetableEditorModal';
+import ShareReviewModal from '@/components/review/ShareReviewModal';
 import {
   uploadWeeklyRPHToMyDrive,
   formatRPHFileName,
@@ -68,13 +69,26 @@ import { getSubjectLocale } from '@/lib/dictionary';
 export default function RPHFormDynamic() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { user, isDeLIMA, loading: authLoading, timetable, updateSlot, teacherName, teacherEmail, googleAccessToken, signInWithGoogle } = useAuth();
+  const {
+    user,
+    isDeLIMA,
+    loading: authLoading,
+    timetable,
+    updateSlot,
+    teacherName,
+    teacherEmail,
+    googleAccessToken,
+    signInWithGoogle,
+    userProfile,
+    planType,
+    setIsUpgradeModalOpen
+  } = useAuth();
 
   useEffect(() => {
-    if (!authLoading && (!user || !isDeLIMA)) {
+    if (!authLoading && !user) {
       router.push('/login');
     }
-  }, [user, isDeLIMA, authLoading, router]);
+  }, [user, authLoading, router]);
 
   // Tab Utama: 'jadual' (Berdasarkan Jadual & RPT) vs 'kustom' (e-RPH Kustom) vs 'karakter' (Pembentukan Karakter 15 Minit)
   const paramMode = searchParams ? searchParams.get('mode') : null;
@@ -195,6 +209,7 @@ export default function RPHFormDynamic() {
   const [clipboardToast, setClipboardToast] = useState<string | null>(null);
   const [isCopyModalOpen, setIsCopyModalOpen] = useState<boolean>(false);
   const [isPreviewA4ModalOpen, setIsPreviewA4ModalOpen] = useState<boolean>(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
   const [viewMode, setViewMode] = useState<'form' | 'table'>('form');
 
   // Map rekod e-RPH tersimpan mengikut slot & minggu (Pengasingan Data Menyeluruh)
@@ -923,20 +938,26 @@ export default function RPHFormDynamic() {
   const handlePrint = () => {
     printOrSaveRPH({
       rphList: getWeeklyRPHList(),
-      teacherName: teacherName || 'GURU',
+      teacherName: teacherName || userProfile?.full_name || 'GURU',
       teacherEmail: teacherEmail || '',
       weekNo: currentWeek,
-      schoolName: 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+      schoolName: userProfile?.school_name || 'SEKOLAH SAYA',
+      schoolLogo: userProfile?.school_logo,
+      planType: planType,
+      teacherSignature: userProfile?.teacher_signature
     });
   };
 
   const handleSavePdf = async () => {
     await downloadRPHPdf({
       rphList: getWeeklyRPHList(),
-      teacherName: teacherName || 'GURU',
+      teacherName: teacherName || userProfile?.full_name || 'GURU',
       teacherEmail: teacherEmail || '',
       weekNo: currentWeek,
-      schoolName: 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+      schoolName: userProfile?.school_name || 'SEKOLAH SAYA',
+      schoolLogo: userProfile?.school_logo,
+      planType: planType,
+      teacherSignature: userProfile?.teacher_signature
     });
   };
 
@@ -1115,7 +1136,7 @@ export default function RPHFormDynamic() {
       teacherEmail: teacherEmail || '',
       weekNo: currentWeek,
       accessToken: googleAccessToken,
-      schoolName: 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+      schoolName: userProfile?.school_name || 'SEKOLAH SAYA'
     });
 
     setDriveResult(res);
@@ -1126,10 +1147,13 @@ export default function RPHFormDynamic() {
     const weeklyList = getWeeklyRPHList();
     const htmlContent = generateWeeklyRPHHtml({
       rphList: weeklyList,
-      teacherName: teacherName || 'GURU',
+      teacherName: teacherName || userProfile?.full_name || 'GURU',
       teacherEmail: teacherEmail || '',
       weekNo: currentWeek,
-      schoolName: 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)'
+      schoolName: userProfile?.school_name || 'SEKOLAH SAYA',
+      schoolLogo: userProfile?.school_logo,
+      planType: planType,
+      teacherSignature: userProfile?.teacher_signature
     });
     const fileName = `${formatRPHFileName(teacherName, currentWeek)}.html`;
     const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
@@ -1278,7 +1302,16 @@ export default function RPHFormDynamic() {
                   Pilih Slot Mengajar: <span className="text-emerald-700 font-extrabold">{teacherName}</span>
                 </span>
               </div>
-              <div className="flex items-center space-x-2 w-full sm:w-auto justify-end">
+              <div className="flex items-center space-x-2 w-full sm:w-auto justify-end flex-wrap gap-y-1">
+                <button
+                  type="button"
+                  onClick={() => setIsShareModalOpen(true)}
+                  className="text-xs font-bold text-purple-900 bg-purple-100 hover:bg-purple-200 border border-purple-300 px-3 py-1.5 rounded-xl shadow-xs flex items-center space-x-1.5 transition-all hover:scale-105 active:scale-95"
+                  title="Jana pautan semakan mingguan untuk Pengetua / Guru Besar"
+                >
+                  <Share2 className="w-3.5 h-3.5 text-purple-700" />
+                  <span>Semakan Pengetua</span>
+                </button>
                 <button
                   type="button"
                   onClick={() => setIsWeeklyAIModalOpen(true)}
@@ -1811,10 +1844,14 @@ export default function RPHFormDynamic() {
       ) : viewMode === 'table' ? (
         <RPHGeneratedTableView
           rph={getCurrentSnapshot()}
-          teacherName={teacherName || 'GURU'}
+          teacherName={teacherName || userProfile?.full_name || 'GURU'}
           teacherEmail={teacherEmail || ''}
           slotIndex={selectedSlotIndex + 1}
           totalSlots={timetable.length}
+          schoolName={userProfile?.school_name || 'SEKOLAH SAYA'}
+          schoolLogo={userProfile?.school_logo}
+          planType={planType}
+          teacherSignature={userProfile?.teacher_signature}
           onPrint={handlePrint}
           onDownloadHtml={handleDownloadHtmlFile}
           onSwitchToForm={() => setViewMode('form')}
@@ -1828,19 +1865,19 @@ export default function RPHFormDynamic() {
         {/* Header Rasmi Borang e-RPH */}
         <div className="border-b-2 border-slate-800 pb-5 flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
           <img
-            src="/logo-al-hasanah.png"
-            alt="Logo SMA Al-Hasanah"
+            src={userProfile?.school_logo || '/logo-al-hasanah.png'}
+            alt="Logo Sekolah"
             className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow shrink-0"
           />
           <div className="text-center sm:text-left">
             <h2 className="text-base sm:text-lg font-extrabold uppercase tracking-tight text-slate-900">
               RANCANGAN PENGAJARAN HARIAN (e-RPH KPM)
             </h2>
-            <p className="text-xs sm:text-sm font-bold text-emerald-800">
-              SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK) PAHANG
+            <p className="text-xs sm:text-sm font-bold text-emerald-800 uppercase">
+              {userProfile?.school_name || 'SEKOLAH SAYA'}
             </p>
             <p className="text-[11px] text-slate-500 font-medium">
-              Sistem Pengurusan e-RPH Pintar Bersepadu &bull; Sesi Akademik 2027 &bull;{' '}
+              Sistem Pengurusan e-RPH Pintar Bersepadu &bull; Sesi Akademik 2026/2027 &bull;{' '}
               {activeTab === 'kustom' ? `Sesi Kustom (${customSessionType})` : 'Diselaraskan RPT Panitia'}
             </p>
           </div>
@@ -2192,6 +2229,14 @@ export default function RPHFormDynamic() {
       <TimetableEditorModal
         isOpen={isTimetableEditorOpen}
         onClose={() => setIsTimetableEditorOpen(false)}
+      />
+
+      {/* Modal Kongsi Semakan Pengetua */}
+      <ShareReviewModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
+        currentWeek={currentWeek}
+        rphList={getWeeklyRPHList()}
       />
 
       {/* Modal Google Drive Upload Status */}

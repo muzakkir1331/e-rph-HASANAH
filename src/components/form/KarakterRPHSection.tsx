@@ -98,7 +98,7 @@ export default function KarakterRPHSection({
   classList,
   teacherName,
   teacherEmail,
-  schoolName = 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)',
+  schoolName = 'SEKOLAH KEBANGSAAN / MENENGAH',
   savedRecord,
   onSaveRecord
 }: KarakterRPHSectionProps) {

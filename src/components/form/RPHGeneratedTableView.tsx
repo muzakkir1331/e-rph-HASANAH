@@ -14,13 +14,16 @@ interface RPHGeneratedTableViewProps {
   slotIndex?: number;
   totalSlots?: number;
   schoolName?: string;
+  schoolLogo?: string;
+  planType?: 'free' | 'pro';
+  teacherSignature?: string;
   onPrint?: () => void;
   onDownloadHtml?: () => void;
   onSwitchToForm?: () => void;
 }
 
 /**
- * Komponen Templat e-RPH Berjadual Rasmi KPM (SABK SMA Al-Hasanah)
+ * Komponen Templat e-RPH Berjadual Rasmi KPM
  * Menggunakan susun atur TABLE penuh yang kemas, padat, dan mematuhi standard A4 Potrait 1 Muka Surat.
  */
 export default function RPHGeneratedTableView({
@@ -29,12 +32,15 @@ export default function RPHGeneratedTableView({
   teacherEmail,
   slotIndex = 1,
   totalSlots = 1,
-  schoolName = 'SEKOLAH MENENGAH AGAMA AL-HASANAH (SABK)',
+  schoolName = 'SEKOLAH SAYA',
+  schoolLogo,
+  planType = 'free',
+  teacherSignature,
   onPrint,
   onDownloadHtml,
   onSwitchToForm
 }: RPHGeneratedTableViewProps) {
-  const isRTL = rph.arah_teks === 'rtl' || rph.kod_bahasa === 'ar';
+  const isRTL = rph.arah_teks === 'rtl' || rph.kod_bahasa === 'ar' || /[\u0600-\u06FF]/.test(rph.subjek || '');
   const isPdPExecuted = rph.refleksi?.pdp_dijalankan !== false;
 
   const handleSavePdf = async () => {
@@ -43,7 +49,10 @@ export default function RPHGeneratedTableView({
       teacherName,
       teacherEmail,
       weekNo: rph.minggu_ke || 1,
-      schoolName
+      schoolName,
+      schoolLogo,
+      planType,
+      teacherSignature
     });
   };
 
@@ -56,7 +65,10 @@ export default function RPHGeneratedTableView({
         teacherName,
         teacherEmail,
         weekNo: rph.minggu_ke || 1,
-        schoolName
+        schoolName,
+        schoolLogo,
+        planType,
+        teacherSignature
       });
     }
   };
@@ -316,8 +328,8 @@ export default function RPHGeneratedTableView({
               <tr>
                 <td className="w-16 text-center align-middle border-none p-0">
                   <img
-                    src={LOGO_AL_HASANAH_BASE64}
-                    alt="Logo Al-Hasanah"
+                    src={schoolLogo || LOGO_AL_HASANAH_BASE64}
+                    alt="Logo Sekolah"
                     className="w-14 h-14 object-contain mx-auto"
                   />
                 </td>
@@ -329,7 +341,7 @@ export default function RPHGeneratedTableView({
                     {schoolName}
                   </div>
                   <div className="text-[11px] font-bold text-slate-800 uppercase tracking-wide">
-                    RANCANGAN PENGAJARAN HARIAN (e-RPH SESI 2027)
+                    RANCANGAN PENGAJARAN HARIAN (e-RPH SESI 2026/2027)
                   </div>
                 </td>
                 <td className="w-20 text-right align-middle border-none p-0 text-[10px] font-bold text-slate-400">
@@ -556,17 +568,56 @@ export default function RPHGeneratedTableView({
                 <div className="text-slate-500 text-[9px] mt-0.5">
                   Guru Mata Pelajaran &bull; Tarikh: {rph.tarikh || new Date().toISOString().split('T')[0]}
                 </div>
+                {(rph.guru_tandatangan || teacherSignature) && (
+                  <div className="mt-1">
+                    <img
+                      src={rph.guru_tandatangan || teacherSignature}
+                      alt="Tandatangan Guru"
+                      className="max-h-7 max-w-[100px] object-contain"
+                    />
+                  </div>
+                )}
               </td>
               <td colSpan={3} className="border border-slate-400 p-2.5 bg-slate-50 text-[10px] text-right">
                 <div className="text-slate-500 font-bold uppercase text-[9px]">Disemak &amp; Disahkan Oleh:</div>
-                <div className="font-extrabold text-slate-900 mt-0.5">Pengetua / PK Pentadbiran SMA Al-Hasanah</div>
-                <div className="text-emerald-700 font-bold text-[9px] mt-0.5">
-                  PENGESAHAN DIGITAL e-RPH KPM (ID DELIMA)
-                </div>
+                {rph.penyemak_nama ? (
+                  <>
+                    <div className="font-extrabold text-slate-900 mt-0.5">{rph.penyemak_nama}</div>
+                    <div className="text-slate-500 text-[9px] mt-0.5">
+                      {rph.penyemak_jawatan || 'Pengetua / Guru Besar'} &bull; Disahkan: {rph.penyemak_tarikh_disemak ? new Date(rph.penyemak_tarikh_disemak).toLocaleDateString('ms-MY') : '-'}
+                    </div>
+                    {rph.penyemak_tandatangan && (
+                      <div className="mt-1 flex justify-end">
+                        <img
+                          src={rph.penyemak_tandatangan}
+                          alt="Tandatangan Pengetua"
+                          className="max-h-7 max-w-[100px] object-contain"
+                        />
+                      </div>
+                    )}
+                    <div className="text-emerald-700 font-bold text-[9px] mt-0.5">
+                      DISEMAK &amp; DISAHKAN SECARA DIGITAL (PGB)
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="font-extrabold text-slate-900 mt-0.5">Pengetua / PK Pentadbiran</div>
+                    <div className="text-emerald-700 font-bold text-[9px] mt-0.5">
+                      PENGESAHAN DIGITAL e-RPH KPM
+                    </div>
+                  </>
+                )}
               </td>
             </tr>
           </tbody>
         </table>
+
+        {/* Watermark Pelan Percuma */}
+        {planType === 'free' && (
+          <div className="text-center text-[9px] text-slate-400 font-bold uppercase tracking-wider mt-2 pt-2 border-t border-dashed border-slate-300">
+            Dijana Melalui e-RPH Pintar SaaS (Pelan Percuma) &bull; https://e-rph.my &bull; Naik taraf ke PRO untuk membuang tera air
+          </div>
+        )}
       </div>
     </div>
   );

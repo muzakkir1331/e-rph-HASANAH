@@ -202,7 +202,7 @@ export default function TimetableEditorModal({ isOpen, onClose }: TimetableEdito
               <button
                 type="button"
                 onClick={() => {
-                  if (confirm('Adakah anda pasti ingin memulihkan jadual waktu asal SMA Al-Hasanah?')) {
+                  if (confirm('Adakah anda pasti ingin memulihkan jadual waktu kepada susunan asal?')) {
                     resetTimetable();
                   }
                 }}
