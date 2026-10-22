@@ -10,7 +10,6 @@ import ActivityStepsEditor from '@/components/form/ActivityStepsEditor';
 import PedagogyChecklist from '@/components/form/PedagogyChecklist';
 import ReflectionMirrorBox from '@/components/form/ReflectionMirrorBox';
 import AICoPilotModal from '@/components/form/AICoPilotModal';
-import AIWeeklyGeneratorModal from '@/components/form/AIWeeklyGeneratorModal';
 import CopyRPHModal from '@/components/form/CopyRPHModal';
 import A4PortraitPreviewModal from '@/components/form/A4PortraitPreviewModal';
 import RPHGeneratedTableView from '@/components/form/RPHGeneratedTableView';
@@ -237,7 +236,6 @@ export default function RPHFormDynamic() {
 
   const [isCarryForwardActive, setIsCarryForwardActive] = useState<boolean>(false);
   const [isAIModalOpen, setIsAIModalOpen] = useState<boolean>(false);
-  const [isWeeklyAIModalOpen, setIsWeeklyAIModalOpen] = useState<boolean>(false);
   const [saveSuccess, setSaveSuccess] = useState<boolean>(false);
 
   // Google Drive State & Modal (Format PDF Seminggu)
@@ -842,31 +840,6 @@ export default function RPHFormDynamic() {
     if (res.aktiviti) setActivities(res.aktiviti);
   };
 
-  // Fungsi menerima penjanaan RPH Seminggu daripada Co-Pilot AI dan menyimpannya secara automatik
-  const handleApplyWeeklyAI = (weeklyRecords: Record<string, RPHRecord>) => {
-    const storageKey = `erph_saved_records_${user?.uid || teacherEmail || 'alhasanah'}`;
-    const updatedMap = {
-      ...savedRecordsMap,
-      ...weeklyRecords
-    };
-    setSavedRecordsMap(updatedMap);
-    try {
-      localStorage.setItem(storageKey, JSON.stringify(updatedMap));
-    } catch (e) {
-      console.warn('Gagal menyimpan rekod seminggu:', e);
-    }
-
-    // Jika slot semasa adalah salah satu daripada rekod yang dijana, kemas kini borang semasa
-    const currentSlotKey = `week_${currentWeek}_slot_${selectedSlotIndex}`;
-    if (weeklyRecords[currentSlotKey]) {
-      applyRecordToForm(weeklyRecords[currentSlotKey]);
-    }
-
-    const count = Object.keys(weeklyRecords).length;
-    setClipboardToast(`🎉 RPH Seminggu (Minggu ${currentWeek}) bagi ${count} slot berjaya dijana dengan AI & disimpan!`);
-    setTimeout(() => setClipboardToast(null), 5000);
-  };
-
   // ---------------------------------------------------------------------------
   // FUNGSI SIMPAN e-RPH SEBAGAI DRAF (SECARA MANUAL JIKA DIPERLUKAN)
   // ---------------------------------------------------------------------------
@@ -1295,13 +1268,14 @@ export default function RPHFormDynamic() {
 
           {/* Pilihan Slot Jadual Waktu Mengajar (Quick Slot Bar) */}
           <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm no-print">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 mb-3">
+            <div className="flex items-center justify-between mb-3">
               <div className="flex items-center space-x-2">
                 <Clock className="w-4 h-4 text-emerald-600" />
                 <span className="text-xs font-bold text-slate-800 uppercase tracking-wide">
                   Pilih Slot Mengajar: <span className="text-emerald-700 font-extrabold">{teacherName}</span>
                 </span>
               </div>
+<<<<<<< HEAD
               <div className="flex items-center space-x-2 w-full sm:w-auto justify-end flex-wrap gap-y-1">
                 <button
                   type="button"
@@ -1330,6 +1304,16 @@ export default function RPHFormDynamic() {
                   <span>Ubah Suai Jadual</span>
                 </button>
               </div>
+=======
+              <button
+                type="button"
+                onClick={() => setIsTimetableEditorOpen(true)}
+                className="text-xs font-bold text-emerald-700 hover:text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-xl border border-emerald-200 flex items-center space-x-1.5 transition-colors"
+              >
+                <Edit3 className="w-3.5 h-3.5" />
+                <span>Ubah Suai Jadual Mengajar</span>
+              </button>
+>>>>>>> parent of 22f68d3 (gemini,jana rph seminggu)
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
@@ -1782,29 +1766,18 @@ export default function RPHFormDynamic() {
             )}
           </div>
 
-          {/* 1. Butang JANA RPH SEMINGGU (AI) */}
-          <button
-            type="button"
-            onClick={() => setIsWeeklyAIModalOpen(true)}
-            className="px-4 py-2 bg-gradient-to-r from-purple-600 via-indigo-600 to-emerald-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl text-xs font-extrabold shadow-md shadow-purple-600/20 flex items-center space-x-1.5 transition-all hover:scale-105 active:scale-95"
-            title="Jana Objektif & 5 Langkah Aktiviti PdPc untuk semua slot seminggu dengan bantuan AI"
-          >
-            <Sparkles className="w-4 h-4 text-amber-300 animate-spin-slow" />
-            <span>JANA SEMINGGU (AI)</span>
-          </button>
-
-          {/* 2. Butang CO-PILOT AI (Slot Tunggal) */}
+          {/* 1. Butang CO-PILOT AI */}
           <button
             type="button"
             onClick={() => setIsAIModalOpen(true)}
             className="px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs font-extrabold shadow-md shadow-emerald-600/20 flex items-center space-x-1.5 transition-all hover:scale-105 active:scale-95"
-            title="Buka Pembantu Pintar Co-Pilot AI untuk slot ini"
+            title="Buka Pembantu Pintar Co-Pilot AI"
           >
             <Sparkles className="w-4 h-4 text-amber-300 animate-spin-slow" />
             <span>CO-PILOT AI</span>
           </button>
 
-          {/* 3. Butang SIMPAN PDF */}
+          {/* 2. Butang SIMPAN PDF */}
           <button
             type="button"
             onClick={handleSavePdf}
@@ -2199,7 +2172,7 @@ export default function RPHFormDynamic() {
         onSavePdf={handleSavePdf}
       />
 
-      {/* Modal Co-Pilot AI (Slot Tunggal) */}
+      {/* Modal Co-Pilot AI */}
       <AICoPilotModal
         isOpen={isAIModalOpen}
         onClose={() => setIsAIModalOpen(false)}
@@ -2211,18 +2184,6 @@ export default function RPHFormDynamic() {
         rptActivitySuggestion={rptSuggestion}
         onApply={handleApplyAIContent}
         isRTL={isRTL}
-      />
-
-      {/* Modal Penjana RPH Seminggu dengan AI */}
-      <AIWeeklyGeneratorModal
-        isOpen={isWeeklyAIModalOpen}
-        onClose={() => setIsWeeklyAIModalOpen(false)}
-        timetable={timetable}
-        currentWeek={currentWeek}
-        weekDates={weekDates}
-        mondayDate={mondayDate}
-        existingRecords={savedRecordsMap}
-        onApplyWeeklyRPH={handleApplyWeeklyAI}
       />
 
       {/* Modal Editor Jadual Waktu Guru */}

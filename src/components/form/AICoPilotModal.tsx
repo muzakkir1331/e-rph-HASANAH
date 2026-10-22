@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Sparkles, X, Check, ArrowRight, BookOpen, Clock, Lightbulb } from 'lucide-react';
 import { GeminiCoPilotRequest, GeminiCoPilotResponse } from '@/types/erph';
+import pedagogiData from '@/data/pedagogi_options.json';
 
 interface AICoPilotModalProps {
   isOpen: boolean;
@@ -33,6 +34,10 @@ export default function AICoPilotModal({
 }: AICoPilotModalProps) {
   const { planType, aiCreditsRemaining, deductAICredit, setIsUpgradeModalOpen } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [selectedPAK21, setSelectedPAK21] = useState('Think-Pair-Share');
+  const [selectedIThink, setSelectedIThink] = useState('Peta Buih');
+  const [selectedBBM, setSelectedBBM] = useState('Lembaran kerja, LCD Projector');
+  const [duration, setDuration] = useState(60);
   const [generatedResult, setGeneratedResult] = useState<GeminiCoPilotResponse | null>(null);
 
   if (!isOpen) return null;
@@ -57,14 +62,14 @@ export default function AICoPilotModal({
         subjek: subject,
         tingkatan: form,
         kod_bahasa: languageCode,
-        sk: sk || 'Standard Kandungan KPM',
-        sp: sp || 'Standard Pembelajaran KPM',
+        sk,
+        sp,
         cadangan_aktiviti_rpt: rptActivitySuggestion,
         pilihan_pedagogi: {
-          pak21: 'Think-Pair-Share',
-          ithink: 'Peta Buih',
-          bbm: 'Lembaran kerja, LCD Projector',
-          durasi_minit: 60
+          pak21: selectedPAK21,
+          ithink: selectedIThink,
+          bbm: selectedBBM,
+          durasi_minit: duration
         }
       };
 
@@ -143,15 +148,64 @@ export default function AICoPilotModal({
             )}
           </div>
 
+          {/* Konfigurasi Pilihan Pedagogi AI */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Strategi PAK-21</label>
+              <select
+                value={selectedPAK21}
+                onChange={(e) => setSelectedPAK21(e.target.value)}
+                className="w-full text-xs p-2 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-medium"
+              >
+                <option value="Think-Pair-Share">Think-Pair-Share</option>
+                <option value="Round Robin">Round Robin</option>
+                <option value="Rally Table">Rally Table</option>
+                <option value="Gallery Walk">Gallery Walk</option>
+                <option value="Hot Seat">Hot Seat</option>
+                <option value="Mix-N-Match">Mix-N-Match</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Peta I-Think</label>
+              <select
+                value={selectedIThink}
+                onChange={(e) => setSelectedIThink(e.target.value)}
+                className="w-full text-xs p-2 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-medium"
+              >
+                <option value="Peta Bulatan">Peta Bulatan</option>
+                <option value="Peta Buih">Peta Buih</option>
+                <option value="Peta Buih Berganda">Peta Buih Berganda</option>
+                <option value="Peta Pokok">Peta Pokok</option>
+                <option value="Peta Alir">Peta Alir</option>
+                <option value="Peta Dakap">Peta Dakap</option>
+                <option value="Peta Titi">Peta Titi</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Tempoh PdPc</label>
+              <select
+                value={duration}
+                onChange={(e) => setDuration(parseInt(e.target.value))}
+                className="w-full text-xs p-2 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-medium"
+              >
+                <option value={30}>30 Minit (1 Waktu)</option>
+                <option value={60}>60 Minit (2 Waktu)</option>
+                <option value={90}>90 Minit (3 Waktu)</option>
+              </select>
+            </div>
+          </div>
+
           {/* Butang Trigger Jana AI */}
           <div className="flex justify-center pt-2">
             <button
               type="button"
               onClick={handleGenerate}
               disabled={loading || !sp}
-              className="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold text-sm shadow-lg shadow-emerald-600/30 flex items-center space-x-2.5 transition-all hover:scale-105 active:scale-95 disabled:opacity-50 cursor-pointer"
+              className="px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-sm shadow-lg shadow-emerald-600/30 flex items-center space-x-2 transition-all disabled:opacity-50"
             >
-              <Sparkles className={`w-5 h-5 text-amber-300 ${loading ? 'animate-spin' : ''}`} />
+              <Sparkles className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
               <span>{loading ? 'Sedang Merangka dengan Gemini 3.8 Flash...' : 'Jana Objektif & 5 Langkah PdPc Sekarang'}</span>
             </button>
           </div>
