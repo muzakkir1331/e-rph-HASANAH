@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSubjectLocale } from '@/hooks/useSubjectLocale';
 import RPTConnectorBanner from '@/components/form/RPTConnectorBanner';
+import TemaTajukSelector from '@/components/form/TemaTajukSelector';
 import DSKPSelector from '@/components/form/DSKPSelector';
 import ActivityStepsEditor from '@/components/form/ActivityStepsEditor';
 import PedagogyChecklist from '@/components/form/PedagogyChecklist';
@@ -1875,58 +1876,17 @@ export default function RPHFormDynamic() {
 
         </div>
 
-        {/* Bahagian 2: Ruangan Pengisian Manual Tema & Tajuk Pembelajaran */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-200 pb-2">
-            <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-wide flex items-center space-x-2">
-              <BookOpen className="w-4 h-4 text-emerald-600" />
-              <span>{getLabel('TEMA & TAJUK PEMBELAJARAN', 'TEMA & TAJUK PEMBELAJARAN')}</span>
-              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
-                Pengisian Manual &amp; RPT
-              </span>
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Ruangan Pengisian Manual Tema */}
-            <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500 transition-all space-y-1.5">
-              <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center space-x-1.5">
-                  <span>{getLabel('TEMA / BIDANG', 'TEMA / BIDANG')}</span>
-                </label>
-                <span className="text-[10px] text-emerald-700 bg-emerald-100/70 px-2 py-0.5 rounded font-bold">
-                  Pengisian Manual
-                </span>
-              </div>
-              <textarea
-                rows={2}
-                value={tema}
-                onChange={(e) => setTema(e.target.value)}
-                placeholder={isRTL ? 'اكتب الموضوع / المجال هنا...' : 'Taip atau sunting Tema / Bidang pembelajaran di sini...'}
-                className="w-full text-xs font-semibold text-slate-800 bg-white border border-slate-200 rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 resize-none leading-relaxed"
-              />
-            </div>
-
-            {/* Ruangan Pengisian Manual Tajuk */}
-            <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500 transition-all space-y-1.5">
-              <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center space-x-1.5">
-                  <span>{getLabel('TAJUK / UNIT / BAB', 'TAJUK / UNIT / BAB')}</span>
-                </label>
-                <span className="text-[10px] text-emerald-700 bg-emerald-100/70 px-2 py-0.5 rounded font-bold">
-                  Pengisian Manual
-                </span>
-              </div>
-              <textarea
-                rows={2}
-                value={tajuk}
-                onChange={(e) => setTajuk(e.target.value)}
-                placeholder={isRTL ? 'اكتب عنوان الدرس / الوحدة هنا...' : 'Taip atau sunting Tajuk / Unit / Bab PdPc di sini...'}
-                className="w-full text-xs font-semibold text-slate-800 bg-white border border-slate-200 rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 resize-none leading-relaxed"
-              />
-            </div>
-          </div>
-        </div>
+        {/* Bahagian 2: Pilihan Dropdown & Manual TEMA/BIDANG/TERAS & TAJUK/KEMAHIRAN/NILAITERAS */}
+        <TemaTajukSelector
+          subject={subject}
+          form={form}
+          selectedTema={tema}
+          selectedTajuk={tajuk}
+          onTemaChange={setTema}
+          onTajukChange={setTajuk}
+          isRTL={isRTL}
+          labels={locale.labels}
+        />
 
         {/* Bahagian 3: Standard Kandungan (SK) & Standard Pembelajaran (SP) DSKP (Pengisian Manual & Bank DSKP) */}
         <div className="space-y-4">

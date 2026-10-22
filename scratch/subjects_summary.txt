@@ -1,0 +1,1800 @@
+Total subjects: 235
+
+SUBJEK: ADAB DAN NUSUS (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['الأدب والنصوصه']
+
+SUBJEK: ADDITIONAL MATHEMATICS
+  Tingkatan 4: 4 tema, 10 tajuk
+    Contoh Tema: ['ALGEBRA', 'APPLICATION OF SCIENCE AND TECHNOLOGY', 'APPLICATION OF SOCIAL SCIENCE']
+    Contoh Tajuk: ['1.0  FUNCTIONS', '10.0  INDEX NUMBERS', '2.0  QUADRATIC FUNCTIONS']
+  Tingkatan 5: 6 tema, 8 tajuk
+    Contoh Tema: ['APPLICATION OF SCIENCE AND TECHNOLOGY', 'APPLICATION OF SOCIAL SCIENCE', 'CALCULUS']
+    Contoh Tajuk: ['1.0  CIRCULAR MEASURE', '2.0  DIFFERENTIATION', '3.0  INTEGRATION']
+
+SUBJEK: ADDITIONAL MATHEMATICS DLP
+  Tingkatan 4: 3 tema, 10 tajuk
+    Contoh Tema: ['ALGEBRA', 'APPLICATION OF SCIENCE AND TECHNOLOGY', 'GEOMETRY']
+    Contoh Tajuk: ['1.0 FUNCTIONS', '10.0 INDEX NUMBERS', '2.0 QUADRATIC FUNCTIONS']
+  Tingkatan 5: 6 tema, 8 tajuk
+    Contoh Tema: ['APPLICATION OF SCIENCE AND TECHNOLOGY', 'APPLICATION OF SOCIAL SCIENCE', 'CALCULUS']
+    Contoh Tajuk: ['1.0 CIRCULAR MEASURE', '2.0 DIFFERENTIATION', '3.0 INTEGRATION']
+
+SUBJEK: AMALAN BAHASA MELAYU
+  Tingkatan PERALIHAN: 15 tema, 81 tajuk
+    Contoh Tema: ['1.0 AKU DAN NEGARAKU', '2.0 SAYANGILAH KURNIAAN TUHAN', '3.0 BERMAIN DENGAN ANGKA']
+    Contoh Tajuk: ['A1.1 Menceritakan biodata diri.', 'A1.2 Memerihalkan rakan sebaya.', 'A1.3 Menjelaskan perbandingan pengalaman yang dilalui rakan sebaya.']
+
+SUBJEK: ARUDH (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['العروض']
+
+SUBJEK: ASAS AKUAKULTUR
+  Tingkatan 1: 4 tema, 4 tajuk
+    Contoh Tema: ['AKUAKULTUR TERNAKAN IKAN', 'IKAN AIR TAWAR', 'IKAN HIASAN']
+    Contoh Tajuk: ['1.0 Mengenali Asas Akuakultur Ternakan Ikan', '2.0 Memelihara Ikan Hiasan', '3.0 Menternak Ikan Air Tawar']
+
+SUBJEK: ASAS JAHITAN PPKI
+  Tingkatan 1: 0 tema, 6 tajuk
+    Contoh Tajuk: ['1.0 Pengurusan bengkel jahitan', '2.0 Pengenalan kepada bahan dan alatan jahitan', '3.0 Menjahit jahitan asas']
+
+SUBJEK: ASAS JAHITAN PPKI (LOW)
+  Tingkatan KSSMKR: 7 tema, 0 tajuk
+    Contoh Tema: ['1.0 RUANG KERJA JAHITAN', '2.0 ALATAN DAN BAHAN JAHITAN', '3.0 KANCING']
+
+SUBJEK: ASAS KELESTARIAN
+  Tingkatan 4: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1. 0 PERKEMBANGAN TEKNOLOGI DAN KELESTARIAN', '2.0 REKA BENTUK', '3.0 SUMBER TENAGA']
+  Tingkatan 5: 0 tema, 3 tajuk
+    Contoh Tajuk: ['5.0 PEMBINAAN LESTARI', '6.0 RAWATAN AIR', '7.0 RAWATAN SISA PEPEJAL']
+
+SUBJEK: ASAS MASAKAN PPKI
+  Tingkatan 1: 0 tema, 11 tajuk
+    Contoh Tajuk: ['1.0 KEBERSIHAN RUANG KERJA DAN SANITASI MAKANAN', '10. MELAKSANAKAN PROJEK JUALAN', '10.0 Melaksana projek jualan makanan.']
+
+SUBJEK: ASAS MASAKAN PPKI (LOW)
+  Tingkatan KSSMKR: 7 tema, 0 tajuk
+    Contoh Tema: ['1.0 PERATURAN KESELAMATAN DAN KEBERSIHAN', '2.0 ALATAN DAN BAHAN MASAKAN', '3.0 PENYEDIAAN MINUMAN']
+
+SUBJEK: ASAS MULTIMEDIA PPKI
+  Tingkatan 1: 0 tema, 7 tajuk
+    Contoh Tajuk: ['1.0 PENGENALAN KEPADA ASAS MULTIMEDIA', '2.0 PENGENALAN KEPADA ASAS VISUAL', '3.0 PENGENALAN KEPADA ASAS ANIMASI']
+
+SUBJEK: ASAS PEMBUATAN PERABOT PPKI
+  Tingkatan 1: 1 tema, 0 tajuk
+    Contoh Tema: ['ASAS PEMBUATAN PERABOT']
+  Tingkatan 2: 1 tema, 0 tajuk
+    Contoh Tema: ['ASAS PEMBUATAN PERABOT']
+  Tingkatan 3: 1 tema, 0 tajuk
+    Contoh Tema: ['ASAS PEMBUATAN PERABOT']
+  Tingkatan 4: 1 tema, 0 tajuk
+    Contoh Tema: ['ASAS PEMBUATAN PERABOT']
+  Tingkatan 5: 1 tema, 0 tajuk
+    Contoh Tema: ['ASAS PEMBUATAN PERABOT']
+
+SUBJEK: ASAS PERTANIAN  PPKI (LOW)
+  Tingkatan KSSMKR: 1 tema, 5 tajuk
+    Contoh Tema: ['PERKEBUNAN']
+    Contoh Tajuk: ['ALATAN DAN BAHAN', 'KEUSAHAWANAN', 'PENANAMAN DAN PENJAGAAN TANAMAN']
+
+SUBJEK: ASAS REFLEKSOLOGI PPKI
+  Tingkatan 1: 0 tema, 1 tajuk
+    Contoh Tajuk: ['REFLEKSOLOGI']
+
+SUBJEK: ASAS TANAMAN PPKI
+  Tingkatan 1: 4 tema, 31 tajuk
+    Contoh Tema: ['1. Pembiakan Tanaman', '1. Pertanian Di Malaysia', '2. Tanaman Sayur sayuran']
+    Contoh Tajuk: ['Alatan dan Bahan untuk menjaga tanaman', 'Alatan dan bahan untuk mengurus hasil tuaian', 'Alatan dan bahan untuk menyemai']
+
+SUBJEK: ASK
+  Tingkatan 1: 4 tema, 4 tajuk
+    Contoh Tema: ['1.0 Konsep Asas Pemikiran Komputasional', '2.0 Perwakilan Data', '3.0 Algoritma']
+    Contoh Tajuk: ['1.0 Konsep Asas Pemikiran Komputasional', '2.0 Perwakilan Data', '3.0 Algoritma']
+  Tingkatan 2: 3 tema, 3 tajuk
+    Contoh Tema: ['1.0 Perwakilan Data', '2.0 Algoritma', '3.0 Kod Arahan']
+    Contoh Tajuk: ['1.0 Perwakilan Data', '2.0 Algoritma', '3.0 Kod Arahan']
+  Tingkatan 3: 4 tema, 4 tajuk
+    Contoh Tema: ['1.0 Konsep Asas Pemikiran Komputasional', '2.0 Perwakilan Data', '3.0 Algoritma']
+    Contoh Tajuk: ['1.0 Konsep Asas Pemikiran Komputasional', '2.0 Perwakilan Data', '3.0 Algoritma']
+
+SUBJEK: BAHASA CINA 911
+  Tingkatan 6: 3 tema, 3 tajuk
+    Contoh Tema: ['Semester 1', 'Semester 2', 'Semester 3']
+    Contoh Tajuk: ['Esei, Drama', 'Kefahaman (Bahasa Cina Klasik), Ulasan II, Novel', 'Kefahaman (Bahasa Cina Moden) dan Ulasan I, Prosa dan Puisi']
+
+SUBJEK: BAHASA CINA KOMUNIKASI
+  Tingkatan 1: 7 tema, 5 tajuk
+    Contoh Tema: ['第一课：你好', '第七课：去食堂', '第三课：我的身体']
+    Contoh Tajuk: ['1.0 听说技能', '2.0 阅读技能', '3.0 书写技能']
+  Tingkatan 2: 8 tema, 5 tajuk
+    Contoh Tema: ['单元一：李端的一天', '单元七：希山的志愿', '单元三：本地水果']
+    Contoh Tajuk: ['1.0 听说技能', '2.0 阅读技能', '3.0 书写技能']
+  Tingkatan 3: 8 tema, 5 tajuk
+    Contoh Tema: ['单元一：姑姑的新房子', '单元七：华人的传统节日', '单元三：学校运动会']
+    Contoh Tajuk: ['1.0 听说技能', '2.0 阅读技能', '3.0 书写技能']
+  Tingkatan 4: 6 tema, 5 tajuk
+    Contoh Tema: ['单元一：我的自述', '单元三： 一封信', '单元二：学华语']
+    Contoh Tajuk: ['1.0 听说技能', '2.0 阅读技能', '3.0 书写技能']
+  Tingkatan 5: 6 tema, 5 tajuk
+    Contoh Tema: ['单元一：我的自述', '单元三： 一封信', '单元二：学华语']
+    Contoh Tajuk: ['1.0 听说技能', '2.0 阅读技能', '3.0 书写技能']
+
+SUBJEK: BAHASA CINA 华 文
+  Tingkatan 1: 12 tema, 47 tajuk
+    Contoh Tema: ['第一单元：成长的足迹', '第七单元：故事里的智慧', '第三单元：父母的爱']
+    Contoh Tajuk: ['1.0 听说技能', '10.1《把森林还给众鸟》', '10.2《小鸟在天空消失的日子》']
+  Tingkatan 2: 10 tema, 27 tajuk
+    Contoh Tema: ['单元七：情牵动植物', '单元六：拥抱自然', '第一单元：生活哲理']
+    Contoh Tajuk: ['1.0听说技能', '10.1我的五样', '10.2我只有八岁']
+  Tingkatan 3: 10 tema, 27 tajuk
+    Contoh Tema: ['第一单元：志在四方', '第七单元：行文如画', '第三单元：生命颂歌']
+    Contoh Tajuk: ['1.0 听说技能', '10.1 最后一课', '10.2 汉书•李广 苏建传（节选）']
+  Tingkatan 4: 10 tema, 27 tajuk
+    Contoh Tema: ['第一单元：世界万物皆美好', '第七单元：生命的省思', '第三单元：文艺审美殿堂']
+    Contoh Tajuk: ['1.0 听说技能', '10.1项链', '10.2雨巷']
+  Tingkatan 5: 10 tema, 5 tajuk
+    Contoh Tema: ['第一单元：亲情歌吟', '第七单元：艺术维度', '第三单元：借景抒怀']
+    Contoh Tajuk: ['1.0 听说技能', '2.0 阅读技能', '3.0 书写技能']
+  Tingkatan PERALIHAN 预备班: 8 tema, 19 tajuk
+    Contoh Tema: ['亲情可贵', '人间有爱', '崇高品德']
+    Contoh Tajuk: ['1.0 听说技能', '2.0 阅读技能', '3.0书写技能']
+
+SUBJEK: BAHASA IBAN
+  Tingkatan 1: 7 tema, 5 tajuk
+    Contoh Tema: ['DUNYA DIRI EMPU', 'DUNYA ENSERA ENGGAU CHERITA', 'KAUL DALAM KONTEKS GLOBAL']
+    Contoh Tajuk: ['1.0 MENDING ENGGAU BEJAKU', '2.0 MACHA', '3.0 NULIS']
+  Tingkatan 2: 7 tema, 5 tajuk
+    Contoh Tema: ['DUNYA DIRI EMPU', 'DUNYA ENSERA ENGGAU CHERITA', 'KAUL KONTEKS GLOBAL']
+    Contoh Tajuk: ['1.0 PENGELANDIK MENDING ENGGAU BEJAKU', '2.0 PENGELANDIK MACHA', '3.0 PENGELANDIK NULIS']
+  Tingkatan 3: 7 tema, 5 tajuk
+    Contoh Tema: ['DUNYA DIRI EMPU', 'DUNYA ENSERA ENGGAU CHERITA', 'KAUL DALAM KONTEKS GLOBAL']
+    Contoh Tajuk: ['1.0 PENGELANDIK MENDING ENGGAU BEJAKU', '2.0 PENGELANDIK MACHA', '3.0 PENGELANDIK NULIS']
+  Tingkatan 4: 7 tema, 5 tajuk
+    Contoh Tema: ['DUNYA DIRI EMPU', 'DUNYA ENSERA ENGGAU CHERITA', 'KAUL DALAM KONTEKS GLOBAL']
+    Contoh Tajuk: ['1.0 Pengelandik Mending enggau Bejaku', '2.0 Pengelandik Macha', '3.0 Pengelandik Nulis']
+  Tingkatan 5: 7 tema, 5 tajuk
+    Contoh Tema: ['DUNYA DIRI EMPU', 'DUNYA ENSERA ENGGAU CHERITA', 'KAUL DALAM KONTEKS GLOBAL']
+    Contoh Tajuk: ['1.0 Pengelandik Mending enggau Bejaku', '2.0 Pengelandik Macha', '3.0 Pengelandik Nulis']
+
+SUBJEK: BAHASA JEPUN
+  Tingkatan 1: 6 tema, 0 tajuk
+    Contoh Tema: ['1.0 \xa0リスニングとスピーキング｛聞き・話す}', '1.0 \xa0リスニングとスピーキング｛聞き・話す｝', '2.0  読む']
+  Tingkatan 2: 6 tema, 0 tajuk
+    Contoh Tema: ['1.0 \xa0リスニングとスピーキング｛聞き・話す}', '1.0 \xa0リスニングとスピーキング｛聞き・話す｝', '2.0  読む']
+  Tingkatan 3: 5 tema, 0 tajuk
+    Contoh Tema: ['1.0 \xa0リスニングとスピーキング｛聞き・話す}', '2.0 読む', '3.0 \xa0書く']
+  Tingkatan 4: 5 tema, 0 tajuk
+    Contoh Tema: ['1.0 リスニングとスピーキング｛聞き・話す}', '2.0 読む', '3.0 \xa0書く']
+  Tingkatan 5: 5 tema, 0 tajuk
+    Contoh Tema: ['1.0 \xa0リスニングとスピーキング｛聞き・話す}', '2.0 読む', '3.0 \xa0書く']
+
+SUBJEK: BAHASA KADAZAN
+  Tingkatan 1: 7 tema, 10 tajuk
+    Contoh Tema: ['GLOBAL', 'KOILAAN KINOYONON POSORILI', 'KOILAAN KINOYONON POSORILI’']
+    Contoh Tajuk: ["UNIT 1: Miiso' Misompuru", "UNIT 2: Gatango' Tinungkusan", 'UNIT 3: Olidas Toririmo']
+  Tingkatan 2: 6 tema, 10 tajuk
+    Contoh Tema: ['Global', 'Koilaa Kinoyonon Posorili', 'Koilaan Kinoyonon Posorili']
+    Contoh Tajuk: ['UNIT 1: Pisokodungan', 'Unit 10: Pogun Sabah Nointutunan Sompomogunan', 'Unit 2: Manamong Kolidasan Maya Tinungkusan']
+  Tingkatan 3: 5 tema, 5 tajuk
+    Contoh Tema: ['1.0 KABAALAN MOKINONGOU OM MOBOROS', "2.0 KABAALAN MAMBASA'", '3.0 KABAALAN MONUAT']
+    Contoh Tajuk: ['Tajuk 1', 'Tajuk 25', 'Tajuk 42']
+  Tingkatan 4: 0 tema, 16 tajuk
+    Contoh Tajuk: ['Unit 10: Taakanon Koubasanan Tungkus Tinaru Tokou', 'Unit 11: Kopomuruan Mogowit Piunungan om Piisaan', "Unit 12: Toluodo' Winoun Tokou"]
+  Tingkatan 5: 0 tema, 12 tajuk
+    Contoh Tajuk: ['Unit 10: Kotingoligan Om Koumoligan Pakalaja', 'Unit 11: Teknologi Reka Cipta Om Pongumbosian', 'Unit 12: Insuran Id Koposion']
+
+SUBJEK: BAHASA KOREA
+  Tingkatan 1: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 듣기와 말하기', '2.0 읽기', '3.0 쓰기']
+  Tingkatan 2: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 듣기와 말하기', '2.0 읽기', '3.0 쓰기']
+  Tingkatan 3: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 듣기와 말하기', '2.0 읽기', '3.0 쓰기']
+  Tingkatan 4: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 듣기와 말하기', '2.0 읽기', '3.0 쓰기']
+  Tingkatan 5: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 듣기와 말하기', '2.0 읽기', '3.0 쓰기']
+
+SUBJEK: BAHASA MELAYU
+  Tingkatan 1: 24 tema, 10 tajuk
+    Contoh Tema: ['KOMSAS : Cerpen', 'KOMSAS : Drama', 'KOMSAS : Prosa Tradisional']
+    Contoh Tajuk: ['(PKJR) 1.  Penggunaan Jalan Raya', '(PKJR) 2. Faktor Manusia dalam Perlanggaran', '(PKJR) 3. Alat Perlindungan']
+  Tingkatan 2: 24 tema, 20 tajuk
+    Contoh Tema: ['KOMSAS : Cerpen', 'KOMSAS : Drama', 'KOMSAS : Prosa Tradisional']
+    Contoh Tajuk: ['(PKJR) 1.  Penggunaan Jalan Raya', '(PKJR) 2. Faktor Manusia dalam Perlanggaran', '(PKJR) 3. Alat Perlindungan']
+  Tingkatan 3: 21 tema, 11 tajuk
+    Contoh Tema: ['KOMSAS : Cerpen', 'KOMSAS : Prosa Tradisional', 'KOMSAS : Puisi Moden']
+    Contoh Tajuk: ['(PKJR) 1.  Penggunaan Jalan Raya', '(PKJR) 2. Faktor Manusia dalam Perlanggaran', '(PKJR) 3. Alat Perlindungan']
+  Tingkatan 4: 16 tema, 5 tajuk
+    Contoh Tema: ['TEMA 10: BAHASA BUGAR, SASTERA KEKAR', 'TEMA 11: EKONOMI DINAMIK, NEGARA BERWIBAWA', 'TEMA 12: ASLI DAN KONTEMPORARI']
+    Contoh Tajuk: ['Aspek Seni Bahasa', 'Aspek Tatabahasa', 'Kemahiran Membaca']
+  Tingkatan 5: 21 tema, 27 tajuk
+    Contoh Tema: ['Antologi Sejadah Rindu', 'Novel Bimasakti Menari', 'Novel Silir Daksina']
+    Contoh Tajuk: ['1.0 KEMAHIRAN MENDENGAR DAN BERTUTUR', '2.0 KEMAHIRAN MEMBACA', '3.0 KEMAHIRAN MENULIS']
+  Tingkatan PERALIHAN: 9 tema, 36 tajuk
+    Contoh Tema: ['ALAM SEKITAR DAN TEKNOLOGI HIJAU', 'EKONOMI, KEUSAHAWANAN DAN PENGURUSAN KEWANGAN', 'JATIDIRI, PATRIOTISME DAN KEWARGANEGARAAN']
+    Contoh Tajuk: ['1.0 Kemahiran Mendengar dan Bertutur', '2.0 Kemahiran Membaca', '3.0 Kemahiran Menulis']
+
+SUBJEK: BAHASA MELAYU 910
+  Tingkatan 6: 3 tema, 13 tajuk
+    Contoh Tema: ['SEMESTER 1', 'SEMESTER 2', 'SEMESTER 3']
+    Contoh Tajuk: ['1. Fonetik', '10. Ragam Bahasa', '11. Peribahasa']
+
+SUBJEK: BAHASA MELAYU PPKI
+  Tingkatan 1: 0 tema, 3 tajuk
+    Contoh Tajuk: ['1.0 KEMAHIRAN MENDENGAR DAN BERTUTUR / MELIHAT, MENGECAM DAN BERISYARAT', '2.0 KEMAHIRAN MEMBACA/MENGISYARAT', '3.0 KEMAHIRAN MENULIS']
+  Tingkatan 2: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 KEMAHIRAN MENDENGAR DAN BERTUTUR', '1.0 KEMAHIRAN MENDENGAR DAN BERTUTUR / MELIHAT, MENGECAM DAN BERISYARAT', '2.0 KEMAHIRAN MEMBACA /  MENGISYARAT']
+  Tingkatan 3: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 KEMAHIRAN MENDENGAR DAN BERTUTUR', '1.0 KEMAHIRAN MENDENGAR DAN BERTUTUR / MELIHAT, MENGECAM DAN BERISYARAT', '2.0 KEMAHIRAN MEMBACA / MENGISYARAT']
+  Tingkatan 4: 0 tema, 3 tajuk
+    Contoh Tajuk: ['1.0 KEMAHIRAN MENDENGAR DAN BERTUTUR ATAU MELIHAT, MENGECAM DAN BERISYARAT', '2.0 KEMAHIRAN MEMBACA ATAU MENGISYARAT', '3.0 KEMAHIRAN MENULIS']
+  Tingkatan 5: 0 tema, 3 tajuk
+    Contoh Tajuk: ['1.0 KEMAHIRAN MENDENGAR DAN BERTUTUR/ MELIHAT, MENGECAM DAN BERISYARAT', '2.0 KEMAHIRAN MEMBACA / MENGISYARAT', '3.0 KEMAHIRAN MENULIS']
+
+SUBJEK: BAHASA PERANCIS
+  Tingkatan 1: 0 tema, 7 tajuk
+    Contoh Tajuk: ['1.0 Reception Orale', '2.0 Reception Ecrite', '3.0 Production Orale En Continu']
+  Tingkatan 2: 0 tema, 7 tajuk
+    Contoh Tajuk: ['1.0 Reception Orale', '2.0 Reception Ecrite', '3.0 Production Orale En Continu']
+  Tingkatan 3: 0 tema, 7 tajuk
+    Contoh Tajuk: ['1.0 Reception Orale', '2.0 Reception Ecrite', '3.0 Production Orale En Continu']
+  Tingkatan 4: 0 tema, 7 tajuk
+    Contoh Tajuk: ['1.0 COMPÉTENCE DE RÉCEPTION ORALE', '2.0\tCOMPÉTENCE DE RÉCEPTION ÉCRITE', '3.0\tCOMPÉTENCE DE PRODUCTION ORALE EN CONTINU']
+  Tingkatan 5: 0 tema, 7 tajuk
+    Contoh Tajuk: ['1.0 COMPÉTENCE DE RÉCEPTION ORALE', '2.0 COMPÉTENCE DE RÉCEPTION ÉCRITE', '3.0\tCOMPÉTENCE DE PRODUCTION ORALE EN CONTINU']
+
+SUBJEK: BAHASA TAMIL
+  Tingkatan *புகுமுகவகுப்பு: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 கேட்டல், பேச்சு', '2.0 வாசிப்பு', '3.0 எழுத்து']
+  Tingkatan 1: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 கேட்டல், பேச்சு', '2.0 வாசிப்பு', '3.0 எழுத்து']
+  Tingkatan 2: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 கேட்டல், பேச்சு', '2.0 வாசிப்பு', '3.0 எழுத்து']
+  Tingkatan 3: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 கேட்டல், பேச்சு', '2.0 வாசிப்பு', '3.0 எழுத்து']
+  Tingkatan 4: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 கேட்டல், பேச்சு', '2.0 வாசிப்பு', '3.0 எழுத்து']
+  Tingkatan 5: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 கேட்டல், பேச்சு', '2.0 வாசிப்பு', '3.0 எழுத்து']
+
+SUBJEK: BAHASA TAMIL 912
+  Tingkatan 6: 3 tema, 12 tajuk
+    Contoh Tema: ['Semester 1', 'Semester 2', 'Semester 3']
+    Contoh Tajuk: ['Bahasa. 1 Bacaan dan Kefahaman', 'Bahasa. 10 Penulisan Esei', 'Bahasa. 2 Tatabahasa: Morfologi']
+
+SUBJEK: BALAGHAH (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['البلاغة']
+
+SUBJEK: BIOLOGI
+  Tingkatan 4: 2 tema, 15 tajuk
+    Contoh Tema: ['1.  ASAS BIOLOGI', '2. FISIOLOGI MANUSIA DAN HAIWAN']
+    Contoh Tajuk: ['1.0  Pengenalan kepada Biologi dan Peraturan Makmal', '10.0 Pengangkutan Dalam Manusia dan Haiwan', '11.0  Keimunan Manusia']
+  Tingkatan 5: 3 tema, 13 tajuk
+    Contoh Tema: ['3.FISIOLOGI TUMBUHAN BERBUNGA', '4.EKOSISTEM DAN KELESTARIAN ALAM SEKITAR', '5.PEWARISAN DAN TEKNOLOGI GENETIK']
+    Contoh Tajuk: ['16.0  ORGANISASI TISU TUMBUHAN DAN PERTUMBUHAN', '17.0 STRUKTUR DAN FUNGSI DAUN', '18.0 NUTRISI DALAM TUMBUHAN']
+
+SUBJEK: BIOLOGY 964
+  Tingkatan 6: 3 tema, 18 tajuk
+    Contoh Tema: ['FIRST SEMESTER', 'SECOND SEMESTER', 'THIRD SEMESTER']
+    Contoh Tajuk: ['BIODIVERSITY, ECOLOGY AND GENETICS. 15 Taxonomy and  Biodiversity', 'BIODIVERSITY, ECOLOGY AND GENETICS. 16 Ecology', 'BIODIVERSITY, ECOLOGY AND GENETICS. 17 Inheritance and  Genetic Control']
+
+SUBJEK: BIOLOGY DLP
+  Tingkatan 4: 2 tema, 15 tajuk
+    Contoh Tema: ['FUNDAMENTALS OF BIOLOGY', 'PHYSIOLOGY OF HUMANS AND ANIMALS']
+    Contoh Tajuk: ['1.0 INTRODUCTION TO BIOLOGY AND LABORATORY RULES', '10.0 TRANSPORT IN HUMANS AND ANIMALS', '11.0 IMMUNITY IN HUMANS']
+  Tingkatan 5: 3 tema, 13 tajuk
+    Contoh Tema: ['ECOSYSTEM AND ENVIRONMENTAL SUSTAINABILITY', 'INHERITANCE AND GENETIC TECHNOLOGY', 'PHYSIOLOGY OF FLOWERING PLANTS']
+    Contoh Tajuk: ['16.0 ORGANISATION OF PLANT TISSUES AND GROWTH', '17.0 LEAF STRUCTURE AND FUNCTION', '18.0 NUTRITION IN PLANTS']
+
+SUBJEK: CHEMISTRY 962
+  Tingkatan 6: 3 tema, 39 tajuk
+    Contoh Tema: ['FIRST SEMESTER', 'SECOND SEMESTER', 'THIRD SEMESTER']
+    Contoh Tajuk: ['General Chemistry and Inorganic Chemistry. 1 Atoms, Molecules and Stoichiometry', 'General Chemistry and Inorganic Chemistry. 2 Electronic Structure of Atoms', 'General Chemistry and Inorganic Chemistry. 3 Chemical Bonding']
+
+SUBJEK: CHEMISTRY DLP
+  Tingkatan 4: 4 tema, 8 tajuk
+    Contoh Tema: ['FUNDAMENTALS OF CHEMISTRY', 'INDUSTRIAL CHEMISTRY', 'INTERACTION BETWEEN MATTER']
+    Contoh Tajuk: ['1.0 INTRODUCTION TO CHEMISTRY', '2.0 MATTER AND ATOMIC STRUCTURE', '3.0 THE MOLE CONCEPT, CHEMICAL FORMULA AND EQUATION']
+  Tingkatan 5: 4 tema, 5 tajuk
+    Contoh Tema: ['CHEMICAL PROCESS', 'HEAT', 'ORGANIC CHEMISTRY']
+    Contoh Tajuk: ['10.0 Carbon compound', '11.0 Thermochemistry', '12.0 Polymer Chemistry']
+
+SUBJEK: DEUTSCH
+  Tingkatan 1: 5 tema, 0 tajuk
+    Contoh Tema: ['1.0 FERTIGKEIT DES HÖRENS UND SPRECHENS', '2.0 FERTIGKEIT DES LESENS', '3.0 FERTIGKEIT DES SCHREIBENS']
+  Tingkatan 2: 5 tema, 0 tajuk
+    Contoh Tema: ['1.0 FERTIGKEIT DES HÖRENS UND SPRECHENS', '2.0 FERTIGKEIT DES LESENS', '3.0 FERTIGKEIT DES SCHREIBENS']
+  Tingkatan 3: 5 tema, 0 tajuk
+    Contoh Tema: ['1.0 FERTIGKEIT DES HÖRENS UND SPRECHENS', '2.0 FERTIGKEIT DES LESENS', '3.0 FERTIGKEIT DES SCHREIBENS']
+  Tingkatan 4: 5 tema, 0 tajuk
+    Contoh Tema: ['1.0 FERTIGKEIT DES HÖRENS UND SPRECHENS', '2.0 FERTIGKEIT DES LESENS', '3.0 FERTIGKEIT DES SCHREIBENS']
+  Tingkatan 5: 5 tema, 0 tajuk
+    Contoh Tema: ['1.0 FERTIGKEIT DES HÖRENS UND SPRECHENS', '2.0 FERTIGKEIT DES LESENS', '3.0 FERTIGKEIT DES SCHREIBENS']
+
+SUBJEK: EKONOMI
+  Tingkatan 4: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 PENGENALAN KEPADA EKONOMI', '2.0   PASARAN', '3.0 PENDAPATAN INDIVIDU']
+  Tingkatan 5: 0 tema, 2 tajuk
+    Contoh Tajuk: ['5.0 EKONOMI DAN KERAJAAN', '6.0 MALAYSIA DAN EKONOMI GLOBAL']
+
+SUBJEK: EKONOMI 944
+  Tingkatan 6: 3 tema, 15 tajuk
+    Contoh Tema: ['SEMESTER DUA', 'SEMESTER SATU', 'SEMESTER TIGA']
+    Contoh Tajuk: ['1. Mikroekonomi. 1 Pengenalan', '1. Mikroekonomi. 2 Pasaran Barang dan Sistem Harga', '1. Mikroekonomi. 3 Teori Perlakuan Pengguna']
+
+SUBJEK: ENGLISH
+  Tingkatan 1: 4 tema, 6 tajuk
+    Contoh Tema: ['Consumerism and Financial Awareness', 'Health and Environment', 'People and Culture']
+    Contoh Tajuk: ['1.0 Listening', '2.0 Speaking', '3.0 Reading']
+  Tingkatan 2: 4 tema, 6 tajuk
+    Contoh Tema: ['Consumerism and Financial Awareness', 'Health and Environment', 'People and Culture']
+    Contoh Tajuk: ['1.0 Listening Skills', '2.0 Speaking Skills', '3.0 Reading Skills']
+  Tingkatan 3: 4 tema, 6 tajuk
+    Contoh Tema: ['Consumerism and Financial Awareness', 'Health and Environment', 'People and Culture']
+    Contoh Tajuk: ['1.0 Listening', '2.0 Speaking', '3.0 Reading']
+  Tingkatan 4: 4 tema, 6 tajuk
+    Contoh Tema: ['Consumerism and Financial Awareness', 'Health and Environment', 'People and Culture']
+    Contoh Tajuk: ['1.0 Listening Skills', '2.0 Speaking Skills /SPOKEN INTERACTION', '3.0 Reading Skills']
+  Tingkatan 5: 4 tema, 6 tajuk
+    Contoh Tema: ['Consumerism and Financial Awareness', 'Health and Environment', 'People and Culture']
+    Contoh Tajuk: ['LISTENING', 'LITERATURE in ACTION (LiA)', 'Language Awareness']
+  Tingkatan 6: 6 tema, 5 tajuk
+    Contoh Tema: ['1. Science And Technology', '2. Environment', '3. Social Issues']
+    Contoh Tajuk: ['1.0 LISTENING', '2.0 SPEAKING', '3.0 READING']
+  Tingkatan PERALIHAN/REMOVE: 4 tema, 5 tajuk
+    Contoh Tema: ['Theme 1: People and Culture', 'Theme 2: Health and Environment', 'Theme 3: Science and Technology']
+    Contoh Tajuk: ['1.0 LISTENING', '2.0 Speaking Skills', '3.0 Reading Skills']
+
+SUBJEK: ENGLISH (BITE)
+  Tingkatan 6: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 Listening Skills', '2.0 Speaking Skills', '3.0 Reading Skills']
+
+SUBJEK: ENGLISH PPKI
+  Tingkatan 1: 0 tema, 3 tajuk
+    Contoh Tajuk: ['1.0 LISTENING AND SPEAKING (SEEING AND SIGNING) SKILLS', '2.0 READING SKILLS', '3.0 WRITING SKILLS']
+  Tingkatan 2: 0 tema, 3 tajuk
+    Contoh Tajuk: ['1.0 LISTENING AND SPEAKING (SEEING AND SIGNING) SKILLS', '2.0 READING SKILLS', '3.0 WRITING SKILLS']
+  Tingkatan 3: 0 tema, 3 tajuk
+    Contoh Tajuk: ['1.0 LISTENING AND SPEAKING (SEEING AND SIGNING) SKILLS', '2.0 READING SKILLS', '3.0 WRITING SKILLS']
+  Tingkatan 4: 0 tema, 12 tajuk
+    Contoh Tajuk: ['A CULTURE OF PEACE', 'A PENNY SAVED IS A PENNY EARNED', 'ACT OF KINDNESS']
+  Tingkatan 5: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 LISTENING SKILLS', '2.0 SPEAKING SKILLS', '3.0 READING SKILLS']
+
+SUBJEK: FIQH (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['الفقه']
+
+SUBJEK: FIRAQ (STAM)
+  Tingkatan 6: 2 tema, 0 tajuk
+    Contoh Tema: ['التوحيد', 'الفرق']
+
+SUBJEK: FIZIK
+  Tingkatan 4: 4 tema, 6 tajuk
+    Contoh Tema: ['ASAS FIZIK', 'GELOMBANG, CAHAYA DAN OPTIK', 'HABA']
+    Contoh Tajuk: ['1.0 PENGUKURAN', '2.0 DAYA DAN GERAKAN 1', '3.0 KEGRAVITIAN']
+  Tingkatan 5: 4 tema, 7 tajuk
+    Contoh Tema: ['ELEKTRIK DAN KEELEKTROMAGNETAN', 'FIZIK GUNAAN', 'FIZIK MODEN']
+    Contoh Tajuk: ['1.0 Daya dan Gerakan II', '2.0 Tekanan', '3.0 Elektrik']
+
+SUBJEK: FIZIK DLP
+  Tingkatan 4: 4 tema, 6 tajuk
+    Contoh Tema: ['ELEMENTARY PHYSICS', 'HEAT', 'NEWTONIAN MECHANICS']
+    Contoh Tajuk: ['1.0 MEASUREMENT', '2.0 FORCE AND MOTION 1', '3.0  GRAVITATION']
+  Tingkatan 5: 4 tema, 7 tajuk
+    Contoh Tema: ['APPLIED PHYSICS', 'ELECTRICITY AND ELECTROMAGNETISM', 'MODERN PHYSICS']
+    Contoh Tajuk: ['1.0 FORCE AND MOTION II', '2.0 PRESSURE', '3.0 ELECTRICITY']
+
+SUBJEK: GEOGRAFI
+  Tingkatan 1: 5 tema, 5 tajuk
+    Contoh Tema: ['1.0 KEMAHIRAN GEOGRAFI', '2.0 GEOGRAFI FIZIKAL', '3.0 GEOGRAFI MANUSIA']
+    Contoh Tajuk: ['ASIA TENGGARA', 'BENTUK MUKA BUMI DAN SALIRAN', 'ISU DAN PENGURUSAN ALAM SEKITAR']
+  Tingkatan 2: 5 tema, 5 tajuk
+    Contoh Tema: ['1.0 KEMAHIRAN GEOGRAFI', '2.0 GEOGRAFI FIZIKAL', '3.0 GEOGRAFI MANUSIA']
+    Contoh Tajuk: ['ASIA', 'CUACA DAN IKLIM', 'ISU DAN PENGURUSAN ALAM SEKITAR']
+  Tingkatan 3: 5 tema, 5 tajuk
+    Contoh Tema: ['1.0 Kemahiran Geografi', '2.0 Geografi Fizikal', '3.0 Geografi Manusia']
+    Contoh Tajuk: ['Dunia', 'Isu dan Pengurusan Alam Sekitar', 'Kemahiran Geografi']
+  Tingkatan 4: 3 tema, 15 tajuk
+    Contoh Tema: ['1.0 KEMAHIRAN GEOGRAFI : PETA TOPOGRAFI', '2.0 GEOGRAFI FIZIKAL: BENTUK MUKA BUMI DAN SALIRAN', '3.0 GEOGRAFI MANUSIA: PENDUDUK DAN PETEMPATAN']
+    Contoh Tajuk: ['ARAH DAN KEDUDUKAN DALAM PETA TOPOGRAFI', 'KETINGGIAN DAN KERATAN RENTAS DALAM PETA TOPOGRAFI', 'MIGRASI PENDUDUK']
+  Tingkatan 5: 3 tema, 3 tajuk
+    Contoh Tema: ['GEOGRAFI FIZIKAL', 'GEOGRAFI MANUSIA', 'KEMAHIRAN']
+    Contoh Tajuk: ['1.0  KEMAHIRAN GEOGRAFI', '2.0  CUACA, IKLIM, TUMBUH-TUMBUHAN SEMULA JADI DAN HIDUPAN LIAR', '3.0 SUMBER TENAGA DAN KEGIATAN EKONOMI']
+
+SUBJEK: GEOGRAFI 942
+  Tingkatan 6: 3 tema, 14 tajuk
+    Contoh Tema: ['SEMESTER DUA', 'SEMESTER SATU', 'SEMESTER TIGA']
+    Contoh Tajuk: ['BAHAGIAN A (ALAM SEKITAR FIZIKAL). 1. Sistem Bumi', 'BAHAGIAN A (ALAM SEKITAR FIZIKAL). 10 Dinamika persekitaran fizikal', 'BAHAGIAN A (ALAM SEKITAR FIZIKAL). 11 Sumber alam']
+
+SUBJEK: GPM
+  Tingkatan SM: 3 tema, 86 tajuk
+    Contoh Tema: ['GALAKAN MEMBACA LITERASI MAKLUMAT', 'ORGANISASI BAHAN', 'PENGURUSAN PUSAT SUMBER']
+    Contoh Tajuk: ['Agihan Pembelian', 'Anggaran Belanja Mengurus (ABM) 1', 'Anggaran Belanja Mengurus (ABM) 2']
+
+SUBJEK: GRAFIK KOM. TEKNIKAL
+  Tingkatan 4: 0 tema, 9 tajuk
+    Contoh Tajuk: ['1.0 PENGENALAN KEPADA GKT', '2.0 GARISAN, SUDUT DAN BULATAN', '3.0 SEGITIGA, SEGIEMPAT DAN POLIGON']
+  Tingkatan 5: 0 tema, 7 tajuk
+    Contoh Tajuk: ['10.0 LUKISAN PERSPEKTIF', '11.0 LUKISAN PENGORAKAN', '12.0 LUKISAN TERBANTU KOMPUTER (LTK)']
+
+SUBJEK: HADIS (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['الحديث']
+
+SUBJEK: HIASAN DALAMAN
+  Tingkatan 4: 4 tema, 4 tajuk
+    Contoh Tema: ['KESELAMATAN', 'LUKISAN', 'PENGENALAN']
+    Contoh Tajuk: ['1.0 PENGENALAN', '2.0 KESELAMATAN', '3.0 LUKISAN']
+  Tingkatan 5: 3 tema, 3 tajuk
+    Contoh Tema: ['AKSESORI HIASAN', 'KEMASAN', 'PROJEK KEUSAHAWANAN']
+    Contoh Tajuk: ['5.0 KEMASAN', '6.0 AKSESORI HIASAN', '7.0\xa0\xa0 PROJEK KEUSAHAWANAN']
+
+SUBJEK: HIFZ AL-QURAN  (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['حفظ القرآن']
+
+SUBJEK: INFORMATION AND COMMUNICATIONS TECHNOLOGY 958
+  Tingkatan 6: 3 tema, 20 tajuk
+    Contoh Tema: ['FIRST SEMESTER', 'SECOND SEMESTER', 'THIRD SEMESTER']
+    Contoh Tajuk: ['Information Systems Development and Database Systems. 16 Fundamentals of Information Systems', 'Information Systems Development and Database Systems. 17 Information Systems Development', 'Information Systems Development and Database Systems. 18 Fundamentals of Relational Database Systems']
+
+SUBJEK: INSYA' (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['الانشاء']
+
+SUBJEK: KATERING DAN PENYAJIAN
+  Tingkatan 4: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 PENGENALAN BIDANG PERKHIDMATAN MAKANAN', '2.0 PERALATAN DAN BAHAN DALAM PERKHIDMATAN MAKANAN', '3.0 PENGENALAN KEPADA PERKHIDMATAN PENYAJIAN']
+  Tingkatan 5: 0 tema, 4 tajuk
+    Contoh Tajuk: ['5.0 MENU DALAM PERKHIDMATAN MAKANAN', '6.0 HIDANGAN SET MENU', '7.0 HIDANGAN LENGKAP DAN SEIMBANG']
+
+SUBJEK: KESUSASTERAAN CINA 华文文学
+  Tingkatan 4: 4 tema, 36 tajuk
+    Contoh Tema: ['1.0 诗歌', '2.0 散文', '3.0 小说']
+    Contoh Tajuk: ['小说-巴金《哑了的三角琴》', '小说-铁凝《哦，香雪》', '小说: 商晚筠《痴女阿莲》']
+  Tingkatan 5: 4 tema, 36 tajuk
+    Contoh Tema: ['1.0 诗歌', '2.0 散文', '3.0 小说']
+    Contoh Tajuk: ['小说-巴金《哑了的三角琴》', '小说-铁凝《哦，香雪》', '小说: 商晚筠《痴女阿莲》']
+
+SUBJEK: KESUSASTERAAN INGGERIS
+  Tingkatan 4: 3 tema, 0 tajuk
+    Contoh Tema: ['1.0 Prose', '2.0 Poetry', '3.0 Drama']
+  Tingkatan 5: 3 tema, 0 tajuk
+    Contoh Tema: ['1.0 Prose', '2.0 Poetry', '3.0 Drama']
+
+SUBJEK: KESUSASTERAAN MELAYU
+  Tingkatan 5: 3 tema, 28 tajuk
+    Contoh Tema: ['B.PROSA', 'C. DRAMA', 'D. PUISI']
+    Contoh Tajuk: ['1.0 Menghuraikan definisi, jenis, ciri dan peranan puisi', '1.0 Menghuraikan definisi, jenis, ciri, dan peranan prosa', '1.0 Menghuraikan definisi, jenis, ciri, teknik, dan peranan drama']
+
+SUBJEK: KESUSASTERAAN MELAYU KOMUNIKATIF
+  Tingkatan 4: 17 tema, 3 tajuk
+    Contoh Tema: ['Biodata Pengarang', 'Kemasyarakatan', 'Kenegaraan']
+    Contoh Tajuk: ['1. APRESIASI SASTERA', '2. PEMBANGUNAN INSAN', '3. PENGKARYAAN']
+  Tingkatan 5: 17 tema, 3 tajuk
+    Contoh Tema: ['Biodata Pengarang', 'Kemasyarakatan', 'Kenegaraan']
+    Contoh Tajuk: ['1. APRESIASI SASTERA', '2. PEMBANGUNAN INSAN', '3. PENGKARYAAN']
+
+SUBJEK: KESUSASTERAAN MELAYU KOMUNIKATIF 922
+  Tingkatan 6: 3 tema, 9 tajuk
+    Contoh Tema: ['SEMESTER DUA', 'SEMESTER SATU', 'SEMESTER TIGA']
+    Contoh Tajuk: ['Kreativiti dalam Sastera. 1. Penulisan Kreatif', 'Kreativiti dalam Sastera. 2. Pengurusan dalam Sastera', 'Kreativiti dalam Sastera. 3. Multimedia dalam Sastera']
+
+SUBJEK: KESUSASTERAAN TAMIL
+  Tingkatan 4 & 5: 0 tema, 3 tajuk
+    Contoh Tajuk: ['1.0 கவிதை', '2.0 நாடகம்', '3.0 நாவல்']
+
+SUBJEK: KIMIA
+  Tingkatan 4: 4 tema, 8 tajuk
+    Contoh Tema: ['Tema 1 Kepentingan Kimia', 'Tema 2 Asas Kimia', 'Tema 3 Interaksi antara Jirim']
+    Contoh Tajuk: ['1.0 PENGENALAN KEPADA KIMIA', '2.0 JIRIM DAN STRUKTUR ATOM', '3.0 KONSEP MOL, FORMULA DAN PERSAMAAN KIMIA']
+  Tingkatan 5: 4 tema, 5 tajuk
+    Contoh Tema: ['HABA', 'KIMIA ORGANIK', 'PROSES KIMIA']
+    Contoh Tajuk: ['10.0 SEBATIAN KARBON', '11.0 TERMOKIMIA', '12.0 POLIMER']
+
+SUBJEK: KOMUNIKASI PPKI (LOW)
+  Tingkatan KSSMKR: 3 tema, 9 tajuk
+    Contoh Tema: ['BAHASA INGGERIS', 'BAHASA MELAYU', 'MATEMATIK']
+    Contoh Tajuk: ['KEMAHIRAN BAHASA', 'LISTENING', 'Language Awareness']
+
+SUBJEK: KRAF - SENI KRAF ANYAMAN
+  Tingkatan KSSMKR: 0 tema, 6 tajuk
+    Contoh Tajuk: ['1.0 KEBERSIHAN DAN KESELAMATAN DI RUANG KERJA', '2.0 ASAS ANYAMAN', '3.0 ANYAMAN PLASTISIN']
+
+SUBJEK: KRAF-SENI KRAF MANIK PPKI (LOW)
+  Tingkatan KSSMKR: 1 tema, 6 tajuk
+    Contoh Tema: ['SENI KRAF MANIK.']
+    Contoh Tajuk: ['1.0 KEBERSIHAN DAN KESELAMATAN DI RUANG KERJA', '2.0 ASAS KRAF MANIK', '3.0 KOLAJ']
+
+SUBJEK: KVS ASAS JAHITAN PAKAIAN COCU 1(CASUAL WEAR)
+  Tingkatan 2: 3 tema, 0 tajuk
+    Contoh Tema: ['CASUAL WEAR MAKING', 'CHILDREN WEAR MAKING', 'MATERNITY WEAR MAKING']
+  Tingkatan 3: 3 tema, 0 tajuk
+    Contoh Tema: ['CASUAL WEAR MAKING', 'CHILDREN WEAR MAKING', 'MATERNITY WEAR MAKING']
+  Tingkatan 4: 3 tema, 0 tajuk
+    Contoh Tema: ['CASUAL WEAR MAKING', 'CHILDREN WEAR MAKING', 'MATERNITY WEAR MAKING']
+  Tingkatan 5: 3 tema, 0 tajuk
+    Contoh Tema: ['CASUAL WEAR MAKING', 'CHILDREN WEAR MAKING', 'MATERNITY WEAR MAKING']
+
+SUBJEK: KVS ASAS JAHITAN PAKAIAN COCU 4(CHILDREN WEAR)
+  Tingkatan 2: 3 tema, 0 tajuk
+    Contoh Tema: ['CASUAL WEAR MAKING', 'CHILDREN WEAR MAKING', 'MATERNITY WEAR MAKING']
+  Tingkatan 3: 3 tema, 0 tajuk
+    Contoh Tema: ['CASUAL WEAR MAKING', 'CHILDREN WEAR MAKING', 'MATERNITY WEAR MAKING']
+  Tingkatan 4: 3 tema, 0 tajuk
+    Contoh Tema: ['CASUAL WEAR MAKING', 'CHILDREN WEAR MAKING', 'MATERNITY WEAR MAKING']
+  Tingkatan 5: 3 tema, 0 tajuk
+    Contoh Tema: ['CASUAL WEAR MAKING', 'CHILDREN WEAR MAKING', 'MATERNITY WEAR MAKING']
+
+SUBJEK: KVS ASAS JAHITAN PAKAIAN COCU 5(MATERNITY WEAR)
+  Tingkatan 2: 3 tema, 0 tajuk
+    Contoh Tema: ['CASUAL WEAR MAKING', 'CHILDREN WEAR MAKING', 'MATERNITY WEAR MAKING']
+  Tingkatan 3: 3 tema, 0 tajuk
+    Contoh Tema: ['CASUAL WEAR MAKING', 'CHILDREN WEAR MAKING', 'MATERNITY WEAR MAKING']
+  Tingkatan 4: 3 tema, 0 tajuk
+    Contoh Tema: ['CASUAL WEAR MAKING', 'CHILDREN WEAR MAKING', 'MATERNITY WEAR MAKING']
+  Tingkatan 5: 3 tema, 0 tajuk
+    Contoh Tema: ['CASUAL WEAR MAKING', 'CHILDREN WEAR MAKING', 'MATERNITY WEAR MAKING']
+
+SUBJEK: KVS ASAS TANAMAN
+  Tingkatan 2: 3 tema, 3 tajuk
+    Contoh Tema: ['CU 3', 'CU 6', 'CU 9']
+    Contoh Tajuk: ['3.0 OPERASI PENANAMAN BAHAN TANAMAN', '6.0. OPERASI PENUAIAN HASIL TANAMAN', '9.0 PENGELUARAN BAJA ORGANIK DAN KOMPOS']
+  Tingkatan 3: 3 tema, 3 tajuk
+    Contoh Tema: ['CU 3', 'CU 6', 'CU 9']
+    Contoh Tajuk: ['3.0 OPERASI PENANAMAN BAHAN TANAMAN', '6.0. OPERASI PENUAIAN HASIL TANAMAN', '9.0 PENGELUARAN BAJA ORGANIK DAN KOMPOS']
+  Tingkatan 4: 3 tema, 3 tajuk
+    Contoh Tema: ['CU 3', 'CU 6', 'CU 9']
+    Contoh Tajuk: ['3.0 OPERASI PENANAMAN BAHAN TANAMAN', '6.0. OPERASI PENUAIAN HASIL TANAMAN', '9.0 PENGELUARAN BAJA ORGANIK DAN KOMPOS']
+  Tingkatan 5: 3 tema, 3 tajuk
+    Contoh Tema: ['CU 3', 'CU 6', 'CU 9']
+    Contoh Tajuk: ['3.0 OPERASI PENANAMAN BAHAN TANAMAN', '6.0. OPERASI PENUAIAN HASIL TANAMAN', '9.0 PENGELUARAN BAJA ORGANIK DAN KOMPOS']
+
+SUBJEK: KVS ASAS URUTAN (REFLEKSOLOGI TANGAN)
+  Tingkatan 3: 7 tema, 11 tajuk
+    Contoh Tema: ['Assess Client Hand Reflexology and Requirements', 'Evaluate Hand Reflexology Services', 'Manage Post Hand Reflexology Procedure']
+    Contoh Tajuk: ['10.0 Penilaian Perkhidmatan Refleksologi tangan dan Nasihat Susulan', '11.0 Dokumentasi Selepas Rawatan Refleksologi Tangan', '6.0 Pengendalian Asas Pertolongan Cemas (First Aid)']
+
+SUBJEK: KVS ASAS URUTAN C01 (REFLEKSOLOGI KAKI)
+  Tingkatan 2: 8 tema, 13 tajuk
+    Contoh Tema: ['1. ASSESS CLIENT FOOT REFLEXOLOGY  REQUIREMENTS', '2. PREPARE FOOT REFLEXOLOGY WORK AREA.', '3. PREPARE CLIENT FOR FOOT REFLEXOLOGY']
+    Contoh Tajuk: ['Bahagian (Department) & Postur', 'Dokumentasi Pusat Refleksollogi.', 'Kebersihan dan Keselamatan persekitaran kerja refleksologi']
+
+SUBJEK: KVS Asas Urutan E01 (Reflexology Promotion And Client Service)
+  Tingkatan 4: 4 tema, 2 tajuk
+    Contoh Tema: ['Assess Promotion Packages Suitablity', 'Compile Promotion Packages', 'Record Promotion Activities Details']
+    Contoh Tajuk: ['1.0 Kajian Rawatan Keperluan Pelanggan', '2.0 Penyediaan Pakej Promosi Refleksologi']
+
+SUBJEK: KVS OPERASI PENGELUARAN TANAMAN PPKI
+  Tingkatan 2: 0 tema, 6 tajuk
+    Contoh Tajuk: ['1.0 MEMBERSIHKAN TAPAK TANAMAN', '2.0 MENYEDIAKAN TAPAK TANAMAN', '3.0 MENYEDIAKAN TAPAK SEMAIAN TANAMAN']
+  Tingkatan 3: 0 tema, 4 tajuk
+    Contoh Tajuk: ['KENDALIAN HASIL TANAMAN', 'PENANAMAN BAHAN TANAMAN', 'PENYEDIAAN KAWASAN TANAMAN']
+
+SUBJEK: KVS PEMBUATAN PASTRI
+  Tingkatan PPKI: 1 tema, 3 tajuk
+    Contoh Tema: ['PASTRY PRODUCTION']
+    Contoh Tajuk: ['BATTER AND DOUGH PREPARATION', 'CAKES PREPARATION', 'PUDDING PREPARATION']
+
+SUBJEK: KVS PEMBUATAN ROTI PPKI
+  Tingkatan 2: 0 tema, 1 tajuk
+    Contoh Tajuk: ['PENYEDIAAN DONAT']
+  Tingkatan 4: 0 tema, 2 tajuk
+    Contoh Tajuk: ['PENGENDALIAN PRODUK BAKERY DAN BAHAN', 'PENYEDIAAN ROTI']
+
+SUBJEK: KVS PEMBUATAN ROTI – COCU 3 (PENYEDIAAN DONUT)
+  Tingkatan 2: 0 tema, 1 tajuk
+    Contoh Tajuk: ['3. PENYEDIAAN DONUT']
+  Tingkatan 3: 0 tema, 1 tajuk
+    Contoh Tajuk: ['3. PENYEDIAAN DONUT']
+  Tingkatan 4: 0 tema, 1 tajuk
+    Contoh Tajuk: ['3. PENYEDIAAN DONUT']
+  Tingkatan 5: 0 tema, 1 tajuk
+    Contoh Tajuk: ['3. PENYEDIAAN DONUT']
+
+SUBJEK: KVS PEMBUATAN ROTI – COCU 4 (PENYEDIAAN BUN)
+  Tingkatan 2: 0 tema, 1 tajuk
+    Contoh Tajuk: ['4. PENYEDIAAN BUN']
+  Tingkatan 3: 0 tema, 1 tajuk
+    Contoh Tajuk: ['4. PENYEDIAAN BUN']
+  Tingkatan 4: 0 tema, 1 tajuk
+    Contoh Tajuk: ['4. PENYEDIAAN BUN']
+  Tingkatan 5: 0 tema, 1 tajuk
+    Contoh Tajuk: ['4. PENYEDIAAN BUN']
+
+SUBJEK: KVS PEMBUATAN ROTI – COCU 5 (PENYEDIAAN PIZZA)
+  Tingkatan 2: 0 tema, 1 tajuk
+    Contoh Tajuk: ['5. PENYEDIAAN PIZZA']
+  Tingkatan 3: 0 tema, 1 tajuk
+    Contoh Tajuk: ['5. PENYEDIAAN PIZZA']
+  Tingkatan 4: 0 tema, 1 tajuk
+    Contoh Tajuk: ['5. PENYEDIAAN PIZZA']
+  Tingkatan 5: 0 tema, 1 tajuk
+    Contoh Tajuk: ['5. PENYEDIAAN PIZZA']
+
+SUBJEK: LADIES GARMENT FASHION DESIGN ILLUSTRATION
+  Tingkatan 4: 1 tema, 4 tajuk
+    Contoh Tema: ['Ladies Dressmaking']
+    Contoh Tajuk: ['1. Identify silhouette and human body shape.', '2. Produce figure sketches.', '3. Produce figure drawing.']
+
+SUBJEK: LITERATURE IN ENGLISH 920
+  Tingkatan 6: 4 tema, 4 tajuk
+    Contoh Tema: ['First Semester', 'Second Semester', 'Semesters 1, 2 and 3']
+    Contoh Tajuk: ['Novels', 'Part 1: Critical Appreciation Skills Applicable to Papers 1, 2 and 3 (Semesters 1, 2 and 3)', 'Part II: Poetry and Short Stories']
+
+SUBJEK: LUKISAN KEJURUTERAAN
+  Tingkatan 4: 0 tema, 9 tajuk
+    Contoh Tajuk: ['1.0 PENGENALAN KEPADA LUKISAN KEJURUTERAAN', '2.0 GEOMETRI', '3.0 LUKISAN ORTOGRAFIK']
+  Tingkatan 5: 0 tema, 7 tajuk
+    Contoh Tajuk: ['10.0 LUKISAN PERSILANGAN', '11.0 LUKISAN TERBANTU KOMPUTER DUA DIMENSI(2D)', '12.0 LUKISAN MEKANIKAL']
+
+SUBJEK: MANAGEMENT MATHEMATICS 950
+  Tingkatan 6: 3 tema, 18 tajuk
+    Contoh Tema: ['FIRST SEMESTER', 'SECOND SEMESTER', 'THIRD SEMESTER']
+    Contoh Tajuk: ['Algebra and Calculus. 1 Functions and Equations', 'Algebra and Calculus. 2 Sequences and Series', 'Algebra and Calculus. 3 Matrices and Systems of Linear Equations']
+
+SUBJEK: MANTIQ (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['المنطق']
+
+SUBJEK: MATEMATIK
+  Tingkatan 1: 5 tema, 13 tajuk
+    Contoh Tema: ['MATEMATIK DISKRET', 'NOMBOR DAN OPERASI', 'PERKAITAN DAN ALGEBRA']
+    Contoh Tajuk: ['BAB 1 NOMBOR NISBAH', 'BAB 10 PERIMETER DAN LUAS', 'BAB 11 PENGENALAN SET']
+  Tingkatan 2: 4 tema, 13 tajuk
+    Contoh Tema: ['NOMBOR DAN OPERASI', 'PERKAITAN DAN ALGEBRA', 'STATISTIK DAN KEBARANGKALIAN']
+    Contoh Tajuk: ['1.0 Pola dan Jujukan', '10. Kecerunan Garis Lurus', '11.0 Transformasi Isometri']
+  Tingkatan 3: 3 tema, 9 tajuk
+    Contoh Tema: ['NOMBOR DAN OPERASI', 'PERKAITAN DAN ALGEBRA', 'SUKATAN DAN GEOMETRI']
+    Contoh Tajuk: ['1.0 INDEKS', '2.0 BENTUK PIAWAI', '3.0 MATEMATIK PENGGUNA: SIMPANAN DAN PELABURAN, KREDIT DAN HUTANG']
+  Tingkatan 4: 4 tema, 10 tajuk
+    Contoh Tema: ['MATEMATIK DISKRET', 'NOMBOR DAN OPERASI', 'PERKAITAN DAN ALGEBRA']
+    Contoh Tajuk: ['1.0 FUNGSI DAN PERSAMAAN KUADRATIK DALAM SATU PEMBOLEH UBAH', '10.0 MATEMATIK PENGGUNA: PENGURUSAN KEWANGAN', '2.0 ASAS NOMBOR']
+  Tingkatan 5: 4 tema, 9 tajuk
+    Contoh Tema: ['NOMBOR DAN OPERASI', 'PERKAITAN DAN ALGEBRA', 'STATISTIK DAN KEBARANGKALIAN']
+    Contoh Tajuk: ['1.0 UBAHAN', '2.0 MATRIKS', '3.0 MATEMATIK PENGGUNA: INSURANS']
+
+SUBJEK: MATEMATIK ALIRAN KEMAHIRAN
+  Tingkatan 4: 0 tema, 6 tajuk
+    Contoh Tajuk: ['1.0 BENTUK PIAWAI', '2.0 KEBARANGKALIAN MUDAH', '3.0 POLIGON']
+  Tingkatan 5: 1 tema, 5 tajuk
+    Contoh Tema: ['PERKAITAN DAN ALGEBRA']
+    Contoh Tajuk: ['1.0 NISBAH, KADAR DAN KADARAN', '2.0 PELAN DAN DONGAKAN', '3.0 PENGENDALIAN DATA']
+
+SUBJEK: MATEMATIK KSSMPK
+  Tingkatan 2: 0 tema, 4 tajuk
+    Contoh Tajuk: ['MASA DAN WAKTU', 'PERATUS', 'PERPULUHAN']
+
+SUBJEK: MATEMATIK MPAK
+  Tingkatan 4: 3 tema, 6 tajuk
+    Contoh Tema: ['NOMBOR DAN OPERASI', 'STATISTIK DAN KEBARANGKALIAN', 'SUKATAN DAN GEOMETRI']
+    Contoh Tajuk: ['1.0 BENTUK PIAWAI', '2.0 KEBARANGKALIAN MUDAH', '3.0 POLIGON']
+  Tingkatan 5: 4 tema, 5 tajuk
+    Contoh Tema: ['NOMBOR DAN OPERASI', 'PERKAITAN DAN ALGEBRA', 'STATISTIK DAN KEBARANGKALIAN']
+    Contoh Tajuk: ['1.0 NISBAH, KADAR DAN KADARAN', '2.0 PELAN DAN DONGAKAN', '3.0 PENGENDALIAN DATA']
+
+SUBJEK: MATEMATIK PIMA
+  Tingkatan 4: 0 tema, 6 tajuk
+    Contoh Tajuk: ['1.0 Bentuk Piawai', '2.0 Kebarangkalian Mudah', '3.0 Poligon']
+  Tingkatan 5: 0 tema, 4 tajuk
+    Contoh Tajuk: ['6 PERATUSAN', '7 PERSAMAAN LINEAR', '8 NISBAH']
+
+SUBJEK: MATEMATIK PPKI
+  Tingkatan 1: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 NOMBOR BULAT', '2.0 OPERASI ASAS', '3.0 WANG']
+  Tingkatan 2: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 PERPULUHAN', '2.0 PERATUS', '3.0 MASA DAN WAKTU']
+  Tingkatan 3: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 JISIM', '2.0 ISIPADU', '3.0 NISBAH']
+  Tingkatan 4: 0 tema, 4 tajuk
+    Contoh Tajuk: ['KEWANGAN', 'KOORDINAT', 'PERANCANGAN KEWANGAN']
+  Tingkatan 5: 0 tema, 3 tajuk
+    Contoh Tajuk: ['1.0 BENTUK', '2.0 RUANG', '3.0 STATISTIK']
+
+SUBJEK: MATEMATIK PVMA
+  Tingkatan 4: 0 tema, 6 tajuk
+    Contoh Tajuk: ['1.0   BENTUK PIAWAI', '2.0   KEBARANGKALIAN MUDAH', '3.0   POLIGON']
+  Tingkatan 5: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0   NISBAH, KADAR DAN KADARAN', '2.0   PELAN DAN DONGAKAN', '3.0   PENGENDALIAN DATA']
+
+SUBJEK: MATEMATIK TAMBAHAN
+  Tingkatan 4: 4 tema, 10 tajuk
+    Contoh Tema: ['ALGEBRA', 'APLIKASI SAINS DAN TEKNOLOGI', 'APLIKASI SAINS SOSIAL']
+    Contoh Tajuk: ['1.0 FUNGSI', '10.0 NOMBOR INDEKS', '2.0 FUNGSI KUADRATIK']
+  Tingkatan 5: 6 tema, 8 tajuk
+    Contoh Tema: ['APLIKASI SAINS DAN TEKNOLOGI', 'APLIKASI SAINS SOSIAL', 'GEOMETRI']
+    Contoh Tajuk: ['1.0 SUKATAN MEMBULAT', '2.0 PEMBEZAAN', '3.0 PENGAMIRAN']
+
+SUBJEK: MATEMATIK TEKNIKAL
+  Tingkatan 6: 3 tema, 18 tajuk
+    Contoh Tema: ['LOWER 6 SEMESTER 1', 'UPPER 6 SEMESTER 2', 'UPPER 6 SEMESTER 3']
+    Contoh Tajuk: ['1 Functions', '10 Differential Equations', '11 Maclaurin Series']
+
+SUBJEK: MATHEMATICS 954
+  Tingkatan 6: 3 tema, 18 tajuk
+    Contoh Tema: ['FIRST SEMESTER', 'SECOND SEMESTER', 'THIRD SEMESTER']
+    Contoh Tajuk: ['ALGEBRA AND GEOMETRY: 1. Functions and Equations', 'ALGEBRA AND GEOMETRY: 2. Sequences and Series', 'ALGEBRA AND GEOMETRY: 3. Matrices and Systems of Linear Equations']
+
+SUBJEK: MATHEMATICS DLP
+  Tingkatan 1: 5 tema, 13 tajuk
+    Contoh Tema: ['Discrete Mathematics', 'Measurement and Geometry', 'Numbers and Operations']
+    Contoh Tajuk: ['1.  Rational Numbers', '10. Perimeter and Area', '11. Introduction to Set']
+  Tingkatan 2: 5 tema, 13 tajuk
+    Contoh Tema: ['COORDINATES', 'MEASUREMENT AND GEOMETRY', 'NUMBER AND OPERATIONS']
+    Contoh Tajuk: ['1.0  PATTERNS AND SEQUENCES', '10.0 GRADIENT OF A STRAIGHT LINE', '11.0 ISOMETRIC TRANSFORMATIONS']
+  Tingkatan 3: 3 tema, 9 tajuk
+    Contoh Tema: ['MEASUREMENT AND GEOMETRY', 'NUMBER AND OPERATIONS', 'RELATIONSHIP AND ALGEBRA']
+    Contoh Tajuk: ['1.0 INDICES', '2.0 STANDARD FORM', '3.0 CONSUMER MATHEMATICS: SAVINGS AND INVESTMENTS, CREDIT AND DEBT']
+  Tingkatan 4: 5 tema, 10 tajuk
+    Contoh Tema: ['DISCRETE MATHEMATICS', 'NUMBER AND OPERATIONS', 'RELATIONSHIP AND ALGEBRA']
+    Contoh Tajuk: ['1.0   QUADRATIC FUNCTIONS AND EQUATIONS IN ONE VARIABLE', '10.0   CONSUMER MATHEMATICS: FINANCIAL MANAGEMENT', '2.0  NUMBER BASES']
+  Tingkatan 5: 5 tema, 8 tajuk
+    Contoh Tema: ['MEASUREMENT AND GEOMETRY', 'NUMBER AND OPERATIONS', 'NUMBERS AND OPERATION']
+    Contoh Tajuk: ['1.0 VARIATION', '2.0 MATRICES', '3.0 CONSUMER MATHEMATICS: INSURANCE']
+  Tingkatan 6: 3 tema, 18 tajuk
+    Contoh Tema: ['6 FIRST TERM =ALGEBRA AND GEOMETRY', '6 SECOND TERM =CALCULUS', '6 THIRD TERM =STATISTICS']
+    Contoh Tajuk: ['1 FUNCTIONS', '10 DIFFERENTIAL EQUATIONS', '11 MACLAURIN SERIES']
+
+SUBJEK: MATHEMATICS M
+  Tingkatan 6: 3 tema, 19 tajuk
+    Contoh Tema: ['ALGEBRA AND CALCULUS', 'FINANCIAL AND DECISION MATHEMATICS', 'STATISTICS']
+    Contoh Tajuk: ['1 FUNCTIONS', '10 CORRELATION AND REGRESSION', '11 INDEX NUMBER']
+
+SUBJEK: MATHEMATICS T
+  Tingkatan 6: 3 tema, 19 tajuk
+    Contoh Tema: ['ALGEBRA AND GEOMETRY', 'CALCULUS', 'STATISTICS']
+    Contoh Tajuk: ['1 Functions', '10 Differential Equations', '11 Maclaurin Series']
+
+SUBJEK: MENCUCI KENDERAAN
+  Tingkatan KSSMKR: 0 tema, 1 tajuk
+    Contoh Tajuk: ['ASAS MENCUCI KENDERAAN']
+
+SUBJEK: MENDOBI PPKI (LOW)
+  Tingkatan KSSMKR: 0 tema, 8 tajuk
+    Contoh Tajuk: ['1.0 PERATURAN KESELAMATAN DAN KEBERSIHAN', '2.0 ALATAN DAN BAHAN MENDOBI', '3.0 PROSES MENDOBI']
+
+SUBJEK: MENSERVIS AUTOMOBIL
+  Tingkatan 4: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 PENGENALAN KEPADA BIDANG MENSERVIS AUTOMOBIL', '2.0\tMENSERVIS SISTEM ENJIN', '3.0\tMEROMBAK RAWAT ENJIN AUTOMOBIL']
+  Tingkatan 5: 0 tema, 5 tajuk
+    Contoh Tajuk: ['5.0\tMENSERVIS SISTEM PENGHANTARAN', '6.0\tMENSERVIS SISTEM STERENG, SISTEM GANTUNGAN, TAYAR DAN IMBANGAN RODA', '7.0\tSISTEM ELEKTRIK DAN ELEKTRONIK KENDERAAN']
+
+SUBJEK: MENSERVIS PERALATAN PENYEJUKAN DAN PENYAMAN UDARA
+  Tingkatan 4: 0 tema, 8 tajuk
+    Contoh Tajuk: ['1.0 PENGENALAN KEPADA BIDANG PENYEJUKAN DAN PENYAMANAN UDARA', '2.0 KESELAMATAN DAN KESIHATAN PEKERJAAN', '3.0 PERALATAN DAN METROLOGI']
+  Tingkatan 5: 0 tema, 2 tajuk
+    Contoh Tajuk: ['10.0 PENGENALAN KEUSAHAWANAN', '9.0 SISTEM PENYAMANAN DAN PENGALIHAN UDARA']
+
+SUBJEK: MIRATH (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['الميراث']
+
+SUBJEK: MPV (MENSERVIS MOTOSIKAL)
+  Tingkatan 4: 4 tema, 4 tajuk
+    Contoh Tema: ['Amalan Bengkel Menservis Motosikal', 'Asas Menservis Motosikal', 'Kerangka dan Reraut']
+    Contoh Tajuk: ['1.0 AMALAN BENGKEL MENSERVIS MOTOSIKAL', '2.0 ASAS MENSERVIS MOTOSIKAL', '3.0 MENYELENGGARA KERANGKA DAN RERAUT (COVER SET) MOTOSIKAL']
+  Tingkatan 5: 4 tema, 4 tajuk
+    Contoh Tema: ['Asas Keusahawanan Dalam Bidang Menservis Motosikal', 'Mengesan Kerosakan Sistem Elektrik dan Elektronik Motosikal', 'Merombak Rawat Bahagian Atas Enjin Motosikal']
+    Contoh Tajuk: ['5.0 MEROMBAK RAWAT BAHAGIAN ATAS ENJIN MOTOSIKAL', '6.0 MEROMBAK RAWAT SISTEM ENJIN MOTOSIKAL', '7.0 MENGESAN KEROSAKAN SISTEM ELEKTRIK MOTOSIKAL']
+
+SUBJEK: MPV (PENJAGAAN MUKA & DANDANAN RAMBUT)
+  Tingkatan 5: 2 tema, 12 tajuk
+    Contoh Tema: ['Pengetahuan', 'Pengetahuan , kemahiran']
+    Contoh Tajuk: ['Keriting Susuk', 'Keriting dingin asas rambut', 'Pelurusan rambut']
+
+SUBJEK: MPV (PENJAGAAN MUKA DAN PENGGAYAAN RAMBUT)
+  Tingkatan 4: 6 tema, 11 tajuk
+    Contoh Tema: ['KEUSAHAWANAN', 'KONSULTASI PERKHIDMATAN ESTETIK', 'PENGGAYAAN RAMBUT']
+    Contoh Tajuk: ['Bahasa', 'KEUSAHAWANAN', 'Kelestarian Alam Sekitar']
+
+SUBJEK: MPV AKUAKULTUR DAN HAIWAN REKREASI
+  Tingkatan 4: 4 tema, 0 tajuk
+    Contoh Tema: ['1.0 INDUSTRI AKUAKULTUR DAN HAIWAN REKREASI', '2.0 PEMILIHAN TAPAK AKUAKULTUR, SUMBER AIR, SISTEM PENTERNAKAN DAN PEMAKANAN TERNAKAN', '3.0 PEMBIAKAN IKAN']
+  Tingkatan 5: 4 tema, 0 tajuk
+    Contoh Tema: ['5.0 PENTERNAKAN IKAN HIASAN', '6.0 PENANAMAN TUMBUHAN AKUATIK DAN MENGHIAS AKUARIUM (AQUASCAPE)', '7.0 PENGHASILAN PRODUK AKUAKULTUR']
+
+SUBJEK: MPV APAK
+  Tingkatan 4: 0 tema, 7 tajuk
+    Contoh Tajuk: ['1.0 PERKHIDMATAN  AWAL  KANAK-KANAK  DAN  KERJAYA', '2.0\xa0\xa0\xa0 AMALAN KESELAMATAN', '3.0   AMALAN KEBERSIHAN DAN PENJAGAAN KESIHATAN']
+  Tingkatan 5: 0 tema, 6 tajuk
+    Contoh Tajuk: ['10.0\xa0\xa0 PERKEMBANGAN  DERIA DAN PEMAHAMAN DUNIA PERSEKITARAN', '11.0\xa0\xa0\xa0 PERKEMBANGAN  ESTETIKA DAN  DAYA KREATIF', '12.0   PENGURUSAN  DAN  PENTADBIRAN  TASKA']
+
+SUBJEK: MPV AUTOMOTIF
+  Tingkatan 4: 10 tema, 10 tajuk
+    Contoh Tema: ['AMALAN BENGKEL AUTOMOTIF', 'PEMANCIT BAHAN API JENIS PETROL /GASOLINE', 'ROMBAK RAWAT ENJIN KENDERAAN']
+    Contoh Tajuk: ['AMALAN BENGKEL AUTOMOTIF', 'MENSERVIS PEMANCIT BAHAN API JENIS PETROL /GASOLINE', 'MENSERVIS SISTEM BAHAN API DIESEL']
+
+SUBJEK: MPV GERONTOLOGI ASAS & GERIATRIK
+  Tingkatan 4: 5 tema, 0 tajuk
+    Contoh Tema: ['1.0 PENGENALAN KEPADA GERONTOLOGI ASAS DAN GERIATRIK', '2.0 PROSES PENUAAN', '3.0 PERSEKITARAN MESRA DAN SELAMAT WARGA EMAS']
+  Tingkatan 5: 3 tema, 0 tajuk
+    Contoh Tema: ['6.0 SARINGAN DAN PENILAIAN ASAS WARGA EMAS', '7.0 PENGURUSAN GERIATRIK', '8.0 PROJEK KEUSAHAWANAN']
+
+SUBJEK: MPV KERJA PAIP DOMESTIK
+  Tingkatan 4: 4 tema, 4 tajuk
+    Contoh Tema: ['1. 0 KERJAYA DALAM BIDANG KERJA PAIP DOMESTIK', '2.0 ASAS KERJA PAIP DOMESTIK', '3.0 LUKISAN PERPAIPAN']
+    Contoh Tajuk: ['1. 0 KERJAYA DALAM BIDANG KERJA PAIP DOMESTIK', '2.0 ASAS KERJA PAIP DOMESTIK', '3.0 LUKISAN PERPAIPAN']
+  Tingkatan 5: 4 tema, 4 tajuk
+    Contoh Tema: ['5.0 TANGKI SIMPANAN AIR', '6.0 LEKAPAN SANITARI', '7.0 KOMUNIKASI']
+    Contoh Tajuk: ['5.0 TANGKI SIMPANAN AIR', '6.0 LEKAPAN SANITARI', '7.0 KOMUNIKASI']
+
+SUBJEK: MPV KIMPALAN ARKA DAN GAS
+  Tingkatan 4: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1. 0 PENGURUSAN TEMPAT KERJA', '2.0 FABRIKASI LOGAM', '3.0 KIMPALAN ARKA']
+  Tingkatan 5: 0 tema, 4 tajuk
+    Contoh Tajuk: ['5.0 KIMPALAN GAS OKSIASETILENA', '6.0 KIMPALAN MIG (METAL INERT GAS)', '7.0 KIMPALAN TIG (TUNGSTEN INERT GAS)']
+
+SUBJEK: MPV LANDSKAP & NURSERI
+  Tingkatan 4: 4 tema, 4 tajuk
+    Contoh Tema: ['Modul 1', 'Modul 2', 'Modul 3']
+    Contoh Tajuk: ['1.0 PENGENALAN KEPADA LANDSKAP DAN NURSERI', '2.0 PEMBIAKAN TUMBUHAN', '3.0 PENANAMAN DAN PENYENGGARAAN TANAMAN DI NURSERI']
+  Tingkatan 5: 3 tema, 3 tajuk
+    Contoh Tema: ['Modul 5', 'Modul 6', 'Modul 7']
+    Contoh Tajuk: ['5.0 PELAKSANAAN AKTIVITI PELANDSKAPAN', '6.0 PENGURUSAN KAWASAN LANDSKAP', '7.0 KEUSAHAWANAN']
+
+SUBJEK: MPV MENSERVIS PERALATAN ELEKTRIK DOMESTIK
+  Tingkatan 4: 0 tema, 7 tajuk
+    Contoh Tajuk: ['1.0 ASAS MENSERVIS PERALATAN ELEKTRIK', '2.0 PERALATAN UJIAN', '3.0 KOMPONEN ASAS ELEKTRIK']
+  Tingkatan 5: 4 tema, 4 tajuk
+    Contoh Tema: ['KEUSAHAWANAN', 'KOMUNIKASI', 'MENSERVIS PERALATAN ELEKTRIK']
+    Contoh Tajuk: ['10.0 KOMUNIKASI', '11.0 KEUSAHAWANAN', '8.0 MOTOR ELEKTRIK']
+
+SUBJEK: MPV PEMBINAAN DOMESTIK
+  Tingkatan 4: 0 tema, 6 tajuk
+    Contoh Tajuk: ['1.0  PENGENALAN KEPADA PEMBINAAN DOMESTIK', '2.0 ALATAN TANGAN DAN MESIN MUDAH ALIH', '3.0 BAHAN DALAM PEMBINAAN']
+  Tingkatan 5: 0 tema, 4 tajuk
+    Contoh Tajuk: ['10.0 KEUSAHAWANAN DALAM PEMBINAAN', '7.0 PELAN BANGUNAN II', '8.0 KERJA KONKRIT']
+
+SUBJEK: MPV PEMBUATAN PERABOT
+  Tingkatan 4: 1 tema, 4 tajuk
+    Contoh Tema: ['Pembuatan Perabot']
+    Contoh Tajuk: ['1. 0 PENGENALAN KEPADA PEMBUATAN PERABOT', '2.0 BAHAN, ALATAN DAN MESIN', '3.0 LUKISAN PRODUK']
+  Tingkatan 5: 4 tema, 19 tajuk
+    Contoh Tema: ['2. Kemahiran Membuat dan Membaik Pulih Perabot', '3. Reka Bentuk dan Penghasilan Perabot', '4. Keusahawanan']
+    Contoh Tajuk: ['2.10 Baik pulih perabot', '2.7 Kerusi', '2.8. Rak kasut']
+
+SUBJEK: MPV PEMPROSESAN MAKANAN
+  Tingkatan 4: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 PENGURUSAN TEMPAT KERJA', '2.0 PEMPROSESAN HASIL TERNAKAN', '3.0 PEMPROSESAN BAKERI, KONFEKSIONERI DAN KUIH TRADISIONAL']
+  Tingkatan 5: 0 tema, 3 tajuk
+    Contoh Tajuk: ['5.0 REKA BENTUK DAN INOVASI PRODUK PEMPROSESAN MAKANAN', '6.0 PEMASARAN PRODUK PEMPROSESAN MAKANAN', '7.0 KEUSAHAWANAN']
+
+SUBJEK: MPV PENDAWAIAN DOMESTIK
+  Tingkatan 4: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 KERJAYA PENDAWAI ELEKTRIK', '2.0 PENDAWAIAN PERMUKAAN', '3.0 PENGUJIAN PENDAWAIAN TANPA BEKALAN']
+  Tingkatan 5: 0 tema, 3 tajuk
+    Contoh Tajuk: ['5.0 PENDAWAIAN INDUSTRI', '6.0. SISTEM SOLAR ASAS', '7.0 KEUSAHAWANAN']
+
+SUBJEK: MPV PRODUKSI MULTIMEDIA
+  Tingkatan 4: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 ASAS MULTIMEDIA', '2.0 ELEMEN TEKS', '3.0 ELEMEN GRAFIK']
+  Tingkatan 5: 0 tema, 3 tajuk
+    Contoh Tajuk: ['6.0 ELEMEN ANIMASI', '7.0 PEMBANGUNAN PRODUK MULTIMEDIA', '8.0 KEUSAHAWANAN']
+
+SUBJEK: MPV PRODUKSI REKA TANDA
+  Tingkatan 4: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 PENGENALAN PRODUKSI REKA TANDA', '2.0 PRODUKSI GRAFIK', '3.0 REKA LETAK BERBANTUKAN KOMPUTER']
+  Tingkatan 5: 0 tema, 4 tajuk
+    Contoh Tajuk: ['5.0 CETAKAN DIGITAL', '6.0 PAPAR TANDA BERLAMPU', '7.0 PEMASANGAN PAPAR TANDA']
+
+SUBJEK: MPV REKA BENTUK GRAFIK DIGITAL
+  Tingkatan 4: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 ASAS GRAFIK DIGITAL', '2.0 ASAS REKAAN GRAFIK', '3.0 TIPOGRAFI']
+  Tingkatan 5: 0 tema, 3 tajuk
+    Contoh Tajuk: ['5.0  PENGHASILAN KARYA GRAFIK DIGITAL', '6.0  REKA BENTUK PENERBITAN MEJA (DESKTOP PUBLISHING)', '7.0  KEUSAHAWANAN']
+
+SUBJEK: MPV REKAAN DAN JAHITAN PAKAIAN
+  Tingkatan 4: 0 tema, 7 tajuk
+    Contoh Tajuk: ['1.0 PENGENALAN KEPADA BIDANG REKAAN FESYEN DAN PEMBUATAN PAKAIAN', '2.0 BAHAN DAN ALATAN JAHITAN', '3.0 FABRIK']
+  Tingkatan 5: 0 tema, 4 tajuk
+    Contoh Tajuk: ['10.0 REKAAN FESYEN PAKAIAN', '11.0 PROJEK KEUSAHAWANAN', '8.0 PAKAIAN TRADISIONAL']
+
+SUBJEK: MPV TANAMAN MAKANAN
+  Tingkatan 4: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1. 0 PENGURUSAN LADANG', '2.0 PENYEDIAAN KAWASAN TANAMAN', '3.0 PENANAMAN TANAMAN']
+  Tingkatan 5: 0 tema, 3 tajuk
+    Contoh Tajuk: ['6.0 TEKNOLOGI DALAM PERTANIAN', '7.0 PENGHASILAN KOMPOS DAN PENGGALAK TANAMAN', '8.0 KEUSAHAWANAN']
+
+SUBJEK: MUSTHOLAH HADIS (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['مصطلح الحديث']
+
+SUBJEK: MUTHALAAH (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['المطالعة']
+
+SUBJEK: NAHU (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['النحو']
+
+SUBJEK: NILAM
+  Tingkatan SM: 7 tema, 20 tajuk
+    Contoh Tema: ['Aktiviti Kreatif Berasaskan Bacaan', 'Budaya Membaca dan Literasi Maklumat', 'Digitalisasi NILAM dan Teknologi dalam Bacaan']
+    Contoh Tajuk: ['Bacaan Inspirasi: Kisah Tokoh Berjaya', 'Bagaimana Membaca Membantu Kejayaan Akademik?', 'Bagaimana Membaca Membantu dalam Pemikiran Kritis dan Kreatif?']
+
+SUBJEK: OPERASI SERVIS MAKANAN & MINUMAN PPKI
+  Tingkatan 3: 1 tema, 5 tajuk
+    Contoh Tema: ['F&B Pre-Preparation Operation (Mise-en-place)']
+    Contoh Tajuk: ['1. Set up banquet event.', '2. Set up restaurant operation.', '3. Set up inroom dining operation.']
+  Tingkatan 4: 1 tema, 3 tajuk
+    Contoh Tema: ['F&B Guest Order Handling']
+    Contoh Tajuk: ['1. Carry out guest welcoming.', '2. Present menu to guest.', '3. Carry out placing order.']
+  Tingkatan 5: 1 tema, 3 tajuk
+    Contoh Tema: ['F&B Billing & Cashiering']
+    Contoh Tajuk: ['1. Identify guest food and beverage.', '2. Serve guest food and beverage.', '3. Deliver guest bill.']
+
+SUBJEK: PENDIDIKAN ISLAM MPAK
+  Tingkatan 4: 6 tema, 6 tajuk
+    Contoh Tema: ['1. Bidang Al-Quran.', '2. Bidang Hadis', '3. Bidang Akidah']
+    Contoh Tajuk: ['1. Al-Quran', '2. Hadis', '3. Akidah']
+  Tingkatan 5: 6 tema, 6 tajuk
+    Contoh Tema: ['1. Bidang Al-Quran.', '2. Bidang Hadis', '3. Bidang Akidah']
+    Contoh Tajuk: ['AKHLAK', 'AKIDAH', 'AL QURAN']
+
+SUBJEK: PENDIDIKAN ISLAM PPKI
+  Tingkatan 1: 0 tema, 8 tajuk
+    Contoh Tajuk: ['1.0 TILAWAH AL-QURAN : Surah Al-Baqarah', '2.0 HAFAZAN', '3.0 AYAT KEFAHAMAN']
+  Tingkatan 2: 0 tema, 8 tajuk
+    Contoh Tajuk: ['1.0 TILAWAH AL-QURAN', '2.0 HAFAZAN', '3.0 AYAT KEFAHAMAN']
+  Tingkatan 3: 0 tema, 8 tajuk
+    Contoh Tajuk: ['1.0 AL-QURAN', '2.0 HAFAZAN', '3.0 AYAT KEFAHAMAN']
+  Tingkatan 4: 0 tema, 8 tajuk
+    Contoh Tajuk: ['1.0 AL-QURAN', '2.0 HAFAZAN', '3.0 AYAT KEFAHAMAN']
+  Tingkatan 5: 0 tema, 8 tajuk
+    Contoh Tajuk: ['1.0 AL-QURAN', '2.0 HAFAZAN', '3.0 AYAT KEFAHAMAN']
+
+SUBJEK: PENDIDIKAN ISLAM PVMA
+  Tingkatan 4: 0 tema, 12 tajuk
+    Contoh Tajuk: ['Galakan Menjadi Usahawan', 'Ibadah Haji dan Umrah', 'Ibadah Korban dan Akikah']
+  Tingkatan 5: 15 tema, 6 tajuk
+    Contoh Tema: ['AKHLAK  : ADAB MENCARI REZEKI YANG HALAL', 'AKHLAK : ADAB TAWADUK', 'AL HADIS : KESAN BURUK RASUAH']
+    Contoh Tajuk: ['Akhlak Mahmudah Peribadi Indah', 'Al Furqan Penunjuk Kebenaran', 'Al Sunnah Penyuluh Jiwa.']
+
+SUBJEK: PENDIDIKAN JASMANI
+  Tingkatan 1: 10 tema, 31 tajuk
+    Contoh Tema: ['GIMNASTIK ASAS', 'KATEGORI JARING : BADMINTON', 'KATEGORI JARING : BOLA TAMPAR']
+    Contoh Tajuk: ['Dinamika Kumpulan', 'Etika dalam Sukan', 'Interaksi Sosial']
+  Tingkatan 2: 9 tema, 31 tajuk
+    Contoh Tema: ['GIMNASTIK ASAS', 'KATEGORI JARING: SEPAK TAKRAW', 'KATEGORI MEMADANG: KRIKET']
+    Contoh Tajuk: ['Aplikasi Konsep Pergerakan Berirama', 'Aplikasi Pengetahuan dalam Daya Tahan dan Kekuatan Otot', 'Aplikasi Pengetahuan dalam Kapasiti Aerobik']
+  Tingkatan 3: 10 tema, 35 tajuk
+    Contoh Tema: ['GIMNASTIK ASAS', 'KATEGORI JARING: PINGPONG', 'KATEGORI JARING: TENIS']
+    Contoh Tajuk: ['Aplikasi Konsep Pergerakan Berirama', 'Aplikasi Pengetahuan dalam Daya Tahan Otot', 'Aplikasi Pengetahuan dalam Kapasiti Aerobik']
+  Tingkatan 4: 10 tema, 5 tajuk
+    Contoh Tema: ['BIDANG KECERGASAN: KECERGASAN FIZIKAL BERDASARKAN KESIHATAN', 'BIDANG KEMAHIRAN KATEGORI JARING: BOLA TAMPAR', 'BIDANG KEMAHIRAN KATEGORI JARING: SEPAK TAKRAW']
+    Contoh Tajuk: ['1.0: KEMAHIRAN PERGERAKAN (DOMAIN PSIKOMOTOR)', '2.0: APLIKASI PENGETAHUAN DALAM PERGERAKAN (DOMAIN KOGNITIF)', '3.0: KEMAHIRAN PERGERAKAN (DOMAIN PSIKOMOTOR)']
+  Tingkatan 5: 9 tema, 25 tajuk
+    Contoh Tema: ['KECERGASAN FIZIKAL BERDASARKAN KESIHATAN', 'PERGERAKAN BERIRAMA', 'PERMAINAN KATEGORI JARING : BADMINTON']
+    Contoh Tajuk: ['Aplikasi Pengetahuan dalam Kemahiran Badminton', 'Aplikasi Pengetahuan dalam Kemahiran Bola Keranjang', 'Aplikasi Pengetahuan dalam Kemahiran Hoki']
+  Tingkatan PERALIHAN: 0 tema, 5 tajuk
+    Contoh Tajuk: ['ASPEK 1.0: KEMAHIRAN PERGERAKAN (DOMAIN PSIKOMOTOR)', 'ASPEK 2.0: APLIKASI PENGETAHUAN DALAM PERGERAKAN (DOMAIN KOGNITIF)', 'ASPEK 3.0: KECERGASAN MENINGKATKAN KESIHATAN (DOMAIN PSIKOMOTOR)']
+
+SUBJEK: PENDIDIKAN JASMANI PPKI
+  Tingkatan 1: 11 tema, 6 tajuk
+    Contoh Tema: ['KECERGASAN', 'KEMAHIRAN : ASAS PERMAINAN - BADMINTON (KATEGORI JARING)', 'KEMAHIRAN : ASAS PERMAINAN - BOLA JARING (KATEGORI SERANGAN)']
+    Contoh Tajuk: ['1. Kemahiran Pergerakan (Domain Psikomotor)', '2. Aplikasi Pengetahuan Dalam Pergerakan (Domain Kognitif)', '2. Kemahiran Aplikasi Pengetahuan Meningkatkan Kecergasan (Domain Kognitif)']
+  Tingkatan 2: 9 tema, 6 tajuk
+    Contoh Tema: ['KECERGASAN FIZIKAL BERDASARKAN KESIHATAN', 'KEMAHIRAN : ASAS PERMAINAN - BOLA BALING (KATEGORI SERANGAN)', 'KEMAHIRAN : ASAS PERMAINAN - KRIKET (KATEGORI MEMADANG)']
+    Contoh Tajuk: ['1. Kemahiran Pergerakan (Domain Psikomotor)', '2. Aplikasi Pengetahuan Dalam Pergerakan (Domain Kognitif)', '2. Kemahiran Aplikasi Pengetahuan Meningkatkan Kecergasan (Domain Kognitif)']
+  Tingkatan 3: 9 tema, 6 tajuk
+    Contoh Tema: ['KECERGASAN FIZIKAL BERDASARKAN KESIHATAN', 'KEMAHIRAN : ASAS PERMAINAN - BOLA KERANJANG (KATEGORI SERANGAN)', 'KEMAHIRAN : ASAS PERMAINAN - HOKI (KATEGORI SERANGAN)']
+    Contoh Tajuk: ['1. Kemahiran Pergerakan (Domain Psikomotor)', '2. Aplikasi Pengetahuan Dalam Pergerakan (Domain Kognitif)', '2. Kemahiran Aplikasi Pengetahuan Meningkatkan Kecergasan (Domain Kognitif)']
+  Tingkatan 4: 0 tema, 10 tajuk
+    Contoh Tajuk: ['BOLA BALING', 'BOLA JARING', 'BOLA SEPAK']
+  Tingkatan 5: 11 tema, 6 tajuk
+    Contoh Tema: ['BIDANG KECERGASAN : KECERGASAN FIZIKAL BERDASARKAN KESIHATAN', 'BIDANG KEMAHIRAN KATEGORI JARING: BADMINTON', 'BIDANG KEMAHIRAN KATEGORI JARING: BOLA TAMPAR']
+    Contoh Tajuk: ['1.0 : KEMAHIRAN PERGERAKAN (DOMAIN PSIKOMOTOR)', '1.0: KEMAHIRAN PERGERAKAN (DOMAIN PSIKOMOTOR)', '2.0 : APLIKASI PENGETAHUAN DALAM PERGERAKAN (DOMAIN KOGNITIF)']
+
+SUBJEK: PENDIDIKAN KESIHATAN
+  Tingkatan 1: 3 tema, 10 tajuk
+    Contoh Tema: ['PEMAKANAN', 'PERTOLONGAN CEMAS', 'REPRODUKTIF DAN SOSIAL (PEERS)']
+    Contoh Tajuk: ['1.0 KESIHATAN DIRI DAN REPRODUKTIF', '10.0 PERTOLONGAN CEMAS', '2.0 KESIHATAN DIRI DAN REPRODUKTIF']
+  Tingkatan 2: 3 tema, 9 tajuk
+    Contoh Tema: ['PEMAKANAN', 'PERTOLONGAN CEMAS', 'REPRODUKTIF DAN SOSIAL (PEERS)']
+    Contoh Tajuk: ['1.0 KESIHATAN DIRI DAN REPRODUKTIF', '2.0 PENYALAHGUNAAN BAHAN', '3.0 PENGURUSAN MENTAL DAN EMOSI']
+  Tingkatan 3: 3 tema, 9 tajuk
+    Contoh Tema: ['PEMAKANAN', 'PERTOLONGAN CEMAS', 'REPRODUKTIF DAN SOSIAL (PEERS)']
+    Contoh Tajuk: ['1.0 KESIHATAN DIRI DAN REPRODUKTIF', '2.0 PENYALAHGUNAAN BAHAN', '3.0 PENGURUSAN MENTAL DAN EMOSI']
+  Tingkatan 4: 1 tema, 9 tajuk
+    Contoh Tema: ['KOMPONEN PENDIDIKAN KESIHATAN']
+    Contoh Tajuk: ['1.0 KESIHATAN DIRI DAN REPRODUKTIF', '2.0 PENYALAHGUNAAN BAHAN', '3.0 PENGURUSAN MENTAL DAN EMOSI']
+  Tingkatan 5: 3 tema, 9 tajuk
+    Contoh Tema: ['PEMAKANAN', 'PENDIDIKAN KESIHATAN REPRODUKTIF DAN SOSIAL (PEERS)', 'PERTOLONGAN CEMAS']
+    Contoh Tajuk: ['1.0 KESIHATAN DIRI DAN REPRODUKTIF', '2.0 PENYALAHGUNAAN BAHAN', '3.0 PENGURUSAN MENTAL DAN EMOSI']
+  Tingkatan PERALIHAN: 0 tema, 9 tajuk
+    Contoh Tajuk: ['1.0   KESIHATAN DIRI DAN REPRODUKTIF', '2.0   PENYALAHGUNAAN BAHAN', '3.0   PENGURUSAN MENTAL DAN EMOSI']
+
+SUBJEK: PENDIDIKAN KESIHATAN PPKI
+  Tingkatan 1: 0 tema, 3 tajuk
+    Contoh Tajuk: ['PEMAKANAN', 'PENYALAHGUNAAN BAHAN', 'PERTOLONGAN CEMAS']
+  Tingkatan 2: 0 tema, 9 tajuk
+    Contoh Tajuk: ['1. PENDIDIKAN KESIHATAN REPRODUKTIF DAN SOSIAL (PEERS) - KESIHATAN DIRI DAN REPRODUKTIF', '2. PENDIDIKAN KESIHATAN REPRODUKTIF DAN SOSIAL (PEERS) - PENYALAHGUNAAN BAHAN', '3. PENDIDIKAN KESIHATAN REPRODUKTIF DAN SOSIAL (PEERS) - PENGURUSAN MENTAL DAN EMOSI']
+  Tingkatan 3: 0 tema, 9 tajuk
+    Contoh Tajuk: ['1. PENDIDIKAN KESIHATAN REPRODUKTIF DAN SOSIAL (PEERS) - KESIHATAN DIRI DAN REPRODUKTIF', '2. PENDIDIKAN KESIHATAN REPRODUKTIF DAN SOSIAL (PEERS) - PENYALAHGUNAAN BAHAN', '3. PENDIDIKAN KESIHATAN REPRODUKTIF DAN SOSIAL (PEERS) - PENGURUSAN MENTAL DAN EMOSI']
+  Tingkatan 4: 0 tema, 9 tajuk
+    Contoh Tajuk: ['KEKELUARGAAN', 'KESELAMATAN', 'KESIHATAN DIRI DAN REPRODUKTIF']
+  Tingkatan 5: 0 tema, 19 tajuk
+    Contoh Tajuk: ['1.0 KESIHATAN DIRI DAN REPRODUKTIF', '10 PEMAKANAN', '11 PEMAKANAN']
+
+SUBJEK: PENDIDIKAN MORAL
+  Tingkatan 1: 4 tema, 17 tajuk
+    Contoh Tema: ['1.0 Pengenalan Moral', '2.0 Diri, Keluarga dan Persahabatan', '3.0 Hubungan Antara Diri, Komuniti dan Masyarakat']
+    Contoh Tajuk: ['Bijaksana Memilih Sahabat', 'Hidup Beragama atau Berkepercayaan Membawa Berkat', 'Hidup Bermoral Pemangkin Kesejahteraan']
+  Tingkatan 2: 4 tema, 15 tajuk
+    Contoh Tema: ['1.0 Pengenalan Moral', '2.0 Diri, Keluarga dan Persahabatan', '3.0 Hubungan Antara Diri, Komuniti dan Masyarakat']
+    Contoh Tajuk: ['Adab Dijaga, Persahabatan Terbela', 'Adab di Tempat Awam Dijaga, Nikmat Hidup Dirasai Bersama', 'Agama atau Kepercayaan Membentuk Keperibadian Mulia']
+  Tingkatan 3: 4 tema, 14 tajuk
+    Contoh Tema: ['1.0 Pengenalan Moral', '2.0 Diri, Keluarga dan Persahabatan', '3.0 Hubungan Antara Diri, Komuniti dan Masyarakat']
+    Contoh Tajuk: ['Unit 1 Pilihan Bermoral Pilihan Saya', 'Unit 12 kebebasan bersuara menjamin kemakmuran negara', 'Unit 13 amalan tradisi masyarakat majmuk']
+  Tingkatan 4: 3 tema, 12 tajuk
+    Contoh Tema: ['5.0 INSAN BERMORAL', '6.0 JATI DIRI MORAL', '7.0 MORAL DAN KENEGARAAN']
+    Contoh Tajuk: ['Unit 1 Norma masyarakat pemangkin kesejahteraan', 'Unit 10 Pengurusan perbelanjaan secara beretika', 'Unit 11 Keunikan rakyat Malaysia']
+  Tingkatan 5: 3 tema, 12 tajuk
+    Contoh Tema: ['5.0 INSAN BERMORAL', '6.0 JATI DIRI MORAL', '7.0\tMORAL DAN KENEGARAAN']
+    Contoh Tajuk: ['Unit 1 Norma masyarakat global membentuk keharmopnian sejagat', 'Unit 10 Pengurusan kewangan secara beretika menjamin keharmonian hidup', 'Unit 11 Malaysia unggul di mata dunia']
+
+SUBJEK: PENDIDIKAN MORAL MPAK
+  Tingkatan 4: 3 tema, 0 tajuk
+    Contoh Tema: ['5.0 INSAN BERMORAL', '6.0 JATI DIRI MORAL', '7.0 MORAL DAN KENEGARAAN']
+  Tingkatan 5: 3 tema, 0 tajuk
+    Contoh Tema: ['5.0 INSAN BERMORAL', '6.0 JATI DIRI MORAL', '7.0 MORAL DAN KENEGARAAN']
+
+SUBJEK: PENDIDIKAN MORAL PPKI
+  Tingkatan 1: 3 tema, 0 tajuk
+    Contoh Tema: ['TEMA 1 :DIRI, KELUARGA DAN PERSAHABATAN', 'TEMA 2 :HUBUNGAN ANTARA DIRI, KOMUNITIDAN MASYARAKAT', 'TEMA 3 :MORAL, PERATURAN DANUNDANG-UNDANG']
+  Tingkatan 2: 3 tema, 0 tajuk
+    Contoh Tema: ['TEMA 1 :DIRI, KELUARGA DAN PERSAHABATAN', 'TEMA 2 :HUBUNGAN ANTARA DIRI, KOMUNITI DAN MASYARAKAT', 'TEMA 3 :MORAL, PERATURAN DAN UNDANG-UNDANG']
+  Tingkatan 3: 3 tema, 0 tajuk
+    Contoh Tema: ['TEMA 1 :DIRI, KELUARGA DAN PERSAHABATAN', 'TEMA 2:HUBUNGAN ANTARA DIRI, KOMUNITI DAN MASYARAKAT', 'TEMA 3:MORAL, PERATURANDAN UNDANG-UNDANG']
+  Tingkatan 4: 2 tema, 0 tajuk
+    Contoh Tema: ['TEMA 1 : INSAN BERMORAL', 'TEMA 2 : MORAL DAN KENEGARAAN']
+  Tingkatan 5: 2 tema, 0 tajuk
+    Contoh Tema: ['TEMA 1: INSAN BERMORAL', 'TEMA 2 : MORAL DAN KENEGARAAN']
+
+SUBJEK: PENDIDIKAN MUZIK
+  Tingkatan 1: 5 tema, 5 tajuk
+    Contoh Tema: ['1.0 ENSEMBEL NYANYIAN', '2.0 ENSEMBEL MUZIK', '3.0 PENGHASILAN MUZIK']
+    Contoh Tajuk: ['1.0 ENSEMBEL NYANYIAN', '2.0 ENSEMBEL MUZIK', '3.0  PENGHASILAN MUZIK']
+  Tingkatan 2: 5 tema, 5 tajuk
+    Contoh Tema: ['1.0 ENSEMBEL NYANYIAN', '2.0 ENSEMBEL ALAT MUZIK', '3.0 MEMBACA DAN MENULIS NOTASI MUZIK']
+    Contoh Tajuk: ['1.0 ENSEMBEL NYANYIAN', '2.0 ENSEMBEL ALAT MUZIK', '3.0 MEMBACA DAN MENULIS NOTASI MUZIK']
+  Tingkatan 3: 5 tema, 5 tajuk
+    Contoh Tema: ['1.0  ENSEMBEL NYANYIAN', '2.0 ENSEMBEL ALAT MUZIK', '3.0 MEMBACA DAN MENULIS NOTASI MUZIK']
+    Contoh Tajuk: ['1.0  ENSEMBEL NYANYIAN', '2.0 ENSEMBEL ALAT MUZIK', '3.0 MEMBACA DAN MENULIS NOTASI MUZIK']
+  Tingkatan 4: 5 tema, 5 tajuk
+    Contoh Tema: ['1.0 BIDANG ENSEMBEL NYANYIAN', '2.0 BIDANG ENSEMBEL ALAT MUZIK', '3.0 BIDANG MEMBACA DAN MENULIS NOTASI MUZIK']
+    Contoh Tajuk: ['1.0 Ensembel Nyanyian', '2.0 Ensembel Muzik', '3.0 Notasi Muzik']
+  Tingkatan 5: 5 tema, 4 tajuk
+    Contoh Tema: ['1.0  BIDANG ENSEMBEL NYANYIAN', '2.0 BIDANG ENSEMBEL ALAT MUZIK', '3.0 BIDANG MEMBACA DAN MENULIS NOTASI MUZIK']
+    Contoh Tajuk: ['1.0  ENSEMBEL NYANYIAN', '3.0 MEMBACA DAN MENULIS NOTASI MUZIK', '4.0 PENGHASILAN MUZIK']
+
+SUBJEK: PENDIDIKAN MUZIK PPKI
+  Tingkatan 1: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 PERSEPSI ESTETIK', '2.0 PENGALAMAN MUZIKAL', '3.0 PENGHARGAAN ESTETIK']
+  Tingkatan 2: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 PERSEPSI ESTETIK', '2.0 PENGALAMAN MUZIKAL', '3.0 PENGHARGAAN ESTETIK']
+  Tingkatan 3: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 PERSEPSI ESTETIK', '2.0 PENGALAMAN MUZIKAL', '3.0 PENGHARGAAN ESTETIK']
+  Tingkatan 4: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0  BIDANG ENSEMBEL NYANYIAN', '2.0 BIDANG ENSEMBEL ALAT MUZIK', '3.0 BIDANG MEMBACA DAN MENULIS NOTASI MUZIK']
+  Tingkatan 5: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 BIDANG ENSEMBEL NYANYIAN', '2.0 BIDANG ENSEMBEL ALAT MUZIK', '3.0 BIDANG MEMBACA DAN MENULIS NOTASI MUZIK']
+
+SUBJEK: PENDIDIKAN SAHSIAH PPKI (LOW)
+  Tingkatan KSSMKR: 2 tema, 2 tajuk
+    Contoh Tema: ['PENDIDIKAN ISLAM (TAHAP I & TAHAP II)', 'PENDIDIKAN MORAL (TAHAP I & TAHAP II)']
+    Contoh Tajuk: ['1.0 PENDIDIKAN ISLAM (TAHAP I & TAHAP II)', 'PENDIDIKAN MORAL (TAHAP I & TAHAP II)']
+
+SUBJEK: PENDIDIKAN SENI DAN KESEJAHTERAAN PPKI (LOW)
+  Tingkatan KSSMKR: 4 tema, 20 tajuk
+    Contoh Tema: ['KOMPONEN PENDIDIKAN JASMANI', 'KOMPONEN PENDIDIKAN KESIHATAN', 'KOMPONEN PENDIDIKAN MUZIK']
+    Contoh Tajuk: ['1.0   ASAS SENI REKA', '1.0   MENGHASILKAN MUZIK', '1.0 INTEGRASI SENSOR']
+
+SUBJEK: PENDIDIKAN SENI VISUAL
+  Tingkatan 1: 3 tema, 17 tajuk
+    Contoh Tema: ['Bahasa Seni Visual', 'Pemikiran Seni Visual', 'Sejarah dan Apresiasi Seni Visual']
+    Contoh Tajuk: ['Bentuk', 'Designomic', 'Garisan']
+  Tingkatan 2: 5 tema, 11 tajuk
+    Contoh Tema: ['Komunikasi Visual', 'Reka Bentuk', 'Sejarah dan Apresiasi Seni Visual']
+    Contoh Tajuk: ['1.0 SENI RAGAM HIAS PENGANGKUTAN, ALAT PERMAINAN RAKYAT DAN ALAT DOMESTIK', '10.0 SENI REKA GRAFIK (SIMBOL DAN LOGO)', '11.0 SENI FOTO (PINHOLE)']
+  Tingkatan 3: 5 tema, 11 tajuk
+    Contoh Tema: ['KOMUNIKASI VISUAL', 'REKA BENTUK', 'SEJARAH DAN APRESIASI SENI VISUAL']
+    Contoh Tajuk: ['1.0 PAKAIAN TRADISIONAL DAN PERHIASAN DIRI', '10.0 SENI REKA GRAFIK (TIPOGRAFI)', '11.0 SENI FOTO']
+  Tingkatan 4: 5 tema, 9 tajuk
+    Contoh Tema: ['KOMUNIKASI VISUAL', 'REKABENTUK', 'SEJARAH DAN APRESIASI SENI']
+    Contoh Tajuk: ['1.0   ALAT KEBESARAN DAN PERHIASAN DIRAJA', '2.0   SENI LUKISAN', '3.0   SENI CATAN']
+  Tingkatan 5: 5 tema, 8 tajuk
+    Contoh Tema: ['KOMUNIKASI VISUAL', 'REKA BENTUK', 'SEJARAH DAN APRESIASI SENI VISUAL']
+    Contoh Tajuk: ['1.0 SENI BINA', '2.0 SENI LUKISAN', '3.0 SENI CATAN']
+  Tingkatan PERALIHAN: 4 tema, 7 tajuk
+    Contoh Tema: ['KOMUNIKASI VISUAL', 'REKA BENTUK', 'SENI HALUS']
+    Contoh Tajuk: ['1.0 SENI LUKISAN', '2.0 SENI CATAN', '3.0 SENI ARCA']
+
+SUBJEK: PENDIDIKAN SENI VISUAL PPKI
+  Tingkatan 1: 0 tema, 2 tajuk
+    Contoh Tajuk: ['1.0 BAHASA SENI VISUAL (UNSUR SENI)', '2.0 BAHASA SENI VISUAL (PRINSIP REKAAN)']
+  Tingkatan 2: 0 tema, 9 tajuk
+    Contoh Tajuk: ['1.0 BAHASA SENI VISUAL (UNSUR SENI)', '2.0 BAHASA SENI VISUAL (PRINSIP REKAAN)', '3.0 SENI HALUS ( LUKISAN)']
+  Tingkatan 3: 0 tema, 9 tajuk
+    Contoh Tajuk: ['1.0 BAHASA SENI VISUAL (UNSUR SENI)', '2.0 BAHASA SENI VISUAL (PRINSIP REKAAN)', '3.0 SENI HALUS ( LUKISAN)']
+  Tingkatan 4: 0 tema, 7 tajuk
+    Contoh Tajuk: ['1.0  SEJARAH DAN ASPRESIASI SENI VISUAL', '2.0  BAHASA SENI VISUAL (ASAS SENI REKA)', '3.0  SENI HALUS']
+  Tingkatan 5: 0 tema, 47 tajuk
+    Contoh Tajuk: ['1 SEJARAH DAN ASPRESIASI SENI VISUAL', '10 FOLIO SENI KREATIF', '10 KRAF TRADISIONAL DAN DIMENSI BAHARU']
+
+SUBJEK: PENGAJIAN AM 900
+  Tingkatan 6: 3 tema, 18 tajuk
+    Contoh Tema: ['SEMESTER 1', 'SEMESTER 2', 'SEMESTER 3']
+    Contoh Tajuk: ['1. Kemahiran Insaniah', '2. Malaysia Negara Berdaulat. 2.1 Negara berdaulat', '2. Malaysia Negara Berdaulat. 2.2 Perlembagaan Persekutuan']
+
+SUBJEK: PENGAJIAN KEJURUTERAAN AWAM
+  Tingkatan 4: 4 tema, 0 tajuk
+    Contoh Tema: ['1. 0 PENGENALAN KEPADA KEJURUTERAAN AWAM', '2.0 BAHAN DAN STRUKTUR BINAAN', '3.0 PEMBINAAN BANGUNAN']
+  Tingkatan 5: 3 tema, 0 tajuk
+    Contoh Tema: ['5.0 SISTEM PENGANGKUTAN DAN KEJURUTERAAN JALAN', '6.0 SISTEM BEKALAN AIR BERSIH DAN SISTEM PENYALIRAN KUMBAHAN DOMESTIK', '7.0 KEUSAHAWANAN']
+
+SUBJEK: PENGAJIAN KEJURUTERAAN ELEKTRIK DAN ELEKTRONIK
+  Tingkatan 4: 0 tema, 3 tajuk
+    Contoh Tajuk: ['1.0 DUNIA KEJURUTERAAN ELEKTRIK DAN ELEKTRONIK', '2.0 PENGHASILAN ARUS TERUS (AT) DAN ARUS ULANG-ALIK (AU) DARIPADA PENUAIAN TENAGA BOLEH BAHARU', '3.0 SISTEM BEKALAN KUASA ARUS TERUS (AT)']
+  Tingkatan 5: 0 tema, 3 tajuk
+    Contoh Tajuk: ['4.0   SISTEM ELEKTRONIK ANALOG', '5.0 SISTEM ELEKTRONIK DIGIT DAN PENGAWAL LOGIK BOLEH ATUR CARA (PLC)', '6.0  PROJEK AKHIR']
+
+SUBJEK: PENGAJIAN KEJURUTERAAN MEKANIKAL
+  Tingkatan 4: 0 tema, 4 tajuk
+    Contoh Tajuk: ['1.0 Pengenalan kepada Kejuruteraan Mekanikal', '2.0 Bahan Kejuruteraan', '3.0 Asas Statik Kejuruteraan']
+  Tingkatan 5: 0 tema, 3 tajuk
+    Contoh Tajuk: ['5.0 PROSES PEMBUATAN', '6.0 SISTEM ELEKTROMEKANIKAL', '7.0 REKA BENTUK PROJEK KEJURUTERAAN MEKANIKAL']
+
+SUBJEK: PENGAJIAN KEUSAHAWANAN
+  Tingkatan 4: 5 tema, 0 tajuk
+    Contoh Tema: ['1.0 PENGENALAN KEUSAHAWANAN', '2.0 PEMBANGUNAN KEUSAHAWANAN', '3.0 PEMBENTUKAN KEPERIBADIAN USAHAWAN']
+  Tingkatan 5: 4 tema, 0 tajuk
+    Contoh Tema: ['6.0 PEMILIKAN PERNIAGAAN', '7.0 FUNGSIAN DALAM ORGANISASI PERNIAGAAN', '8.0 KEUSAHAWANAN DIGITAL']
+
+SUBJEK: PENGAJIAN PERNIAGAAN 946
+  Tingkatan 6: 3 tema, 40 tajuk
+    Contoh Tema: ['SEMESTER DUA', 'SEMESTER SATU', 'SEMESTER TIGA']
+    Contoh Tajuk: ['A: PENGENALAN PERNIAGAAN DAN PENGURUSAN. 1 Perniagaan dan Persekitarannya.  1.3 Persekitaran perniagaan', 'A: PENGENALAN PERNIAGAAN DAN PENGURUSAN. 1 Perniagaan dan Persekitarannya. 1.1 Pengenalan kepada perniagaan', 'A: PENGENALAN PERNIAGAAN DAN PENGURUSAN. 1 Perniagaan dan Persekitarannya. 1.2 Aktiviti perniagaan']
+
+SUBJEK: PENGAJIAN SYARIAH KONTEMPORARI 930
+  Tingkatan 6: 3 tema, 7 tajuk
+    Contoh Tema: ['Semester 1', 'Semester 2', 'Semester 3']
+    Contoh Tajuk: ['Pengajian Ayat Hukum dan Hadis Hukum', 'Pengajian Fiqh: A) Muamalat', 'Pengajian Fiqh: B) Munakahat']
+
+SUBJEK: PENGAJIAN USULUDDIN 931
+  Tingkatan 6: 3 tema, 61 tajuk
+    Contoh Tema: ['Semester 1', 'Semester 2', 'Semester 3']
+    Contoh Tajuk: ['ILMU MANTIK. 1 Ilmu Mantik dalam Tradisi Ilmu Islam. 1 Ilmu Mantik dalam Tradisi Ilmu Islam', 'ILMU MANTIK. 2 Kaedah-Kaedah Ilmu Mantik. 2 Kaedah-Kaedah Ilmu Mantik', 'ILMU MANTIK. 2 Kaedah-Kaedah Ilmu Mantik. 2.2 al-Alfaz']
+
+SUBJEK: PENGEMASAN PPKI (LOW)
+  Tingkatan KSSMKR: 0 tema, 10 tajuk
+    Contoh Tajuk: ['01. PERATURAN DAN KESELAMATAN', '02. MENGELAP PERABOT', '03. MENYAPU LANTAI']
+
+SUBJEK: PENGURUSAN DATA
+  Tingkatan GURU, AKP, MURID, INSFRANSTRUKTUR: 0 tema, 4 tajuk
+    Contoh Tajuk: ['APDM', 'EMIS', 'HRMIS']
+
+SUBJEK: PENGURUSAN DIRI PPKI
+  Tingkatan 1: 5 tema, 28 tajuk
+    Contoh Tema: ['Unit 1 : Mengurus Diri', 'Unit 2 : Mengurus Bengkel', 'Unit 3 : Advokasi Diri']
+    Contoh Tajuk: ['1. Carta organisasi', '1. Memanfaatkan kesedaran diri', '1. Pengurusan diri dalam aspek fizikal dan personaliti diri']
+
+SUBJEK: PENGURUSAN KEHIDUPAN PPKI (LOW)
+  Tingkatan KSSMKR: 2 tema, 10 tajuk
+    Contoh Tema: ['KEMAHIRAN MANIPULATIF', 'PENGURUSAN DIRI']
+    Contoh Tajuk: ['1.0 KEMAHIRAN MENGURUS DIRI', '1.0 SENSORI', '2.0 KEMAHIRAN MENGURUS RUTIN HARIAN']
+
+SUBJEK: PENYEDIAAN DAN PEMBUATAN MAKANAN
+  Tingkatan PPKI: 0 tema, 1 tajuk
+    Contoh Tajuk: ['BREAKFAST PRODUCTION']
+
+SUBJEK: PENYEDIAAN DAN PEMBUATAN MAKANAN (KSSMPK KVS)
+  Tingkatan 2: 2 tema, 0 tajuk
+    Contoh Tema: ['C01:Hygiene,Safety FoodHandling', 'C02:CookingTechnique']
+  Tingkatan 3: 1 tema, 0 tajuk
+    Contoh Tema: ['C03:Stock, Soup and Hot Sauce Production']
+  Tingkatan 4: 3 tema, 0 tajuk
+    Contoh Tema: ['C06 :Appertizer Production', 'C07 :Breakfast Production', 'CU 08: Dessert Production']
+
+SUBJEK: PENYEDIAAN MAKANAN PVMA
+  Tingkatan 4: 2 tema, 9 tajuk
+    Contoh Tema: ['KEUPAYAAN TERAS', 'PENYEDIAAN MAKANAN']
+    Contoh Tajuk: ['1. ASAS KOMUNIKASI KERJA', '1. Melaksanakan kebersihan dalam penyediaan makanan', '2. KEMAHIRAN TINGKAH LAKU PERSONAL']
+  Tingkatan 5: 2 tema, 99 tajuk
+    Contoh Tema: ['KEUPAYAAN TERAS', 'PENYEDIAAN MAKANAN']
+    Contoh Tajuk: ['1. APLIKASI KOMUNIKASI', '1. Menyediakan hidangan utama', '10 MENGAMALKAN KESIHATAN, KESELAMATAN DAN ADAPTASI ALAM SEKITAR']
+
+SUBJEK: PENYEJUKAN DAN PENYAMANAN UDARA PVMA
+  Tingkatan 4: 0 tema, 3 tajuk
+    Contoh Tajuk: ['1   Penilaian Risiko dan Bahaya Semasa Pemasangan.', '2   Pengendalian Bahan Pendingin', '3 Pemasangan dan penyelenggaraan kipas  pengudaraan 1 fasa']
+  Tingkatan 5: 0 tema, 2 tajuk
+    Contoh Tajuk: ['1 Pemasangan dan Penyelenggaraan Unit Penyaman Udara Jenis Tingkap 1 fasa', '2 Pemasangan Dan Penyelenggaraan Unit Penyaman Udara Jenis Pisah 1 Fasa']
+
+SUBJEK: PERAKAUNAN 948
+  Tingkatan 6: 3 tema, 32 tajuk
+    Contoh Tema: ['SEMESTER 1', 'SEMESTER 2', 'SEMESTER 3']
+    Contoh Tajuk: ['Kerja Kursus. Sistem Perakaunan Berkomputer', 'Perakaunan Kewangan I. 1 Asas Perakaunan Kewangan. 1.1 Pengenalan', 'Perakaunan Kewangan I. 1 Asas Perakaunan Kewangan. 1.2 Prinsip, andaian perakaunan, dan kekangan']
+
+SUBJEK: PERNIAGAAN
+  Tingkatan 4: 2 tema, 4 tajuk
+    Contoh Tema: ['1.0 TUJUAN PERNIAGAAN', '2.0 ORGANISASI PERNIAGAAN']
+    Contoh Tajuk: ['1.0 TUJUAN PERNIAGAAN : Trend Semasa Dalam Perniagaan', '1.0 TUJUAN PERNIAGAAN : Tujuan Perniagaan dan Pemilikan Perniagaan', '2.0 ORGANISASI PERNIAGAAN : Bahagian Fungsian Utama Dalam Organisasi Perniagaan']
+  Tingkatan 5: 2 tema, 7 tajuk
+    Contoh Tema: ['3.0 SUMBER PERNIAGAAN', '4.0 USAHA NIAGA']
+    Contoh Tajuk: ['3.0 SUMBER PERNIAGAAN : Pengurusan Sumber Fizikal dan Teknologi', '3.0 SUMBER PERNIAGAAN : Pengurusan Sumber Manusia', '3.0 SUMBER PERNIAGAAN : Penyata Kewangan Perniagaan']
+
+SUBJEK: PERTANIAN
+  Tingkatan 4: 0 tema, 2 tajuk
+    Contoh Tajuk: ['1.0 SAINS TANAH', '2.0 PENGELUARAN POLTRI']
+  Tingkatan 5: 0 tema, 2 tajuk
+    Contoh Tajuk: ['3.0 SAINS TUMBUHAN', '4.0 PENGELUARAN TANAMAN']
+
+SUBJEK: PERTANIAN & ASAS TANI
+  Tingkatan 3: 3 tema, 3 tajuk
+    Contoh Tema: ['CoCU 3', 'CoCU 6', 'CoCU 9']
+    Contoh Tajuk: ['PENANAMAN BAHAN TANAMAN', 'PENGELUARAN BAJA ORGANIK DAN KOMPOS', 'PENUAIAN HASIL TANAMAN']
+
+SUBJEK: PHYSICS 960
+  Tingkatan 6: 3 tema, 26 tajuk
+    Contoh Tema: ['FIRST SEMESTER', 'SECOND SEMESTER', 'THIRD SEMESTER']
+    Contoh Tajuk: ['Electricity and Magnetism. 13 Electrostatics', 'Electricity and Magnetism. 14 Capacitors', 'Electricity and Magnetism. 15 Electric Current']
+
+SUBJEK: PRINSIP PERAKAUNAN
+  Tingkatan 4: 0 tema, 9 tajuk
+    Contoh Tajuk: ['1.0 PENGENALAN KEPADA PERAKAUNAN', '2.0 KLASIFIKASI AKAUN DAN PERSAMAAN PERAKAUNAN', '3.0 DOKUMEN PERNIAGAAN SEBAGAI SUMBER MAKLUMAT']
+  Tingkatan 5: 0 tema, 7 tajuk
+    Contoh Tajuk: ['10.0 ANALISIS DAN TAFSIRAN PENYATA KEWANGAN UNTUK MEMBUAT KEPUTUSAN', '11.0 REKOD TAK LENGKAP', '12.0 PERAKAUNAN UNTUK KAWALAN DALAMAN']
+
+SUBJEK: PROGRAM ASASI ULUL ALBAB
+  Tingkatan 1: 4 tema, 24 tajuk
+    Contoh Tema: ['AQT', 'ICT', 'Personaliti']
+    Contoh Tajuk: ['Adab dan Akhlak', 'Creativity-bookmaking', 'Etika dan Protokol']
+
+SUBJEK: PSSAS PPKI
+  Tingkatan 1: 0 tema, 10 tajuk
+    Contoh Tajuk: ['1.0 MANUSIA', '10.0 WARISAN KITA', '2.0 HAIWAN']
+  Tingkatan 2: 0 tema, 9 tajuk
+    Contoh Tajuk: ['1.0 MANUSIA', '2.0 HAIWAN', '3.0 TUMBUHAN']
+  Tingkatan 3: 0 tema, 9 tajuk
+    Contoh Tajuk: ['1.0 MANUSIA', '2.0 HAIWAN', '3.0 TUMBUHAN']
+  Tingkatan 4: 9 tema, 18 tajuk
+    Contoh Tema: ['BENTUK PEMERINTAHAN', 'KAWASAN TEMPAT TINGGAL', 'KITAR SEMULA BAHAN BUANGAN ALUMINIUM']
+    Contoh Tajuk: ['ASPEK PENJAGAAN HAIWAN TERNAKAN', 'CARA MENJAGA HAIWAN TERNAKAN', 'CARA MENJAGA TUMBUHAN']
+  Tingkatan 5: 0 tema, 9 tajuk
+    Contoh Tajuk: ['1.0 MANUSIA', '2.0 HAIWAN', '3.0 TUMBUHAN']
+
+SUBJEK: PVMA
+  Tingkatan 4: 11 tema, 78 tajuk
+    Contoh Tema: ['CORE ABILITIES TAHAP 1', 'CU 01 - PENYENGGARAAN BERKALA MOTOSIKAL', 'CU 10 - MENSERVIS KERANGKA (FRAME) DAN RERAUT (COVER SET)']
+    Contoh Tajuk: ['01-ASAS KOMUNIKASI PEKERJAAN', '02 - KEMAHIRAN TINGKAH LAKU PERSONAL', '03 - KESEDARAN ETIKA DI TEMPAT KERJA']
+  Tingkatan 5: 9 tema, 56 tajuk
+    Contoh Tema: ['CORE ABILITIES TAHAP 2', 'CU 01 - MENSERVIS SISTEM BREK', 'CU 2 - MENSERVIS SISTEM SISTEM PENYEJUK']
+    Contoh Tajuk: ['1.\tAPLIKASI KOMUNIKASI', '1.1 Mengenalpasti keperluan merombak', '1.2 Mengenal pasti masalah sistem brek hidraulik']
+
+SUBJEK: PVMA MEMBUAT PAKAIAN
+  Tingkatan 4: 0 tema, 7 tajuk
+    Contoh Tajuk: ['Menghasilkan pakaian ibu mengandung.', 'Menghasilkan pakaian kanak-kanak.', 'Menghasilkan pakaian kasual.']
+  Tingkatan 5: 0 tema, 5 tajuk
+    Contoh Tajuk: ['Menghasilkan Pakaian Kerja', 'Menghasilkan Pakaian Kontemporari', 'Menghasilkan Pakaian Korporat']
+
+SUBJEK: PVMA TANAMAN
+  Tingkatan 4: 2 tema, 25 tajuk
+    Contoh Tema: ['CORE ABILITIES', 'TANAMAN']
+    Contoh Tajuk: ['ASAS KOMUNIKASI KERJA', 'KEMAHIRAN TINGKAH LAKU PERSONAL', 'KESEDARAN ETIKA DITEMPAT KERJA']
+  Tingkatan 5: 2 tema, 17 tajuk
+    Contoh Tema: ['CORE ABILITIES', 'TANAMAN']
+    Contoh Tajuk: ['APLIKASI KOMUNIKASI', 'MEMANGKAS TANAMAN', 'MEMBERSIH PREMIS LADANG']
+
+SUBJEK: PnP PEMBUNGKUSAN PPKI (LOW)
+  Tingkatan KSSMKR: 0 tema, 7 tajuk
+    Contoh Tajuk: ['TAJUK  2:Pembungkusan Makanan', 'TAJUK 1:Peraturan dan keselamatan', 'TAJUK 3:Pembungkusan Minuman']
+
+SUBJEK: QAFIYAH (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['القافية']
+
+SUBJEK: RBT
+  Tingkatan 1: 5 tema, 5 tajuk
+    Contoh Tema: ['1.0 PENGENALAN KEPADA REKA BENTUK DAN TEKNOLOGI', '2.0 PENGURUSAN PROJEK', '3.0 PROSES REKA BENTUK']
+    Contoh Tajuk: ['1.0 PENGENALAN KEPADA REKA BENTUK DAN TEKNOLOGI', '2.0 PENGURUSAN PROJEK', '3.0 PROSES REKA BENTUK']
+  Tingkatan 2: 2 tema, 2 tajuk
+    Contoh Tema: ['1.0 PENGENALPASTIAN MASALAH', '2.0 APLIKASI TEKNOLOGI']
+    Contoh Tajuk: ['1.0 PENGENALPASTIAN MASALAH', '2.0 APLIKASI TEKNOLOGI']
+  Tingkatan 3: 3 tema, 3 tajuk
+    Contoh Tema: ['1.0 APLIKASI TEKNOLOGI', '2.0 PEMBANGUNAN PRODUK', '3.0 REKA BENTUK DALAM PERNIAGAAN']
+    Contoh Tajuk: ['1.0 APLIKASI TEKNOLOGI', '2.0 PEMBANGUNAN PRODUK', '3.0 REKA BENTUK DALAM PERNIAGAAN']
+
+SUBJEK: REKA CIPTA
+  Tingkatan 4: 0 tema, 8 tajuk
+    Contoh Tajuk: ['1.0 Pengenalan kepada Reka Cipta', '2.0 Asas Reka Bentuk dalam Reka Cipta', '3.0 Faktor Pemilihan Reka Bentuk dalam Reka Cipta']
+  Tingkatan 5: 0 tema, 8 tajuk
+    Contoh Tajuk: ['10.0 BAHAN, PERALATAN DAN MESIN PEMBINAAN PRODUK', '11.0 SISTEM', '12.0 PEMBINAAN DAN PENGUJIAN MODEL BERFUNGSI DAN PROTOTAIP']
+
+SUBJEK: REKA TANDA JAHITAN PAKAIAN
+  Tingkatan 4: 7 tema, 7 tajuk
+    Contoh Tema: ['BAB 1', 'BAB 2', 'BAB 3']
+    Contoh Tajuk: ['1.0 PENGENALAN KEPADA BIDANG REKAAN FESYEN DAN PEMBUATAN PAKAIAN', '2.0 BAHAN DAN ALATAN JAHITAN', '3.0 FABRIK']
+  Tingkatan 5: 4 tema, 4 tajuk
+    Contoh Tema: ['BAB 10', 'BAB 11', 'BAB 8']
+    Contoh Tajuk: ['10.0 REKAAN FESYEN PAKAIAN', '11.0 PROJEKKEUSAHAWANAN', '8.0 PAKAIAN TRADISIONAL']
+
+SUBJEK: SAINS
+  Tingkatan 1: 5 tema, 10 tajuk
+    Contoh Tema: ['Kaedah Saintifik', 'Penerokaan Bumi dan Angkasa Lepas', 'Penerokaan Unsur Dalam Alam']
+    Contoh Tajuk: ['1. Pengenalan kepada penyiasatan saintifik', '2. Sel Sebagai Unit Asas Hidupan', '3. Koordinasi dan Gerakbalas']
+  Tingkatan 2: 4 tema, 13 tajuk
+    Contoh Tema: ['PENEROKAAN BUMI DAN ANGKASA LEPAS', 'PENEROKAAN UNSUR DALAM ALAM', 'PENYELENGGARAAN DAN KESINAMBUNGAN HIDUP']
+    Contoh Tajuk: ['1.0 BIODIVERSITI', '10.0 GELOMBANG BUNYI', '11.0 BINTANG DAN GALAKSI DALAM ALAM SEMESTA']
+  Tingkatan 3: 4 tema, 10 tajuk
+    Contoh Tema: ['Penerokaan bumi dan angkasa lepas', 'Penerokaan unsur dalam alam', 'Penyenggaraan dan kesinambungan hidup']
+    Contoh Tajuk: ['1.0 Rangsangan dan Gerak Balas', '10.0 Penerokaan angkasa lepas', '2.0 Respirasi']
+  Tingkatan 4: 4 tema, 12 tajuk
+    Contoh Tema: ['KESELAMATAN DAN KESIHATAN', 'PENEROKAAN UNSUR DALAM ALAM', 'PENYENGGARAAN DAN KESINAMBUNGAN HIDUP']
+    Contoh Tajuk: ['1.0 LANGKAH KESELAMATAN DALAM MAKMAL', '10.0 KIMIA DALAM PERUBATAN DAN KESIHATAN', '11.0 DAYA DAN GERAKAN']
+  Tingkatan 5: 4 tema, 9 tajuk
+    Contoh Tema: ['PENEROKAAN BUMI DAN ANGKASA LEPAS', 'PENEROKAAN UNSUR DALAM ALAM', 'PENYENGGARAAN DAN KESINAMBUNGAN HIDUP']
+    Contoh Tajuk: ['1.0 MIKROORGANISMA', '2.0 NUTRISI DAN TEKNOLOGI MAKANAN', '3.0 KELESTARIAN ALAM SEKITAR']
+
+SUBJEK: SAINS KOMPUTER
+  Tingkatan 4: 3 tema, 0 tajuk
+    Contoh Tema: ['1.0 PENGATURCARAAN', '2.0 PANGKALAN DATA', '3.0 INTERAKSI MANUSIA DAN KOMPUTER']
+  Tingkatan 5: 3 tema, 3 tajuk
+    Contoh Tema: ['PANGKALAN DATA LANJUTAN', 'PENGATURCARAAN BERASASKAN WEB', 'PENGKOMPUTERAN']
+    Contoh Tajuk: ['PANGKALAN DATA LANJUTAN', 'PENGATURCARAAN BERASASKAN WEB', 'PENGKOMPUTERAN']
+
+SUBJEK: SAINS PERTANIAN
+  Tingkatan 4: 2 tema, 2 tajuk
+    Contoh Tema: ['1. Sains Tanah', '2. Pengeluaran Poltri']
+    Contoh Tajuk: ['1. Sains Tanah', '2. Pengeluaran Poltri']
+  Tingkatan 5: 2 tema, 2 tajuk
+    Contoh Tema: ['3.0 SAINS TUMBUHAN', '4.0 PENGELUARAN TANAMAN']
+    Contoh Tajuk: ['3.0 SAINS TUMBUHAN', '4.0 PENGELUARAN TANAMAN']
+
+SUBJEK: SAINS RUMAHTANGGA
+  Tingkatan 4: 5 tema, 5 tajuk
+    Contoh Tema: ['1.0 KERJA SEPASUKAN', '2.0 PENGURUSAN SUMBER KELUARGA DAN TEMPAT KEDIAMAN', '3.0 PAKAIAN DAN JAHITAN']
+    Contoh Tajuk: ['1.0 KERJA SEPASUKAN', '2.0 PENGURUSAN SUMBER KELUARGA DAN TEMPAT KEDIAMAN', '3.0 PAKAIAN DAN JAHITAN']
+  Tingkatan 5: 4 tema, 4 tajuk
+    Contoh Tema: ['6.0 KESELAMATAN DI TEMPAT KERJA DALAM INDUSTRI HOSPITALITI', '7.0 SANITASI DALAM PENYEDIAAN DAN PENYIMPANAN MAKANAN', '8.0 PERALATAN PENYEDIAAN DAN PENYAJIAN MAKANAN']
+    Contoh Tajuk: ['6.0 KESELAMATAN DI TEMPAT KERJA DALAM INDUSTRI HOSPITALITI', '7.0 SANITASI DALAM PENYEDIAAN DAN PENYIMPANAN MAKANAN', '8.0 PERALATAN PENYEDIAAN DAN PENYAJIAN MAKANAN']
+
+SUBJEK: SAINS SUKAN
+  Tingkatan 4: 0 tema, 3 tajuk
+    Contoh Tajuk: ['1.0 PENGENALAN SAINS SUKAN DAN PENGURUSAN SUKAN', '2.0 FUNGSI SISTEM TUBUH DALAM PERGERAKAN', '3.0 PENGENALAN SAINS PERGERAKAN']
+  Tingkatan 5: 4 tema, 19 tajuk
+    Contoh Tema: ['ASAS PSIKOLOGI SUKAN DAN SOSIOLOGI SUKAN', 'KECEDERAAN SUKAN DAN LANGKAH PENCEGAHAN', 'KECERGASAN DAN PERSEDIAAN FIZIKAL']
+    Contoh Tajuk: ['Jenis Terapi dan Proses Rehabilitasi Sukan', 'Jenis-jenis Kecederaan, Tanda dan Simptom Kecederaan Sukan.', 'Kaedah Latihan Fizikal, Keletihan dan Kelesuan Otot.']
+
+SUBJEK: SAINS SUKAN 966
+  Tingkatan 6: 3 tema, 10 tajuk
+    Contoh Tema: ['SEMESTER DUA', 'SEMESTER SATU', 'SEMESTER TIGA']
+    Contoh Tajuk: ['Pengenalan Sains Sukan. 1 Sosiologi Sukan', 'Pengenalan Sains Sukan. 2 Kesenggangan dan Aktiviti Rekreasi', 'Pengenalan Sains Sukan. 3 Kejurulatihan Sukan']
+
+SUBJEK: SAINS TAMBAHAN
+  Tingkatan 4: 3 tema, 8 tajuk
+    Contoh Tema: ['PENEROKAAN UNSUR DALAM ALAM', 'PENYENGGARAAN DAN KESINAMBUNGAN HIDUP', 'TENAGA DAN KELESTARIAN HIDUP']
+    Contoh Tajuk: ['1.0 EVOLUSI DAN TAKSONOMI', '2.0 EKOSISTEM DINAMIK', '3.0 JADUAL BERKALA UNSUR MODEN']
+  Tingkatan 5: 4 tema, 8 tajuk
+    Contoh Tema: ['PENEROKAAN BUMI DAN ANGKASA LEPAS', 'PENEROKAAN UNSUR DALAM ALAM', 'PENYENGGARAAN DAN KESINAMBUNGAN HIDUP']
+    Contoh Tajuk: ['1.0 ANATOMI DAN FISIOLOGI', '2.0 GARAM', '3.0 SEBATIAN KARBON DALAM KEHIDUPAN']
+
+SUBJEK: SCIENCE DLP
+  Tingkatan 1: 5 tema, 9 tajuk
+    Contoh Tema: ['Energy and sustainability of life', 'Exploration Of Elements In Nature', 'Exploration of Earth and Space']
+    Contoh Tajuk: ['1. Introduction to scientific investigation', '2. Cell as the basic unit of life', '3. Coordination and responses']
+  Tingkatan 2: 4 tema, 13 tajuk
+    Contoh Tema: ['EARTH AND SPACE EXPLORATION', 'ENERGY AND SUSTAINABILITY OF LIFE', 'EXPLORATION OF ELEMENTS IN NATURE']
+    Contoh Tajuk: ['1.0 Biodiversity', '10.0 Sound waves', '11.0 Stars and Galaxies in the Universe']
+  Tingkatan 3: 4 tema, 10 tajuk
+    Contoh Tema: ['EARTH AND SPACE EXPLORATION', 'ENERGY AND SUSTAINABILITY IN LIFE', 'EXPLORATION OF ELEMENTS IN NATURE']
+    Contoh Tajuk: ['1.0 STIMULI AND RESPONSES', '10.0 SPACE EXPLORATION', '2.0 RESPIRATION']
+  Tingkatan 4: 4 tema, 12 tajuk
+    Contoh Tema: ['ENERGY AND SUSTAINABILITY OF LIFE', 'EXPLORATION ELEMENTS IN NATURE', 'MAINTENANCE AND CONTINUITY OF LIFE']
+    Contoh Tajuk: ['1.0 Safety Measures in laboratory', '10.0 Chemicals in Medicine and Health', '11.0 Force and Motion']
+  Tingkatan 5: 4 tema, 9 tajuk
+    Contoh Tema: ['EARTH AND SPACE EXPLORATION', 'ENERGY AND SUSTAINABILITY OF LIFE', 'EXPLORATION OF ELEMENTS IN NATURE']
+    Contoh Tajuk: ['1.0 MICROORGANISMS', '2.0 NUTRITION AND FOOD TECHNOLOGY', '3.0 SUSTAINABILITY OF THE ENVIRONMENT']
+
+SUBJEK: SEJARAH
+  Tingkatan 1: 1 tema, 6 tajuk
+    Contoh Tema: ['Sejarah Kita Dan Dunia']
+    Contoh Tajuk: ['1. Pengenalan Ilmu Sejarah', '2. Zaman Air Batu', '3. Zaman Prasejarah']
+  Tingkatan 2: 1 tema, 6 tajuk
+    Contoh Tema: ['Warisan Negara']
+    Contoh Tajuk: ['5. Kerajaan Alam Melayu', '5. Kerajaan Alam Melayu : Warisan Kerajaan Alam Melayu', '6. Kesultanan Melayu Melaka Sebagai Asas Kerajaan Masa Kini : Kerajaan Kedah, Kelantan, Negeri Sembilan dan Perlis']
+  Tingkatan 3: 1 tema, 8 tajuk
+    Contoh Tema: ['KEDATANGAN KUASA ASING']
+    Contoh Tajuk: ['7: CAMPUR TANGAN DAN PENJAJAHAN KUASA BARAT : Kedatangan Kuasa Barat', '7: CAMPUR TANGAN DAN PENJAJAHAN KUASA BARAT : Kesan Pentadbiran Barat Terhadap Ekonomi dan Sosial', '7: CAMPUR TANGAN DAN PENJAJAHAN KUASA BARAT : Pentadbiran Barat di Sarawak dan Sabah']
+  Tingkatan 4: 1 tema, 3 tajuk
+    Contoh Tema: ['PEMBINAAN NEGARA']
+    Contoh Tajuk: ['10: PERJUANGAN RAKYAT KE ARAH KEMERDEKAAN TANAH AIR', '11: KEMERDEKAAN PERSEKUTUAN TANAH MELAYU', '9. NASIONALISME DI MALAYSIA SEBELUM PERANG DUNIA KEDUA']
+  Tingkatan 5: 1 tema, 4 tajuk
+    Contoh Tema: ['MALAYSIA DAN MASA HADAPAN']
+    Contoh Tajuk: ['12.0 PENGUKUHAN KEDAULATAN NEGARA', '13.0 PEMBENTUKAN MALAYSIA', '14.0 KEMAKMURAN NEGARA']
+
+SUBJEK: SEJARAH 940
+  Tingkatan 6: 3 tema, 30 tajuk
+    Contoh Tema: ['SEMESTER 1', 'SEMESTER 2', 'SEMESTER 3']
+    Contoh Tajuk: ['Pengantar Ilmu Sejarah dan Pensejarahan (calon swasta dan persendirian). 1 Pengenalan Kepada Sejarah', 'Pengantar Ilmu Sejarah dan Pensejarahan (calon swasta dan persendirian). 2 Kaedah Penyelidikan Sejarah', 'Pengantar Ilmu Sejarah dan Pensejarahan (calon swasta dan persendirian). 3 Penulisan sejarah']
+
+SUBJEK: SENI KRAF BATIK
+  Tingkatan KSSMPK KR: 6 tema, 6 tajuk
+    Contoh Tema: ['UK1', 'UK2', 'UK3']
+    Contoh Tajuk: ['1.0 KEBERSIHAN DAN KESELAMATAN DI RUANG KERJA', '2.0   BATIK IKAT CELUP', '3.0   BATIK CAPAN/TEKAN']
+
+SUBJEK: SENI VISUAL
+  Tingkatan 6: 3 tema, 9 tajuk
+    Contoh Tema: ['APRESIASI SENI VISUAL', 'LUKISAN PENGKARYAANDAN PEREKAAN', 'PROJEK KAJIAN SENIVISUAL']
+    Contoh Tajuk: ['1 Cadangan Projek', '1 Pengenalan Jenis-jenis Lukisan', '1 Pengenalan Seni Visual']
+
+SUBJEK: SENI VISUAL 970
+  Tingkatan 6: 3 tema, 4 tajuk
+    Contoh Tema: ['SEMESTER DUA', 'SEMESTER SATU', 'SEMESTER TIGA']
+    Contoh Tajuk: ['Penyelidikan• Kerja Kursus - calon sekolah (Kertas 3) • Kajian – calon swasta dan persendirian (Kertas 4)', 'Praktikal• Lukisan (Kertas 970/1)', 'Teori• Bertulis (Kertas 970/2)" 1. Bentuk karya seni visual']
+
+SUBJEK: SIVIK
+  Tingkatan 4: 7 tema, 12 tajuk
+    Contoh Tema: ['1. PENCAPAIAN KENDIRI', '2. HUBUNGAN KEKELUARGAAN', '3. HIDUP BERMASYARAKAT']
+    Contoh Tajuk: ['1. Taklimat Khidmat Masyarakat', 'a. Kepekaan dan tindakan terhadap isu dan masalah sosial dalam masyarakat', 'a. Kepentingan Perlembagaan Malaysia']
+  Tingkatan 5: 7 tema, 12 tajuk
+    Contoh Tema: ['CABARAN MASA DEPAN', 'HIDUP BERMASYARAKAT', 'HUBUNGAN KEKELUARGAAN']
+    Contoh Tajuk: ['1. Taklimat Khidmat Masyarakat', 'a. Mengekalkan kedaulatan negara', 'a. Menjana pembangunan negara']
+
+SUBJEK: SORF (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['الصرف']
+
+SUBJEK: SYARIAH
+  Tingkatan 6: 7 tema, 34 tajuk
+    Contoh Tema: ['Ayat Ahkam dan Hadis Ahkam (A. Ayat Ahkam) Penggal 3', 'Pengajian Fiqh. (A Muamalat) Penggal 1', 'Pengajian Fiqh. (B Munakahat) Penggal 1']
+    Contoh Tajuk: ['1 Jual beli', '1 Konsep mirath', '1 Pengenalan']
+
+SUBJEK: TAFSIR (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['التفسير']
+
+SUBJEK: TAHFIZ AL-QURAN 932
+  Tingkatan 6: 3 tema, 3 tajuk
+    Contoh Tema: ['Semester 1', 'Semester 2', 'Semester 3']
+    Contoh Tajuk: ['1. Hifz Al-Quran dan Maharat al-Qiraat', '2. Hifz Al-Quran, Maharat al-Rasm, Dhabt Al-Quran, dan al-Fawasil', '3. Hifz Al-Quran dan Maharat Ulum Al-Quran']
+
+SUBJEK: TAJWID (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['علم التجويد']
+
+SUBJEK: TASAWWUR
+  Tingkatan 4: 3 tema, 3 tajuk
+    Contoh Tema: ['TEMA 1 : ISLAM SEBAGAI AL-DIN', 'TEMA 2 : MANUSIA SEBAGAI HAMBA DAN KHALIFAH ALLAH  SWT', 'TEMA 3 : SISTEM SOSIAL ISLAM']
+    Contoh Tajuk: ['1.0 Islam sebagai al-Din', '2.0 Manusia sebagai Hamba dan Khalifah Allah SWT', '3.0 Sistem Sosial Islam']
+  Tingkatan 5: 6 tema, 3 tajuk
+    Contoh Tema: ['Sistem Ekonomi', 'Sistem Kehakiman Islam', 'Sistem Kewangan Islam']
+    Contoh Tajuk: ['1.0 Sistem Ekonomi dan Kewangan Islam', '2.0 Sistem Perundangan dan Kehakiman Islam', '3.0 Sistem Pentadbiran dan Pemerintahan Islam']
+
+SUBJEK: TAUHID (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['التوحيد']
+
+SUBJEK: TEKNOLOGI VOKASIONAL
+  Tingkatan 3: 2 tema, 4 tajuk
+    Contoh Tema: ['MATEMATIK', 'TEKNOLOGI MAKLUMAT DAN KOMUNIKASI']
+    Contoh Tajuk: ['1. MENGGUNAKAN MULTIMEDIA UNTUK PEMASARAN', '1. Mempamer dan  mengaplikasikan  kefahaman tentang isi padu prisma  tegak dan silinder membulat tegak.', '2. Mempamer dan  mengaplikasikan kefahaman matematik dalam  melaksanakan pembelajaran   berasaskan projek.']
+
+SUBJEK: TIADA
+  Tingkatan X: 1 tema, 1 tajuk
+    Contoh Tema: ['X']
+    Contoh Tajuk: ['X']
+
+SUBJEK: ULUM TAFSIR (STAM)
+  Tingkatan 6: 1 tema, 0 tajuk
+    Contoh Tema: ['علوم التفسير']
+
+SUBJEK: USULUDDIN
+  Tingkatan 6: 3 tema, 19 tajuk
+    Contoh Tema: ['PENGGAL 1 (ILMU TAUHID)', 'PENGGAL 2 (ULUM AL-QURAN)', 'PENGGAL 3 (ILMU MANTIK)']
+    Contoh Tajuk: ['1.0 Akidah dan Hubungannya dengan al-Din', '1.0 Konsep Ulum al-Hadith', '1.0 Konsep Ulum al-Quran']
+
+SUBJEK: أصول الدين
+  Tingkatan 1: 3 tema, 26 tajuk
+    Contoh Tema: ['التفسير', 'التوحيد', 'الحديث']
+    Contoh Tajuk: ['آداب السلام', 'أجر الصدقة وآدبها', 'أركان الإسلام']
+  Tingkatan 2: 6 tema, 41 tajuk
+    Contoh Tema: ['الأخلاق والتصوف', 'التفسير', 'التوحيد']
+    Contoh Tajuk: ['آداب الأكل والشرب', 'آداب التعلم', 'آداب الجار']
+  Tingkatan 3: 5 tema, 42 tajuk
+    Contoh Tema: ['الأخلاق والتصوف', 'التفسير', 'التوحيد']
+    Contoh Tajuk: ['آداب البيع', 'آداب التعامل مع البيئة', 'آداب التعامل مع الفقراء والمساكين']
+  Tingkatan 4: 4 tema, 0 tajuk
+    Contoh Tema: ['1. التوحيد', '2. التفسير (التلاوة)', '2. التفسير (الفهم)']
+  Tingkatan 5: 4 tema, 0 tajuk
+    Contoh Tema: ['1. التوحيد', '2. التفسير (التلاوة)', '2. التفسير(الفهم)']
+
+SUBJEK: الأدب و البلاغة
+  Tingkatan 4: 0 tema, 2 tajuk
+    Contoh Tajuk: ['2. البلاغة', 'تاريخ الأدب العربي ونصوصه']
+  Tingkatan 5: 0 tema, 2 tajuk
+    Contoh Tajuk: ['1. تاريخ الأدب العربي ونصوصه', '2. البلاغة']
+
+SUBJEK: الأدب والنصوص
+  Tingkatan 6: 1 tema, 2 tajuk
+    Contoh Tema: ['السادس']
+    Contoh Tajuk: ['1 الأدب', '2 النصوص']
+
+SUBJEK: الأدب والنصوص (للشهادة الدينية العالية الماليزية)
+  Tingkatan 6: 3 tema, 0 tajuk
+    Contoh Tema: ['1. النهضة الأدبية في العصر الحديث', '2. مدارس الشعر واتجاهاته في العصر الحديث', '3. فنون النثر في العصر الحديث']
+
+SUBJEK: الإنشاء الأزهري
+  Tingkatan 6: 1 tema, 13 tajuk
+    Contoh Tema: ['السادس- الثانوي']
+    Contoh Tajuk: ['1- الوصف -الإنشاء للصف الأول الثانوي', '10- الأنشطة -الإنشاء للصف الثالث الثانوي', '11- الحكم والأمثال -الإنشاء للصف الثالث الثانوي']
+
+SUBJEK: البلاغة (الشهادة الدينية العالية الماليزية)
+  Tingkatan 6: 4 tema, 21 tajuk
+    Contoh Tema: ['الوحدة الأولى : المجازي اللغوي', 'الوحدة الثالثة :غلم البديع (المحسنات اللفظية)', 'الوحدة الثالثة :غلم البديع (المحسنات المعنوية)']
+    Contoh Tajuk: ['الدرس الأول: الجناس التام ووجه حسنه', 'الدرس الأول: الحقيقة اللغوية والمجاز اللغوي تعريفهما ,أقسامهما,مجاز المرسل', 'الدرس الأول:الكناية:تعريفها,أقسامها,بلاغتها']
+
+SUBJEK: التفسير وعلومه
+  Tingkatan 6: 4 tema, 23 tajuk
+    Contoh Tema: ['الوحدة الأولى : المجازي اللغوي', 'الوحدة الثالثة :غلم البديع (المحسنات اللفظية)', 'الوحدة الثالثة :غلم البديع (المحسنات المعنوية)']
+    Contoh Tajuk: ['1. التفسير', '2. علوم القرآن', 'الدرس الأول: الجناس التام ووجه حسنه']
+
+SUBJEK: التوحيد والمنطق
+  Tingkatan 6: 1 tema, 2 tajuk
+    Contoh Tema: ['السادس']
+    Contoh Tajuk: ['1. التوحيد', '2. المنطق']
+
+SUBJEK: الحديث
+  Tingkatan 6: 1 tema, 4 tajuk
+    Contoh Tema: ['السادس']
+    Contoh Tajuk: ['1- الحديث', '2- المصطلح', '3-أقسام الحديث']
+
+SUBJEK: الحديث و المصطلح (الشهادة الدينية العالية الماليزية)
+  Tingkatan 6: 2 tema, 15 tajuk
+    Contoh Tema: ['الحديث', 'المصطلح']
+    Contoh Tajuk: ['الحديث  التاسع: السكينة في الصلاة', 'الحديث  الثامن: حب الإنسان المال', 'الحديث  الخامس:مراعاة شعور الغير']
+
+SUBJEK: الشريعة اسلامية
+  Tingkatan 1: 2 tema, 14 tajuk
+    Contoh Tema: ['القرآن والحفظ', 'فقه العبادات']
+    Contoh Tajuk: ['1.  الوحدة الثانية : سورة الناس والفلق والاخلاص والمسد والنصر والكافرون.', '1. الوحدة الأولى : مخارج الحروف الهجائية', '1. الوحدة الثالثة :  الكوثر، الماعون، قريش، الفيل، الهمزة، العصر']
+  Tingkatan 2: 2 tema, 18 tajuk
+    Contoh Tema: ['القرآن والحفظ', 'فقه العبادات']
+    Contoh Tajuk: ['الدرس الأول : سورة المطففين', 'الدرس التاسع : صلاة الجماعة', 'الدرس الثالث : سورة البروج']
+  Tingkatan 3: 4 tema, 23 tajuk
+    Contoh Tema: ['القرآن والحفظ', 'فقه العبادات', 'فقه المعاملات']
+    Contoh Tajuk: ['الأسرة في الإسلام', 'الخطبة', 'المعاملات في الإسلام']
+  Tingkatan 4: 3 tema, 20 tajuk
+    Contoh Tema: ['كتاب الزكاة', 'كتاب الصلاة', 'كتاب الطهارة']
+    Contoh Tajuk: ['أركان الصلاة وسننها وهيئاتها', 'إزالة النجاسة', 'الأحكام المتعلقة بالصلاة']
+  Tingkatan 5: 3 tema, 16 tajuk
+    Contoh Tema: ['فقه العبادة', 'فقه المعاملات', 'فقه المناكحات']
+    Contoh Tajuk: ['بيان بعض أحكام الخطبة', 'فصل في أركان النكاح', 'فصل في احكام الخيار']
+
+SUBJEK: العروض والقافية
+  Tingkatan 6: 0 tema, 2 tajuk
+    Contoh Tajuk: ['1) العروض', '2) القافية']
+
+SUBJEK: العروض والقافية للشهادة الدينية العالية الماليزية
+  Tingkatan 6: 0 tema, 2 tajuk
+    Contoh Tajuk: ['1) العروض', '2) القافية']
+
+SUBJEK: الفقه (للشهادة الدينية العالية الماليزية)
+  Tingkatan 6: 1 tema, 5 tajuk
+    Contoh Tema: ['الفرائض للصف الثالث الثانوي 6']
+    Contoh Tajuk: ['الوحدة الأولى : علم الميراث', 'الوحدة الثالثة :  كيفية ميراث العصبات', 'الوحدة الثانية :  أحوال الورثة']
+
+SUBJEK: القرءان
+  Tingkatan 1: 1 tema, 36 tajuk
+    Contoh Tema: ['القرءان والحفظ']
+    Contoh Tajuk: ['سورة الأعلى', 'سورة الإنشقاق', 'سورة الانفطار']
+  Tingkatan 2: 1 tema, 36 tajuk
+    Contoh Tema: ['القرءان والحفظ']
+    Contoh Tajuk: ['. سورة القلم 1-15', 'سورة الانسان 1-11', 'سورة الانسان 12-22']
+  Tingkatan 3: 1 tema, 40 tajuk
+    Contoh Tema: ['القرأن والحفظ']
+    Contoh Tajuk: ['سورة التحريم 1-3', 'سورة التحريم 10-12', 'سورة التحريم 4-7']
+  Tingkatan 4: 1 tema, 14 tajuk
+    Contoh Tema: ['القرءان']
+    Contoh Tajuk: ['سورة البقرة اية 1-10', 'سورة البقرة اية 101 – 110', 'سورة البقرة اية 11 -20']
+  Tingkatan 5: 1 tema, 11 tajuk
+    Contoh Tema: ['القرآن والحفظ']
+    Contoh Tajuk: ['سورة البقرة 142 – 150', 'سورة البقرة 151 – 160', 'سورة البقرة 161 - 170']
+
+SUBJEK: اللغة العربية
+  Tingkatan 1: 8 tema, 4 tajuk
+    Contoh Tema: ['عيد ميلاد سعيد', 'ما أجمل المدرسة', 'ما أحلى الحياة']
+    Contoh Tajuk: ['مهارة الاستماع', 'مهارة القراءة', 'مهارة الكتابة']
+  Tingkatan 2: 8 tema, 4 tajuk
+    Contoh Tema: ['ارحموا ترحموا', 'العالم بين أيديكم', 'المهرجان الرياضي']
+    Contoh Tajuk: ['مهارة الاستماع', 'مهارة القراءة', 'مهارة الكتابة']
+  Tingkatan 3: 5 tema, 4 tajuk
+    Contoh Tema: ['أفشوا السلام', 'أنا طباخ ماهر', 'اتجه مباشرة']
+    Contoh Tajuk: ['مهارة الاستماع', 'مهارة القراءة', 'مهارة الكتابة']
+  Tingkatan 4: 5 tema, 3 tajuk
+    Contoh Tema: ['١-المغامرات الرياضية', '٢- تواصل اجتماعي عبر الإنترنت', '٣- الرفق بلا حدود']
+    Contoh Tajuk: ['1- مهارة الاستماع والكلام', '2- مهارة القراءة', '3- مهارة الكتابة']
+  Tingkatan 5: 5 tema, 3 tajuk
+    Contoh Tema: ['المحافظة على العرض ( المجال الشخصي )', 'كن إبنا بارا  (المجال الشخصي)', 'هيا نتسوق في الإنترنت ( المجال المهني )']
+    Contoh Tajuk: ['مهارة الإستماع والكلام', 'مهارة القراءة', 'مهارة الكتابة']
+  Tingkatan 6: 24 tema, 9 tajuk
+    Contoh Tema: ['SEM 1 =الاجتماع', 'SEM 1 =البيئة', 'SEM 1 =التواصل']
+    Contoh Tajuk: ['البلاغة التطبيقية', 'التعريف بالأدب وفنونه', 'الصر ف التطبيقي']
+
+SUBJEK: اللغة العربية 913
+  Tingkatan 6: 1 tema, 7 tajuk
+    Contoh Tema: ['الفصل الأول']
+    Contoh Tajuk: ['التربية والتعليم', 'الدين', 'الشباب والمراهقة']
+
+SUBJEK: اللغة العربية المعاصرة
+  Tingkatan 1: 16 tema, 3 tajuk
+    Contoh Tema: ['1.الدرس الأول: أحب أسرتي', '10. الدرس العاشر: قصة في الإيمان والإحسان', '11. الدرس الحادي عشر: حب الرسول لأمته']
+    Contoh Tajuk: ['1) مهارة الاستماع والكلام', '2) مهارة القراءة', '3) مهارة الكتابة']
+  Tingkatan 2: 16 tema, 106 tajuk
+    Contoh Tema: ['الدرس الأول : نعمر مساجد الله', 'الدرس التاسع : التوحيد معرفة الله', 'الدرس الثالث : أتسوق في المحل التجاري']
+    Contoh Tajuk: ['1) مهارة الاستماع والكلام', '2) مهارة القراءة', '3) مهارة الكتابة']
+  Tingkatan 3: 16 tema, 6 tajuk
+    Contoh Tema: ['1.الدرس الأول : المخيم مع الأصدقاء', '10. الدرس العاشر : سيد الأيام', '11. الدرس الحادي عشر : الخلفاء الراشدون']
+    Contoh Tajuk: ['1) مهارة القراءة', '2) التعبير الشفوي', '3) التعبير التحريري']
+  Tingkatan 4: 0 tema, 3 tajuk
+    Contoh Tajuk: ['الصرف', 'المطالعة والإنشاء', 'النحو']
+  Tingkatan 5: 0 tema, 3 tajuk
+    Contoh Tajuk: ['1. المطالعة والإنشاء', '2. النحو', '3. الصرف']
+
+SUBJEK: المطالعة الأزهرية
+  Tingkatan 6: 1 tema, 70 tajuk
+    Contoh Tema: ['المطالعة للصف الثالث']
+    Contoh Tajuk: ['1.1 قراءة النص مع مراعاة جودة النطق وصحة الضبط والنبرات والتنغيمات.', '1.2 الإجابة عن الأسئلة الاستفهامية.', '1.3 تعيين المرادفات والمضادات من النص.']
+
+SUBJEK: المواد الدينية (الإعدادية)
+  Tingkatan 1: 5 tema, 57 tajuk
+    Contoh Tema: ['التفسير', 'التوحيد', 'الحديث']
+    Contoh Tajuk: ['أسباب الذلة والمسکنة', 'أقسام علم التوحيد', 'إخلاص التوحيد لله']
+  Tingkatan 2: 5 tema, 51 tajuk
+    Contoh Tema: ['التفسير', 'التوحيد', 'الحديث']
+    Contoh Tajuk: ['أمانة الرسول صلى الله عليه وسلم', 'أهل القرآن', 'أولوا العزم من الرسل عليهم الصلاة والسلام']
+
+SUBJEK: النحو والصرف
+  Tingkatan 6: 2 tema, 12 tajuk
+    Contoh Tema: ['الصرف', 'النحو']
+    Contoh Tajuk: ['الدرس الأول', 'الدرس التاسع', 'الدرس الثالث']
+
+SUBJEK: النحو والصرف (للشهادة الدينية العالية الماليزية)
+  Tingkatan 6: 2 tema, 0 tajuk
+    Contoh Tema: ['الصرف', 'النحو']
+
+SUBJEK: تراث الدراسات الاسلامية (ULYA)
+  Tingkatan 4: 4 tema, 2 tajuk
+    Contoh Tema: ['الأخلاق', 'التوحيد', 'السيرة النبوية']
+    Contoh Tajuk: ['i. حفظ المتن', 'ii. فهم المتن']
+  Tingkatan 5: 4 tema, 2 tajuk
+    Contoh Tema: ['الأخلاق', 'التوحيد', 'السيرة النبوية']
+    Contoh Tajuk: ['i. حفظ المتن', 'ii. فهم المتن']
+
+SUBJEK: تراث القرأن والسنة (ULYA)
+  Tingkatan 4: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 التفسير', '2.0 الحديث', '3.0 مصطلح الحديث']
+  Tingkatan 5: 0 tema, 5 tajuk
+    Contoh Tajuk: ['1.0 التفسير', '2.0 الحديث', '3.0  مصطلح الحديث']
+
+SUBJEK: تراث اللغة العربية (ULYA)
+  Tingkatan 4: 0 tema, 3 tajuk
+    Contoh Tajuk: ['1)متن البناء واألساس', '2) متن الآجرومية والتحفة السنية', '3) المهارات اللغوية الأربع: الاستماع والكلام والقراءة والكتابة']
+  Tingkatan 5: 0 tema, 3 tajuk
+    Contoh Tajuk: ['1) متن البناء والأساس', '2) متن الآجرومية والتحفة السنية', '3) المهارات اللغوية الأربع: الستماع والكلَم والقراءة والكتابة']
+
+SUBJEK: تسميع
+  Tingkatan 1: 1 tema, 1 tajuk
+    Contoh Tema: ['ممباچ القرأن دان اقرأ']
+    Contoh Tajuk: ['ممباچ القرأن دان اقرأ مڠيكوت  باچأن ماسيڠ-ماسيڠ']
+  Tingkatan 2: 1 tema, 1 tajuk
+    Contoh Tema: ['ممباچ القرأن دان اقرأ']
+    Contoh Tajuk: ['ممباچ القرأن دان اقرأ مڠيكوت  باچأن ماسيڠ-ماسيڠ']
+  Tingkatan 3: 1 tema, 1 tajuk
+    Contoh Tema: ['ممباچ القرأن دان اقرأ']
+    Contoh Tajuk: ['ممباچ القرأن دان اقرأ مڠيكوت  باچأن ماسيڠ-ماسيڠ']
+  Tingkatan 4: 1 tema, 1 tajuk
+    Contoh Tema: ['ممباچ القرأن دان اقرأ']
+    Contoh Tajuk: ['ممباچ القرأن دان اقرأ مڠيكوت  باچأن ماسيڠ-ماسيڠ']
+  Tingkatan 5: 1 tema, 1 tajuk
+    Contoh Tema: ['ممباچ القرأن دان اقرأ']
+    Contoh Tajuk: ['ممباچ القرأن دان اقرأ مڠيكوت  باچأن ماسيڠ-ماسيڠ']
+  Tingkatan 6: 1 tema, 1 tajuk
+    Contoh Tema: ['ممباچ القرأن دان اقرأ']
+    Contoh Tajuk: ['ممباچ القرأن دان اقرأ مڠيكوت  باچأن ماسيڠ-ماسيڠ']
+
+SUBJEK: حفظ القرآن والتجويد
+  Tingkatan 6: 3 tema, 10 tajuk
+    Contoh Tema: ['التجويد للصف الأول الاعدادي 6', 'التجويد للصف الثاني الاعدادي 6', 'حفظ القرآن للسنة السادسۃ']
+    Contoh Tajuk: ['الدرس الأول:  أحكام الميم الساكنة', 'الدرس الأول:  أركان ومراتب القراءة', 'الدرس الأول:  الاستعاذة والبسملة']
+
+SUBJEK: حفظ القرأن
+  Tingkatan 1: 1 tema, 1 tajuk
+    Contoh Tema: ['1حفظ القرآن']
+    Contoh Tajuk: ['2 فقه الآية']
+  Tingkatan 2: 1 tema, 1 tajuk
+    Contoh Tema: ['1حفظ القرآن']
+    Contoh Tajuk: ['2 فقه الآيات']
+  Tingkatan 3: 1 tema, 1 tajuk
+    Contoh Tema: ['1حفظ القرآن']
+    Contoh Tajuk: ['2 فقه الآيات']
+  Tingkatan 4: 1 tema, 1 tajuk
+    Contoh Tema: ['1حفظ القرآن']
+    Contoh Tajuk: ['2 فقه الآيات']
+  Tingkatan 5: 1 tema, 1 tajuk
+    Contoh Tema: ['1حفظ القرآن']
+    Contoh Tajuk: ['2 فقه الآيات']
+  Tingkatan 6: 0 tema, 4 tajuk
+    Contoh Tajuk: ['سورة الروم', 'سورة سجدة', 'سورة فاطر']
+
+SUBJEK: كماهيرن ممباچ دان مڠحفظ القرءان(KKQ)
+  Tingkatan 1: 5 tema, 25 tajuk
+    Contoh Tema: ['القراءات السبع', 'تجويد', 'ترنم القرءان']
+    Contoh Tajuk: ['استعاذة، بسملة دان سورة', 'اصطلاح ضبط القرءان', 'القرءان']
+  Tingkatan 2: 5 tema, 19 tajuk
+    Contoh Tema: ['تجويد', 'ترنم', 'حفظن']
+    Contoh Tajuk: ['أسباب النزول', 'اذان دان اقامة', 'اصطلاح القراءات']
+  Tingkatan 3: 5 tema, 9 tajuk
+    Contoh Tema: ['القراءات السبع', 'تجويد', 'ترنم']
+    Contoh Tajuk: ['1.1 المدود', 'القراءات السبع', 'بيلڠن ڤركاتاءن، حروف دان ايات دالم القرءان']
+  Tingkatan 4: 4 tema, 18 tajuk
+    Contoh Tema: ['تجويد', 'ترنم', 'حفظن']
+    Contoh Tajuk: ['اصطلاح دالم ترنم', 'الابتداء', 'التقاء الساكنين']
+  Tingkatan 5: 4 tema, 13 tajuk
+    Contoh Tema: ['تجويد', 'ترنم', 'حفظن']
+    Contoh Tajuk: ['تجويد', 'ترنم', 'حفظن']
+
+SUBJEK: مناهج العلوم الإسلامية
+  Tingkatan 4: 3 tema, 0 tajuk
+    Contoh Tema: ['الاستيعاب', 'الفهم والاستفادة من الحديث', 'حفظ الحديث']
+  Tingkatan 5: 2 tema, 0 tajuk
+    Contoh Tema: ['المادة: الحديث للصف الثاني الثانوي', 'المادة: المنطق للصف ا لاول الثانوي']
+
+SUBJEK: مهارات القرءان
+  Tingkatan 1: 0 tema, 1 tajuk
+    Contoh Tajuk: ['مهارات القرءان - تلاوة']
+  Tingkatan 2: 0 tema, 3 tajuk
+    Contoh Tajuk: ['كماهيران مماهامي', 'ممباچ القرأن دان اقرأ مڠيكوت  باچأن ماسيڠ-ماسيڠ', 'ممباچ القرأن دان اقرأ مڠيكوت باچأن ماسيڠ-ماسيڠ']
+  Tingkatan 3: 0 tema, 1 tajuk
+    Contoh Tajuk: ['ممباچ القرأن دان اقرأ مڠيكوت  باچأن ماسيڠ-ماسيڠ']
+  Tingkatan 4: 0 tema, 2 tajuk
+    Contoh Tajuk: ['مهارات القرءان - تلاوة', 'مهارات القرءان -التجويد']
+  Tingkatan 5: 0 tema, 10 tajuk
+    Contoh Tajuk: ['الابتداء', 'الوقف', 'تاريخ كتابة القرآن']
+
+SUBJEK: ٢ التجويد
+  Tingkatan 6: 0 tema, 15 tajuk
+    Contoh Tajuk: ['أحكام النون الساكنة والتنوين', 'أركان القراءة', 'الاستعاذة']
+
+SUBJEK: ڤنديديقن اسلام
+  Tingkatan 1: 6 tema, 30 tajuk
+    Contoh Tema: ['اخلاق إسلامية', 'القرءان', 'حديث']
+    Contoh Tajuk: ['أمانه توڠڬق كسجهترأن', 'إخلاص دالم كهيدوڤن', 'إسلام اݢام فطرة']
+  Tingkatan 2: 6 tema, 47 tajuk
+    Contoh Tema: ['اخلاق إسلامية', 'القرءان', 'حديث']
+    Contoh Tajuk: ['ايات باچاءن: ايات 103 سورة ال عمران', 'ايات باچاءن: ايات 133 -136 سورة ال عمران', 'ايات باچاءن: ايات 159 سورة ال عمران']
+  Tingkatan 3: 6 tema, 26 tajuk
+    Contoh Tema: ['اخلاق إسلامية', 'القرءان', 'حديث']
+    Contoh Tajuk: ['ادب بركومونيكاسي', 'ادب برمسافير', 'القرءان ڤتونجوق كبنرن']
+  Tingkatan 4: 6 tema, 28 tajuk
+    Contoh Tema: ['اخلاق اسلامية', 'القرأن', 'حديث']
+    Contoh Tajuk: ['ادب ترهادق اورڠ ساکيت دان کورڠ اوڤاي', 'الله مها ڤمبالس دان مها ڤرکاس', 'برسيکڤ بنر منجأوهکن کمنفقن']
+  Tingkatan 5: 6 tema, 22 tajuk
+    Contoh Tema: ['اخلاق اسلاميه', 'القرءان', 'حديث']
+    Contoh Tajuk: ['استقامة جالن منوجو موجا هده', 'الله سبحانه وتعالى مها مڠا اواسي دان مها مڽقسيكن', 'الله سبحانه وتعالى مها مڠاوسي دان مها مڽقسيكن']
+
+SUBJEK: ڤنديديقن القرءان دان السنه(PQS)
+  Tingkatan 4: 0 tema, 32 tajuk
+    Contoh Tajuk: ['[ أخلاق إسلامية] تذكيه النفس مندكتكن ديري كڤد الله', '[ أخلاق إسلامية] منجاڬ ڤرڬاولن دان  هوبوڠن منوروت اسلام', '[ أخلاق إسلامية] منجاݢ ڤنمڤيلن ديري دالم كهيدوڤن']
+  Tingkatan 5: 6 tema, 33 tajuk
+    Contoh Tema: ['أخلاق إسلامية', 'عقيدة إسلامية', 'علوم الحديث']
+    Contoh Tajuk: ['[ أخلاق إسلامية] ادب ترهادڤ ڤميمڤين دان نڬارا', '[ أخلاق إسلامية] ادب منزيارهي دان منجاݢ اورڠ ساكيت', '[ أخلاق إسلامية] تونتوتن امر معروف  نهي  موڠكر.']
+
+SUBJEK: ڤنديديقن شريعة اسلامية(PSI)
+  Tingkatan 4: 0 tema, 6 tajuk
+    Contoh Tajuk: ['بيدڠ أصول الفقه 3.0', 'بيدڠ الفقه 4.0', 'بيدڠ ايات٢ حكوم 1.0']
+  Tingkatan 5: 0 tema, 6 tajuk
+    Contoh Tajuk: ['1.0 بيدڠ ايات حكوم', '2.0   بيدڠ حديث حكوم٢', '3.0 بيدڠ أصول الفقه']
+
