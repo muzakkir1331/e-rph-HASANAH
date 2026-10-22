@@ -129,11 +129,6 @@ export default function AIWeeklyGeneratorModal({
   const handleStartWeeklyGeneration = async () => {
     if (selectedSlotIndexes.length === 0) return;
 
-    if (planType === 'free' && aiCreditsRemaining <= 0) {
-      setIsUpgradeModalOpen(true);
-      return;
-    }
-
     setIsGenerating(true);
     setProgressCount(0);
     const newStatusMap: Record<number, 'idle' | 'generating' | 'done' | 'error'> = {};
@@ -145,13 +140,7 @@ export default function AIWeeklyGeneratorModal({
     const accumulatedRecords: Record<string, RPHRecord> = { ...generatedRecords };
 
     for (let i = 0; i < selectedSlotIndexes.length; i++) {
-      if (planType === 'free') {
-        const creditRes = await deductAICredit(1);
-        if (!creditRes.success && !creditRes.isPro) {
-          setIsUpgradeModalOpen(true);
-          break;
-        }
-      }
+      await deductAICredit(1);
 
       const slotIndex = selectedSlotIndexes[i];
       const slot = timetable[slotIndex];

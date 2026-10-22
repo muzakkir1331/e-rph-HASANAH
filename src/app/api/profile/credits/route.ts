@@ -43,25 +43,9 @@ export async function POST(req: NextRequest) {
       } catch {}
     }
 
-    const isPro = profile.plan_type === 'pro';
-    const currentCredits = profile.ai_credits_remaining !== undefined ? profile.ai_credits_remaining : 5;
-
-    // Jika pelan percuma dan kredit telah habis
-    if (!isPro && currentCredits <= 0) {
-      return NextResponse.json(
-        {
-          success: false,
-          code: 'CREDIT_LIMIT_REACHED',
-          error: 'Kuota janaan AI percuma anda telah habis (0 kredit baki). Sila naik taraf ke Pelan PRO untuk menikmati janaan tanpa had.',
-          creditsRemaining: 0,
-          planType: 'free'
-        },
-        { status: 403 }
-      );
-    }
-
-    // Tolak kredit jika Free tier
-    const newCredits = isPro ? currentCredits : Math.max(0, currentCredits - amount);
+    // Untuk warga pendidik SMA Al-Hasanah, tiada had kredit SaaS (Akses Penuh Tanpa Had)
+    const isPro = true;
+    const newCredits = 999999;
 
     profile.ai_credits_remaining = newCredits;
     profile.updated_at = new Date().toISOString();

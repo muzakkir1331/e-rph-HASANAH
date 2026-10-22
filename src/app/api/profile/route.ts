@@ -77,18 +77,20 @@ export async function GET(req: NextRequest) {
       });
     }
 
-    // 3. Jika profil belum wujud langsung, jana profil lalai
+    // 3. Jika profil belum wujud langsung, jana profil lalai khusus Guru SMA Al-Hasanah
     const defaultProfile: UserProfile = {
       user_id: userId || identifier,
       email: email,
-      full_name: email ? email.split('@')[0] : 'Guru',
-      school_name: '',
+      full_name: email ? email.split('@')[0] : 'Guru SMA Al-Hasanah',
+      school_name: 'SMA Al-Hasanah',
+      school_code: 'SABK',
       district: '',
       state: '',
       position: 'Guru Akademik',
-      is_onboarding_completed: false,
-      plan_type: 'free',
-      ai_credits_remaining: 5,
+      school_logo: '/logo-al-hasanah.png',
+      is_onboarding_completed: true,
+      plan_type: 'pro',
+      ai_credits_remaining: 999999,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString()
     };

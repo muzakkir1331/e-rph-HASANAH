@@ -236,5 +236,35 @@
       "5"
     ],
     "total_weeks": 48
+  },
+  "Bahasa Arab": {
+    "subjek": "Bahasa Arab",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 44
+  },
+  "اللغة العربية": {
+    "subjek": "اللغة العربية",
+    "tingkatan_list": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "total_weeks": 44
+  },
+  "الأدب و البلاغة": {
+    "subjek": "الأدب و البلاغة",
+    "tingkatan_list": [
+      "4",
+      "5"
+    ],
+    "total_weeks": 44
   }
 }

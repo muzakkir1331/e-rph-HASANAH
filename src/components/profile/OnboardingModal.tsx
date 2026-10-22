@@ -59,18 +59,21 @@ export default function OnboardingModal({ isOpen, onClose, initialProfile }: Onb
       setFullName(prof.full_name || teacherName || '');
       setIcNumber(prof.ic_number || '');
       setPhoneNumber(prof.phone_number || '');
-      setSchoolName(prof.school_name || '');
-      setSchoolCode(prof.school_code || '');
+      setSchoolName(prof.school_name || 'SMA Al-Hasanah');
+      setSchoolCode(prof.school_code || 'SABK');
       setDistrict(prof.district || '');
       setStateName(prof.state || 'Pahang');
       setPosition(prof.position || 'Guru Akademik');
-      setSchoolLogo(prof.school_logo || '');
+      setSchoolLogo(prof.school_logo || '/logo-al-hasanah.png');
       setTeacherSignature(prof.teacher_signature || '');
       if (prof.teacher_signature) {
         setHasDrawnSignature(true);
       }
     } else {
       setFullName(teacherName || '');
+      setSchoolName('SMA Al-Hasanah');
+      setSchoolCode('SABK');
+      setSchoolLogo('/logo-al-hasanah.png');
     }
   }, [initialProfile, userProfile, teacherName, isOpen]);
 

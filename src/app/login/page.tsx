@@ -45,26 +45,30 @@ export default function LoginPage() {
     <div className="min-h-[85vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-6 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-xl">
         
-        {/* Header SaaS B2C */}
+        {/* Header Rasmi Guru SMA Al-Hasanah */}
         <div className="text-center space-y-3">
-          <div className="mx-auto w-20 h-20 rounded-2xl bg-gradient-to-tr from-emerald-700 to-teal-600 flex items-center justify-center shadow-lg p-2">
-            <School className="w-10 h-10 text-white" />
+          <div className="mx-auto w-24 h-24 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center shadow-md p-2">
+            <img
+              src="/logo-al-hasanah.png"
+              alt="Logo SMA Al-Hasanah"
+              className="w-full h-full object-contain"
+            />
           </div>
           <div>
             <div className="inline-flex items-center space-x-1.5 px-3 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-extrabold uppercase tracking-wider mb-1">
-              <Sparkles className="w-3 h-3 text-amber-500" />
-              <span>SaaS Pendidik Malaysia</span>
+              <School className="w-3.5 h-3.5 text-emerald-700" />
+              <span>Portal Rasmi Pendidik</span>
             </div>
             <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-              e-RPH Pintar Self-Serve
+              e-RPH SMA Al-Hasanah
             </h1>
             <p className="text-xs text-slate-500 mt-1">
-              Platform persediaan &amp; pengurusan e-RPH berteknologi AI untuk semua guru di Malaysia
+              Sistem Persediaan &amp; Pengurusan Rekod Pembelajaran Harian Guru
             </p>
           </div>
 
           {/* Penunjuk Status Firebase */}
-          <div className="pt-2 flex justify-center">
+          <div className="pt-1 flex justify-center">
             {isFirebaseConfigured ? (
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">
                 <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
@@ -79,14 +83,14 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* Notis B2C: Menyokong ID DeLIMA KPM & Google Peribadi */}
+        {/* Notis Pengesahan Warga Pendidik SMA Al-Hasanah */}
         <div className="bg-emerald-50/70 border border-emerald-200 rounded-2xl p-4 text-xs space-y-2 text-emerald-950">
           <div className="flex items-center space-x-2 font-bold text-emerald-900">
             <ShieldCheck className="w-4 h-4 text-emerald-700 flex-shrink-0" />
-            <span>Akses Mudah Alih &amp; Mesra Guru:</span>
+            <span>Akses Khusus Warga Pendidik:</span>
           </div>
           <p className="leading-relaxed text-emerald-900/90">
-            Log masuk menggunakan <strong>ID DeLIMA KPM (*@moe-dl.edu.my)</strong> atau <strong>akaun Google peribadi</strong> anda. Tetapan sekolah, kelas, dan jadual waktu adalah tersuai mengikut profil anda sendiri.
+            Sila log masuk menggunakan <strong>ID DeLIMA KPM (*@moe-dl.edu.my)</strong> atau <strong>akaun Google</strong> anda. Sistem akan memuatkan jadual waktu mengajar dan konfigurasi subjek kurikulum KBD &amp; KSSM SMA Al-Hasanah secara automatik.
           </p>
         </div>
 

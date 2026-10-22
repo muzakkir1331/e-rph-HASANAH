@@ -103,7 +103,7 @@ export default function DashboardPage() {
       )}
 
       {/* Hero Welcome Banner */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-emerald-800 via-teal-800 to-emerald-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="relative overflow-hidden bg-gradient-to-r from-emerald-900 via-teal-900 to-emerald-800 rounded-3xl p-5 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="relative z-10 max-w-2xl space-y-3">
           
           <div className="flex flex-wrap items-center gap-2">
@@ -112,40 +112,23 @@ export default function DashboardPage() {
               <span>{isDeLIMA ? `ID DeLIMA: ${teacherEmail}` : teacherEmail}</span>
             </div>
 
-            <button
-              type="button"
-              onClick={() => setIsUpgradeModalOpen(true)}
-              className={`inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-extrabold transition-all ${
-                isPro
-                  ? 'bg-amber-400 text-slate-900 ring-2 ring-amber-300'
-                  : 'bg-white/15 text-white hover:bg-white/25'
-              }`}
-            >
-              {isPro ? (
-                <>
-                  <Crown className="w-3.5 h-3.5 text-slate-900 fill-slate-900" />
-                  <span>Pelan PRO Aktif</span>
-                </>
-              ) : (
-                <>
-                  <Sparkles className="w-3 h-3 text-amber-300" />
-                  <span>Pelan Percuma &bull; {aiCreditsRemaining} Kredit AI</span>
-                </>
-              )}
-            </button>
+            <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-700/60 border border-emerald-400/30 text-emerald-100">
+              <School className="w-3.5 h-3.5 text-amber-300" />
+              <span>Warga Pendidik SMA Al-Hasanah &bull; Akses Penuh</span>
+            </div>
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
             Selamat Datang, {teacherName}
           </h1>
-          <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
-            Platform e-RPH Pintar SaaS B2C &bull; Dilengkapi Google SSO, jadual waktu boleh ubah mengikut guru individu di {schoolName}, Co-Pilot Gemini 3.8 Flash, dan pautan semakan luar Pengetua (Magic Link).
+          <p className="text-xs sm:text-base text-emerald-100/90 leading-relaxed">
+            Sistem Pengurusan e-RPH Digital rasmi bagi guru-guru SMA Al-Hasanah. Dilengkapi integrasi DSKP KBD &amp; KSSM, Takwim KPM, jadual waktu boleh ubah guru, Co-Pilot Gemini AI, dan pautan semakan luar Pengetua (Magic Link).
           </p>
 
-          <div className="pt-2 flex flex-wrap items-center gap-3">
+          <div className="pt-2 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
             <Link
               href="/rph/baharu"
-              className="px-5 py-2.5 bg-white text-emerald-900 hover:bg-emerald-50 rounded-xl font-bold text-xs sm:text-sm shadow-md flex items-center space-x-2 transition-all hover:scale-105"
+              className="px-5 py-3 sm:py-2.5 bg-white text-emerald-900 hover:bg-emerald-50 rounded-xl font-bold text-xs sm:text-sm shadow-md flex items-center justify-center space-x-2 transition-all hover:scale-105 touch-manipulation"
             >
               <Sparkles className="w-4 h-4 text-emerald-600" />
               <span>Buka Borang e-RPH Pintar</span>
@@ -154,7 +137,7 @@ export default function DashboardPage() {
             <button
               type="button"
               onClick={() => setIsShareModalOpen(true)}
-              className="px-4 py-2.5 bg-emerald-700/80 hover:bg-emerald-700 text-white border border-white/20 rounded-xl font-bold text-xs sm:text-sm flex items-center space-x-2 transition-colors shadow-sm"
+              className="px-4 py-3 sm:py-2.5 bg-emerald-700/80 hover:bg-emerald-700 text-white border border-white/20 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 transition-colors shadow-sm touch-manipulation"
             >
               <Share2 className="w-4 h-4 text-emerald-200" />
               <span>Kongsi Semakan Pengetua (Magic Link)</span>
@@ -163,7 +146,7 @@ export default function DashboardPage() {
             <button
               type="button"
               onClick={() => setIsEditorOpen(true)}
-              className="px-4 py-2.5 bg-emerald-900/40 hover:bg-emerald-900/60 text-white border border-white/20 rounded-xl font-medium text-xs sm:text-sm flex items-center space-x-2 transition-colors"
+              className="px-4 py-3 sm:py-2.5 bg-emerald-950/50 hover:bg-emerald-900/60 text-white border border-white/20 rounded-xl font-medium text-xs sm:text-sm flex items-center justify-center space-x-2 transition-colors touch-manipulation"
             >
               <Edit3 className="w-4 h-4" />
               <span>Jadual Mengajar</span>

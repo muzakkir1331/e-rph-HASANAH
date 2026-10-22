@@ -83,21 +83,43 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (res.ok) {
         const data = await res.json();
         if (data.profile) {
-          setUserProfile(data.profile);
-          if (data.profile.full_name) {
-            setTeacherName(data.profile.full_name);
+          const prof: UserProfile = {
+            ...data.profile,
+            school_name: data.profile.school_name || 'SMA Al-Hasanah',
+            school_logo: data.profile.school_logo || '/logo-al-hasanah.png',
+            plan_type: 'pro',
+            ai_credits_remaining: 999999,
+            is_onboarding_completed: true
+          };
+          setUserProfile(prof);
+          if (prof.full_name) {
+            setTeacherName(prof.full_name);
           }
-          // Jika pengguna belum melengkapkan onboarding, buka wizard secara automatik
-          if (!data.profile.is_onboarding_completed) {
-            setIsOnboardingModalOpen(true);
-          }
-          return data.profile;
+          return prof;
         }
       }
     } catch (e) {
       console.warn('Gagal memuat profil guru:', e);
     }
-    return null;
+    
+    // Sandaran profil tetap warga SMA Al-Hasanah
+    const fallbackProfile: UserProfile = {
+      user_id: uid,
+      email: email,
+      full_name: email ? email.split('@')[0] : 'Guru SMA Al-Hasanah',
+      school_name: 'SMA Al-Hasanah',
+      district: '',
+      state: '',
+      position: 'Guru Akademik',
+      school_logo: '/logo-al-hasanah.png',
+      is_onboarding_completed: true,
+      plan_type: 'pro',
+      ai_credits_remaining: 999999,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    };
+    setUserProfile(fallbackProfile);
+    return fallbackProfile;
   }, []);
 
   // Muat jadual tersimpan khusus dari Cloud Profile masing-masing
@@ -297,71 +319,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return false;
   };
 
-  // Naik taraf pelan ke PRO melalui baucar atau pembayaran
+  // Naik taraf pelan ke PRO (Semua Guru SMA Al-Hasanah mendapat akses PRO penuh)
   const upgradeToPro = async (voucherCode?: string): Promise<{ success: boolean; message: string; profile?: UserProfile }> => {
-    const uid = user?.uid || userProfile?.user_id || '';
-    const email = teacherEmail || user?.email || userProfile?.email || '';
-
-    try {
-      const res = await fetch('/api/profile/upgrade', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId: uid,
-          email,
-          voucherCode,
-          paymentMethod: voucherCode ? undefined : 'fpx_direct'
-        })
-      });
-
-      const json = await res.json();
-      if (res.ok && json.success) {
-        if (json.profile) {
-          setUserProfile(json.profile);
-        }
-        return { success: true, message: json.message, profile: json.profile };
-      } else {
-        return { success: false, message: json.error || 'Gagal menaik taraf pelan.' };
-      }
-    } catch (err: any) {
-      return { success: false, message: err?.message || 'Ralat pelayan semasa memproses naik taraf.' };
-    }
+    return {
+      success: true,
+      message: 'Akses Penuh Warga Pendidik SMA Al-Hasanah aktif tanpa sebarang sekatan.',
+      profile: userProfile || undefined
+    };
   };
 
-  // Semak & tolak kredit AI
+  // Semak kredit AI (Akses Tanpa Had untuk Guru SMA Al-Hasanah)
   const deductAICredit = async (amount: number = 1): Promise<{ success: boolean; creditsRemaining: number; isPro: boolean }> => {
-    const uid = user?.uid || userProfile?.user_id || '';
-    const email = teacherEmail || user?.email || userProfile?.email || '';
-
-    try {
-      const res = await fetch('/api/profile/credits', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId: uid,
-          email,
-          amount
-        })
-      });
-
-      const json = await res.json();
-      if (res.ok && json.success) {
-        if (userProfile) {
-          setUserProfile({
-            ...userProfile,
-            ai_credits_remaining: json.creditsRemaining
-          });
-        }
-        return { success: true, creditsRemaining: json.creditsRemaining, isPro: Boolean(json.isPro) };
-      } else if (res.status === 403) {
-        // Kuota habis! Buka modal Paywall
-        setIsUpgradeModalOpen(true);
-        return { success: false, creditsRemaining: 0, isPro: false };
-      }
-    } catch (err) {
-      console.warn('Gagal tolak kredit AI:', err);
-    }
-    return { success: false, creditsRemaining: userProfile?.ai_credits_remaining || 0, isPro: userProfile?.plan_type === 'pro' };
+    return {
+      success: true,
+      creditsRemaining: 999999,
+      isPro: true
+    };
   };
 
   // Simpan Jadual Waktu Guru

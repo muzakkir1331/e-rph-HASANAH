@@ -244,17 +244,18 @@ export default function TemaTajukSelector({
                         const isSelected = selectedTema === temaItem;
                         const tajukCount = temaToTajuk[temaItem.trim()]?.length || 0;
                         return (
-                          <div
+                          <button
                             key={idx}
+                            type="button"
                             onClick={() => {
                               onTemaChange(temaItem);
                               setIsTemaOpen(false);
                               setSearchTema('');
                             }}
-                            className={`p-2.5 rounded-lg text-xs cursor-pointer flex items-center justify-between gap-2 transition-colors ${
+                            className={`w-full min-h-[44px] p-3 rounded-xl text-xs cursor-pointer flex items-center justify-between gap-2 text-left transition-colors touch-manipulation active:scale-[0.99] ${
                               isSelected
                                 ? 'bg-emerald-600 text-white font-bold'
-                                : 'hover:bg-emerald-50/70 text-slate-700'
+                                : 'hover:bg-emerald-50/80 active:bg-emerald-100 text-slate-800'
                             }`}
                           >
                             <span className="flex-1 leading-snug break-words">
@@ -262,15 +263,15 @@ export default function TemaTajukSelector({
                             </span>
                             <div className="flex items-center gap-1.5 flex-shrink-0">
                               {tajukCount > 0 && (
-                                <span className={`text-[10px] px-1.5 py-0.2 rounded font-semibold ${
-                                  isSelected ? 'bg-emerald-700/60 text-emerald-100' : 'bg-slate-100 text-slate-500'
+                                <span className={`text-[10px] px-2 py-0.5 rounded-full font-semibold ${
+                                  isSelected ? 'bg-emerald-700/60 text-emerald-100' : 'bg-slate-100 text-slate-600'
                                 }`}>
                                   {tajukCount} tajuk
                                 </span>
                               )}
-                              {isSelected && <Check className="w-3.5 h-3.5 text-white" />}
+                              {isSelected && <Check className="w-4 h-4 text-white" />}
                             </div>
-                          </div>
+                          </button>
                         );
                       })
                     )}
@@ -465,24 +466,25 @@ export default function TemaTajukSelector({
                       filteredTajuks.map((tajukItem, idx) => {
                         const isSelected = selectedTajuk === tajukItem;
                         return (
-                          <div
+                          <button
                             key={idx}
+                            type="button"
                             onClick={() => {
                               onTajukChange(tajukItem);
                               setIsTajukOpen(false);
                               setSearchTajuk('');
                             }}
-                            className={`p-2.5 rounded-lg text-xs cursor-pointer flex items-center justify-between gap-2 transition-colors ${
+                            className={`w-full min-h-[44px] p-3 rounded-xl text-xs cursor-pointer flex items-center justify-between gap-2 text-left transition-colors touch-manipulation active:scale-[0.99] ${
                               isSelected
                                 ? 'bg-teal-600 text-white font-bold'
-                                : 'hover:bg-teal-50/70 text-slate-700'
+                                : 'hover:bg-teal-50/80 active:bg-teal-100 text-slate-800'
                             }`}
                           >
                             <span className="flex-1 leading-snug break-words">
                               {tajukItem}
                             </span>
-                            {isSelected && <Check className="w-3.5 h-3.5 text-white flex-shrink-0" />}
-                          </div>
+                            {isSelected && <Check className="w-4 h-4 text-white flex-shrink-0" />}
+                          </button>
                         );
                       })
                     )}

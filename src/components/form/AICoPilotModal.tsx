@@ -43,20 +43,9 @@ export default function AICoPilotModal({
   if (!isOpen) return null;
 
   const handleGenerate = async () => {
-    // Sekat janaan jika kuota percuma telah habis
-    if (planType === 'free' && aiCreditsRemaining <= 0) {
-      setIsUpgradeModalOpen(true);
-      return;
-    }
-
     setLoading(true);
     try {
-      const creditRes = await deductAICredit(1);
-      if (!creditRes.success && !creditRes.isPro) {
-        setIsUpgradeModalOpen(true);
-        setLoading(false);
-        return;
-      }
+      await deductAICredit(1);
 
       const payload: GeminiCoPilotRequest = {
         subjek: subject,
